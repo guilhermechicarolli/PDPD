@@ -1,0 +1,6 @@
+When using this dataset please use the following citation and pay attention to the rights documented in rights.txt:
+Sazima I (2020). ZUEC-MAM - Coleção de Mamíferos do Museu de Zoologia da UNICAMP. Version 1.53. Universidade Estadual de Campinas - Instituto de Biologia. Occurrence dataset https://doi.org/10.15468/yqhyqe accessed via GBIF.org on 2020-12-03.
+Harvard University M, Morris P J (2020). Museum of Comparative Zoology, Harvard University. Version 162.238. Museum of Comparative Zoology, Harvard University. Occurrence dataset https://doi.org/10.15468/p5rupv accessed via GBIF.org on 2020-12-03.
+Muséum d'histoire naturelle de la Ville de Genève - MHNG. Mammals housed at MHNG, Geneva. Occurrence dataset https://doi.org/10.15468/lwu4fj accessed via GBIF.org on 2020-12-03.
+Millen B, Lim B (2018). Mammalogy Collection - Royal Ontario Museum. Version 11.5. Royal Ontario Museum. Occurrence dataset https://doi.org/10.15468/2rlrvh accessed via GBIF.org on 2020-12-03.
+de Queiroz Boudet Fernandes H (2020). MBML-Mamiferos - Coleção de Mamíferos. Version 1.51. Instituto Nacional da Mata Atlântica. Occurrence dataset https://doi.org/10.15468/nmpnlt accessed via GBIF.org on 2020-12-03.

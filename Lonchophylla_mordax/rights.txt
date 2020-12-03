@@ -1,0 +1,11 @@
+
+Dataset: ZUEC-MAM - Coleção de Mamíferos do Museu de Zoologia da UNICAMP
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Museum of Comparative Zoology, Harvard University
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Mammals housed at MHNG, Geneva
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Mammalogy Collection - Royal Ontario Museum
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: MBML-Mamiferos - Coleção de Mamíferos
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
