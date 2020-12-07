@@ -33,7 +33,7 @@ L_mordax1 <- L_mordax1 %>%
     select(-'Minimum depth in meters', -'Maximum depth in meters', -'Coordinate Uncertainty in Metres',
            -'Country - parsed', -'State - parsed', -'Occurrence status', 
            -('raw _ sampling _ protocol' : 'Type status not recognised'), -'Basis Of Record - original',
-           -'Taxon Rank')
+           -'Taxon Rank', -'Geodetic datum - original')
 
 # Remoção de observações sem referência geográfica de latitude e longitude
 L_mordax1 <- L_mordax1 %>%
