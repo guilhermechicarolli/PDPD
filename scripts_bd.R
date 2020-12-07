@@ -12,11 +12,11 @@ library (ggplot2)
 
 
 # Variável que representa o banco de dados da espécie L. mordax obtidos do SiBBr
-L_mordax1 <- read_csv('https://raw.githubusercontent.com/guilhermechicarolli/PDPD/main/Lonchophylla_mordax/data_lonchophylla_mordax.csv?token=AQHJ74WBF5E4MS5MNEYW6AK7ZE2GA')  
+L_mordax1 <- read_csv('https://raw.githubusercontent.com/guilhermechicarolli/PDPD/main/Lonchophylla_mordax/SiBBr/data_lonchophylla_mordax.csv')  
 L_mordax1 <- as_tibble(L_mordax1)    
 
 # Meta dados das colunas
-colunas1 <- read_csv('https://raw.githubusercontent.com/guilhermechicarolli/PDPD/main/Lonchophylla_mordax/headings.csv?token=AQHJ74TEG6KQVHTUH2PJ3P27ZE2LA') 
+colunas1 <- read_csv('https://raw.githubusercontent.com/guilhermechicarolli/PDPD/main/Lonchophylla_mordax/SiBBr/headings.csv') 
 colunas_sibbr <- as_tibble(colunas1)   
 
 #---------
