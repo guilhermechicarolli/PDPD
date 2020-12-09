@@ -34,8 +34,8 @@ L_mordax3 <- L_mordax3 %>%
     distinct(latitude_final, longitude_final, .keep_all = TRUE)
 
 # Criando o arquivo CSV limpo
-arquivo <- L_mordax3 %>% select(datelastmodified, collectioncode, catalognumber, latitude_final, longitude_final)
+arquivo <- L_mordax3 %>% select(datelastmodified, scientificname, catalognumber, country, stateprovince, county, locality, latitude_final, longitude_final)
 write_csv(arquivo, 'L_mordax_SpeciesLink_limpo.csv')
 
-
+view(arquivo)
     
