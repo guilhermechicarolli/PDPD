@@ -1,6 +1,8 @@
 #-------- BANCO DE DADOS DA ESPÉCIE LONCHOPHYLLA MORDAX OBTIDOS NO GBIF
 #                    (12 REGISTROS, sem filtragem)
 
+library(tidyverse)
+
 # Variável que representa o banco de dados da espécie L. mordax obtidos do GBIF
 L_mordax2 <- read_delim('Lonchophylla_mordax/GBIF/occurrence.txt', delim='\t')
 L_mordax2 <- as_tibble(L_mordax2)

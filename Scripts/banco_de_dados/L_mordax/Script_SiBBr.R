@@ -1,5 +1,6 @@
 #----- BANCO ESPÉCIE LONCHOPHYLLA MORDAX OBTIDOS NO SiBBr (61 registros, sem filtragem)
 
+library(tidyverse)
 
 # VariÃ¡vel que representa o banco de dados da espÃ©cie L. mordax obtidos do SiBBr
 L_mordax1 <- read_csv('Lonchophylla_mordax/SiBBr/data_lonchophylla_mordax.csv')  
