@@ -28,7 +28,7 @@ M_lewisii1 <- M_lewisii1[!(M_lewisii1$latitude == 0.00 & M_lewisii1$latitude_mun
 M_lewisii1 <- M_lewisii1 %>%
     distinct(latitude_final, longitude_final, .keep_all = TRUE)
 
-# Criando o arquivo CSV limpo
+# Criando o arquivo CSV limpo (171 ocorrências)
 arquivo <- M_lewisii1 %>% 
     select(datelastmodified, scientificname, catalognumber,country, stateprovince,
            county, locality, latitude_final, longitude_final)

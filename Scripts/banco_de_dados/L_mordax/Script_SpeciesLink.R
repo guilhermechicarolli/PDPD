@@ -16,8 +16,6 @@ L_mordax3 <- as_tibble(L_mordax3)
 
 #--------
 
-view(L_mordax3)
-
 # Mudando os valores NAs das colunas longitute_num e latitude_num para 0
 L_mordax3 <- L_mordax3 %>%
     mutate(longitude_mun = coalesce(longitude_mun, 0.0), latitude_mun = coalesce(
@@ -35,12 +33,14 @@ L_mordax3 <- L_mordax3[!(L_mordax3$latitude == 0.0 & L_mordax3$latitude_mun == 0
 L_mordax3 <- L_mordax3 %>%
     distinct(latitude_final, longitude_final, .keep_all = TRUE)
 
-# Criando o arquivo CSV limpo
+# Criando o arquivo CSV limpo (10 ocorrências)
 arquivo <- L_mordax3 %>% 
     select(datelastmodified, scientificname, catalognumber,country, stateprovince,
            county, locality, latitude_final, longitude_final)
 
 write_csv(arquivo, 'L_mordax_SpeciesLink_limpo.csv')
 
+#--------
+
 view(arquivo)
-    
+view(L_mordax3)

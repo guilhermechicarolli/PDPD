@@ -16,12 +16,16 @@ L_mordax2 <- as_tibble(L_mordax2)
 L_mordax2 <- L_mordax2 %>%
     distinct(decimalLatitude, decimalLongitude, .keep_all = TRUE)
 
+
+# Criando o arquivo CSV limpo (6 ocorrências)
 arquivo2 <- L_mordax2 %>%
     select(gbifID, scientificName, catalogNumber, modified, countryCode, 
            stateProvince,municipality, locality, decimalLatitude, 
            decimalLongitude)
 
 write_csv(arquivo2, 'L_mordax_GBIF_limpo.csv')
+
+#--------
 
 view(arquivo2)
 view(L_mordax2)
