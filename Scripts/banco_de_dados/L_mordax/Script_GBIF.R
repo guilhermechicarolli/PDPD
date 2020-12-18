@@ -29,3 +29,11 @@ write_csv(arquivo2, 'L_mordax_GBIF_limpo.csv')
 
 view(arquivo2)
 view(L_mordax2)
+
+#---------
+# PLOT DAS OCORRENCIAS
+
+plot (arquivo2$decimalLongitude, arquivo2$decimalLatitude,
+      xlim=c(-80,-30),ylim=c(-35,5), col='red',pch=19,
+      xlab='Longitude',ylab='Latitude' )
+map(add=T)

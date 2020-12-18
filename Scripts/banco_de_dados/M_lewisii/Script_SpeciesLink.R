@@ -29,16 +29,25 @@ M_lewisii1 <- M_lewisii1 %>%
     distinct(latitude_final, longitude_final, .keep_all = TRUE)
 
 # Criando o arquivo CSV limpo (171 ocorrências)
-arquivo <- M_lewisii1 %>% 
+arquivo1 <- M_lewisii1 %>% 
     select(datelastmodified, scientificname, catalognumber,country, stateprovince,
            county, locality, latitude_final, longitude_final)
 
-write_csv(arquivo, 'M_lewisii_SpeciesLink_limpo.csv')
+write_csv(arquivo1, 'M_lewisii_SpeciesLink_limpo.csv')
 
 #---------
 
-view(arquivo)
+view(arquivo1)
 
 view(M_lewisii1)
 
+#---------
+# PLOT DAS OCORRENCIAS
+
+library(maps)
+
+plot (arquivo1$longitude_final, arquivo1$latitude_final,
+      xlim=c(-80,-30),ylim=c(-35,0), col='red',pch=19,
+      xlab='Longitude',ylab='Latitude' )
+map(add=T)
 

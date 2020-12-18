@@ -44,3 +44,15 @@ write_csv(arquivo, 'L_mordax_SpeciesLink_limpo.csv')
 
 view(arquivo)
 view(L_mordax3)
+
+#---------
+# PLOT DAS OCORRENCIAS
+
+library(maps)
+
+plot (arquivo$longitude_final, arquivo$latitude_final,
+     xlim=c(-80,-30),ylim=c(-35,5), col='red',pch=19,
+     xlab='Longitude',ylab='Latitude' )
+map(add=T)
+
+
