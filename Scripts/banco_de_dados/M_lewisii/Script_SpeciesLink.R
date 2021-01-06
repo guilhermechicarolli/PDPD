@@ -6,7 +6,8 @@ library(tidyverse)
 # (364 registros, sem filtragem)
 
 # Variável que representa o banco de dados
-M_lewisii1 <- read_delim('Mimosa_lewisii/SpeciesLink/speciesLink_all_67587_20201211193651.txt', delim='\t')
+M_lewisii1 <- read_delim('Mimosa_lewisii/SpeciesLink/speciesLink_all_67587_20201211193651.txt',
+                         delim='\t')
 M_lewisii1 <- as.tibble(M_lewisii1)
 
 #--------

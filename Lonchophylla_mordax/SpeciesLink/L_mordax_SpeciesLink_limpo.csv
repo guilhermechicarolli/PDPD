@@ -1,11 +1,11 @@
-datelastmodified,scientificname,catalognumber,country,stateprovince,county,locality,latitude_final,longitude_final
-2014-04-11T14:42:07Z,Lonchophylla mordax,1757,Brasil,Mato Grosso,Colíder,Rio Teles Pires,-10.8178,-55.4508
-2017-04-18T19:08:56Z,Lonchophylla mordax,10391,Brasil,Pernambuco,Buíque,Parna da Serra do Catimbau - Furna do Gato,-8.6233,-37.1559
-2017-04-18T19:08:56Z,Lonchophylla mordax,10190,Brasil,Bahia,Irecê,NA,-11.3032,-41.857
-2018-10-18T14:37:01Z,Lonchophylla mordax,128,Brasil,Pernambuco,Buíque,Furna do Gato - Serra do Catimbau,-8.6233333333333,-37.155833333333
-2019-10-03T14:21:55Z,Lonchophylla mordax,1807,Brasil,Espírito Santo,Conceição da Barra,Gruta de Itaúnas,-18.593333,-39.732222
-2019-10-03T14:21:55Z,Lonchophylla mordax,1750,Brasil,Espírito Santo,Santa Teresa,Estação Biológica de Santa Lúcia,-19.965,-40.54
-2019-10-03T14:21:55Z,Lonchophylla mordax,2356,Brasil,Espírito Santo,Santa Teresa,Boqueirão,-19.935556,-40.600278
-2019-10-03T14:21:55Z,Lonchophylla mordax,3179,Brasil,Espírito Santo,Linhares,Regência,-19.638139,-39.882333
-2019-10-03T14:21:55Z,Lonchophylla mordax,2963,Brasil,Espírito Santo,Muqui,Serra das Torres,-20.9517002105713,-41.3457984924316
-2020-05-01T16:28:07Z,Lonchophylla mordax,33216,Brazil,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333
+nomecientifico,ID,pais,estado,municipio,localidade,latitude,longitude
+Lonchophylla mordax,1757,Brasil,Mato Grosso,Colíder,Rio Teles Pires,-10.8178,-55.4508
+Lonchophylla mordax,10391,Brasil,Pernambuco,Buíque,Parna da Serra do Catimbau - Furna do Gato,-8.6233,-37.1559
+Lonchophylla mordax,10190,Brasil,Bahia,Irecê,NA,-11.3032,-41.857
+Lonchophylla mordax,128,Brasil,Pernambuco,Buíque,Furna do Gato - Serra do Catimbau,-8.6233333333333,-37.155833333333
+Lonchophylla mordax,1807,Brasil,Espírito Santo,Conceição da Barra,Gruta de Itaúnas,-18.593333,-39.732222
+Lonchophylla mordax,1750,Brasil,Espírito Santo,Santa Teresa,Estação Biológica de Santa Lúcia,-19.965,-40.54
+Lonchophylla mordax,2356,Brasil,Espírito Santo,Santa Teresa,Boqueirão,-19.935556,-40.600278
+Lonchophylla mordax,3179,Brasil,Espírito Santo,Linhares,Regência,-19.638139,-39.882333
+Lonchophylla mordax,2963,Brasil,Espírito Santo,Muqui,Serra das Torres,-20.9517002105713,-41.3457984924316
+Lonchophylla mordax,33216,Brazil,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333

@@ -1,4 +1,4 @@
-gbifID,scientificName,catalogNumber,modified,countryCode,stateProvince,municipality,locality,decimalLatitude,decimalLongitude
+ID,nomecientifico,catalogNumber,modified,pais,estado,municipio,localidade,latitude,longitude
 2005945532,"Lonchophylla mordax Thomas, 1903",128,2018-10-18T14:37:01Z,BR,Pernambuco,Buíque,Furna do Gato - Serra do Catimbau,-8.623333,-37.155833
 1323974127,"Lonchophylla mordax Thomas, 1903",3179,2019-10-03T14:21:55Z,BR,Espírito Santo,Linhares,Regência,-19.638139,-39.882333
 1323973295,"Lonchophylla mordax Thomas, 1903",2356,2019-10-03T14:21:55Z,BR,Espírito Santo,Santa Teresa,Boqueirão,-19.935556,-40.600278
