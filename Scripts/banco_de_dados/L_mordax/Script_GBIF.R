@@ -23,7 +23,14 @@ arquivo2 <- L_mordax2 %>%
            stateProvince,municipality, locality, decimalLatitude, 
            decimalLongitude)
 
-write_csv(arquivo2, 'L_mordax_GBIF_limpo.csv')
+# Renomeando as colunas para tornar mais simples
+
+arquivo2 <- rename(arquivo2, nomecientifico = scientificName, ID=gbifID, pais=countryCode,
+                  estado=stateProvince, municipio=municipality, localidade=locality, 
+                  latitude=decimalLatitude, longitude=decimalLongitude)
+
+path2<- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\GBIF\\"
+write_csv(arquivo2, paste(path2, 'L_mordax_GBIF_limpo.csv'))
 
 #--------
 
@@ -32,8 +39,9 @@ view(L_mordax2)
 
 #---------
 # PLOT DAS OCORRENCIAS
+library(maps)
 
-plot (arquivo2$decimalLongitude, arquivo2$decimalLatitude,
+plot (arquivo2$longitude, arquivo2$latitude,
       xlim=c(-80,-30),ylim=c(-35,5), col='red',pch=19,
       xlab='Longitude',ylab='Latitude' )
 map(add=T)

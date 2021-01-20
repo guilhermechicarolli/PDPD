@@ -1,14 +1,14 @@
 #------------------------------------------------------------------------------#
-# Scripts para o projeto de PDPD "Impactos das mudanças climaticas: Mismatches#
-#     e altera??es na distribui??o de platas e morcegos polinizadores"         #
+# Scripts para o projeto de PDPD "Impactos das mudanças climaticas: Mismatches #
+#     e alterações na distribução de platas e morcegos polinizadores"          #
 #------------------------------------------------------------------------------#
 
 library (tidyverse)
 
 #------------------------LONCHOPHYLLA MORDAX------------------------------------
 
-#-------- BANCO DE DADOS DA ESP?CIE LONCHOPHYLLA MORDAX OBTIDOS NO SPECIESLINK
-# (18 REGISTROS, sem filtragem)
+#-------- BANCO DE DADOS DA ESPÉCIE LONCHOPHYLLA MORDAX OBTIDOS NO SPECIESLINK
+#                   (18 REGISTROS, sem filtragem)
 
 # Variável que representa o banco de dados da espécie L. mordax obtidos do Specieslink
 L_mordax3 <- read_delim('Lonchophylla_mordax/SpeciesLink/speciesLink_L_mordax.txt', delim='\t')
@@ -27,7 +27,8 @@ L_mordax3 <- L_mordax3 %>%
                longitude_mun) 
 
 # Retirando observações sem coordenadas geográficas
-L_mordax3 <- L_mordax3[!(L_mordax3$latitude == 0.0 & L_mordax3$latitude_mun == 0.0),]
+L_mordax3 <- L_mordax3 %>%
+    filter(!(L_mordax3$latitude == 0.0 & L_mordax3$latitude_mun == 0.0))
 
 # Removendo observações com coordenadas iguais
 L_mordax3 <- L_mordax3 %>%
@@ -35,10 +36,16 @@ L_mordax3 <- L_mordax3 %>%
 
 # Criando o arquivo CSV limpo (10 ocorrências)
 arquivo <- L_mordax3 %>% 
-    select(datelastmodified, scientificname, catalognumber,country, stateprovince,
+    select(scientificname, catalognumber,country, stateprovince,
            county, locality, latitude_final, longitude_final)
 
-write_csv(arquivo, 'L_mordax_SpeciesLink_limpo.csv')
+# Renomeando as colunas para tornar mais simples
+arquivo <- rename(arquivo, nomecientifico = scientificname, ID=catalognumber, pais=country,
+                  estado=stateprovince, municipio=county, localidade=locality, 
+                  latitude=latitude_final, longitude=longitude_final)
+
+path3<- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\SpeciesLink\\"
+write_csv(arquivo, paste(path3, 'L_mordax_SpeciesLink_limpo.csv'))
 
 #--------
 
@@ -50,7 +57,7 @@ view(L_mordax3)
 
 library(maps)
 
-plot (arquivo$longitude_final, arquivo$latitude_final,
+plot (arquivo$longitude, arquivo$latitude,
      xlim=c(-80,-30),ylim=c(-35,5), col='red',pch=19,
      xlab='Longitude',ylab='Latitude' )
 map(add=T)

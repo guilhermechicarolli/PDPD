@@ -1,0 +1,28 @@
+nomecientifico,ID, pais, estado, municipio, localidade,latitude,longitude
+Lonchophylla mordax,c5307d51-424a-486f-8724-2cccb3ee4403,Brasil,Bahia,NA,Fazenda Barra Do Tijuipe (Área 2),-14.432078,-39.025671
+Lonchophylla mordax,7926d663-a43b-45e0-a417-dc5353b32052,Brasil,Espirito Santo,NA,Sitio Joao Pagotto,-19.268331,-40.375831
+Lonchophylla mordax,77ea561e-2326-459b-9793-354d96e9c3be,Brasil,Bahia,NA,Bom Jesus Da Lapa,-13.272028,-43.374167
+Lonchophylla mordax,26fa2149-78f5-4d63-8849-2630958516d9,Brasil,Pernambuco,NA,Furna do Gato - Serra do Catimbau,-8.623333,-37.155833
+Lonchophylla mordax,4907c88e-fada-4d04-8f05-ab16285372fd,Brasil,Sergipe,NA,Area Nao Se Encontra Dentro De Nenhuma Uc. Bioma Caatinga,-11.0666,-37.95
+Lonchophylla mordax,2ebcbbcc-fb24-4ca3-b222-bd362c938dd6,Brasil,Espirito Santo,NA,Sitio Washington E Marilene,-201013,-406175
+Lonchophylla mordax,1c01dbf5-7328-41e5-8c7e-3eadbe4d328c,Brasil,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.18333
+Lonchophylla mordax,af91db74-6dbd-4464-89da-fc9de7c42737,Brasil,Bahia,NA,Fazenda Saco Dos Buracos,-13.076306,-43.296917
+Lonchophylla mordax,9b98154c-5e29-4d1f-8b2d-64fcfd2349a4,Brasil,Pernambuco,NA,Reserva Biologica De Saltinho,-8.736944,-35.16972
+Lonchophylla mordax,167fa0f5-7c37-4594-a913-ec3d861ac1b9,Brasil,Minas Gerais,NA,Parque Nacional Cavernas Do Peruaçu,-15.495556,-44.3625
+Lonchophylla mordax,dd4f2de8-d2ec-4243-9a06-84b5395f07ac,Brasil,Bahia,NA,Fazenda Barra Do Tijuipe (Área 1),-14.409826,-39.028721
+Lonchophylla mordax,d3897560-67ff-4eb1-a993-06deddc1b517,Brasil,Paraiba,NA,Rppn Fazenda Almas,-7.466667,-36.883333
+Lonchophylla mordax,d4590257-43e4-408e-ad6a-f60f3b309656,Brasil,Sergipe,NA,Caverna Casa De Pedra - Povoado Ribeira,-10.834167,-37.450556
+Lonchophylla mordax,d2a71a36-8901-4681-885b-4aec9accf4a2,Brasil,Bahia,NA,Area De Cerrado Com Presença De Cavernas,-13.419783,-44.191378
+Lonchophylla mordax,9672c33a-ceb1-47a1-83f7-b359e101517f,Brasil,Pernambuco,NA,Fazenda Tamandua,-7.088611,-37.456389
+Lonchophylla mordax,4a4a3907-3098-45cf-a09b-470709c239d5,Brasil,Maranhao,NA,Pedra Grande,-3.53444,-43.839702	
+Lonchophylla mordax,fb128b56-ea0a-4785-a4f6-f2792716189e,Brasil,Bahia,NA,Fazenda Quincas,-13.34611,-43.284639
+Lonchophylla mordax,cc0b333f-76b8-4ad3-8ca3-c6886fc56489,Brasil,Pernambuco,NA,Campus Da Universidade Federal Do Vale Do São Francisco,-9.330540,-40.541149
+Lonchophylla mordax,6038fb40-268e-4bef-916c-1aa11ccf54ea,Brasil,Alagoas,NA,Serra Da Mao,-9.794167,-37.001944
+Lonchophylla mordax,d16e52fe-ce7f-457d-9fac-748515d79928,Brasil,Espirito Santo,NA,Boqueirao,-19.9355,-40.60027
+Lonchophylla mordax,c7349ae9-dc05-4f89-92b7-677e59a0f453,Brasil,Espirito Santo,NA,Regencia,-19.63813,-39.88233
+Lonchophylla mordax,c161e77d-5f5c-4db0-83fc-ec8450090635,Brasil,Espirito Santo,NA,Gruta de Itaunas,-18.5933,-39.7322
+Lonchophylla mordax,a5ac9276-2fcb-4445-8116-5d2c448338c8,Brasil,Espirito Santo,NA,Serra das Torres,26.822777,-91.073456
+Lonchophylla mordax,983fc65d-9836-48bc-8fdb-9043386f6f8b,Brasil,Espirito Santo,NA,Estação Biologica de Santa Locia,-19.965000,-40.54000
+Lonchophylla mordax,f90e2a42-6a4e-445b-9a43-55d166e68d23,Brasil,Bahia,NA,Toca Do Morrinho,-10.209142,-40.91815
+Lonchophylla mordax,f0e544b5-1d81-403c-97e7-4ae6d4425866,Brasil,Maranhao,NA,Encruzo,-4.046968,-43.382448
+Lonchophylla mordax,ac7f9374-b9f9-4e30-b8f1-747cbfe8dc0a,Brasil,Maranhao,NA,Tabocas,-5.097016,-44.348610

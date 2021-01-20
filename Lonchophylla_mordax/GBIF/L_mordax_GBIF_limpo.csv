@@ -1,9 +1,9 @@
-ID,nomecientifico,catalogNumber,modified,pais,estado,municipio,localidade,latitude,longitude
-2005945532,"Lonchophylla mordax Thomas, 1903",128,2018-10-18T14:37:01Z,BR,Pernambuco,Buíque,Furna do Gato - Serra do Catimbau,-8.623333,-37.155833
-1323974127,"Lonchophylla mordax Thomas, 1903",3179,2019-10-03T14:21:55Z,BR,Espírito Santo,Linhares,Regência,-19.638139,-39.882333
-1323973295,"Lonchophylla mordax Thomas, 1903",2356,2019-10-03T14:21:55Z,BR,Espírito Santo,Santa Teresa,Boqueirão,-19.935556,-40.600278
-1323972769,"Lonchophylla mordax Thomas, 1903",1807,2019-10-03T14:21:55Z,BR,Espírito Santo,Conceição da Barra,Gruta de Itaúnas,-18.593333,-39.732222
-1323972702,"Lonchophylla mordax Thomas, 1903",1750,2019-10-03T14:21:55Z,BR,Espírito Santo,Santa Teresa,Estação Biológica de Santa Lúcia,-19.965,-40.54
-1211828595,"Lonchophylla mordax Thomas, 1903",78536,2018-04-04T00:00:00Z,BR,Espirito Santo,NA,20 km N of Linhares,-19.366667,-40.066667
-865728401,"Lonchophylla mordax Thomas, 1903",MHNG-MAM-667.013,NA,BR,NA,NA,Bahia ; Lamarao,-12.7333,-41.6167
-476823728,"Lonchophylla mordax Thomas, 1903",33216,NA,BR,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333
+ID,nomecientifico,pais,estado,municipio,localidade,latitude,longitude
+2005945532,Lonchophylla mordax Thomas,BR,Pernambuco,Buique,Furna do Gato - Serra do Catimbau,-8.623333,-37.155833
+1323974127,Lonchophylla mordax Thomas,BR,Espirito Santo,Linhares,Regencia,-19.638139,-39.882333
+1323973295,Lonchophylla mordax Thomas,BR,Espirito Santo,Santa Teresa,Boqueirao,-19.935556,-40.600278
+1323972769,Lonchophylla mordax Thomas,BR,Espirito Santo,Conceicao da Barra,Gruta de Itaunas,-18.593333,-39.732222
+1323972702,Lonchophylla mordax Thomas,BR,Espirito Santo,Santa Teresa,Estaçao Biologica de Santa Lucia,-19.965,-40.54
+1211828595,Lonchophylla mordax Thomas,BR,Espirito Santo,NA,20 km N of Linhares,-19.366667,-40.066667
+865728401,Lonchophylla mordax Thomas,BR,NA,NA,Bahia;Lamarao,-12.7333,-41.6167
+476823728,Lonchophylla mordax Thomas,BR,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333

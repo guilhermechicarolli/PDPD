@@ -1,8 +1,9 @@
-#----- BANCO ESPÉCIE LONCHOPHYLLA MORDAX OBTIDOS NO SiBBr (61 registros, sem filtragem)
+#-------- BANCO ESPÉCIE LONCHOPHYLLA MORDAX OBTIDOS NO SiBBr 
+#                (61 registros, sem filtragem)
 
 library(tidyverse)
 
-# VariÃ¡vel que representa o banco de dados da espÃ©cie L. mordax obtidos do SiBBr
+# Variável que representa o banco de dados da espécie L. mordax obtidos do SiBBr
 L_mordax1 <- read_csv('Lonchophylla_mordax/SiBBr/data_lonchophylla_mordax.csv')  
 L_mordax1 <- as_tibble(L_mordax1)    
 view(L_mordax1)
@@ -13,30 +14,44 @@ colunas_sibbr <- as_tibble(colunas1)
 
 #---------
 
-# RemoÃ§Ã£o de colunas redundantes ou irrelevantes ao projeto
+# Remoção de valores NA nas coordenads geográficas
 L_mordax1 <- L_mordax1 %>%
-    select(-'Institution ID', -'Data Resource ID', -'Collection ID', -'Institution Code',
-           -'Collection Code', -'identified _ by', -'identified _ date', -'Collector', 
-           -'Minimum elevation in meters', -'Maximum elevation in meters', -'Scientific Name - original',
-           -'Vernacular name - original', -'Sex', -'Vernacular name', -'Catalogue Number')
+    filter(!is.na(`Latitude` | `Longitude`))
 
-# RemoÃ§Ã£o de colunas preenchidas apenas por NAs ou valores fixos
+# Remoção de observações com a mesma referência geográfica de latitude e longitude,
+# permanecendo apenas uma observação
+
 L_mordax1 <- L_mordax1 %>%
-    select(-'Minimum depth in meters', -'Maximum depth in meters', -'Coordinate Uncertainty in Metres',
-           -'Country - parsed', -'State - parsed', -'Occurrence status', 
-           -('raw _ sampling _ protocol' : 'Type status not recognised'), -'Basis Of Record - original',
-           -'Taxon Rank', -'Geodetic datum - original')
+    distinct(`Latitude`, `Longitude`, .keep_all = TRUE)
 
-# RemoÃ§Ã£o de observaÃ§Ãµes sem referÃªncia geogrÃ¡fica de latitude e longitude
-L_mordax1 <- L_mordax1 %>%
-    filter(!is.na(`Latitude - original` | `Longitude - original`))
+# Criando o arquivo CSV limpo (28 ocorrências)
+arquivo1 <- L_mordax1 %>% 
+    select(`Scientific Name`, `Record ID`, Locality, Latitude, Longitude)
 
-# RemoÃ§Ã£o de observaÃ§Ãµes com a mesma referÃªncia geogrÃ¡fica de latitude e longitude, permanecendo apenas uma
-L_mordax1 <- L_mordax1 %>%
-    distinct(`Latitude - original`, `Longitude - original`, .keep_all = TRUE)
+# Renomeando as colunas para tornar mais simples
+arquivo1 <- rename(arquivo1, nomecientifico =`Scientific Name`, ID=`Record ID`, 
+                   localidade=Locality, latitude=Latitude, longitude=Longitude)
 
+path1 <- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\SiBBr\\"
+write_csv(arquivo1, paste(path1, 'L_mordax_SiBBr_limpo.csv'))
+
+arquivos <- read_csv(file="Lonchophylla_mordax/SiBBr/L_mordax_SiBBr_limpo.txt")
+view(arquivos)
+#---------
+
+view(arquivo1)
 view(L_mordax1)
 view(colunas_sibbr)
+
+#---------
+# PLOT DAS OCORRENCIAS
+library(maps)
+plot.new()
+plot (arquivos$longitude, arquivos$latitude,
+      xlim=c(-80,-30),ylim=c(-35,5), col='red',pch=19,
+      xlab='Longitude',ylab='Latitude' )
+map(add=T)
+
 
 
 
