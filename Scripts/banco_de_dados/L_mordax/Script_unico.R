@@ -13,8 +13,13 @@ L_mordax_ocor <- read_csv("Lonchophylla_mordax/L_mordax.txt") %>%
 path <- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\"
 write_csv(L_mordax_ocor, paste(path,'L_mordax_ocor.csv'))
 
-view(L_mordax_occor)
+view(L_mordax_ocor)
 
+# Criando arquivo com o nome da espécies, longitude e latitude, que serão usados na modelagem]
+
+ocorrencias_L_modax <- select(L_mordax_ocor, nomecientifico, longitude, latitude)
+path2 <- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\"
+write_csv(ocorrencias_L_modax, paste(path2,'ocorrencias_L_mordax.csv'))
 
 # MAPA
 
