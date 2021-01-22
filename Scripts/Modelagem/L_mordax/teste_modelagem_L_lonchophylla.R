@@ -4,22 +4,15 @@ library(rJava)
 library(tidyverse)
 
 
-path<-"Lonchophylla_mordax\ocorrencias_L_mordax.csv"
-arq <- read.csv(path)
-arq <- select(arq, nomecientifico, longitude, latitude)
+arq <- read_csv("Lonchophylla_mordax/ocorrencias_L_mordax.csv")
 
 
-library(maptools)
-## Checking rgeos availability: TRUE
-data(wrld_simpl)
-plot(wrld_simpl, xlim=c(-80,-30), ylim=c(-35,5), axes=TRUE, col="light yellow")
-# restore the box around the map
-box()
-# add the points
-points(arq$longitude, arq$latitude, col='orange', pch=20, cex=0.75)
-# plot points again to add a border, for better visibility
-points(acgeo$lon, acgeo$lat, col='red', cex=0.75)
 
+plot.new()
+plot(arq$longitude,arq$latitude,pch=19,col="red",
+     xlim=c(-80,-30),ylim=c(-35,5),
+     xlab="Longitude",ylab="Latitude",)
+map(add=T)
 
 
 my0 = getData("GADM", country="BRA", level=0)
