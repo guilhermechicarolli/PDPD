@@ -4,27 +4,24 @@ library(tidyverse)
 
 # L_mordax_ocor, variável com todas as ocorrências, já limpas e organizadas
 
-L_mordax_ocor <- read_csv("Lonchophylla_mordax/L_mordax.txt") %>%
+ocorrencias_L_mordax <- read_csv("Lonchophylla_mordax/L_mordax.txt") %>%
     distinct(`latitude`, `longitude`, .keep_all = TRUE) %>%
     distinct(`localidade`, .keep_all=TRUE)
 
-# Criando o arquivo csv L_mordax_ocor
-
-path <- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\"
-write_csv(L_mordax_ocor, paste(path,'L_mordax_ocor.csv'))
-
-view(L_mordax_ocor)
 
 # Criando arquivo com o nome da espécies, longitude e latitude, que serão usados na modelagem
 
-ocorrencias_L_modax <- select(L_mordax_ocor, nomecientifico, longitude, latitude)
+ocorrencias_L_mordax <- select(ocorrencias_L_mordax, nomecientifico, longitude, latitude)
 path2 <- "C:\\Users\\guich\\Documents\\PDPD\\Lonchophylla_mordax\\"
 write_csv(ocorrencias_L_modax, paste(path2,'ocorrencias_L_mordax.csv'))
 
+view(ocorrencias_L_mordax)
+
 # MAPA
+library(maps)
 
 plot.new()
-plot(L_mordax_occor$longitude,L_mordax_occor$latitude,pch=19,col="red",
+plot(ocorrencias_L_mordax$longitude, ocorrencias_L_mordax$latitude,pch=19,col="red",
      xlim=c(-80,-30),ylim=c(-35,5),
      xlab="Longitude",ylab="Latitude",)
 map(add=T)

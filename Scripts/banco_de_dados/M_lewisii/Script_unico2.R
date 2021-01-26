@@ -16,11 +16,16 @@ ocorrencias_M_lewisii <- ocorrencias_M_lewisii %>%
 path3 <- "C:\\Users\\guich\\Documents\\PDPD\\Mimosa_lewisii\\"
 write_csv(ocorrencias_M_lewisii, paste(path3,'ocorrencias_M_lewisii.csv'))
 
+view(ocorrencias_M_lewisii)
+
 
 # MAPA
+ocorr <- read_csv("Mimosa_lewisii\\ ocorrencias_M_lewisii.csv")
+
+library(maps)
 
 plot.new()
-plot(ocorrencias_M_lewisii$longitude,ocorrencias_M_lewisii$latitude,pch=19,col="red",
+plot(ocorr$longitude,ocorr$latitude,pch=19,col="red",
      xlim=c(-80,-30),ylim=c(-35,5),
      xlab="Longitude",ylab="Latitude",)
 map(add=T)

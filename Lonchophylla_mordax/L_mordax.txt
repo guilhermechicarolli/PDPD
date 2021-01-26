@@ -5,6 +5,14 @@ ID,nomecientifico,pais,estado,municipio,localidade,latitude,longitude
 1211828595,Lonchophylla mordax Thomas,BR,Espirito Santo,NA,20 km N of Linhares,-19.366667,-40.066667
 865728401,Lonchophylla mordax Thomas,BR,NA,NA,Bahia;Lamarao,-12.7333,-41.6167
 476823728,Lonchophylla mordax Thomas,BR,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333
+10391,Lonchophylla mordax,Brasil,Pernambuco,Buique,Parna da Serra do Catimbau - Furna do Gato,-8.6233,-37.1559
+10190,Lonchophylla mordax,Brasil,Bahia,Irece,NA,-11.3032,-41.857
+128,Lonchophylla mordax,Brasil,Pernambuco,Buique,Furna do Gato - Serra do Catimbau,-8.6233333333333,-37.155833333333
+1807,Lonchophylla mordax,Brasil,Espirito Santo,Conceicao da Barra,Gruta de Itaunas,-18.593333,-39.732222
+2356,Lonchophylla mordax,Brasil,Espirito Santo,Santa Teresa,Boqueirao,-19.935556,-40.600278
+3179,Lonchophylla mordax,Brasil,Espirito Santo,Linhares,Regencia,-19.638139,-39.882333
+2963,Lonchophylla mordax,Brasil,Espirito Santo,Muqui,Serra das Torres,-20.9517002105713,-41.3457984924316
+33216,Lonchophylla mordax,Brazil,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333
 c5307d51-424a-486f-8724-2cccb3ee4403,Lonchophylla mordax,Brasil,Bahia,NA,Fazenda Barra Do Tijuipe (Área 2),-14.432078,-39.025671
 7926d663-a43b-45e0-a417-dc5353b32052,Lonchophylla mordax,Brasil,Espirito Santo,NA,Sitio Joao Pagotto,-19.268331,-40.375831
 77ea561e-2326-459b-9793-354d96e9c3be,Lonchophylla mordax,Brasil,Bahia,NA,Bom Jesus Da Lapa,-13.272028,-43.374167
@@ -31,12 +39,4 @@ c161e77d-5f5c-4db0-83fc-ec8450090635,Lonchophylla mordax,Brasil,Espirito Santo,N
 f90e2a42-6a4e-445b-9a43-55d166e68d23,Lonchophylla mordax,Brasil,Bahia,NA,Toca Do Morrinho,-10.209142,-40.91815
 f0e544b5-1d81-403c-97e7-4ae6d4425866,Lonchophylla mordax,Brasil,Maranhao,NA,Encruzo,-4.046968,-43.382448
 ac7f9374-b9f9-4e30-b8f1-747cbfe8dc0a,Lonchophylla mordax,Brasil,Maranhao,NA,Tabocas,-5.097016,-44.348610
-10391,Lonchophylla mordax,Brasil,Pernambuco,Buique,Parna da Serra do Catimbau - Furna do Gato,-8.6233,-37.1559
-10190,Lonchophylla mordax,Brasil,Bahia,Irece,NA,-11.3032,-41.857
-128,Lonchophylla mordax,Brasil,Pernambuco,Buique,Furna do Gato - Serra do Catimbau,-8.6233333333333,-37.155833333333
-1807,Lonchophylla mordax,Brasil,Espirito Santo,Conceicao da Barra,Gruta de Itaunas,-18.593333,-39.732222
-2356,Lonchophylla mordax,Brasil,Espirito Santo,Santa Teresa,Boqueirao,-19.935556,-40.600278
-3179,Lonchophylla mordax,Brasil,Espirito Santo,Linhares,Regencia,-19.638139,-39.882333
-2963,Lonchophylla mordax,Brasil,Espirito Santo,Muqui,Serra das Torres,-20.9517002105713,-41.3457984924316
-33216,Lonchophylla mordax,Brazil,Bahia,NA,"Cidade da Barra, Rio San Francisco",-10.716667,-42.183333
 
