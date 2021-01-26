@@ -39,7 +39,7 @@ arquivos <- read_csv(file="Lonchophylla_mordax/SiBBr/L_mordax_SiBBr_limpo.txt")
 view(arquivos)
 #---------
 
-view(arquivo1)
+view(arquivo1) 
 view(L_mordax1)
 view(colunas_sibbr)
 
