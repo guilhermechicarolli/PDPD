@@ -43,7 +43,7 @@ view(arquivo1)
 view(L_mordax1)
 view(colunas_sibbr)
 
-#---------
+#----------
 # PLOT DAS OCORRENCIAS
 library(maps)
 plot.new()
