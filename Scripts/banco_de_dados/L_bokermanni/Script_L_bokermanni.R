@@ -1,21 +1,18 @@
-#-------- BANCO DE DADOS DA ESPÉCIE LONCHOPHYLLA BOKERMANNI --------------#
+#-------- SCRIPTS DO BANCO DE DADOS DA ESPÉCIE LONCHOPHYLLA BOKERMANNI --------------#
 
 
 # Carregando bibliotecas necessárias
-
 library(tidyverse)
-
-
-
 
 
 #--------------------------------------------------------------------------
 
 # Exportando o arquivo CSV criado:
 registros <- read.csv("Lonchophylla_bokermanni/registros_L_bokermanni.csv", 
-                encoding = "UTF-8")
+                      encoding = "UTF-8")
 
 # Verificando os dados
 head(registros)
-
 view(registros)
+
+
