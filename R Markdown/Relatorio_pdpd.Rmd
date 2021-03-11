@@ -1,0 +1,49 @@
+---
+title: "**Impactos das mudanças climaticas: Mismatches e alterações na distribuição de platas e morcegos polinizadores**"
+author:
+    - Guilherme Chicarolli
+    - Guillermo Florez-Montero
+    - Simone Rodrigues de Freitas
+output:
+    pdf_document:
+        latex_engine: xelatex
+intent: true
+editor_options:
+    markdown:
+        wrap: sentence
+bibliography: referencias.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introdução
+
+```{r data_cars, echo=FALSE, fig.align='center', fig.cap= "Gráfico de distancia versus velocidade"}
+data("cars")
+plot(dist~speed, data=cars)
+```
+
+
+Citando o texto [@nascimento2013rediscoversy]
+
+
+## Outro subtitulo
+
+
+### Outro a mais
+
+Outra forma de citar @nascimento2013rediscoversy
+
+\clearpage
+```{=tex}
+\clearpage
+\bibliography{bibliography.bib}  
+\clearpage
+```
+
+# Referências
+
+
+
