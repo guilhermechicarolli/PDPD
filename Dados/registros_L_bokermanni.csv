@@ -8,48 +8,30 @@ ID,Estado,Municipio,Localidade,Longitude,Latitude,Data_de_coleta,Nome_do_coletor
 586,Minas Gerais,NA,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 110",-43.74472,-19.51361,1976-09-05,Wilson Uieda; Atílio Storti Filho,ZUEC-MAM - Coleção de Mamíferos do Museu de Zoologia da UNICAMP
 3291,Espírito Santo,NA,Santo Izidório,-40.37903,-19.26728,2009-03-14,R.S.Cipriano,MBML-Mamiferos - Coleção de Mamíferos
 43627,Minas Gerais,NA,SERRA DO CIPO,-43.60000,-19.26667,1974-10-26,"SAZIMA, I AND OLIVEIRA, D C; SAZIMA, I",ZUEC-MAM - Coleção de Mamíferos do Museu de Zoologia da UNICAMP
-10342,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó,-43.74540,-19.52210,1974,"Sazima, I. & Oliveira, O.C.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
+10342,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó,-43.74540,-19.52210,1974,"Sazima, I. & Oliveira, O.C.",Coleção de Quirópteros DZSJRP - Chiroptera Universidade Estadual Paulista
 10343,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó,-43.74540,-19.52210,1974,"Sazima, I. & Oliveira, O.C.",Coleção de Quirópteros DZSJRP Chiroptera Universidade Estadual Paulista
 10344,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó,-43.74540,-19.52210,1974,"Sazima, I. & Oliveira, O.C.",Coleção de Quirópteros DZSJRP Chiroptera Universidade Estadual Paulista
 10347,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1974,"Sazima, I. & Oliveira, O.C.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
-10408,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1975,"Oliveira, O.C. & Semir, J.","Coleção de Quirópteros DZSJRP -Chiroptera
-Universidade Estadual Paulista"
-11410,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1976,"Uieda, W. & Storti Filho, A.","Coleção de Quirópteros DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-11411,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1976,"Uieda, W. & Storti Filho, A.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-15159,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-15160,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-15161,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-15162,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera
-Universidade Estadual Paulista"
-15163,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.","Coleção de Quirópteros DZSJRP - DZSJRP-Chiroptera Universidade Estadual Paulista
-"
+10408,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1975,"Oliveira, O.C. & Semir, J.",Coleção de Quirópteros DZSJRP -Chiroptera Universidade Estadual Paulista
+11410,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1976,"Uieda, W. & Storti Filho, A.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+11411,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1976,"Uieda, W. & Storti Filho, A.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+15159,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+15160,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+15161,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+15162,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
+15163,Rio de Janeiro,Angra dos Reis,Antigo Presídio da Ilha Grande - Celas abandonadas,-44.31770,-23.00650,1980,"Manuzzi, J.L.",Coleção de Quirópteros DZSJRP-Chiroptera Universidade Estadual Paulista
 17594,Minas Gerais,Jaboticatubas,Km 110 da MG-010 - PARNA Serra do Cipó - Defronte uma bauhinia rufa,-43.74540,-19.52210,1976,"Uieda, W. & Storti Filho, A.",Coleção de Quirópteros - Universidade Estadual Paulista
 3282,Espírito Santo,Santa Leopoldina,Pedra Suiça,-40.61742,-20.10153,2009,L.F.Oliveira,Coleção de Mamíferos - MBML-Mamiferos Instituto Nacional da Mata Atlântica
-3037,Espírito Santo,Santa Teresa,Santa Lúcia,-40.54231,-19.96392,2007,Luciany Ferreira,"Coleção de Mamíferos - MBML-Mamiferos
-Instituto Nacional da Mata Atlântica"
-3291,Espírito Santo,Santo Izidório,Rio Bananal,-40.37903,-19.26728,2009,R.S.Cipriano,"Coleção de Mamíferos - MBML-Mamiferos
-Instituto Nacional da Mata Atlântica"
-2117.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01917,-19.03039,2011,Yuri Luiz Reis Leite,"Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM
-Universidade Federal do Espírito Santo"
+3037,Espírito Santo,Santa Teresa,Santa Lúcia,-40.54231,-19.96392,2007,Luciany Ferreira,Coleção de Mamíferos - MBML-Mamiferos Instituto Nacional da Mata Atlântica
+3291,Espírito Santo,Santo Izidório,Rio Bananal,-40.37903,-19.26728,2009,R.S.Cipriano,Coleção de Mamíferos - MBML-Mamiferos Instituto Nacional da Mata Atlântica
+2117.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01917,-19.03039,2011,Yuri Luiz Reis Leite,Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM Universidade Federal do Espírito Santo
 2047.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01916,-19.03027,2011,Yuri Luiz Reis Leite,Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM Universidade Federal do Espírito Santo
-2046.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01916,-19.03027,2011,Yuri Luiz Reis Leite,"Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM
-Universidade Federal do Espírito Santo"
-2118.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01917,-19.03039,2011,Yuri Luiz Reis Leite,"Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM
-Universidade Federal do Espírito Santo"
-160,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 110",-43.74472,-19.51361,1974,Otávio Cardozo de Oliveira; Ivan Sazima,"Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM
-Universidade Estadual de Campinas"
-1183,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 111",-43.74472,-19.51361,1987,Ivan Sazima,"Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM
-Universidade Estadual de Campinas"
-586,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 112",-43.74472,-19.51361,1976,Wilson Uieda; Atílio Storti Filho,"Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM
-Universidade Estadual de Campinas"
-161,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 113",-43.74472,-19.51361,1974,Otávio Cardozo de Oliveira; Ivan Sazima,"Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM
-Universidade Estadual de Campinas"
+2046.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01916,-19.03027,2011,Yuri Luiz Reis Leite,Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM Universidade Federal do Espírito Santo
+2118.0,Espírito Santo,Sooretama,"BR - 101, Km 105, Reserva Biológica de Sooretama",-40.01917,-19.03039,2011,Yuri Luiz Reis Leite,Coleção de Mamíferos da Universidade Federal do Espírito Santo - UFES-MAM Universidade Federal do Espírito Santo
+160,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 110",-43.74472,-19.51361,1974,Otávio Cardozo de Oliveira; Ivan Sazima,Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM Universidade Estadual de Campinas
+1183,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 111",-43.74472,-19.51361,1987,Ivan Sazima,Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM Universidade Estadual de Campinas
+586,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 112",-43.74472,-19.51361,1976,Wilson Uieda; Atílio Storti Filho,Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM Universidade Estadual de Campinas
+161,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 113",-43.74472,-19.51361,1974,Otávio Cardozo de Oliveira; Ivan Sazima,Coleção de Mamíferos do Museu de Zoologia da UNICAMP - ZUEC-MAM Universidade Estadual de Campinas
 0000012,Minas Gerais,Jaboticatubas,"Serra do Cipó, estrada de Vespasiano a Conceição do Mato Dentro, km 114",-43.74472,-19.51361,1974,Ivan Sazima,Coleção de Fotos do Museu de Zoologia da UNICAMP - ZUEC-PIC Universidade Estadual de Campinas
 166844,Rio de Janeiro,NA,Reserva Biológica da União,-42.038103,-22.427067,2011-07-15,Leandro Rabello Monteiro,Instituto Chico Mendes de Conservação da Biodiversidade
 55149,Espírito Santo,Santa Teresa,Reserva Biológica Augusto Ruschi,-40.550556,-19.8825,2009-07-17,"Gatti, A. Andressa",Instituto Chico Mendes de Conservação da Biodiversidade
@@ -59,7 +41,7 @@ ZUEC 160,Minas Gerais,Jaboticatubas,Serra do Cipó,-43.600000,-19.270000,1974,Sa
 CMUFV3532,Minas Gerais,Itambé do Mato Dentro,NA,-43.349444,-19.410278,NA,Leonardo Dias,"Artigo: Nascimento, M. C., L. H. Dias, R. Gregorin, & G. Lessa. 2013. Rediscovery of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1979"
 MBML 3037,Espírito Santo,Santa Teresa,Estação Biológica de Santa Lúcia,-40.540000,-19.970000,NA,NA,"Artigo: Nascimento, M. C., L. H. Dias, R. Gregorin, & G. Lessa. 2013. Rediscovery of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1980"
 MBML 3282,Espírito Santo,Santa Leopoldina,Pedra Suíça,-40.200000,-20.100000,NA,NA,"Artigo: Nascimento, M. C., L. H. Dias, R. Gregorin, & G. Lessa. 2013. Rediscovery of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1981"
-(MBML 3291,Espírito Santo,Santo Izidório,Rio Bananal,-40.313333,-19.260000,NA,NA,"Artigo: Nascimento, M. C., L. H. Dias, R. Gregorin, & G. Lessa. 2013. Rediscovery of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1982"
+MBML 3291,Espírito Santo,Santo Izidório,Rio Bananal,-40.313333,-19.260000,NA,NA,"Artigo: Nascimento, M. C., L. H. Dias, R. Gregorin, & G. Lessa. 2013. Rediscovery of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1982"
 NA,Espírito Santo,Sooretama,Reserva Ecológica de Sooretama,-40.160000,-19.030000,NA,"Pimenta, V.T., C.T. Machel, B.S. Fonseca and A.D. Ditchfield. ","Artigo: Pimenta, V.T., C.T. Machel, B.S. Fonseca and A.D. Ditchfield. 2010. First occurrence of Lonchophylla bokermanni Sazima, Vizotto and Taddei, 1978 (Phyllostomidae) in Espírito Santo State, Southeastern Brazil"
 NA,Rio de Janeiro,Rio de Janeiro,Parque Estadual de Pedra Branca,-43.380000,-23.870000,1994-1998,"Dias, D., A.L. Peracchi and S.S.P. Silva. ","Artigo: Dias, D., A.L. Peracchi and S.S.P. Silva. 2002. Quirópteros do Parque Estadual da Pedra Branca, Rio de Janeiro, Brasil (Mammalia, Chiroptera). "
 NA,Rio de Janeiro,Rio de Janeiro,Reserva do Grajaú,-43.270000,-22.970000,1991-1997,"Esberárd, C.E.L. ","Artigo:Esberárd, C.E.L. 2003. Diversidade de morcegos em área de Mata Atlântica regenerada no sudeste do Brasil"

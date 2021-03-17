@@ -8,7 +8,7 @@ library(tidyverse)
 #--------------------------------------------------------------------------
 
 # Exportando o arquivo CSV criado:
-registros <- read.csv("Lonchophylla_bokermanni/registros_L_bokermanni.csv", 
+registros <- read.csv("Dados/registros_L_bokermanni.csv", 
                       encoding = "UTF-8")
 
 # Verificando os dados
