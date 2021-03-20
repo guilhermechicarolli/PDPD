@@ -5,7 +5,7 @@
 library(tidyverse)
 
 
-#--------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 
 # Exportando o arquivo CSV criado:
 registros <- read.csv("Dados/registros_L_bokermanni.csv", 
