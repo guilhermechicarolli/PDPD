@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Resumo
 
-   As mudanças climáticas em ocorrência no planeta são foco crescente de estudos na área ecológica.
+As mudanças climáticas em ocorrência no planeta são foco crescente de estudos na área ecológica.
 A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações
 no clima podem causar nas comunidades de espécies, comprometendo o funcionamento de ecossistemas 
 e interações ecológicas entre indivíduos. Dessa forma, como resposta às mudanças climáticas, 
@@ -47,9 +47,9 @@ espacial entre planta e polinizador.
 
 
 
-|               **Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
+>>**Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
 
-|               **Área do conhecimento:** Ecologia.
+>>**Área do conhecimento:** Ecologia.
 
 
 \clearpage

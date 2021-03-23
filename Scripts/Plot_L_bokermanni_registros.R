@@ -21,6 +21,7 @@ if (!require(rnaturalearth)) install.packages('rnaturalearth')
 if (!require(rnaturalearthdata)) install.packages('rnaturalearthdata')
 if (!require(ggspatial)) install.packages('ggspatial')
 if (!require(rgeos)) install.packages('rgeos')
+if (!require(rgdal)) install.packages('rgdal')
 
 
 ################################################################################
@@ -30,6 +31,10 @@ if (!require(rgeos)) install.packages('rgeos')
 
 # Import the data set with site coordinates
 sites <- read.csv("Dados/registros_L_bokermanni.csv", encoding = "UTF-8")
+
+# extrair os dados dos biomas
+biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
+
 
 # Check the data
 class(sites)
@@ -46,7 +51,10 @@ head(sites_short)
 # Load the world map from the mapdata package
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
+# extrair dados da mata atlántica e Caatinga
 
+MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
+CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 ################################################################################
 ##### PLOT THE MAP
 ################################################################################
@@ -57,10 +65,15 @@ g1 <- ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-50, -30), ylim = c(-30,0), expand = FALSE) +
     theme_bw() + 
+    # Adicionar a Mata atlántica
+    geom_polygon(data = MA, aes(x = long, y = lat, group = group), 
+                 fill = "green") +
+    # Adicionar a Mata caatinga
+    geom_polygon(data = CA, aes(x = long, y = lat, group = group), 
+                 fill = "yellow") +
     # Plot the sites
-    geom_point(data = sites_short, aes(x = Longitude, y = Latitude, 
-                                       colour = Estado), 
-               alpha = 0.6, size = 2) +
+    geom_point(data = sites_short, aes(x = Longitude, y = Latitude), 
+               alpha = 0.6, size = 3, colour = "darkred") +
     # Customize the colors and labels
     scale_color_manual(values = c("#C59F00","#d3d3d3","#C59F00","#C59F00", "#C59F00")) + 
     labs(colour = "Estado", x = "Longitude", y = "Latitude") +
@@ -75,7 +88,7 @@ g1 <- ggplot(data = world) +
           legend.position = c(0.8,0.3),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
+          plot.margin = unit(rep(1,4), "lines")) +
     # Add a scale bar
     ggspatial::annotation_scale(location = "bl", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -87,6 +100,7 @@ g1 <- ggplot(data = world) +
                                           fill = c("white","grey30")))
 
 # See the map
+x11()
 g1
 
 # Export the map as a PNG image
