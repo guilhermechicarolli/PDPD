@@ -1,7 +1,7 @@
 ---
-title: "**Impactos das mudanças climaticas: Mismatches e alterações na distribuição de plantas e morcegos polinizadores**"
+title: "**Impactos das mudanças climaticas: *Mismatches* e alterações na distribuição de plantas e morcegos polinizadores**"
 author:
-    - Guilherme Chicarolli
+    - Guilherme de Carvalho Chicarolli
     - Guillermo Florez-Montero
     - Simone Rodrigues de Freitas
 output:
@@ -12,31 +12,66 @@ editor_options:
     markdown:
         wrap: sentence
 bibliography: referencias.bib
+date: 22 de Março de 2021
+link-citations: yes
+linestretch: 1.25
+indent: true
+fontsize: 11pt
 ---
+ 
  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introdução
+# Resumo
 
-```{r data_cars, echo=TRUE, fig.align='center', fig.cap= "Gráfico de distancia versus velocidade"}
-data("cars")
-plot(dist~speed, data=cars)
-```
+   As mudanças climáticas em ocorrência no planeta são foco crescente de estudos na área ecológica.
+A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações
+no clima podem causar nas comunidades de espécies, comprometendo o funcionamento de ecossistemas 
+e interações ecológicas entre indivíduos. Dessa forma, como resposta às mudanças climáticas, 
+as espécies tendem a adaptar sua distribuição
+a lugares mais adequados. Porém, se a adequação não for acompanhada também pela adaptação das 
+outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado 
+*mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
+O presente projeto busca compreender como as mudanças climáticas podem impactar a distribuição 
+geográfica da espécie de quiróptero *Lonchophylla mordax* e do arbusto 
+*Mimosa lewisii*,duas espécies que possuem relações ecológicas valiosas, sendo *L. mordax* o único 
+polinizador conhecido de *M. lewisii*. Utilizando-se de Modelos de Distribuição de Espécies 
+(MDEs) serão criados modelos de distribuição potencial das espécies de quiróptero e vegetal em
+dois futuros cenários climáticos projetados, de RCP 4.5 e 8.5. O potencial algoritmo a ser 
+utilizado para a modelagem é o MaxEnt. Os modelos gerados mais adequados serão analisados a fim
+de verificar alterações na distribuição futura das espécies *L. mordax* e *M. lewisii* em 
+comparação com a distribuição atual,examinando e quantificando a ocorrência do *mismatch* 
+espacial entre planta e polinizador.
 
 
-Citando o texto [@nascimento2013rediscoversy]
 
+|               **Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
 
-## Outro subtitulo
+|               **Área do conhecimento:** Ecologia.
 
-
-### Outro a mais
-
-Outra forma de citar @nascimento2013rediscoversy
 
 \clearpage
+
+# Introdução
+
+
+```{r plot_bokermanni, echo=FALSE, fig.align='center', fig.cap='Gráfico das localidades de L. bokermanni ', fig.width=6}
+
+knitr::include_graphics("../Dados/Figure_1.png")
+```
+
+    
+
+
+
+
+
+Outra forma de citar @nascimento2013
+
+\clearpage
+
 ```{=tex}
 \clearpage
 \bibliography{bibliography.bib}  
