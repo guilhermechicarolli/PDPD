@@ -51,10 +51,11 @@ head(sites_short)
 # Load the world map from the mapdata package
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
-# extrair dados da mata atlántica e Caatinga
+# extrair dados da mata atlântica e Caatinga
 
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
+
 ################################################################################
 ##### PLOT THE MAP
 ################################################################################
@@ -63,21 +64,53 @@ CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 # Make the base map
 g1 <- ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
-    coord_sf(xlim = c(-50, -30), ylim = c(-30,0), expand = FALSE) +
+    coord_sf(xlim = c(-55, -30), ylim = c(-30,0), expand = FALSE) +
     theme_bw() + 
+    
     # Adicionar a Mata atlántica
     geom_polygon(data = MA, aes(x = long, y = lat, group = group), 
                  fill = "green") +
+    
     # Adicionar a Mata caatinga
     geom_polygon(data = CA, aes(x = long, y = lat, group = group), 
                  fill = "yellow") +
+    
     # Plot the sites
     geom_point(data = sites_short, aes(x = Longitude, y = Latitude), 
                alpha = 0.6, size = 3, colour = "darkred") +
-    # Customize the colors and labels
-    scale_color_manual(values = c("#C59F00","#d3d3d3","#C59F00","#C59F00", "#C59F00")) + 
+    
+    # Add a scale bar
+    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
+                                bar_cols = c("grey30", "white")) +
+    
+    # Add a north arrow
+    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
+                                      height = unit(1.5, "cm"), 
+                                      width = unit(1.5, "cm"),
+                                      style = ggspatial::north_arrow_fancy_orienteering(
+                                          fill = c("white","grey30"))) +
+    
+    # Eixo X e Y
     labs(colour = "Estado", x = "Longitude", y = "Latitude") +
-    theme(panel.grid = element_blank(),
+    
+    
+    
+    # Tentativa de criar as legendas dos layers 
+    scale_color_manual(name="Biomas",
+                       labels="Mata Atlântica", "Cerrado",
+                       values="yellow", "green")
+    
+    
+    legend("bottomright", legend=c("Mata Atlântica", "Cerrado"), col=c("yellow","green"),
+           density=c(10, 10), bty="o", border=c("yellow", "green")) +
+    
+    
+    
+    ####### Customize the colors and labels
+    
+    scale_color_manual(values = c("Yellow","Green")) + 
+    theme(plot.subtitle =c("Mata Atlântica", "Cerrado"),
+          panel.grid = element_blank(),
           legend.text = element_text(size = 11),
           legend.title = element_text(face = "bold", size = 11),
           axis.text = element_text(size = 11, colour = "black"),
@@ -88,16 +121,8 @@ g1 <- ggplot(data = world) +
           legend.position = c(0.8,0.3),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(1,4), "lines")) +
-    # Add a scale bar
-    ggspatial::annotation_scale(location = "bl", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    # Add a north arrow
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30")))
+          plot.margin = unit(rep(1,4), "lines")) 
+
 
 # See the map
 x11()
