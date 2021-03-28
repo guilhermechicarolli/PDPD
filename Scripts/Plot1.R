@@ -43,7 +43,7 @@ head(sites)
 
 # Select the columns with the coordinates and study types
 sites_short <- sites %>% 
-    dplyr::select(Latitude, Longitude, Estado)
+    dplyr::select(Latitude, Longitude)
 
 #Check the data
 head(sites_short)
@@ -51,7 +51,7 @@ head(sites_short)
 # Load the world map from the mapdata package
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
-# extrair dados da mata atlântica e Caatinga
+# Extrair dados da mata atlântica e Caatinga
 
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
@@ -67,13 +67,13 @@ g1 <- ggplot(data = world) +
     coord_sf(xlim = c(-55, -30), ylim = c(-30,0), expand = FALSE) +
     theme_bw() + 
     
-    # Adicionar a Mata atlántica
+    # Adicionar a Mata atlântica
     geom_polygon(data = MA, aes(x = long, y = lat, group = group), 
-                 fill = "green") +
+                 fill = "green", show.legend = TRUE) +
     
-    # Adicionar a Mata caatinga
+    # Adicionar a Caatinga
     geom_polygon(data = CA, aes(x = long, y = lat, group = group), 
-                 fill = "yellow") +
+                 fill = "yellow", show.legend = TRUE) +
     
     # Plot the sites
     geom_point(data = sites_short, aes(x = Longitude, y = Latitude), 
@@ -91,22 +91,18 @@ g1 <- ggplot(data = world) +
                                           fill = c("white","grey30"))) +
     
     # Eixo X e Y
-    labs(colour = "Estado", x = "Longitude", y = "Latitude") +
+    labs(x = "Longitude", y = "Latitude") +
     
+ 
+    # Tentativa quase certa de criar as legendas dos layers 
     
-    
-    # Tentativa de criar as legendas dos layers 
     scale_color_manual(name="Biomas",
-                       labels="Mata Atlântica", "Cerrado",
-                       values="yellow", "green")
+                       labels="Cerrado", "Mata Atlântica",
+                       values=c("green", "green")) 
     
+g1
     
-    legend("bottomright", legend=c("Mata Atlântica", "Cerrado"), col=c("yellow","green"),
-           density=c(10, 10), bty="o", border=c("yellow", "green")) +
-    
-    
-    
-    ####### Customize the colors and labels
+    ####### Customize the colors and labels 
     
     scale_color_manual(values = c("Yellow","Green")) + 
     theme(plot.subtitle =c("Mata Atlântica", "Cerrado"),
