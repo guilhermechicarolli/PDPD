@@ -56,6 +56,9 @@ world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 
+
+# OI ADICIONEI ESSA LINHA
+
 ################################################################################
 ##### PLOT THE MAP
 ################################################################################
