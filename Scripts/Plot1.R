@@ -97,7 +97,7 @@ g1 <- ggplot(data = world) +
     # Tentativa quase certa de criar as legendas dos layers 
     
     scale_color_manual(name="Biomas",
-                       labels="Cerrado", "Mata Atlântica",
+                       labels="Caatinga", "Mata Atlântica",
                        values=c("green", "green")) 
     
 g1
