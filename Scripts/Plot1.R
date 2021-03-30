@@ -56,6 +56,7 @@ world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 
+MA_CA <- rbind(MA, CA) # Juntei os dois data frames para dar cores diferentes a cada id
 
 # OI ADICIONEI ESSA LINHA
 
@@ -70,17 +71,14 @@ g1 <- ggplot(data = world) +
     coord_sf(xlim = c(-55, -30), ylim = c(-30,0), expand = FALSE) +
     theme_bw() + 
     
-    # Adicionar a Mata atlântica
-    geom_polygon(data = MA, aes(x = long, y = lat, group = group), 
-                 fill = "green", show.legend = TRUE) +
-    
-    # Adicionar a Caatinga
-    geom_polygon(data = CA, aes(x = long, y = lat, group = group), 
-                 fill = "yellow", show.legend = TRUE) +
+    # Adicionar os poligonos
+    geom_polygon(data = MA_CA, aes(x = long, y = lat, group = group, 
+                                   fill = id), show.legend = TRUE) +
     
     # Plot the sites
-    geom_point(data = sites_short, aes(x = Longitude, y = Latitude), 
-               alpha = 0.6, size = 3, colour = "darkred") +
+    geom_point(data = sites_short, aes(x = Longitude, y = Latitude,
+                                       colour = "#5C058C"), 
+               alpha = 0.6, size = 3) +
     
     # Add a scale bar
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
@@ -96,13 +94,16 @@ g1 <- ggplot(data = world) +
     # Eixo X e Y
     labs(x = "Longitude", y = "Latitude") +
     
- 
-    # Tentativa quase certa de criar as legendas dos layers 
+    # legendas
+    scale_fill_manual(name="Biomas",
+                      values = c("#6BBC19", "#D0A61C"),
+                      breaks = c("3", "1"),
+                      labels = c("Mata Atlântica", "Caatinga")) +
     
-    scale_color_manual(name="Biomas",
-                       labels="Caatinga", "Mata Atlântica",
-                       values=c("green", "green")) 
+    scale_colour_manual(name = "Registros", values = "#5C058C",
+                        labels = expression(italic("L. bokermanni"))) +
     
+    guides(color = guide_legend(override.aes = list(fill = "white")))
 g1
     
     ####### Customize the colors and labels 
@@ -123,9 +124,6 @@ g1
           plot.margin = unit(rep(1,4), "lines")) 
 
 
-# See the map
-x11()
-g1
 
 # Export the map as a PNG image
 png("./Dados/Figure_1.png", res = 300,
