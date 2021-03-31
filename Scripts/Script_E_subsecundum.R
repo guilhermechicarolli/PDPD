@@ -7,7 +7,7 @@ library(tidyverse)
 
 #-------------------------------------------------------------------------------------
 
-# Exportando o arquivo CSV criado:
+# Importando o arquivo CSV com os registros:
 registros <- read.csv("Dados/speciesLink_E_subsecundum.csv", 
                       encoding = "UTF-8") %>%
     as_tibble(registros)
