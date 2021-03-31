@@ -58,7 +58,6 @@ CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 
 MA_CA <- rbind(MA, CA) # Juntei os dois data frames para dar cores diferentes a cada id
 
-# OI ADICIONEI ESSA LINHA
 
 ################################################################################
 ##### PLOT THE MAP
@@ -103,31 +102,19 @@ g1 <- ggplot(data = world) +
     scale_colour_manual(name = "Registros", values = "#5C058C",
                         labels = expression(italic("L. bokermanni"))) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white")))
-g1
+    guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
-    ####### Customize the colors and labels 
-    
-    scale_color_manual(values = c("Yellow","Green")) + 
-    theme(plot.subtitle =c("Mata Atlântica", "Cerrado"),
+    # Ajustando a legenda e algumas configurações do plot
+    theme(legend.position = c(0.87,0.2),
           panel.grid = element_blank(),
-          legend.text = element_text(size = 11),
-          legend.title = element_text(face = "bold", size = 11),
-          axis.text = element_text(size = 11, colour = "black"),
-          axis.title.x = element_text(size = 11, colour = "black", vjust = -4,
-                                      face = "bold"),
-          axis.title.y = element_text(size = 11, colour = "black", vjust = 1,
-                                      face = "bold"),
-          legend.position = c(0.8,0.3),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(1,4), "lines")) 
-
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
 # Export the map as a PNG image
 png("./Dados/Figure_1.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
+    width = 2000, height = 2000, unit = "px")
 g1
 
 dev.off()
