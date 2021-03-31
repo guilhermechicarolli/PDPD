@@ -5,11 +5,12 @@
 library(tidyverse)
 
 
-#---------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
 
 # Exportando o arquivo CSV criado:
 registros <- read.csv("Dados/registros_L_bokermanni.csv", 
-                      encoding = "UTF-8")
+                      encoding = "UTF-8") %>%
+    as_tibble(registros)
 
 # Verificando os dados
 head(registros)

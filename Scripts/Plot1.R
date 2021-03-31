@@ -114,7 +114,7 @@ g1 <- ggplot(data = world) +
 
 # Export the map as a PNG image
 png("./Dados/Figure_1.png", res = 300,
-    width = 2000, height = 2000, unit = "px")
+    width = 2000, height = 2200, unit = "px")
 g1
 
 dev.off()
