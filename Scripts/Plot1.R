@@ -104,7 +104,7 @@ g1 <- ggplot(data = world) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
-    # Ajustando a legenda e algumas configurações do plot
+    # Ajustando a legenda e algumas configuracoes do plot
     theme(legend.position = c(0.87,0.2),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
