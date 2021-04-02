@@ -4,13 +4,13 @@ catalognumber,stateprovince,county,locality,longitude_mun,latitude_mun,yearcolle
 3484,Minas Gerais,Conceição do Mato Dentro,Estrada da cachoeira do Tabuleiro,-43.4249992370605,-19.0372009277344,2014,Lucas Assis; Kelen Soares,FZB-BH
 1586,Minas Gerais,Santana do Riacho,Área da nova estrada que liga Santana do Riacho a Serro.,-43.7144012451172,-19.1688995361328,2011,"Carlos Alberto F. Jr.; João Barbosa, Gladstone C. Araújo, Lucas Assis",FZB-BH
 1587,Minas Gerais,Santana do Riacho,Área da nova estrada que liga Santana do Riacho a Serro.,-43.7144012451172,-19.1688995361328,2011,"Carlos Alberto F. Jr.; João Barbosa, Gladstone C. Araújo, Lucas Assis",FZB-BH
-3439633,Minas Gerais,Diamantina,Estrada Diamantina-Milho Verde,-43.6002998352051,-18.2493991851807,1997,"R. C. Forzza, A. Marcato, N. Roque & A. Marcato",US
+3439633,Minas Gerais,Diamantina,Estrada Diamantina-Milho Verde,-43.6002998352051,-18.29391851807,1997,"R. C. Forzza, A. Marcato, N. Roque & A. Marcato",US
 2700855,Minas Gerais,Jaboticatubas,Serra do Cipó,-43.7449989318848,-19.513599395752,1972,G. Hatschbach,US
 1801968,Minas Gerais,Jaboticatubas,"Serra do Cipó, north of Belo Horizonte",-43.7449989318848,-19.513599395752,1940,-. Mulford & R. Foster,US
 3439636,Minas Gerais,Joaquim Felício,Serra do Cabral,-44.2919,-17.6989,1998,"R. C. Forzza, J. R. Pirani, A. Marcato, M. Meguro & A. Rapini",US
 20324,Minas Gerais,Serro,NA,-43.3793983459473,-18.604700088501,1995,"Souza, V.C. et al.",ESALQ
 34289,Minas Gerais,Jequitaí,Fazenda Belgo Minas,-44.4455986022949,-17.2355995178223,2010,"Guarçoni, E.; Sartori, M. .A.",UFV
-34290,Minas Gerais,Jequitaí,Fazenda Belgo Minas,-44.4455986022949,-17.2355995178223,2010,"Guarçoni, E.; Sartori, M. .A.",UFV
+34290,Minas Gerais,Jequitaí,Fazenda Belgo Minas,-44.4455986022949, -17.2355995178223,2010,"Guarçoni, E.; Sartori, M. .A.",UFV
 34291,Minas Gerais,Jequitaí,Fazenda Belgo Minas,-44.4455986022949,-17.2355995178223,2010,"Guarçoni, E.; Sartori, M. .A.",UFV
 34292,Minas Gerais,Jequitaí,Fazenda Belgo Minas,-44.4455986022949,-17.2355995178223,2010,"Guarçoni, E.; Sartori, M. .A.",UFV
 34293,Minas Gerais,Buenópolis,"Serra do Cabral, Fazenda Bimbarra, Capão do Gato, 1245 m de altitude.",-44.1800003051758,-17.8733005523682,2010,"Guarçoni, E.",UFV
@@ -18,9 +18,9 @@ catalognumber,stateprovince,county,locality,longitude_mun,latitude_mun,yearcolle
 34499,Minas Gerais,Santana do Riacho,"Lapinha, 1190 m de altitude",-43.7144012451172,-19.1688995361328,2011,"Guarçoni, E.; Paixão, B.",UFV
 51050,Minas Gerais,Mariana,NA,-43.4160995483398,-20.377799987793,2001,"Paula, C.C. de; Silva, R.R. da",UFV
 226895,Minas Gerais,Datas,Palmital,-43.6557998657227,-18.4456005096436,1997,"Hatschbach, G.; Hatschbach, M.; Barboza, E.; Hatschbach, M.; Barboza, E.",MBM
-24001,Minas Gerais,Jaboticatubas,Serra do Cipó,-43.7449989318848,-19.513599395752,1972,"Hatschbach, G.",MBM
+24001,Minas Gerais,Jaboticatubas,Serra do Cipó,-43.7449989318848,-19.51.599395752,1972,"Hatschbach, G.",MBM
 71423,Minas Gerais,Joaquim Felício,Serra do Cabral,-44.1721992492676,-17.7574996948242,1999,"Hatschbach, G.",UEFS
-57,Minas Gerais,Buenópolis,Parque Nacional das Sempre-vivas,-43.783889,-17.916944,2012,,FVD
+57,Minas Gerais,Buenópolis,Parque Nacional das Sempre-vivas,-43.783889,-17.916944,2012,NA,FVD
 873380,Minas Gerais,Diamantina,"Serra do Espinhaço, slopes of Rio Jequití, ca. 15 km E. of Diamantina.",-43.5611111,-18.17235,1970,H. S. Irwin,NY
 179858,Minas Gerais,Santana do Riacho,"Serra do Cipó, Km 106 ao longo da Rodovia Belo Horizonte - Conceição do Mato Dentro. Estrada da Usina. 8km da pousada.",-43.7144012451172,-19.1688995361328,1982,"Lewis, G; et al.",IBt
 179858a,Minas Gerais,Santana do Riacho,"Serra do Cipó, Km 106 ao longo da Rodovia Belo Horizonte - Conceição do Mato Dentro. Estrada da Usina. 8km da pousada.",-43.7144012451172,-19.1688995361328,1982,"Lewis, G; et al.",IBt
@@ -39,13 +39,37 @@ NA,Minas Gerais,Penha da França,Ca. de 100 km ao nordeste de Diamantina,-43.833
 40165,Minas Gerais,Serro,Cruzeiro. Mato Grosso.,-43.3793983459473,-18.604700088501,NA,NA,UFMG
 40170,Minas Gerais,Serro,Capivari.,-43.3793983459473,-18.604700088501,NA,NA,UFMG
 41588,Minas Gerais,Pedro Leopoldo,Fazenda da Jaguara,-44.043098449707,-19.6180992126465,1968,"Duarte, AP",UFMG
-70384,Minas Gerais,Joaquim Felício,NA,-44.1721992492676,-17.7574996948242,NA,"Forzza, RC",UFMG
+70384,Minas Gerais,Joaquim Felício,NA,-441721992492676,-17.7574996948242,NA,"Forzza, RC",UFMG
 98963,Minas Gerais,Itacambira,Fazenda Tamanduá - Plantar MG 15.,-43.3088989257812,-17.0646991729736,2004,"Tameirão Neto, E",UFMG
 111018,Minas Gerais,Jaboticatubas,Serra do Cipó,-43.583333,-19.166667,1952,"Smith, L.B. 6881; Segadas-Vianna, F.; Egler, W.A.; Dau, L.; Lopes da Silva, Z.; Ormond, W.T. & Machline, G.C.",MN
 234493,Minas Gerais,Buenópolis,Serra do Cabral. Região do Tanque (no afloramento rochoso).,-44.333333,-17.887222,2007,"Pangaio, L. 1110; Pereira, M.C.A. & Souza, K.",MN
 193231,Minas Gerais,Jaboticatubas,NA,-43.7449989318848,-19.513599395752,1952,"Smith, L.B.",MN
 234492,Minas Gerais,Buenópolis,Serra do Cabral. Região da Lapa Pintada III (em frente à Lapa Pintada).,-44.250833,-17.918056,2007,"Pangaio, L. 1119; Pereira, M.C.A. & Souza, K.",MN
 1796,MG,Buenópolis,"P.E. Serra do Cabral, Condato.",-44.233889,-17.923889,2017,Elidio A. E. Guarçoni 2550; Marcos A. Sartori & Renato Costa,UFMA
-420,MG,Buenópolis,"Serra do Cabral, Água Fria.",-44.1800003051758,-17.8733005523682,2012,M. A. Sartori,UFMA
+420,MG,Buenópolis,"Serra do Cabral, Água Fria.",-441800003051758,-17.8733005523682,2012,M. A. Sartori,UFMA
 1803,MG,Buenópolis,subida da Serra do Palmito (Bimbarra),-44.249444,-17.909167,2017,Elidio A.E Guarçoni 2535; Marcos A. Sartoni & Renato Costa,UFMA
 1802,MG,Buenópolis,subida da Serra do Palmito (Bimbarra),-44.249444,-17.909167,2017,Elidio A.E Guarçoni 2536; Marcos A. Sartoni & Renato Costa,UFMA
+111018,Minas Gerais,NA,Jaboticatubas,-43.583333,-19.166667,1952,"Smith, L.B. 6881; Segadas-Vianna, F.; Egler, W.A.; Dau, L.; Lopes da Silva, Z.; Ormond, W.T. & Machline, G.C.",R - Herbário do Museu Nacional
+234492,Minas Gerais,NA,Buenópolis,-44.250833,-17.918056,2007,"Pangaio, L. 1119; Pereira, M.C.A. & Souza, K.",R - Herbário do Museu Nacional
+234493,Minas Gerais,NA,Buenópolis,-44.333333,-17.887222,2007,"Pangaio, L. 1110; Pereira, M.C.A. & Souza, K.",R - Herbário do Museu Nacional
+191653,Minas Gerais,NA,Santo Antônio do Itambé,-43.339444,-18.456944,2018,"Souza, JAM; Paiva, JAM; Silva, SHA",BHCB - Herbário da Universidade Federal de Minas Gerais
+873380,Minas Gerais,Diamantina,NA,-43.561111,-18.17235,1970,H. S. Irwin,Vascular plants
+RB01369497,Minas Gerais,NA,Diamantina,-43.665,-18.188333,2010,E.M.C. Leme,RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB01365068,Minas Gerais,NA,Serro,-43.445,-18.4725,2017,"Barbosa-Silva, R.G.; Silva, J.L.",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+3439636,Minas Gerais,Joaquim Felício,NA,-44.2919,-17.6989,1998,"R. C. Forzza, J. R. Pirani, A. Marcato, M. Meguro & A. Rapini",NMNH Extant Biology
+RB01218940,Minas Gerais,NA,Diamantina,-43.806389,-17.891667,2016,"G. Martinelli; T.Lima, D.Maurenza",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB00641788,Minas Gerais,NA,Congonhas do Norte,-43.233333,-18.866667,2000,R.C. Forzza; J.R. Pirani; A.C.M. Marcato; M.C. Assis & A. Rapini,RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB00572475,Minas Gerais,NA,Mato Verde,-42.778889,-15.386667,2008,E. Leme; C.C. Paula,RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB00568933,Minas Gerais,NA,Datas,-43.650278,-18.453056,2009,"M.M. Saavedra; R.C. Forzza, L. Menini Neto, J.C. Silva",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB00515496,Minas Gerais,NA,Santana de Pirapama,-43.755556,-19.006111,2007,"D.C. Zappi; E. Miranda, V. C. Souza, J. P. Souza, J. G. Rando, M. Pinho-Ferreira, G. O. Romão, D. J. N. Hind, L. V. S. Jennings",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB01045080,Minas Gerais,NA,Diamantina,-43.552778000000000,-18.355,2014,"G. Martinelli; E. Martins, N. Pougy, D. Maurenza & M. Verdi",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+RB01045027,Minas Gerais,NA,Diamantina,-43.628056,-18.191944,2014,"G. Martinelli; E. Martins, N. Pougy, D. Maurenza & M.Verdi",RB - Rio de Janeiro Botanical Garden Herbarium Collection
+NA,NA,NA,NA,-52.8731,-10.8339,NA,A. Saint-Hilaire,Negatives/Types
+V0045139F,NA,NA,NA,-52.8731,-10.8339,1816,A. Saint-Hilaire,Flowers TCN
+NA,NA,NA,NA,-52.8731,-10.8339,1891,A.  Glaziou,Berlin Negatives
+NA,Minas Gerais,Conceição do Mato dentro,NA,-43.42527778,-19.33750000,2012,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
+NA,Minas Gerais,Santana do Riacho,NA,-43.50972222,-19.24750000,2013,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
+NA,Minas Gerais,Diamantina,NA,-43.55194444,-18.35055556,2013,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
+NA,Minas Gerais,Diamantina,NA,-43.54944444,-18.37416667,2013,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
+NA,Minas Gerais,Presidente Kubitschek,NA,-43.55722222,-18.65388889,2013,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
+NA,Minas Gerais,Santana do Riacho,NA,-43.50972222,-19.24750000,2013,Mariana Neves Moura,Mestrado: HIPÓTESES FILOGENÉTICAS BASEADAS EM CARACTERES MOLECULARES E ESTUDOS DO TAMANHO DO GENOMA EM Dyckia Schult. & Schult.f. E Encholirium Mart. ex Schult. & Schult.f. (BROMELIACEAE) - Mariana Neves Moura
