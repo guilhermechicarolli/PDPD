@@ -83,6 +83,10 @@ g2 <- ggplot(data = world) +
                                    colour="red"),
                alpha=0.8, size=3, shape=18) +
     
+      
+    # Gui, no código aqui de cima, a cor do morcego era pra ser Azul, a da planta vermelho,
+    # e a interação é preta, mas quando eu colocava essas cores no geom_point, mas quando plotava
+    # as cores se alteravam, aí quando coloquei nessa ordem deu certo.
     
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
@@ -104,12 +108,14 @@ g2 <- ggplot(data = world) +
                       breaks = c("3", "1", "2"),
                       labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
     
-    scale_colour_manual(name = "Registros", values = c("blue", "red", "grey19"),
+    scale_colour_manual(name = "Registros", values = c("blue", "red", "black"),
                         labels = c(expression(italic("L. bokermanni")), 
                                    expression(italic("E. subsecundum")),
                                    expression("Interação confirmada"))) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white")), ) +
+    # Não consegui arrumar o shape do "Interação confirmada"
+    
+    guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
     theme(legend.position = c(0.86,0.23),
