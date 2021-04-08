@@ -1,4 +1,4 @@
-#------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE ENCHOLIRIUM SUBSECUNDUM --------#
+#---- SCRIPT DO PLOT GEOGRÁFICO DAS ESPÉCIESL. BOKERMANNI E E. SUBSECUNDUM ----#
 
 
 ###############################################################################
@@ -26,22 +26,22 @@ if (!require(rgdal)) install.packages('rgdal')
 ###############################################################################
 
 # Importar os dados geográficos
-sites <- read.csv("Dados/registros_E_subsecundum.csv", encoding = "UTF-8", sep=",")
+sites_P <- read.csv("Dados/registros_E_subsecundum.csv", encoding = "UTF-8", sep=",")
+sites_M <- read.csv("Dados/registros_L_bokermanni.csv", encoding = "UTF-8", sep=",")
+interacao <- data.frame("Longitude" = -45.489916, "Latitude"=-22.690245)
+
 
 # Extrair os dados dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
 
-# Checar os dados
-class(sites)
-str(sites)
-head(sites)
 
 # Selecionar as colunas com as coordenadas geográficas
-sites_short <- sites %>% 
+sites_short_P <- sites_P %>% 
     dplyr::select(Latitude, Longitude)
 
-# Checar os dados 
-head(sites_short)
+sites_short_M <- sites_M %>% 
+    dplyr::select(Latitude, Longitude) 
+
 
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
@@ -68,12 +68,20 @@ g2 <- ggplot(data = world) +
     
     # Adicionar os poligonos
     geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group = group, 
-                                   fill = id), show.legend = TRUE) +
+                                      fill = id), show.legend = TRUE) +
     
     # Plotar os pontos geográficos 
-    geom_point(data = sites_short, aes(x = Longitude, y = Latitude,
-                                       colour = "orangered4"), 
-               alpha = 0.6, size = 3) +
+    geom_point(data = sites_short_M, aes(x = Longitude, y = Latitude,
+                                       colour = "#5C058C"), 
+               alpha = 0.7, size = 3) +
+    
+    geom_point(data = sites_short_P, aes(x = Longitude, y = Latitude,
+                                         colour = "orangered4"), 
+               alpha = 0.15, size = 3) +
+    
+    geom_point(data=interacao, aes(x = Longitude, y = Latitude),
+               alpha=0.8, size=3, shape=18) +
+    
     
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
@@ -95,8 +103,10 @@ g2 <- ggplot(data = world) +
                       breaks = c("3", "1", "2"),
                       labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
     
-    scale_colour_manual(name = "Registros", values = "orangered4",
-                        labels = expression(italic("E. Subsecundum"))) +
+    scale_colour_manual(name = "Registros", values = c("#5C058C", "orangered4", "black"),
+                        labels = c(expression(italic("L. bokermanni")), 
+                                              expression(italic("E. subsecundum")),
+                                   "Interação confirmada")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -109,7 +119,7 @@ g2 <- ggplot(data = world) +
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Dados/Figure_2.png", res = 300,
+png("./Dados/Figure_3.png", res = 300,
     width = 2000, height = 2200, unit = "px")
 g2
 
