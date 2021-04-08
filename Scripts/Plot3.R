@@ -72,14 +72,15 @@ g2 <- ggplot(data = world) +
     
     # Plotar os pontos geográficos 
     geom_point(data = sites_short_M, aes(x = Longitude, y = Latitude,
-                                       colour = "#5C058C"), 
-               alpha = 0.7, size = 3) +
+                                       colour = "black"), 
+               alpha = 0.6, size = 3) +
     
     geom_point(data = sites_short_P, aes(x = Longitude, y = Latitude,
-                                         colour = "orangered4"), 
-               alpha = 0.15, size = 3) +
+                                         colour = "blue"), 
+               alpha = 0.35, size = 3) +
     
-    geom_point(data=interacao, aes(x = Longitude, y = Latitude),
+    geom_point(data=interacao, aes(x = Longitude, y = Latitude, 
+                                   colour="red"),
                alpha=0.8, size=3, shape=18) +
     
     
@@ -103,20 +104,21 @@ g2 <- ggplot(data = world) +
                       breaks = c("3", "1", "2"),
                       labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
     
-    scale_colour_manual(name = "Registros", values = c("#5C058C", "orangered4", "black"),
+    scale_colour_manual(name = "Registros", values = c("blue", "red", "grey19"),
                         labels = c(expression(italic("L. bokermanni")), 
-                                              expression(italic("E. subsecundum")),
-                                   "Interação confirmada")) +
+                                   expression(italic("E. subsecundum")),
+                                   expression("Interação confirmada"))) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
+    guides(color = guide_legend(override.aes = list(fill = "white")), ) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.86,0.23),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
           plot.margin = unit(rep(0.5,4), "lines"))
 
+g2
 
 # Exportar o mapa como uma imagem PNG
 png("./Dados/Figure_3.png", res = 300,
