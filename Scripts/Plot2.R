@@ -68,11 +68,11 @@ g2 <- ggplot(data = world) +
     
     # Adicionar os poligonos
     geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group = group, 
-                                   fill = id), show.legend = TRUE) +
+                                   fill = id)) +
     
     # Plotar os pontos geográficos 
     geom_point(data = sites_short, aes(x = Longitude, y = Latitude,
-                                       colour = "#5C058C"), 
+                                       colour = "orangered4"), 
                alpha = 0.6, size = 3) +
     
     # Adicionar a barra de escala
