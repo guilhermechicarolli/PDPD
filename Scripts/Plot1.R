@@ -26,7 +26,7 @@ if (!require(rgdal)) install.packages('rgdal')
 ###############################################################################
 
 # Importar os dados geográficos
-sites <- read.csv("Dados/registros_L_bokermanni.csv", encoding = "UTF-8")
+sites <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8")
 
 # Extrair os dados dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
@@ -50,8 +50,9 @@ world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
+CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-MA_CA <- rbind(MA, CA) # Juntei os dois data frames para dar cores diferentes a cada id
+MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames para dar cores diferentes a cada id
 
 
 ################################################################################
@@ -66,7 +67,7 @@ g1 <- ggplot(data = world) +
     theme_bw() + 
     
     # Adicionar os poligonos
-    geom_polygon(data = MA_CA, aes(x = long, y = lat, group = group, 
+    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group = group, 
                                    fill = id), show.legend = TRUE) +
     
     # Plotar os pontos geográficos 
@@ -90,9 +91,9 @@ g1 <- ggplot(data = world) +
     
     # Adicionar as legendas
     scale_fill_manual(name="Biomas",
-                      values = c("#6BBC19", "goldenrod2"),
-                      breaks = c("3", "1"),
-                      labels = c("Mata Atlântica", "Caatinga")) +
+                      values = c("#6BBC19", "goldenrod2", "lightskyblue"),
+                      breaks = c("3", "1", "2"),
+                      labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
     
     scale_colour_manual(name = "Registros", values = "#5C058C",
                         labels = expression(italic("L. bokermanni"))) +
@@ -108,7 +109,7 @@ g1 <- ggplot(data = world) +
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Dados/Figure_1.png", res = 300,
+png("./Gráficos/Figure_1.png", res = 300,
     width = 2000, height = 2200, unit = "px")
 g1
 

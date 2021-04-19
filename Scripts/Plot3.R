@@ -27,7 +27,7 @@ if (!require(ggnewscale)) install.packages('ggnewscale')
 
 # Importar os dados geográficos
 sites_P <- read.csv("Dados/registros_E_subsecundum.csv", encoding = "UTF-8", sep=",")
-sites_M <- read.csv("Dados/registros_L_bokermanni.csv", encoding = "UTF-8", sep=",")
+sites_M <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8", sep=",")
 interacao <- data.frame("Latitude" = -19.093374, "Longitude" = -43.470373)
 
 # Separar só as colunas de latitude e longitude
@@ -39,7 +39,7 @@ sites <- rbind(sites_M, sites_P, interacao)
 
 # adicionar a etiqueta e um vetor de cores
 sites <- sites %>%
-  dplyr::mutate("Grupo" = c(rep("Morcego", 80), rep("Planta", 90), "Interacao"))
+  dplyr::mutate("Grupo" = c(rep("Morcego", 24), rep("Planta", 87), "Interacao"))
 
 
 # Extrair os dados dos biomas
@@ -121,13 +121,11 @@ g2 <- ggplot(data = world) +
         legend.key = element_rect(fill = "NA"),
         legend.text.align = 0,
         plot.margin = unit(rep(0.5,4), "lines"))
-x11()
 g2
 
 # Exportar o mapa como uma imagem PNG
-png("./Dados/Figure_3.png", res = 300,
+png("./Gráficos/Figure_3.png", res = 300,
     width = 2000, height = 2200, unit = "px")
-g2
 
 dev.off()
 
