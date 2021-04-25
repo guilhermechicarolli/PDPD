@@ -1,24 +1,31 @@
 ---
-title: "**Impactos das mudanças climaticas: *Mismatches* e alterações na distribuição de plantas e morcegos polinizadores**"
+title: '**Impactos das mudanças climáticas: *Mismatches* e alterações na distribuição
+  de plantas e morcegos polinizadores**'
 author:
-    - Guilherme de Carvalho Chicarolli
-    - Guillermo Florez-Montero
-    - Simone Rodrigues de Freitas
+- Guilherme de Carvalho Chicarolli
+- Guillermo Florez-Montero
+- Simone Rodrigues de Freitas
+date: "22 de Março de 2021"
 output:
-    pdf_document:
-        latex_engine: xelatex
-intent: true
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
 editor_options:
-    markdown:
-        wrap: sentence
+  markdown:
+    wrap: sentence
 bibliography: referencias.bib
-date: 22 de Março de 2021
+intent: yes
 link-citations: yes
 linestretch: 1.25
-indent: true
+indent: yes
 fontsize: 11pt
 ---
  
+<style>
+body {
+text-align: justify}
+</style> 
  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -47,9 +54,9 @@ espacial entre planta e polinizador.
 
 
 
->>**Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
+>**Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
 
->>**Área do conhecimento:** Ecologia.
+>**Área do conhecimento:** Ecologia.
 
 
 \clearpage
@@ -59,7 +66,7 @@ espacial entre planta e polinizador.
 
 ```{r plot_bokermanni, echo=FALSE, fig.align='center', fig.cap='Gráfico das localidades de L. bokermanni ', fig.width=6}
 
-knitr::include_graphics("../Dados/Figure_1.png")
+knitr::include_graphics("../Graficos/Figure_1.png")
 ```
 
     

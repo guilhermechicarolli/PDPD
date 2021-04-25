@@ -109,7 +109,7 @@ g2 <- ggplot(data = world) +
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Dados/Figure_2.png", res = 300,
+png("./Gráficos/Figure_2.png", res = 300,
     width = 2000, height = 2200, unit = "px")
 g2
 

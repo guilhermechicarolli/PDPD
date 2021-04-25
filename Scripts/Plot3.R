@@ -39,7 +39,7 @@ sites <- rbind(sites_M, sites_P, interacao)
 
 # adicionar a etiqueta e um vetor de cores
 sites <- sites %>%
-  dplyr::mutate("Grupo" = c(rep("Morcego", 24), rep("Planta", 87), "Interacao"))
+  dplyr::mutate("Grupo" = c(rep("Morcego", 24), rep("Planta", 82), "Interacao"))
 
 
 # Extrair os dados dos biomas
