@@ -1,5 +1,7 @@
 #------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE ENCHOLIRIUM SUBSECUNDUM --------#
 
+# 1. IMPORT DOS DADOS NECESSÁRIOS
+# 2. CONSTRUÇÃO DO GRÁFICO
 
 ###############################################################################
 # Deletar objetos passados
@@ -22,11 +24,13 @@ if (!require(rgdal)) install.packages('rgdal')
 
 
 ###############################################################################
-# Importar os dados
-###############################################################################
+
+# 1. IMPORT DOS DADOS
+
 
 # Importar os dados geográficos
-sites <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", sep=",")
+sites <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", 
+                  sep=",")
 
 # Extrair os dados dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
@@ -52,12 +56,13 @@ MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames para dar cores diferentes a cada id
+MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames 
+#                               para dar cores diferentes a cada id
 
 
 ################################################################################
-##### PLOT THE MAP
-################################################################################
+
+# 2. CONSTRUÇÃO DO MAPA
 
 
 # Construir o mapa base

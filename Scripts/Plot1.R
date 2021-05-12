@@ -1,5 +1,7 @@
 #------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE LONCHOPHYLLA BOKERMANNI --------#
 
+# 1. IMPORT DOS DADOS NECESSÁRIOS
+# 2. CONSTRUÇÃO DO GRÁFICO
 
 ###############################################################################
 # Deletar objetos passados
@@ -22,8 +24,9 @@ if (!require(rgdal)) install.packages('rgdal')
 
 
 ###############################################################################
-# Importar os dados
-###############################################################################
+
+# 1. IMPORTAR OS DADOS
+
 
 # Importar os dados geográficos
 sites <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8")
@@ -52,12 +55,13 @@ MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames para dar cores diferentes a cada id
+MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames 
+#                               para dar cores diferentes a cada ID
 
 
 ################################################################################
-##### PLOT THE MAP
-################################################################################
+
+# 2. CONSTRUÇÃO DO MAPA
 
 
 # Construir o mapa base

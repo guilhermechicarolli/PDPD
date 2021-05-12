@@ -1,5 +1,7 @@
 #---- SCRIPT DO PLOT GEOGRÁFICO DAS ESPÉCIESL. BOKERMANNI E E. SUBSECUNDUM ----#
 
+# 1. IMPORT DOS DADOS NECESSÁRIOS
+# 2. CONSTRUÇÃO DO GRÁFICO
 
 ###############################################################################
 # Deletar objetos passados
@@ -22,12 +24,15 @@ if (!require(ggnewscale)) install.packages('ggnewscale')
 
 
 ###############################################################################
-# Importar os dados
-###############################################################################
+
+# 2. IMPORT DOS DADOS
+
 
 # Importar os dados geográficos
-sites_P <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", sep=",")
-sites_M <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8", sep=",")
+sites_P <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", 
+                    sep=",")
+sites_M <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8",
+                    sep=",")
 interacao <- data.frame("Latitude" = -19.093374, "Longitude" = -43.470373)
 
 # Separar só as colunas de latitude e longitude
@@ -56,7 +61,8 @@ MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames para dar cores diferentes a cada id
+MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames 
+#                             para dar cores diferentes a cada id
 
 
 ################################################################################

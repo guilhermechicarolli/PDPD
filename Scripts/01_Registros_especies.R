@@ -17,7 +17,6 @@ if (!require(tidyverse)) install.packages('tidyverse')
 
 
 
-
 ##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO SPECIESLINK #####
 
 registros <- read.csv(
@@ -141,6 +140,9 @@ planta <- add_column(planta, 'Especie' = 'Encholirium Subsecundum')
 # Selecionar apenas as colunas: Especies, Longitude e Latitude
 planta <- select(planta, Especie, Longitude, Latitude) 
 
+# Verificar os dados
+head(plantaq)
+
 # Salvar o arquivo no formato csv
 write_csv(planta, "./Dados/Ocorrencias/E_subsecundum.csv")
 
@@ -153,10 +155,13 @@ morcego <- read.csv('./Dados/registros_L_bokermanni.txt',
                    encoding='UTF-8')
 
 # Adicionar uma coluna chamada "Especie" com o nome da espécie
-morcego <- add_column(planta, 'Especie' = 'Lonchophylla bokermanni')
+morcego <- add_column(morcego, 'Especie' = 'Lonchophylla bokermanni')
 
 # Selecionar apenas as colunas: Especies, Longitude e Latitude
 morcego <- select(morcego, Especie, Longitude, Latitude) 
+
+# Verificar os dados
+head(morcego)
 
 # Salvar o arquivo no formato csv
 write_csv(morcego, "./Dados/Ocorrencias/L_bokermanni.csv")
