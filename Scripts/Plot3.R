@@ -26,7 +26,7 @@ if (!require(ggnewscale)) install.packages('ggnewscale')
 ###############################################################################
 
 # Importar os dados geográficos
-sites_P <- read.csv("Dados/registros_E_subsecundum.csv", encoding = "UTF-8", sep=",")
+sites_P <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", sep=",")
 sites_M <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8", sep=",")
 interacao <- data.frame("Latitude" = -19.093374, "Longitude" = -43.470373)
 

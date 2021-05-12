@@ -26,7 +26,7 @@ if (!require(rgdal)) install.packages('rgdal')
 ###############################################################################
 
 # Importar os dados geográficos
-sites <- read.csv("Dados/registros_E_subsecundum.csv", encoding = "UTF-8", sep=",")
+sites <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", sep=",")
 
 # Extrair os dados dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
