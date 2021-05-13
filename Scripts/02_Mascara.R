@@ -19,10 +19,9 @@ if (!require(sampSurf)) install.packages('sampSurf')
 # Permite que dados espaciais sejam associados com o sistema de coordenadas
 # criando uma projeção
 
-longlat_WGS = CRS(
+longlat_WGS <- CRS(
     "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
-UTM_proj = CRS(
-    "+proj=utm +zone=22 +south +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
 
 ################################################################################
 
@@ -45,7 +44,15 @@ head(CE_CA_MA)
 # Verificação dos dados
 plot(CE_CA_MA)
 
+# Conversão para SpatialPolygonsDataFrame
+CE_CA_MA <- as(CE_CA_MA, "SpatialPolygonsDataFrame")
+
+# Acréscimo da projeção 
+crs(CE_CA_MA) = longlat_WGS
+
+# Salvar a máscara criada na pasta Dados/Mascaras
+writeOGR(CE_CA_MA, "./Dados/Mascaras", "mascara_biomas",
+         driver="ESRI Shapefile", overwrite_layer = T)
 
 
-
-
+################################ FIM ###########################################
