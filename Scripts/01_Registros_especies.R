@@ -11,13 +11,13 @@
 #                ENCHOLIRIUM SUBSECUNDUM --------------#
 
 
-##### CARREGAMENTO DOS PACOTES NECESSÁRIOS #####
+##### Carregamento das bibliotecas necessárias 
 
 if (!require(tidyverse)) install.packages('tidyverse')
 
 
 
-##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO SPECIESLINK #####
+##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO SPECIESLINK 
 
 registros <- read.csv(
     "./Dados/DataSets_temporarios/speciesLink_E_subsecundum.csv",
@@ -43,7 +43,7 @@ write_csv(registros, paste(path,'registros_E_subsecundum.csv'))
 
 
 
-##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO GBIF #####
+##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO GBIF 
 
 registros2 <- read.csv("Dados/DataSets_temporarios/GBIF_E_subsecundum.txt",
                        sep='\t', encoding = "UTF-8") %>%
@@ -73,7 +73,7 @@ write_csv(registros2, paste(path,'registros2_E_subsecundum.csv'))
 
 
 
-##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO SIBBR #####
+##### IMPORTANDO O ARQUIVO CSV COM OS REGISTROS DO SIBBR 
 
 registros3 <- read.csv("Dados/DataSets_temporarios/SiBBr_E_subsecundum.csv", 
                        encoding = "UTF-8") %>%
@@ -141,7 +141,7 @@ planta <- add_column(planta, 'Especie' = 'Encholirium Subsecundum')
 planta <- select(planta, Especie, Longitude, Latitude) 
 
 # Verificar os dados
-head(plantaq)
+head(planta)
 
 # Salvar o arquivo no formato csv
 write_csv(planta, "./Dados/Ocorrencias/E_subsecundum.csv")

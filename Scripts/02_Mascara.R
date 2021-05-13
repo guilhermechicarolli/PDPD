@@ -6,26 +6,23 @@
 
 ################################################################################
 
-# Carregamento dos pacotes necessários
+##### Carregamento das bibliotecas necessárias
 
 if (!require(rgdal)) install.packages('rgdal')
 if (!require(raster)) install.packages('raster')
-if (!require(maptools)) install.packages('maptools')
 if (!require(sp)) install.packages('sp')
-if (!require(rgeos)) install.packages('rgeos')
-if (!require(sampSurf)) install.packages('sampSurf')
 
 
-# Permite que dados espaciais sejam associados com o sistema de coordenadas
-# criando uma projeção
-
-longlat_WGS <- CRS(
+# Permite que dados espaciais sejam associados com o sistema de coordenadas,
+# criando uma projeção que pode ser utilizada nos rasters
+proj_WGS <- sp::CRS(
     "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
 
 
 ################################################################################
 
-# 1. CONSTRUÇÃO DA MÁSCARA COM BASE NO SHAPE FILE DOS BIOMAS
+#--------- 1. CONSTRUÇÃO DA MÁSCARA COM BASE 
+#              NO SHAPE FILE DOS BIOMAS ---------#
 
 # Carregamento dos shape files dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
@@ -48,10 +45,10 @@ plot(CE_CA_MA)
 CE_CA_MA <- as(CE_CA_MA, "SpatialPolygonsDataFrame")
 
 # Acréscimo da projeção 
-crs(CE_CA_MA) = longlat_WGS
+raster::crs(CE_CA_MA) <- proj_WGS
 
 # Salvar a máscara criada na pasta Dados/Mascaras
-writeOGR(CE_CA_MA, "./Dados/Mascaras", "mascara_biomas",
+rgal::writeOGR(CE_CA_MA, "./Dados/Mascaras", "mascara_biomas",
          driver="ESRI Shapefile", overwrite_layer = T)
 
 
