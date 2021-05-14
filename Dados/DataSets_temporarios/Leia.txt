@@ -1,2 +1,2 @@
-Pasta com os arquivos fonte dos registros vindos dos bancos de dados online
+Pasta com os arquivos dos registros vindos dos bancos de dados online
 

@@ -1,2 +1,2 @@
-Ocorrências das espécies de morcego e planta, ainda com viés geográfico
-e registros duplicados.
+Ocorrências das espécies de morcego e planta (apenas o nome da espécies, longitude e latitude), 
+ainda com viés geográfico e registros duplicados.

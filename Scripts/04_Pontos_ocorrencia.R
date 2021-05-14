@@ -16,6 +16,7 @@
 if (!require(dismo)) install.packages('dismo')
 if (!require(rgdal)) install.packages('rgdal')
 if (!require(raster)) install.packages('raster')
+if (!require(rgeos)) install.packages('rgeos')
 if (!require(sp)) install.packages('sp')
 if (!require(tidyverse)) install.packages('tidyverse')
 

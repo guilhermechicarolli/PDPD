@@ -42,19 +42,16 @@ a lugares mais adequados. Porém, se a adequação não for acompanhada também 
 outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado 
 *mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
 O presente projeto busca compreender como as mudanças climáticas podem impactar a distribuição 
-geográfica da espécie de quiróptero *Lonchophylla mordax* e do arbusto 
-*Mimosa lewisii*,duas espécies que possuem relações ecológicas valiosas, sendo *L. mordax* o único 
-polinizador conhecido de *M. lewisii*. Utilizando-se de Modelos de Distribuição de Espécies 
-(MDEs) serão criados modelos de distribuição potencial das espécies de quiróptero e vegetal em
-dois futuros cenários climáticos projetados, de RCP 4.5 e 8.5. O potencial algoritmo a ser 
-utilizado para a modelagem é o MaxEnt. Os modelos gerados mais adequados serão analisados a fim
-de verificar alterações na distribuição futura das espécies *L. mordax* e *M. lewisii* em 
-comparação com a distribuição atual,examinando e quantificando a ocorrência do *mismatch* 
-espacial entre planta e polinizador.
+geográfica da espécie de quiróptero *Lonchophylla bokermanni* e da bromélia 
+*Encholirium subsecundum*, duas espécies que possuem relações ecológicas muito próximas, sendo *L. bokermanni* o único 
+polinizador conhecido de *E. subsecundum*. Utilizando-se de Modelos de Distribuição de Espécies 
+(MDEs) foram criados modelos de distribuição potencial das espécies em
+dois cenários climáticos projetados para 2070, de RCP 4.5 e 8.5.
 
 
 
->**Palavras chave:** Mudanças climáticas, distribuição de espécies, modelagem, sobreposição de espécies.
+
+>**Palavras chave:** Mudanças climáticas, modelagem, distribuição e sobreposição de espécies.
 
 >**Área do conhecimento:** Ecologia.
 
@@ -64,10 +61,20 @@ espacial entre planta e polinizador.
 # Introdução
 
 
-```{r plot_bokermanni, echo=FALSE, fig.align='center', fig.cap='Gráfico das localidades de L. bokermanni ', fig.width=6}
 
-knitr::include_graphics("../Graficos/Figure_1.png")
+
+
+\clearpage
+
+
+```{r plot_bokermanni, echo=FALSE, fig.align='center', fig.cap='Gráfico das localidades de L. bokermanni (à esquerda) e E. subsecundum (à direita)', fig.show="hold", out.width="49%"}
+
+
+knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"))
+
 ```
+
+
 
     
 
