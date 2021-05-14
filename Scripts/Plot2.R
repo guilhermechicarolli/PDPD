@@ -1,14 +1,14 @@
-#------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE ENCHOLIRIUM SUBSECUNDUM --------#
+#------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE ENCHOLIRIUM SUBSECUNDUM ---------#
 
 # 1. IMPORT DOS DADOS NECESSÁRIOS
 # 2. CONSTRUÇÃO DO GRÁFICO
 
-###############################################################################
+################################################################################
 # Deletar objetos passados
 rm(list= ls())
 
 
-###############################################################################
+################################################################################
 # Carregamento dos pacotes necessários
 
 
@@ -23,7 +23,7 @@ if (!require(rgeos)) install.packages('rgeos')
 if (!require(rgdal)) install.packages('rgdal')
 
 
-###############################################################################
+################################################################################
 
 # 1. IMPORT DOS DADOS
 
