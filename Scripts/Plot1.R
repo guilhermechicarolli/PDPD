@@ -1,7 +1,9 @@
 #------- SCRIPT DO PLOT GEOGRÁFICO DA ESPÉCIE LONCHOPHYLLA BOKERMANNI ---------#
 
 # 1. IMPORT DOS DADOS NECESSÁRIOS
+#
 # 2. CONSTRUÇÃO DO GRÁFICO
+
 
 ################################################################################
 # Deletar objetos passados

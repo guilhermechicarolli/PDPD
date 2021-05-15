@@ -5,6 +5,7 @@
 #    Remoção de pontos duplicados e criar também um buffer
 #    com raio de 5 km em cada ponto e escolher apenas um 
 #    ponto dentro de cada buffer
+#
 # 2. TRATAMENTO DOS PONTOS DE OCORRÊNCIA DA ESPÉCIES DE
 #    MORCEGO L. BOKERMANNI
 
@@ -68,6 +69,7 @@ buffer <- dismo::circles(pontos_planta, d = 5000, lonlat=TRUE, dissolve=TRUE)
 # Verificação
 plot(buffer)
 
+# CONTINUA AINDA
 
 
 ################################################################################
@@ -111,8 +113,9 @@ buffer2 <- dismo::circles(pontos_morcego, d = 5000, lonlat=TRUE, dissolve=TRUE)
 # Verificação
 plot(buffer2)
 
+# CONTINUA AINDA
 
 
 
 
-
+################################ FIM ###########################################
