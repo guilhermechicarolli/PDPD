@@ -87,4 +87,9 @@ raster::crs(camada_rep) <- proj_WGS
 # Verificação
 plot(camada_rep)
 
+
+# CONTINUA
+
+
+
 ################################ FIM ###########################################
