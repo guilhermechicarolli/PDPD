@@ -88,7 +88,7 @@ raster::crs(camada_rep) <- proj_WGS
 plot(camada_rep)
 
 
-# CONTINUA
+# CONTINUA AINDA
 
 
 
