@@ -16,8 +16,9 @@
 
 if (!require(raster)) install.packages('raster')
 if (!require(rgdal)) install.packages('rgdal')
+if (!require(rnaturalearth)) install.packages('rnaturalearth')
 if (!require(sp)) install.packages('sp')
-if (!require(sf)) install.packages('sf')
+
 
 
 # Permite que dados espaciais sejam associados com o sistema de coordenadas,
@@ -33,25 +34,20 @@ proj_WGS <- sp::CRS(
 #               NO SHAPE FILE DO BRASIL ---------#
 
 
-# Carregamento dos shape files do brasil
-brasil <- rgdal::readOGR(dsn="Dados/Mascaras/", layer='UFEBRASIL')
-brasil <- shapefile("Dados/Mascaras/UFEBRASIL.shp")
-brasil <- read_sf("Dados/Mascaras/UFEBRASIL.shp")
+# Carregamento dos shape files do brasil 
+brasil <- getData("GADM", country='Brazil', level=0, path="./Dados/Mascaras/")
 
-
+# Verificar os dados
 head(brasil)
 
 # Verificação dos dados a partir do plot do mapa
-plot(brasil)
-
-# Conversão para SpatialPolygonsDataFrame
-brasil <- as(brasil, "SpatialPolygonsDataFrame")
+sp::plot(brasil)
 
 # Acréscimo da projeção 
 raster::crs(brasil) <- proj_WGS
 
 # Salvar a máscara criada na pasta Dados/Mascaras
-rgal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
+rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
                driver="ESRI Shapefile", overwrite_layer = T)
 
 
