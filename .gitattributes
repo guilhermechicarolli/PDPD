@@ -1,4 +1,2 @@
 . filter=lfs diff=lfs merge=lfs -text
-'/Dados/Camadas_presente' filter=lfs diff=lfs merge=lfs -text
-*.tif filter=lfs diff=lfs merge=lfs -text
 *.asc filter=lfs diff=lfs merge=lfs -text
