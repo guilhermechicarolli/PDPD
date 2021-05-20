@@ -35,7 +35,7 @@ proj_WGS <- sp::CRS(
 
 
 # Carregamento dos shape files do brasil 
-brasil <- getData("GADM", country='Brazil', level=0, path="./Dados/Mascaras/")
+brasil <- raster::getData("GADM", country='Brazil', level=0, path="./Dados/Mascaras/")
 
 # Verificar os dados
 head(brasil)
@@ -59,7 +59,7 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 
 
 # Carregamento da máscara criada no passo 01
-mascara <- shapefile('Dados/Mascaras/mascara_brasil.shp')
+mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
 
 # Adicionar a projeção definida anteriormente
 raster::crs(mascara) <- proj_WGS
@@ -70,7 +70,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1', que 
 # representa a média anual de temperatura, com resolução de 30 arcsegundos
-camada_rep <- raster('Dados/wc2.1_30s_bio_1.tif')
+camada_rep <- raster('Dados/Camadas_presente/wc2.1_30s_bio_1.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep) <- proj_WGS
@@ -79,8 +79,53 @@ raster::crs(camada_rep) <- proj_WGS
 plot(camada_rep)
 
 
-# CONTINUA AINDA
+# Carregamento de todas as variáveis ambientais raster 
+# OBS: A pasta "Camadas_presente", que contém todas as camadas raster foi 
+# apagada após o corte das mesmas, por necessitarem de cerca de 15 Gb de 
+# armazenamento, sobrando então apenas as camadas já cortadas com o shape file
+# do Brasil
 
+camadas <- list.files(path='Dados/Camadas_presente/', pattern='.tif', 
+                      full.names = TRUE)
+
+camadas <- raster::stack(camadas)
+
+# Adicionar a projeção às camadas
+crs(camadas) <- proj_WGS
+
+# Verificar dados
+camadas
+
+
+
+# Reduzir o tamanho da camada representante para um retângulo, que será depois
+# cortado a partir da máscara
+corte_cam <- raster::crop(camada_rep, extent(mascara))
+
+# Verificação
+plot(corte_cam)
+
+
+# Reduzir o tamanho de todas as camadas ambientais do presente
+cortes_final = raster::resample(camadas, corte_cam, method="bilinear", 
+                                snap='out', bylayer=TRUE, progress='text')
+
+# Verificação
+cortes_final
+plot(cortes_final)
+
+# Cortar as camadas ambientais e cortar a partir da máscara
+camadas_final = raster::mask(cortes_final, mascara, bylayer=TRUE)
+
+# Verificação
+plot(camadas_final)
+
+
+
+# Salvar as camadas na pasta "Camadas_presente" no formato ".asc"
+raster::writeRaster(camadas_final, paste0("Dados/Camadas_presente/", 
+                                    paste0(names(camadas_final),".asc")), 
+            driver='ascii', bylayer=TRUE)
 
 
 ################################ FIM ###########################################

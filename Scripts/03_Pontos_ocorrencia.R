@@ -113,8 +113,9 @@ buffer2 <- dismo::circles(pontos_morcego, d = 5000, lonlat=TRUE, dissolve=TRUE)
 # Verificação
 plot(buffer2)
 
-# CONTINUA AINDA
 
+
+# CONTINUA...
 
 
 
