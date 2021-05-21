@@ -2,11 +2,13 @@
 
 # 1. CONSTRUÇÃO DA MÁSCARA COM BASE NO SHAPE FILE DO BRASIL
 #
-# 2. TRATAMENTO DAS VARIÁVEIS AMBIENTAIS DO PRESENTE: Cortes usando
+# 2. DOWNLOAD DAS CAMADAS DO PRESENTE
+#
+# 3. TRATAMENTO DAS VARIÁVEIS AMBIENTAIS DO PRESENTE: Cortes usando
 #    a máscara criada anteriormente, reprojeção e conversão 
 #    para o formato .asc que será utilizado na modelagem
 #
-# 3. TRATAMENTO DAS VARIÁVEIS AMBIENTAIS DA PROJEÇÃO
+# 4. TRATAMENTO DAS VARIÁVEIS AMBIENTAIS DA PROJEÇÃO
 #    DE 2070 (RCP 4.5 e 8.0)
 
 
@@ -35,7 +37,8 @@ proj_WGS <- sp::CRS(
 
 
 # Carregamento dos shape files do brasil 
-brasil <- raster::getData("GADM", country='Brazil', level=0, path="./Dados/Mascaras/")
+brasil <- raster::getData("GADM", country='Brazil', level=0, 
+                          path="./Dados/Mascaras/")
 
 # Verificar os dados
 head(brasil)
@@ -54,7 +57,20 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 
 ################################################################################
 
-#--------- 2. TRATAMENTO DAS CAMADAS AMBIENTAIS DO PRESENTE
+#--------- 2. DOWNLOAD DAS CAMADAS DO PRESENTE ---------#
+
+vars <- getData(name='worldclim', var='bio', res=0.5, lon=-10, lat=-40, 
+                path='./Dados/Camadas_brutas/')
+
+vars
+
+plot(vars) # PLOT EM BRANCO (?)
+
+
+
+################################################################################
+
+#--------- 3. TRATAMENTO DAS CAMADAS AMBIENTAIS DO PRESENTE
 #                    (variáveis bioclimáticas) ---------#
 
 
@@ -126,6 +142,18 @@ plot(camadas_final)
 raster::writeRaster(camadas_final, paste0("Dados/Camadas_presente/", 
                                     paste0(names(camadas_final),".asc")), 
             driver='ascii', bylayer=TRUE)
+
+
+################################################################################
+
+#--------- 4. TRATAMENTO DAS CAMADAS AMBIENTAIS DO FUTURO: RCP 4.5
+#                    (variáveis bioclimáticas)  ---------#
+
+
+
+
+
+
 
 
 ################################ FIM ###########################################
