@@ -18,7 +18,6 @@
 
 if (!require(raster)) install.packages('raster')
 if (!require(rgdal)) install.packages('rgdal')
-if (!require(rnaturalearth)) install.packages('rnaturalearth')
 if (!require(sp)) install.packages('sp')
 
 
@@ -60,7 +59,7 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 #--------- 2. DOWNLOAD DAS CAMADAS DO PRESENTE ---------#
 
 vars <- getData(name='worldclim', var='bio', res=0.5, lon=-10, lat=-40, 
-                path='./Dados/Camadas_brutas/')
+                path='./Dados/Camadas_brutas/') 
 
 vars
 
@@ -68,7 +67,7 @@ plot(vars) # PLOT EM BRANCO (?)
 
 
 
-################################################################################
+k################################################################################
 
 #--------- 3. TRATAMENTO DAS CAMADAS AMBIENTAIS DO PRESENTE
 #                    (variáveis bioclimáticas) ---------#
@@ -86,7 +85,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1', que 
 # representa a média anual de temperatura, com resolução de 30 arcsegundos
-camada_rep <- raster('Dados/Camadas_brutas/wc2.1_30s_bio_1.tif')
+camada_rep <- raster::raster('Dados/Camadas_brutas/wc2.1_30s_bio_1.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep) <- proj_WGS

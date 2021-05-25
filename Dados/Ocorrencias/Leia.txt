@@ -1,2 +1,6 @@
 Ocorrências das espécies de morcego e planta (apenas o nome da espécies, longitude e latitude), 
 ainda com viés geográfico e registros duplicados.
+
+Os arquivos 'E_subsecundum' e 'L_bokermanni' não estão tratados, possuindo ainda viés geográfico.
+
+Os arquivos 'E_subsecundum_corrigido' e 'L_bokermanni_corrigido' tiveram o viés geográfico corrigidos.

@@ -42,6 +42,16 @@ planta <- read.csv('Dados/Ocorrencias/E_subsecundum.csv')
 head(planta)
 
 
+# Carregamento da camada representante para usar de molde
+camada_rep <- raster::raster('./Dados/Camadas_presente/wc2.1_30s_bio_1.asc')
+
+# Adicionar projeção
+raster::crs(camada_rep) <- proj_WGS
+
+# Verificação
+plot(camada_rep)
+
+
 ##### REMOÇÃO DOS PONTOS DUPLICADOS
 
 planta <- planta %>%
@@ -60,7 +70,7 @@ pontos_planta <- planta[,2:3]
 sp::coordinates(pontos_planta) <- ~Longitude+Latitude
 
 # Adicionar a projeção
-raster::crs(pontos_planta) = proj_WGS
+raster::crs(pontos_planta) <- proj_WGS
 
 
 # Adicionar um buffer de 5 km à cada ponto de ocorrência
@@ -69,7 +79,26 @@ buffer <- dismo::circles(pontos_planta, d = 5000, lonlat=TRUE, dissolve=TRUE)
 # Verificação
 plot(buffer)
 
-# CONTINUA AINDA
+
+# conversão dos buffers (círculos) para polígonos
+buffer <- polygons(buffer)
+
+# Rasterização dos polígonos
+buffer <- rasterize(buffer, camada_rep)
+
+
+# Seleção de apenas um ponto de ocorrência por círculo 
+E_sub <- gridSample(pontos_planta, buffer, n=1)
+
+# 37 pontos de ocorrência resultantes
+length(E_sub[,1])
+
+
+# Salvar os pontos resultante como data frame na pasta Dados/Ocorrencias
+resultado_E_subsecundum <- as.data.frame(E_sub)
+
+write.csv(resultado_E_subsecundum, 
+          './Dados/Ocorrencias/E_subsecundum_corrigido.csv', row.names = FALSE)
 
 
 ################################################################################
@@ -104,7 +133,7 @@ pontos_morcego <- morcego[,2:3]
 sp::coordinates(pontos_morcego) <- ~Longitude+Latitude
 
 # Adicionar a projeção
-raster::crs(pontos_morcego) = proj_WGS
+raster::crs(pontos_morcego) <- proj_WGS
 
 
 # Adicionar um buffer de 5 km à cada ponto de ocorrência
@@ -114,8 +143,25 @@ buffer2 <- dismo::circles(pontos_morcego, d = 5000, lonlat=TRUE, dissolve=TRUE)
 plot(buffer2)
 
 
+# conversão dos buffers (círculos) para polígonos
+buffer2 <- polygons(buffer2)
 
-# CONTINUA...
+# Rasterização dos polígonos
+buffer2 <- rasterize(buffer2, camada_rep)
+
+
+# Seleção de apenas um ponto de ocorrência por círculo 
+L_boker <- gridSample(pontos_morcego, buffer, n=1)
+
+# 8 pontos de ocorrência resultantes
+length(L_boker[,1])
+
+
+# Salvar os pontos resultante como data frame na pasta Dados/Ocorrencias
+resultado_E_subsecundum <- as.data.frame(L_boker)
+
+write.csv(resultado_E_subsecundum, 
+          './Dados/Ocorrencias/L_bokermanni_corrigido.csv', row.names = FALSE)
 
 
 
