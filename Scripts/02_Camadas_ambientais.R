@@ -58,21 +58,32 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 
 #--------- 2. DOWNLOAD DAS CAMADAS DO PRESENTE ---------#
 
+
 ### getData faz download das camadas do worldclim 1º versão, a antiga, com dados
 ### obsoletos
-vars <- getData(name='worldclim', var='bio', res=0.5, lon=-20, lat=0, 
-                path='./Dados/Camadas_brutas/') 
-vars
-plot(vars) # PLOT EM BRANCO (?)
+# vars <- getData(name='worldclim', var='bio', res=0.5, lon=-20, lat=0, 
+#                path='./Dados/Camadas_brutas/') 
+# vars
+# plot(vars) # PLOT EM BRANCO (?)
 
 
 
-# Tentando fazer o download das camadas da 2º versão através do url
-url<- "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip"
+### Tentativa de fazer o download das camadas da 2º versão através do url
+# url<- "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip"
 
-download(url, destfile="./Dados/Camadas_brutas/")  # Erro: 'Permission denied'
+# download(url, destfile="./Dados/Camadas_brutas/")   #Erro: 'Permission denied'
 
-unzip("wc2.1_30s_bio.zip")
+# unzip("wc2.1_30s_bio.zip")
+
+
+
+
+# browseURL abre o navegador e faz o download das camadas brutas (sem cortes) do
+# site do WorldClim. Quando feito o download, é preciso descompactar os arquivos
+# na pasta "/Dados/Camadas_brutas/"
+browseURL(
+    "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip")
+
 
 
 k################################################################################
