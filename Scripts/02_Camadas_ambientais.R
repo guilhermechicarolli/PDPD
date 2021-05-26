@@ -61,8 +61,8 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 # PRESENTE
 
 # browseURL() abre o navegador e faz o download das camadas brutas (sem cortes) 
-# do site do WorldClim. Quando feito o download, é preciso descompactar os 
-# arquivos na pasta "/Dados/Camadas_brutas/Presente/"
+# do site do WorldClim. Quando feito o download, é preciso descompactar o 
+# arquivo zip na pasta "/Dados/Camadas_brutas/"
 
 browseURL(
     "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip")
@@ -73,14 +73,15 @@ browseURL(
 # Download, também tilizando browseURL(), das camadas projetadas para o futuro
 # (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5
 # Primeiro o download da projeção de RCP 4.5. Ao completar o download, é 
-# necessário descompactar na pasta "/Dados/Camadas_brutas/Futuro_RCP45/"
+# necessário descompactar o arquivo .zip na pasta 
+# "/Dados/Camadas_brutas/FuturoRPC45/"
 
 browseURL(
     "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc45bi50.zip")
 
 
-# Download da projeção de RCP 8.5. Ao completar o download, descompacte na pasta
-# "/Dados/Camadas_brutas/Futuro_RCP85/"
+# Download da projeção de RCP 8.5. Ao completar o download, descompacte o 
+# arquivo .zip na pasta "/Dados/Camadas_brutas/Futuro_RCP85/" 
 
 browseURL(
     "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc85bi50.zip")

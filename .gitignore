@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 *.asc
-/Dados/Camadas_brutas
-/Dados/Camadas_presente
+*.tif
+*.zip
