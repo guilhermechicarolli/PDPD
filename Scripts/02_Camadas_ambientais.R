@@ -2,7 +2,7 @@
 
 # 1. CONSTRUÇÃO DA MÁSCARA COM BASE NO SHAPE FILE DO BRASIL
 #
-# 2. DOWNLOAD DAS CAMADAS DO PRESENTE
+# 2. DOWNLOAD DAS CAMADAS DO PRESENTE E DAS PROJEÇÕES FUTURAS
 #
 # 3. TRATAMENTO DAS VARIÁVEIS AMBIENTAIS DO PRESENTE: Cortes usando
 #    a máscara criada anteriormente, reprojeção e conversão 
@@ -56,16 +56,34 @@ rgdal::writeOGR(brasil, "./Dados/Mascaras", "mascara_brasil",
 
 ################################################################################
 
-#--------- 2. DOWNLOAD DAS CAMADAS DO PRESENTE ---------#
+#--------- 2. DOWNLOAD DAS CAMADAS  ---------#
 
+# PRESENTE
 
-# browseURL abre o navegador e faz o download das camadas brutas (sem cortes) do
-# site do WorldClim. Quando feito o download, é preciso descompactar os arquivos
-# na pasta "/Dados/Camadas_brutas/"
+# browseURL() abre o navegador e faz o download das camadas brutas (sem cortes) 
+# do site do WorldClim. Quando feito o download, é preciso descompactar os 
+# arquivos na pasta "/Dados/Camadas_brutas/Presente/"
 
 browseURL(
     "https://biogeo.ucdavis.edu/data/worldclim/v2.1/base/wc2.1_30s_bio.zip")
 
+
+# FUTURO
+
+# Download, também tilizando browseURL(), das camadas projetadas para o futuro
+# (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5
+# Primeiro o download da projeção de RCP 4.5. Ao completar o download, é 
+# necessário descompactar na pasta "/Dados/Camadas_brutas/Futuro_RCP45/"
+
+browseURL(
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc45bi50.zip")
+
+
+# Download da projeção de RCP 8.5. Ao completar o download, descompacte na pasta
+# "/Dados/Camadas_brutas/Futuro_RCP85/"
+
+browseURL(
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc85bi50.zip")
 
 
 ################################################################################
@@ -86,7 +104,8 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1', que 
 # representa a média anual de temperatura, com resolução de 30 arcsegundos
-camada_rep <- raster::raster('Dados/Camadas_brutas/wc2.1_30s_bio_1.tif')
+camada_rep <- raster::raster(
+    'Dados/Camadas_brutas/Presente/wc2.1_30s_bio_1.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep) <- proj_WGS
@@ -96,12 +115,7 @@ plot(camada_rep)
 
 
 # Carregamento de todas as variáveis ambientais raster 
-# OBS: A pasta "Camadas_brutas", que contém todas as camadas raster foi 
-# apagada após o corte das mesmas, por necessitarem de cerca de 15 Gb de 
-# armazenamento, sobrando então apenas as camadas já cortadas com o shape file
-# do Brasil
-
-camadas <- list.files(path='Dados/Camadas_brutas/', pattern='.tif', 
+camadas <- list.files(path='Dados/Camadas_brutas/Presente/', pattern='.tif', 
                       full.names = TRUE)
 
 camadas <- raster::stack(camadas)
@@ -111,7 +125,6 @@ crs(camadas) <- proj_WGS
 
 # Verificar dados
 camadas
-
 
 
 # Reduzir o tamanho da camada representante para um retângulo, que será depois
@@ -135,7 +148,6 @@ camadas_final <- raster::mask(cortes_final, mascara, bylayer=TRUE)
 
 # Verificação
 plot(camadas_final)
-
 
 
 # Salvar as camadas na pasta "Camadas_presente" no formato ".asc"
