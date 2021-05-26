@@ -71,7 +71,7 @@ browseURL(
 # FUTURO
 
 # Download, também tilizando browseURL(), das camadas projetadas para o futuro
-# (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5
+# (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5 para o ano de 2070.
 # Primeiro o download da projeção de RCP 4.5. Ao completar o download, é 
 # necessário descompactar o arquivo .zip na pasta 
 # "/Dados/Camadas_brutas/FuturoRPC45/"
