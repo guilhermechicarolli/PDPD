@@ -72,19 +72,19 @@ browseURL(
 
 # Download, também tilizando browseURL(), das camadas projetadas para o futuro
 # (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5 para o ano de 2070.
-# Primeiro o download da projeção de RCP 4.5. Ao completar o download, é 
-# necessário descompactar o arquivo .zip na pasta 
+# Primeiro o download da projeção de RCP 4.5, modelos ACCESS1-0. Ao completar o
+# download, é necessário descompactar o arquivo .zip na pasta 
 # "/Dados/Camadas_brutas/FuturoRPC45/"
 
 browseURL(
-    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc45bi50.zip")
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac45bi50.zip")
 
 
-# Download da projeção de RCP 8.5. Ao completar o download, descompacte o 
-# arquivo .zip na pasta "/Dados/Camadas_brutas/Futuro_RCP85/" 
+# Download da projeção de RCP 8.5, modelo ACCESS1-0. Ao completar o download, 
+# descompacte o arquivo .zip na pasta "/Dados/Camadas_brutas/Futuro_RCP85/" 
 
 browseURL(
-    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/bc85bi50.zip")
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac85bi50.zip")
 
 
 ################################################################################
@@ -162,10 +162,135 @@ raster::writeRaster(camadas_final, paste0("Dados/Camadas_presente/",
 #--------- 4. TRATAMENTO DAS CAMADAS AMBIENTAIS DO FUTURO: RCP 4.5
 #                    (variáveis bioclimáticas)  ---------#
 
+# Carregamento da máscara criada anteriormente
+mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
+
+# Adicionar a projeção
+raster::crs(mascara) <- proj_WGS
+
+# Verificar dados
+mascara
+plot(mascara)
+
+# Carregamento de uma camada representante, escolhida a camada 'bio1'
+camada_rep45 <- raster::raster(
+    'Dados/Camadas_brutas/Futuro_RCP45/ac2.1_30s_bio_1.tif')
+
+# Adicionar a projeção
+raster::crs(camada_rep45) <- proj_WGS
+
+# Verificação
+plot(camada_rep45)
+
+
+# Carregamento de todas as variáveis ambientais raster 
+camadas45 <- list.files(path='Dados/Camadas_brutas/Futuro_RCP45/',
+                        pattern='.tif', full.names = TRUE)
+
+camadas45 <- raster::stack(camadas45)
+
+# Adicionar a projeção às camadas
+crs(camadas45) <- proj_WGS
+
+# Verificar dados
+camadas45
+
+
+# Reduzir o tamanho da camada representante para um retângulo
+corte_cam45 <- raster::crop(camada_rep45, extent(mascara))
+
+# Verificação
+plot(corte_cam45)
+
+
+# Reduzir o tamanho de todas as camadas ambientais do presente
+cortes_final45 <- raster::resample(camadas45, corte_cam45, method="bilinear", 
+                                 snap='out', bylayer=TRUE, progress='text')
+
+# Verificação
+cortes_final45
+plot(cortes_final45)
+
+# Cortar as camadas ambientais e cortar a partir da máscara criada
+camadas_final45 <- raster::mask(cortes_final45, mascara, bylayer=TRUE)
+
+# Verificação
+plot(camadas_final45)
+
+
+# Salvar as camadas na pasta "Camadas_Futuro_RCP45" no formato ".asc"
+raster::writeRaster(camadas_final45, paste0("Dados/Camadas_Futuro_RCP45/", 
+                                          paste0(names(camadas_final),".asc")), 
+                    driver='ascii', bylayer=TRUE)
 
 
 
+################################################################################
 
+#--------- 5. TRATAMENTO DAS CAMADAS AMBIENTAIS DO FUTURO: RCP 8.5
+#                    (variáveis bioclimáticas)  ---------#
+
+
+# Carregamento da máscara criada anteriormente
+mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
+
+# Adicionar a projeção
+raster::crs(mascara) <- proj_WGS
+
+# Verificar dados
+mascara
+plot(mascara)
+
+# Carregamento de uma camada representante, escolhida a camada 'bio1'
+camada_rep85 <- raster::raster(
+    'Dados/Camadas_brutas/Futuro_RCP85/ac2.1_30s_bio_1.tif')
+
+# Adicionar a projeção
+raster::crs(camada_rep85) <- proj_WGS
+
+# Verificação
+plot(camada_rep85)
+
+
+# Carregamento de todas as variáveis ambientais raster 
+camadas85 <- list.files(path='Dados/Camadas_brutas/Futuro_RCP85/',
+                        pattern='.tif', full.names = TRUE)
+
+camadas85 <- raster::stack(camadas85)
+
+# Adicionar a projeção às camadas
+crs(camadas85) <- proj_WGS
+
+# Verificar dados
+camadas85
+
+
+# Reduzir o tamanho da camada representante para um retângulo
+corte_cam85 <- raster::crop(camada_rep85, extent(mascara))
+
+# Verificação
+plot(corte_cam85)
+
+
+# Reduzir o tamanho de todas as camadas ambientais do presente
+cortes_final85 <- raster::resample(camadas85, corte_cam85, method="bilinear", 
+                                   snap='out', bylayer=TRUE, progress='text')
+
+# Verificação
+cortes_final85
+plot(cortes_final85)
+
+# Cortar as camadas ambientais e cortar a partir da máscara criada
+camadas_final85 <- raster::mask(cortes_final85, mascara, bylayer=TRUE)
+
+# Verificação
+plot(camadas_final85)
+
+
+# Salvar as camadas na pasta "Camadas_Futuro_RCP85" no formato ".asc"
+raster::writeRaster(camadas_final85, paste0("Dados/Camadas_Futuro_RCP85/", 
+                                            paste0(names(camadas_final),".asc")), 
+                    driver='ascii', bylayer=TRUE)
 
 
 
