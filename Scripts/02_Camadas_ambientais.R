@@ -77,14 +77,14 @@ browseURL(
 # "/Dados/Camadas_brutas/FuturoRPC45/"
 
 browseURL(
-    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac45bi50.zip")
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac45bi70.zip")
 
 
 # Download da projeção de RCP 8.5, modelo ACCESS1-0. Ao completar o download, 
 # descompacte o arquivo .zip na pasta "/Dados/Camadas_brutas/Futuro_RCP85/" 
 
 browseURL(
-    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac85bi50.zip")
+    "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac85bi70.zip")
 
 
 ################################################################################
