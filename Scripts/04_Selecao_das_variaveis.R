@@ -68,20 +68,70 @@ summary(valores_planta)
 
 ### ANÁLISE DE COMPONENTES PRINCIPAIS (PCA)
 
+# PCA com os valores extraidos:
+variaveis_PCA_planta = stats::prcomp(valores_planta, center=TRUE, scale=TRUE)
+
+# Verificação
+summary(variaveis_PCA_planta) 
 
 
+# Seleção do número de PCs a partir do Broken Stick Model:
+stats::screeplot(variaveis_PCA_planta, bstick=TRUE, type="lines")
+stats::screeplot(variaveis_PCA_planta, bstick=TRUE, type="barplot")
+
+# Verificação 
+summary(pvariaveis_PCA_planta)
+
+# Definição do número de PCs e eixos principais
+pc = 3
+
+PCA_rotacaoP = abs(variaveis_PCA_planta$rotation)
+
+lista = list()
+for (i in 1:pc) {posicao = PCA_rotacaoP[PCA_rotacaoP[, i] > 0.32, ]
+lista[[i]]=row.names(posicao)}
+
+# Variáveis selecionadas
+variaveis_selecP = unlist(lista)
+
+variaveis_selecP = unique(variaveis_selecP)
+
+# Verificação das variáveis selecionadas
+variaveis_selecP
 
 
+# Salvar os resultados da análise em um arquivo csv
+write.csv(as.data.frame(variaveis_selecP), 
+          file = "./Dados/Resultados_PCA/PCA_variaveis_planta.csv")
 
 
+# Selecionar as variáves com a maior contribução em cada PC selecionado
+PC1_var = names(which.max(abs(variaveis_PCA_planta$rotation[,1])))
+
+# Verificação
+PC1_var
+
+PC2_var = names(which.max(abs(variaveis_PCA_planta$rotation[,2])))
+
+# Verificação
+PC2_var
+
+PC3_var = names(which.max(abs(variaveis_PCA_planta$rotation[,3])))
+
+# Verificação
+PC3_var
 
 
+#salvar os resultados:
+as.data.frame(rbind(PC1_var, PC2_var, PC3_var))
+write.csv(as.data.frame(rbind(PC1_var, PC2_var, PC3_var)), 
+          file = "./Dados/Resultados_PCA/Variaveis_max_contribuicao_planta.csv")
 
 
 
 ################################################################################
 
-#--------- 1. SELEÇÃO DE VARIÁVEIS USANDO PCA PARA A
+#--------- 2. SELEÇÃO DE VARIÁVEIS USANDO PCA PARA A
 #          ESPÉCIE DE MORCEGO LONCHOPHYLLA BOKERMANNI ---------#
 
 ### CARREGAMENTO DOS DADOS
@@ -109,14 +159,64 @@ summary(valores_morcego)
 
 ### ANÁLISE DE COMPONENTES PRINCIPAIS (PCA)
 
+# PCA com os valores extraidos:
+variaveis_PCA_morc = stats::prcomp(valores_morcego, center=TRUE, scale=TRUE)
+
+# Verificação
+summary(variaveis_PCA_morc) 
 
 
+# Seleção do número de PCs a partir do Broken Stick Model:
+stats::screeplot(variaveis_PCA_morc, bstick=TRUE, type="lines")
+stats::screeplot(variaveis_PCA_morc, bstick=TRUE, type="barplot")
+
+# Verificação 
+summary(variaveis_PCA_morc)
+
+# Definição do número de PCs e eixos principais
+pc = 3
+
+PCA_rotacaoM = abs(variaveis_PCA_morc$rotation)
+
+lista = list()
+for (i in 1:pc) {posicao = PCA_rotacaoM[PCA_rotacaoM[, i] > 0.32, ]
+lista[[i]]=row.names(posicao)}
+
+# Variáveis selecionadas
+variaveis_selecM = unlist(lista)
+
+variaveis_selecM = unique(variaveis_selecM)
+
+# Verificação das variáveis selecionadas
+variaveis_selecM
 
 
+# Salvar os resultados da análise em um arquivo csv
+write.csv(as.data.frame(variaveis_selecM), 
+          file = "./Dados/Resultados_PCA/PCA_variaveis_morcego.csv")
 
 
+# Selecionar as variáves com a maior contribução em cada PC selecionado
+PC1_var = names(which.max(abs(variaveis_PCA_morc$rotation[,1])))
+
+# Verificação
+PC1_var
+
+PC2_var = names(which.max(abs(variaveis_PCA_morc$rotation[,2])))
+
+# Verificação
+PC2_var
+
+PC3_var = names(which.max(abs(variaveis_PCA_morc$rotation[,3])))
+
+# Verificação
+PC3_var
 
 
+#salvar os resultados:
+as.data.frame(rbind(PC1_var, PC2_var, PC3_var))
+write.csv(as.data.frame(rbind(PC1_var, PC2_var, PC3_var)), 
+          file = "./Dados/Resultados_PCA/Variaveis_max_contribuicao_morcego.csv")
 
 
 
