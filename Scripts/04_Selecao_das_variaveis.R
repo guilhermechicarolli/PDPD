@@ -80,7 +80,7 @@ stats::screeplot(variaveis_PCA_planta, bstick=TRUE, type="lines")
 stats::screeplot(variaveis_PCA_planta, bstick=TRUE, type="barplot")
 
 # Verificação 
-summary(pvariaveis_PCA_planta)
+summary(variaveis_PCA_planta)
 
 # Definição do número de PCs e eixos principais
 pc = 3
@@ -124,6 +124,7 @@ PC3_var
 
 #salvar os resultados:
 as.data.frame(rbind(PC1_var, PC2_var, PC3_var))
+
 write.csv(as.data.frame(rbind(PC1_var, PC2_var, PC3_var)), 
           file = "./Dados/Resultados_PCA/Variaveis_max_contribuicao_planta.csv")
 

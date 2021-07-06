@@ -174,7 +174,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1'
 camada_rep45 <- raster::raster(
-    'Dados/Camadas_brutas/Futuro_RCP45/ac2.1_30s_bio_1.tif')
+    'Dados/Camadas_brutas/Futuro_RCP45/ac45bi701.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep45) <- proj_WGS
@@ -220,7 +220,7 @@ plot(camadas_final45)
 
 # Salvar as camadas na pasta "Camadas_Futuro_RCP45" no formato ".asc"
 raster::writeRaster(camadas_final45, paste0("Dados/Camadas_Futuro_RCP45/", 
-                                          paste0(names(camadas_final),".asc")), 
+                                          paste0(names(camadas_final45),".asc")), 
                     driver='ascii', bylayer=TRUE)
 
 
@@ -243,7 +243,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1'
 camada_rep85 <- raster::raster(
-    'Dados/Camadas_brutas/Futuro_RCP85/ac2.1_30s_bio_1.tif')
+    'Dados/Camadas_brutas/Futuro_RCP85/ac85bi701.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep85) <- proj_WGS
@@ -288,8 +288,8 @@ plot(camadas_final85)
 
 
 # Salvar as camadas na pasta "Camadas_Futuro_RCP85" no formato ".asc"
-raster::writeRaster(camadas_final85, paste0("Dados/Camadas_Futuro_RCP85/", 
-                                            paste0(names(camadas_final),".asc")), 
+raster::writeRaster(camadas_final85, paste0("Dados/Camadas_Futuro_RCP85/",
+                                            paste0(names(camadas_final85),".asc")), 
                     driver='ascii', bylayer=TRUE)
 
 
