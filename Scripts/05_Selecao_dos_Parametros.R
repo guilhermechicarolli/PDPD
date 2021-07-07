@@ -43,9 +43,9 @@ ocorrP = read.csv("./Dados/Ocorrencias/E_subsecundum_corrigido.csv")
 # Verificação 
 ocorrP
 
-# Carregar as variáveis ambientais selecionadas para E. subsecundum 
-camadasP = list.files(path="./Dados/Resultados_PCA/", pattern =".asc",
-                     full.names=TRUE)
+# Carregar as variáveis ambientais selecionadas para E. subsecundum no script 04
+camadasP = list.files(path="./Dados/Camadas_selecionadas_PCA/E_subsecundum", 
+                      pattern =".asc", full.names=TRUE)
 camadasP = raster::stack(camadasP)
 
 # Verificação
@@ -77,7 +77,6 @@ evalP = ENMeval::ENMevaluate (ocorrP,
                       method = "block",
                       clamp = FALSE,
                       overlap= FALSE,
-                      rasterPreds = TRUE,
                       progbar  = TRUE,
                       updateProgress = TRUE,
                       parallel = TRUE,
@@ -125,7 +124,105 @@ write.csv(melhores_modelosP,
           row.names = F)
 
 
+################################################################################
 
+#--------- 2. PARÂMETROS DO MAXENT PARA 
+#             LONCHOPHYLLA BOKERMANNI  ---------#
+
+
+# Aumento da memória do Java no R para 5 gb
+options(java.parameters = "-Xmx5g")
+
+jar = paste("./Maxent/maxent.jar")
+
+### CARREGAMENTO DOS DADOS
+
+# Carregamento dos pontos de ocorrência de Encholirium subsecundum no script 03
+ocorrM = read.csv("./Dados/Ocorrencias/L_bokermanni_corrigido.csv")
+
+# Verificação 
+ocorrM
+
+# Carregar as variáveis ambientais selecionadas para L. bokermanni no script 04
+
+camadasM = list.files(path="./Dados/Camadas_selecionadas_PCA/L_bokermanni", 
+                      pattern =".asc", full.names=TRUE)
+camadasM = raster::stack(camadasM)
+
+# Verificação
+camadasM
+
+# Carregamento de 10 mil pontos de pseudoausência dentro da área de estudo 
+# (pontos de background)
+
+pontos_bgM = dismo::randomPoints(camadasM, n=10000)
+
+
+### FUNÇÃO ENMevaluate
+
+# Teste dos parâmetros
+
+# Classes features
+FC = c("L", "LQ", "H", "LQH")
+
+# Regularização/beta
+RM = seq(0.5, 2, 0.5)
+
+# Análise ENMevaluate com o Maxent
+evalM = ENMeval::ENMevaluate (ocorrM,
+                              camadasM,
+                              bg.coords = pontos_bgM,
+                              RMvalues = RM,
+                              fc = FC,
+                              algorithm = "maxent.jar",
+                              method = "block",
+                              clamp = FALSE,
+                              overlap= FALSE,
+                              progbar  = TRUE,
+                              updateProgress = TRUE,
+                              parallel = TRUE,
+                              numCores = 3)
+
+evalM = ENMeval::ENMevaluate (ocorrM,
+                              camadasM,
+                              bg.coords = pontos_bgM,
+                              RMvalues = RM,
+                              fc = FC,
+                              method = "block",
+                              clamp = FALSE,
+                              overlap= FALSE,
+                              rasterPreds = TRUE,
+                              progbar  = TRUE,
+                              parallel = TRUE,
+                              numCores = 4)
+
+# Verificação dos dados
+evalM
+
+# Salvar os resultados como Rdata
+saveRDS(evalM, file = 
+            "./Dados/Parametros_maxent/ParametrosMaxEnt_L_bokermanni.rds")
+
+
+### ESCOLHA DOS MELHORES VALORES ANALISADOS DE FEATURE CLASS E REGULARIZAÇÃO
+
+# Todos os resultados de performance dos modelos
+evalM@results
+
+# Organização a partir de valores de AICc
+resultadosM = plyr::arrange(evalM@results, evalM@results$AICc)
+
+# Verificação dos dados
+resultadosM
+
+# Considerar os melhores modelos, no qual deltaAICc < 2 (desconsiderando NA)
+melhores_modelosM = resultadosM[resultadosM$delta.AICc<2  &
+                                    !is.na(resultadosM$delta.AICc), ]
+
+# Salvar o arquivo csv
+write.csv(melhores_modelosM,
+          file="./Dados/Parametros_maxent/melhores_parametros_L_bokermanni.csv", 
+          row.names = F)
 
 
 ################################ FIM ###########################################

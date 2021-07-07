@@ -150,6 +150,19 @@ raster::crs(pontos_morcego) <- proj_WGS
 pontos_morcego
 
 
+# Carregamento das camadas ambientais raster cortadas no script 02 
+camadas <- list.files(path='./Dados/Camadas_presente/', pattern='.asc', 
+                      full.names=TRUE) 
+
+camadas <- raster::stack(camadas)
+
+# Adicionar a projeção geográfica 
+raster::crs(camadas) <- proj_WGS
+
+# Verificação dos dados
+camadas
+
+
 # Obter os valores das camadas ambientais nos pontos de ocorrência da espécie
 valores_morcego <- raster::as.data.frame(
     raster::extract(camadas, pontos_morcego))
@@ -216,6 +229,7 @@ PC3_var
 
 #salvar os resultados:
 as.data.frame(rbind(PC1_var, PC2_var, PC3_var))
+
 write.csv(as.data.frame(rbind(PC1_var, PC2_var, PC3_var)), 
           file = "./Dados/Resultados_PCA/Variaveis_max_contribuicao_morcego.csv")
 
