@@ -33,20 +33,19 @@ proj_WGS <- sp::CRS(
 # Aumento da memória do Java no R para 5 gb
 options(java.parameters = "-Xmx5g")
 
-jar = paste("./Maxent/maxent.jar")
-
 ### CARREGAMENTO DOS DADOS
 
 # Carregamento dos pontos de ocorrência de Encholirium subsecundum no script 03
-ocorrP = read.csv("./Dados/Ocorrencias/E_subsecundum_corrigido.csv")
+ocorrP <- read.csv("./Dados/Ocorrencias/E_subsecundum_corrigido.csv")
 
 # Verificação 
 ocorrP
 
 # Carregar as variáveis ambientais selecionadas para E. subsecundum no script 04
-camadasP = list.files(path="./Dados/Camadas_selecionadas_PCA/E_subsecundum", 
+# É preciso criar uma pasta chamda Camadas_selecionadas_PCA dentro da pasta
+camadasP <- list.files(path="./Dados/Camadas_selecionadas_PCA/E_subsecundum", 
                       pattern =".asc", full.names=TRUE)
-camadasP = raster::stack(camadasP)
+camadasP <- raster::stack(camadasP)
 
 # Verificação
 camadasP
@@ -54,7 +53,7 @@ camadasP
 # Carregamento de 10 mil pontos de pseudoausência dentro da área de estudo 
 # (pontos de background)
 
-pontos_bgP = dismo::randomPoints(camadasP, n=10000)
+pontos_bgP <- dismo::randomPoints(camadasP, n=10000)
 
 
 ### FUNÇÃO ENMevaluate
@@ -62,13 +61,15 @@ pontos_bgP = dismo::randomPoints(camadasP, n=10000)
 # Teste dos parâmetros
 
 # Classes features
-FC = c("L", "LQ", "H", "LQH")
+FC <- c("L", "LQ", "H", "LQH")
 
 # Regularização/beta
-RM = seq(0.5, 2, 0.5)
+RM <- seq(0.5, 2, 0.5)
+
+detectCores()
 
 # Análise ENMevaluate com o Maxent
-evalP = ENMeval::ENMevaluate (ocorrP,
+evalP <- ENMeval::ENMevaluate (ocorrP,
                       camadasP,
                       bg.coords = pontos_bgP,
                       RMvalues = RM,
@@ -82,7 +83,7 @@ evalP = ENMeval::ENMevaluate (ocorrP,
                       parallel = TRUE,
                       numCores = 3)
 
-evalP = ENMeval::ENMevaluate (ocorrP,
+evalP <- ENMeval::ENMevaluate (ocorrP,
                       camadasP,
                       bg.coords = pontos_bgP,
                       RMvalues = RM,
@@ -109,13 +110,13 @@ saveRDS(evalP, file =
 evalP@results
 
 # Organização a partir de valores de AICc
-resultadosP = plyr::arrange(evalP@results, evalP@results$AICc)
+resultadosP <- plyr::arrange(evalP@results, evalP@results$AICc)
 
 # Verificação dos dados
 resultadosP
 
 # Considerar os melhores modelos, no qual deltaAICc < 2 (desconsiderando NA)
-melhores_modelosP = resultadosP[resultadosP$delta.AICc<2  &
+melhores_modelosP <- resultadosP[resultadosP$delta.AICc<2  &
                                     !is.na(resultadosP$delta.AICc), ]
 
 # Salvar o arquivo csv
@@ -133,21 +134,20 @@ write.csv(melhores_modelosP,
 # Aumento da memória do Java no R para 5 gb
 options(java.parameters = "-Xmx5g")
 
-jar = paste("./Maxent/maxent.jar")
 
 ### CARREGAMENTO DOS DADOS
 
 # Carregamento dos pontos de ocorrência de Encholirium subsecundum no script 03
-ocorrM = read.csv("./Dados/Ocorrencias/L_bokermanni_corrigido.csv")
+ocorrM <- read.csv("./Dados/Ocorrencias/L_bokermanni_corrigido.csv")
 
 # Verificação 
 ocorrM
 
 # Carregar as variáveis ambientais selecionadas para L. bokermanni no script 04
 
-camadasM = list.files(path="./Dados/Camadas_selecionadas_PCA/L_bokermanni", 
+camadasM <- list.files(path="./Dados/Camadas_selecionadas_PCA/L_bokermanni", 
                       pattern =".asc", full.names=TRUE)
-camadasM = raster::stack(camadasM)
+camadasM <- raster::stack(camadasM)
 
 # Verificação
 camadasM
@@ -155,7 +155,7 @@ camadasM
 # Carregamento de 10 mil pontos de pseudoausência dentro da área de estudo 
 # (pontos de background)
 
-pontos_bgM = dismo::randomPoints(camadasM, n=10000)
+pontos_bgM <- dismo::randomPoints(camadasM, n=10000)
 
 
 ### FUNÇÃO ENMevaluate
@@ -163,13 +163,13 @@ pontos_bgM = dismo::randomPoints(camadasM, n=10000)
 # Teste dos parâmetros
 
 # Classes features
-FC = c("L", "LQ", "H", "LQH")
+FC <- c("L", "LQ", "H", "LQH")
 
 # Regularização/beta
-RM = seq(0.5, 2, 0.5)
+RM <- seq(0.5, 2, 0.5)
 
 # Análise ENMevaluate com o Maxent
-evalM = ENMeval::ENMevaluate (ocorrM,
+evalM <- ENMeval::ENMevaluate (ocorrM,
                               camadasM,
                               bg.coords = pontos_bgM,
                               RMvalues = RM,
@@ -183,7 +183,7 @@ evalM = ENMeval::ENMevaluate (ocorrM,
                               parallel = TRUE,
                               numCores = 3)
 
-evalM = ENMeval::ENMevaluate (ocorrM,
+evalM <- ENMeval::ENMevaluate (ocorrM,
                               camadasM,
                               bg.coords = pontos_bgM,
                               RMvalues = RM,
@@ -210,13 +210,13 @@ saveRDS(evalM, file =
 evalM@results
 
 # Organização a partir de valores de AICc
-resultadosM = plyr::arrange(evalM@results, evalM@results$AICc)
+resultadosM <- plyr::arrange(evalM@results, evalM@results$AICc)
 
 # Verificação dos dados
 resultadosM
 
 # Considerar os melhores modelos, no qual deltaAICc < 2 (desconsiderando NA)
-melhores_modelosM = resultadosM[resultadosM$delta.AICc<2  &
+melhores_modelosM <- resultadosM[resultadosM$delta.AICc<2  &
                                     !is.na(resultadosM$delta.AICc), ]
 
 # Salvar o arquivo csv

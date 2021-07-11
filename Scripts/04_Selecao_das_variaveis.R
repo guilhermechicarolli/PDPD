@@ -69,7 +69,7 @@ summary(valores_planta)
 ### ANÁLISE DE COMPONENTES PRINCIPAIS (PCA)
 
 # PCA com os valores extraidos:
-variaveis_PCA_planta = stats::prcomp(valores_planta, center=TRUE, scale=TRUE)
+variaveis_PCA_planta <- stats::prcomp(valores_planta, center=TRUE, scale=TRUE)
 
 # Verificação
 summary(variaveis_PCA_planta) 
@@ -85,16 +85,16 @@ summary(variaveis_PCA_planta)
 # Definição do número de PCs e eixos principais
 pc = 3
 
-PCA_rotacaoP = abs(variaveis_PCA_planta$rotation)
+PCA_rotacaoP <- abs(variaveis_PCA_planta$rotation)
 
-lista = list()
+lista <- list()
 for (i in 1:pc) {posicao = PCA_rotacaoP[PCA_rotacaoP[, i] > 0.32, ]
-lista[[i]]=row.names(posicao)}
+lista[[i]]<-row.names(posicao)}
 
 # Variáveis selecionadas
-variaveis_selecP = unlist(lista)
+variaveis_selecP <- unlist(lista)
 
-variaveis_selecP = unique(variaveis_selecP)
+variaveis_selecP <- unique(variaveis_selecP)
 
 # Verificação das variáveis selecionadas
 variaveis_selecP
@@ -106,17 +106,17 @@ write.csv(as.data.frame(variaveis_selecP),
 
 
 # Selecionar as variáves com a maior contribução em cada PC selecionado
-PC1_var = names(which.max(abs(variaveis_PCA_planta$rotation[,1])))
+PC1_var <- names(which.max(abs(variaveis_PCA_planta$rotation[,1])))
 
 # Verificação
 PC1_var
 
-PC2_var = names(which.max(abs(variaveis_PCA_planta$rotation[,2])))
+PC2_var <- names(which.max(abs(variaveis_PCA_planta$rotation[,2])))
 
 # Verificação
 PC2_var
 
-PC3_var = names(which.max(abs(variaveis_PCA_planta$rotation[,3])))
+PC3_var <- names(which.max(abs(variaveis_PCA_planta$rotation[,3])))
 
 # Verificação
 PC3_var
@@ -174,7 +174,7 @@ summary(valores_morcego)
 ### ANÁLISE DE COMPONENTES PRINCIPAIS (PCA)
 
 # PCA com os valores extraidos:
-variaveis_PCA_morc = stats::prcomp(valores_morcego, center=TRUE, scale=TRUE)
+variaveis_PCA_morc <- stats::prcomp(valores_morcego, center=TRUE, scale=TRUE)
 
 # Verificação
 summary(variaveis_PCA_morc) 
@@ -190,16 +190,16 @@ summary(variaveis_PCA_morc)
 # Definição do número de PCs e eixos principais
 pc = 3
 
-PCA_rotacaoM = abs(variaveis_PCA_morc$rotation)
+PCA_rotacaoM <- abs(variaveis_PCA_morc$rotation)
 
-lista = list()
+lista <- list()
 for (i in 1:pc) {posicao = PCA_rotacaoM[PCA_rotacaoM[, i] > 0.32, ]
-lista[[i]]=row.names(posicao)}
+lista[[i]] <- row.names(posicao)}
 
 # Variáveis selecionadas
-variaveis_selecM = unlist(lista)
+variaveis_selecM <- unlist(lista)
 
-variaveis_selecM = unique(variaveis_selecM)
+variaveis_selecM <- unique(variaveis_selecM)
 
 # Verificação das variáveis selecionadas
 variaveis_selecM
@@ -211,17 +211,17 @@ write.csv(as.data.frame(variaveis_selecM),
 
 
 # Selecionar as variáves com a maior contribução em cada PC selecionado
-PC1_var = names(which.max(abs(variaveis_PCA_morc$rotation[,1])))
+PC1_var <- names(which.max(abs(variaveis_PCA_morc$rotation[,1])))
 
 # Verificação
 PC1_var
 
-PC2_var = names(which.max(abs(variaveis_PCA_morc$rotation[,2])))
+PC2_var <- names(which.max(abs(variaveis_PCA_morc$rotation[,2])))
 
 # Verificação
 PC2_var
 
-PC3_var = names(which.max(abs(variaveis_PCA_morc$rotation[,3])))
+PC3_var <- names(which.max(abs(variaveis_PCA_morc$rotation[,3])))
 
 # Verificação
 PC3_var
