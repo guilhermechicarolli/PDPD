@@ -18,20 +18,15 @@ if (!require(plyr)) install.packages('plyr')
 if (!require(ENMeval)) install.packages('ENMeval')
 
 
-# Permite que dados espaciais sejam associados com o sistema de coordenadas,
-# criando uma projeção que pode ser utilizada nos rasters
-
-proj_WGS <- sp::CRS(
-    "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+# Aumento da memória do Java no R para 6 gb. Leve em consideração a quantidade 
+# de memória que deseje utilizar e muda os parâmetros
+options(java.parameters = "-Xmx6g")
 
 
 ################################################################################
 
 #--------- 1. PARÂMETROS DO MAXENT PARA 
 #              ENCHOLIRIUM SUBSECUNDUM  ---------#
-
-# Aumento da memória do Java no R para 5 gb
-options(java.parameters = "-Xmx5g")
 
 ### CARREGAMENTO DOS DADOS
 
@@ -68,7 +63,9 @@ RM <- seq(0.5, 2, 0.5)
 
 detectCores()
 
-# Análise ENMevaluate com o Maxent
+# Análise ENMevaluate com o Maxent. Esse processo pode demorar até duas horas 
+# dependendo da capacidade de processamento do computador. Se desejar usar menos
+# ou mais cores de processamento, mude o parâmetro numCores
 evalP <- ENMeval::ENMevaluate (ocorrP,
                       camadasP,
                       bg.coords = pontos_bgP,
@@ -81,27 +78,15 @@ evalP <- ENMeval::ENMevaluate (ocorrP,
                       progbar  = TRUE,
                       updateProgress = TRUE,
                       parallel = TRUE,
-                      numCores = 3)
-
-evalP <- ENMeval::ENMevaluate (ocorrP,
-                      camadasP,
-                      bg.coords = pontos_bgP,
-                      RMvalues = RM,
-                      fc = FC,
-                      method = "block",
-                      clamp = FALSE,
-                      overlap= FALSE,
-                      rasterPreds = TRUE,
-                      progbar  = TRUE,
-                      parallel = TRUE,
                       numCores = 4)
+
 
 # Verificação dos dados
 evalP
 
 # Salvar os resultados como Rdata
 saveRDS(evalP, file = 
-            "./Dados/Parametros_maxent/ParametrosMaxEnt_E_subsecundum.rds")
+            "./Dados/Parametros_maxent/Parametros_Maxent_E_subsecundum.rds")
 
 
 ### ESCOLHA DOS MELHORES VALORES ANALISADOS DE FEATURE CLASS E REGULARIZAÇÃO
@@ -119,6 +104,9 @@ resultadosP
 melhores_modelosP <- resultadosP[resultadosP$delta.AICc<2  &
                                     !is.na(resultadosP$delta.AICc), ]
 
+# Verificação dos dados
+melhores_modelosP
+
 # Salvar o arquivo csv
 write.csv(melhores_modelosP,
           file="./Dados/Parametros_maxent/melhores_parametros_E_subsecundum.csv", 
@@ -129,10 +117,6 @@ write.csv(melhores_modelosP,
 
 #--------- 2. PARÂMETROS DO MAXENT PARA 
 #             LONCHOPHYLLA BOKERMANNI  ---------#
-
-
-# Aumento da memória do Java no R para 5 gb
-options(java.parameters = "-Xmx5g")
 
 
 ### CARREGAMENTO DOS DADOS
@@ -168,7 +152,11 @@ FC <- c("L", "LQ", "H", "LQH")
 # Regularização/beta
 RM <- seq(0.5, 2, 0.5)
 
-# Análise ENMevaluate com o Maxent
+detectCores()
+
+# Análise ENMevaluate com o Maxent. Esse processo pode demorar até duas horas 
+# dependendo da capacidade de processamento do computador. Se desejar usar menos
+# ou mais cores de processamento, mude o parâmetro numCores
 evalM <- ENMeval::ENMevaluate (ocorrM,
                               camadasM,
                               bg.coords = pontos_bgM,
@@ -181,27 +169,15 @@ evalM <- ENMeval::ENMevaluate (ocorrM,
                               progbar  = TRUE,
                               updateProgress = TRUE,
                               parallel = TRUE,
-                              numCores = 3)
-
-evalM <- ENMeval::ENMevaluate (ocorrM,
-                              camadasM,
-                              bg.coords = pontos_bgM,
-                              RMvalues = RM,
-                              fc = FC,
-                              method = "block",
-                              clamp = FALSE,
-                              overlap= FALSE,
-                              rasterPreds = TRUE,
-                              progbar  = TRUE,
-                              parallel = TRUE,
                               numCores = 4)
+
 
 # Verificação dos dados
 evalM
 
 # Salvar os resultados como Rdata
 saveRDS(evalM, file = 
-            "./Dados/Parametros_maxent/ParametrosMaxEnt_L_bokermanni.rds")
+            "./Dados/Parametros_maxent/Parametros_Maxent_L_bokermanni.rds")
 
 
 ### ESCOLHA DOS MELHORES VALORES ANALISADOS DE FEATURE CLASS E REGULARIZAÇÃO
@@ -218,6 +194,9 @@ resultadosM
 # Considerar os melhores modelos, no qual deltaAICc < 2 (desconsiderando NA)
 melhores_modelosM <- resultadosM[resultadosM$delta.AICc<2  &
                                     !is.na(resultadosM$delta.AICc), ]
+
+# Verificação dos dados
+melhores_modelosM
 
 # Salvar o arquivo csv
 write.csv(melhores_modelosM,
