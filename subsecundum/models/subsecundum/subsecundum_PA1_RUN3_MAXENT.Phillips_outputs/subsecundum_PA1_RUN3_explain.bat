@@ -1,0 +1,2 @@
+java -mx500m -cp "/C:/Users/guich/Documents/R/win-library/4.0/dismo/java/maxent.jar;C:\Users\guich\Documents\R\win-library\4.0\dismo\java/maxent.jar" density.Explain -l C:\Users\guich\Documents\PDPD\subsecundum\models\subsecundum\subsecundum_PA1_RUN3_MAXENT.Phillips_outputs\subsecundum_PA1_RUN3.lambdas C:\Users\guich\Documents\PDPD\subsecundum\models\subsecundum\subsecundum_PA1_RUN3_MAXENT.Phillips_outputs\subsecundum_PA1_RUN3.asc C:\Users\guich\Documents\PDPD\subsecundum\models\subsecundum\m_17491199\Back_swd.csv
+@if errorlevel 1 pause

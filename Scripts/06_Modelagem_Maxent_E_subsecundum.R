@@ -82,21 +82,21 @@ respP = rep(1, length(ocorrP))
 ### DEFINIÇÃO DOS PONTOS DE BACKGROUND
 
 # Definir os pontos de background.pseudoausência, concentrando os pontos entre 
-# 20 e 500 km de distância das ocorrências
+# 20 e 500 km de distância das ocorrências. 10000 pontos de background.
 
 pontos_backgP <- biomod2::BIOMOD_FormatingData (resp.var = respP, 
                                        expl.var = explP, 
                                        resp.xy = xyP, 
                                        resp.name = nomeP, 
                                        PA.nb.rep = 1,	
-                                       PA.nb.absences = 50,	
+                                       PA.nb.absences = 10000,	
                                        PA.strategy = 'disk',
                                        PA.dist.min = 20000,	
                                        PA.dist.max = 500000,	
                                        na.rm = TRUE)
 
 # Verificação dos valores das camadas ambientais nos pontos de background
-head(back@data.env.var)
+head(pontos_backgP@data.env.var)
 
 
 ### DEFINIÇÃO DOS PARÂMETROS DO MAXENT
@@ -107,7 +107,7 @@ head(back@data.env.var)
 
 opcoes_maxentP = biomod2::BIOMOD_ModelingOptions(
     MAXENT.Phillips = list(
-        path_to_maxent.jar = "/Dados/Maxent",
+        path_to_maxent.jar = "~/R/win-library/4.0/dismo/java",
         memory_allocated = NULL, 
         maximumiterations = 5000,    # quantidade de interações
         # Features:

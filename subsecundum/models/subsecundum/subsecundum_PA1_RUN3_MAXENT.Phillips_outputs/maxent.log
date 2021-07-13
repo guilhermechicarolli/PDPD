@@ -1,0 +1,47 @@
+Tue Jul 13 12:30:18 BRT 2021
+MaxEnt version 3.4.1
+Reading file Back_swd.csv
+readGrid: max memory 477626368, total allocated 257425408, free 243893776, used 13531632, increment 13531632
+Reading samples from Sp_swd.csv
+Read samples: max memory 477626368, total allocated 257425408, free 217775016, used 39650392, increment 26118760
+Making features
+makeFeatures: max memory 477626368, total allocated 257425408, free 217438920, used 39986488, increment 336096
+Command line used:  environmentallayers=subsecundum/models/subsecundum/m_17491199/Back_swd.csv samplesfile=subsecundum/models/subsecundum/m_17491199/Sp_swd.csv projectionlayers=subsecundum/models/subsecundum/m_17491199/Predictions/Pred_swd.csv outputdirectory=subsecundum/models/subsecundum/subsecundum_PA1_RUN3_MAXENT.Phillips_outputs outputformat=logistic redoifexists visible=FALSE linear=TRUE quadratic=TRUE product=FALSE threshold=FALSE hinge=FALSE lq2lqptthreshold=80 l2lqthreshold=10 hingethreshold=15 beta_threshold=-1 beta_categorical=-1 beta_lqp=-1 beta_hinge=-1 betamultiplier=0.5 defaultprevalence=0.5 autorun nowarnings notooltips noaddsamplestobackground
+Command line to repeat: java density.MaxEnt nowarnings noprefixes outputformat=logistic outputdirectory=subsecundum/models/subsecundum/subsecundum_PA1_RUN3_MAXENT.Phillips_outputs projectionlayers=subsecundum/models/subsecundum/m_17491199/Predictions/Pred_swd.csv samplesfile=subsecundum/models/subsecundum/m_17491199/Sp_swd.csv environmentallayers=subsecundum/models/subsecundum/m_17491199/Back_swd.csv nowarnings notooltips noaskoverwrite betamultiplier=0.5 noproduct nohinge noaddsamplestobackground autorun novisible
+Species: subsecundum_PA1_RUN3
+Layers: wc2.1_30s_bio_15 wc2.1_30s_bio_4 wc2.1_30s_bio_9
+Layertypes: Continuous Continuous Continuous
+outputformat: logistic
+outputdirectory: subsecundum/models/subsecundum/subsecundum_PA1_RUN3_MAXENT.Phillips_outputs
+projectionlayers: subsecundum/models/subsecundum/m_17491199/Predictions/Pred_swd.csv
+samplesfile: subsecundum/models/subsecundum/m_17491199/Sp_swd.csv
+environmentallayers: subsecundum/models/subsecundum/m_17491199/Back_swd.csv
+warnings: false
+tooltips: false
+askoverwrite: false
+betamultiplier: 0.5
+product: false
+hinge: false
+addsamplestobackground: false
+autorun: true
+visible: false
+
+getSamples: max memory 477626368, total allocated 257425408, free 216095712, used 41329696, increment 1343208
+subsecundum_PA1_RUN3: 
+Regularization values: linear/quadratic/product: 0.327, categorical: 0.250, threshold: 1.740, hinge: 0.500
+26 samples
+Density: max memory 477626368, total allocated 257425408, free 216095712, used 41329696, increment 0
+linearPredictor: max memory 477626368, total allocated 257425408, free 216095712, used 41329696, increment 0
+FeaturedSpace: max memory 477626368, total allocated 257425408, free 216095712, used 41329696, increment 0
+Sequential: max memory 477626368, total allocated 257425408, free 215424600, used 42000808, increment 671112
+Initial loss: 8.85366542803745
+180: time = 0,111000 loss = 7,141577
+Resulting gain: 1.7120883364069464
+Projecting...
+Writing file subsecundum\models\subsecundum\subsecundum_PA1_RUN3_MAXENT.Phillips_outputs\subsecundum_PA1_RUN3.csv
+Projecting...
+Reading file Pred_swd.csv
+readGrid: max memory 477626368, total allocated 257425408, free 239209240, used 18216168, increment -23784640
+Writing file subsecundum\models\subsecundum\subsecundum_PA1_RUN3_MAXENT.Phillips_outputs\subsecundum_PA1_RUN3_Pred_swd.csv
+Writing file subsecundum\models\subsecundum\subsecundum_PA1_RUN3_MAXENT.Phillips_outputs\subsecundum_PA1_RUN3_Pred_swd_clamping.csv
+Ending
