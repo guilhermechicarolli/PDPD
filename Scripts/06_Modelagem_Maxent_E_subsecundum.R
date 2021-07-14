@@ -1,12 +1,13 @@
 ############## SCRIPTS DO PROJETO DE PDPD ##############
 
 # 1. Rodagem dos modelos de distribuição para a espécie 
-#    de planta Encholirium subsecundum;
-# 2. Validação e escolha do melhor modelo para a projeção
-#    futura;
-# 3. Construção dos mapas finais com as projeções do 
-#    presente e do futuro;
-# 4. Classificação da sobreposição geográfica e análise
+#    de planta Encholirium subsecundum
+# 2. Validação e escolha do melhor modelo, além de 
+#    cálculo da importância das variáveis
+# 3. Criação das projeções no presente e dos mapas
+# 4. Criação das projeções no cenário futuro de RCP 4.5
+# 5. Criação das projeções no cenário futuro de RCP 8.5
+# 6. Classificação da sobreposição geográfica e análise
 #    de mismatch
 
 ################################################################################
@@ -105,7 +106,7 @@ head(pontos_backgP@data.env.var)
 # analisados e obtidos no script 05 a partir da analise usando ENMevaluate
 # Features: LQ, RM = 0.5
 
-opcoes_maxentP = biomod2::BIOMOD_ModelingOptions(
+opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(
     MAXENT.Phillips = list(
         path_to_maxent.jar = "~/R/win-library/4.0/dismo/java",
         memory_allocated = NULL, 
@@ -129,7 +130,7 @@ opcoes_maxentP = biomod2::BIOMOD_ModelingOptions(
 
 ### RODAGEM DO MODELO NO MAXENT
 
-modelo_maxentP = biomod2::BIOMOD_Modeling(pontos_backgP,
+modelo_maxentP <- biomod2::BIOMOD_Modeling(pontos_backgP,
                                  models=c("MAXENT.Phillips"), 
                                  models.options = opcoes_maxentP, 
                                  NbRunEval = 10,	 # quantidade de replicações
@@ -148,11 +149,10 @@ modelo_maxentP = biomod2::BIOMOD_Modeling(pontos_backgP,
 
 ################################################################################
 
-
 #--------- 2. VALIDAÇÃO DOS MODELOS GERADOS  ---------#
 
 # Parâmetros de validação
-modelos_validacaoP = biomod2::get_evaluations(modelo_maxentP)
+modelos_validacaoP <- biomod2::get_evaluations(modelo_maxentP)
 
 # Verificação
 modelos_validacaoP
@@ -171,7 +171,7 @@ TSS_resultadosP<-as.data.frame(cbind(modelos_validacao["TSS","Testing.data",,,],
                                       modelos_validacao["TSS","Cutoff",,,] ))
 
 # alterar o nome das colunas
-colnames(TSS_resultadosP) = c("TSS", "Sensitivity", "Specificity", "Threshold")
+colnames(TSS_resultadosP) <- c("TSS", "Sensitivity", "Specificity", "Threshold")
 
 # Verificação
 head(TSS_resultados)
@@ -194,7 +194,7 @@ AUC_resultadosP<-as.data.frame(cbind(modelos_validacao["ROC","Testing.data",,,],
                                      modelos_validacao["ROC","Cutoff",,,] ))
 
 # alterar o nome das colunas
-colnames(AUC_resultadosP) = c("AUC", "Sensitivity", "Specificity", "Threshold")
+colnames(AUC_resultadosP) <- c("AUC", "Sensitivity", "Specificity", "Threshold")
 
 # Verificação
 head(AUC_resultadosP)
@@ -204,8 +204,8 @@ write.csv(AUC_resultadosP,
           "./Dados/Resultados_E_subsecundum/subsecundum_AUC_tabela.csv")
 
 
-### ESCOLHA DO MELHOR MODELO A PARTIR DAS MÉTRICAS CALCULADAS (será usada para
-### as prjeções futuras)
+### ESCOLHA DO MELHOR MODELO A PARTIR DAS MÉTRICAS CALCULADAS (será usado para
+### as projeções futuras)
 
 # Escolha de modelos com TSS > 0.4 e AUC > 0.7
 # Sensitividade e especificidade mais próximas de 100 são melhores
@@ -214,7 +214,7 @@ write.csv(AUC_resultadosP,
 AUC_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
 TSS_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
 
-posicao_modelosP = which(AUC_resultados[,1] > 0.75)
+posicao_modelosP <- which(AUC_resultados[,1] > 0.75)
 
 # Seleção do nome dos melhores modelos e do melhor modelo:
 
@@ -222,9 +222,197 @@ posicao_modelosP = which(AUC_resultados[,1] > 0.75)
 modelo_maxentP@models.computed
 
 # Nomes dos melhores modelos
-melhores_modelosP = modelo_maxentP@models.computed[posicao_modelosP]
+melhores_modelosP <- modelo_maxentP@models.computed[posicao_modelosP]
 
 # Nome do melhor modelo
-melhor_modeloP = modelo_maxentP@models.computed[5]
+melhor_modeloP <- modelo_maxentP@models.computed[5]
+
+
+
+### CÁLCULO DA IMPORTÂNCIA DAS VARIÁVEIS
+
+# Considerando todos os modelos
+importancia_varsP <- t(as.data.frame(get_variables_importance(modelo_maxentP)))  ##### TESTAR ESSA PARTE
+
+# Verificação
+importancia_varsP
+
+# Salvar os resultados
+write.csv(importancia_varsP, 
+          './Dados/Resultados_E_subsecundum/subsecundum_mportancia_variaveis.csv')
+
+
+# Considerar apenas os melhores modelos
+melhores_impP <- importancia_varsP[posicao_modelosP, ]
+
+# Cálculo da média da importância 
+media_impP <- c(mean(melhores_impP[,1]), mean(melhores_impP[,2]), 
+               mean(melhores_impP[,3]), mean(melhores_impP[,4]), 
+               mean(melhores_impP[,5]))                                         # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
+
+# Adicionar uma última linha com as médias de importância
+melhores_mediasP <- rbind(melhores_impP, media_impP)
+
+# Verificação
+tail(melhores_mediasP)
+
+# Salvar os resultados
+write.csv(melhores_mediasP, 
+          "./Dados/Resultados/subsecundum_importancia_vars_melhores_modelos.csv")
+
+
+### GRÁFICOS DA IMPORTÂNCIA DAS VARIÁVEIS
+
+# Gráfico da importância das variáveis para todos os modelos
+ggplot2::ggplot(gather(as.data.frame(importancia_varsP)),
+       aes(x = reorder(key, value, fun = median,), y = value)) + 
+    
+    geom_boxplot() + 
+    
+    scale_x_discrete(name="Variáveis")+
+    
+    scale_y_continuous(name="Importância (%)")+
+    
+    theme_bw(base_size = 14)
+
+# Gráfico da importância das variáveis dos melhores modelos
+ggplot2::ggplot(gather(as.data.frame(melhores_impP))
+       ,aes(x = reorder(key, value, fun = median,), y = value)) + 
+    
+    geom_boxplot() + 
+    
+    scale_x_discrete(name="Variáveis")+
+    
+    scale_y_continuous(name="Importância (%)")+
+    
+    theme_bw(base_size = 14)
+
+
+
+### CURVAS DE RESPOSTAS DAS VARIÁVEIS PARA OS MODELOS
+
+modelosP<-biomod2::BIOMOD_LoadModels(modelo_maxentP, models = "MAXENT.Phillips")
+
+# Verificação dos dados
+modelosP
+
+
+# Construir as curvas de resposta para os melhores modelos
+curvas_melhores_modelosP <- biomod2::response.plot2(
+        models = modelosP[posicao_modelosP], # Escolher os modelos 
+        Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
+        show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
+        do.bivariate = FALSE,
+        fixed.var.metric = "mean",
+        save.file = "pdf",                       # Formato do arquivo de imagem
+        name = "./Resultados/Resultados_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+        ImageSize = 480,                         # Resolução da imagem
+        col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
+        legend = TRUE,
+        data_species = get_formal_data(modelo_maxentP, 'resp.var'))
+
+# Curvas de resposta para o melhor modelo
+curvas_melhor_modelosP <- biomod2::response.plot2(
+        models = modelosP[5],                                                   ##### ESCOLHER QUAL FOI O MELHOR MODELO
+        Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
+        show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
+        do.bivariate = FALSE,
+        fixed.var.metric = "mean",
+        save.file = "pdf",                       # Formato do arquivo de imagem
+        name = "./Resultados/Resultados_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+        ImageSize = 480,                         # Resolução da imagem
+        col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
+        legend = TRUE,
+        data_species = get_formal_data(modelo_maxentP, 'resp.var'))
+
+
+################################################################################
+
+#--------- 3. PROJEÇÃO DOS MODELOS GERADOS 
+#                  PARA O PRESENTE  --------#
+
+# Carregamento das camadas do presente selecionadas para a planta
+camadas_projP <- explP
+
+projec_presenteP <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
+                                 new.env = camadas_projP,
+                                 proj.name = 'presente',
+                                 selected.models = melhores_modelosP, 
+                                 compress = FALSE,
+                                 build.clamping.mask = FALSE,
+                                 output.format = '.img',
+                                 do.stack = TRUE)
+
+# Verificação dos modelos
+projec_presenteP
+
+plot(projec_presenteP)
+
+# Transformar as projeções para o tipo raster
+rasters_presenteP <- biomod2::get_predictions(projec_presenteP)
+
+plot(rasters_presenteP[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_presenteP <- calc(rasters_presenteP, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_presenteP,
+    filename="./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_modelo_medio_presente.asc", 
+    format="ascii")
+
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_presenteP <- as.data.frame(AUC_resultados[which(
+    AUC_resultados[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_presente_medio <- mean(limiares$Threshold)
+
+# Verificação
+limiar_presente_medio
+
+
+# Criar o mapa binário
+mapa_binario_presenteP <- biomod2::BinaryTransformation(raster_medio_presenteP,
+                                              limiar_presente_medio)
+
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_presenteP, 
+            filename="./Resultados_E_subsecundum/Projecao_presente/subsecundum_mapa_binario_presente.asc", 
+            format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_presente <- raster_medio_presenteP * mapa_binario_presenteP
+
+# Verificação
+raster_final_presente
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_presente, 
+                    filename="./Resultados_E_subsecundum/Projecao_presente/subsecundum_mapa_final.asc", 
+                    format="ascii")
+
+
+################################################################################
+
+
+
+
+
+
+
+
+
 
 
