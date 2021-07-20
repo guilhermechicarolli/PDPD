@@ -201,7 +201,7 @@ head(AUC_resultadosP)
 
 # Salvar os resultados em um arquivo csv
 write.csv(AUC_resultadosP, 
-          "./Dados/Resultados_E_subsecundum/subsecundum_AUC_tabela.csv")
+          "./Dados/Resultados_modelagem_E_subsecundum/subsecundum_AUC_tabela.csv")
 
 
 ### ESCOLHA DO MELHOR MODELO A PARTIR DAS MÉTRICAS CALCULADAS (será usado para
@@ -239,7 +239,7 @@ importancia_varsP
 
 # Salvar os resultados
 write.csv(importancia_varsP, 
-          './Dados/Resultados_E_subsecundum/subsecundum_mportancia_variaveis.csv')
+          './Dados/Resultados_modelagem_E_subsecundum/subsecundum_mportancia_variaveis.csv')
 
 
 # Considerar apenas os melhores modelos
@@ -258,7 +258,7 @@ tail(melhores_mediasP)
 
 # Salvar os resultados
 write.csv(melhores_mediasP, 
-          "./Dados/Resultados/subsecundum_importancia_vars_melhores_modelos.csv")
+          "./Dados/Resultados_modelagem_E_subsecundum/subsecundum_importancia_vars_melhores_modelos.csv")
 
 
 ### GRÁFICOS DA IMPORTÂNCIA DAS VARIÁVEIS
@@ -305,7 +305,7 @@ curvas_melhores_modelosP <- biomod2::response.plot2(
         do.bivariate = FALSE,
         fixed.var.metric = "mean",
         save.file = "pdf",                       # Formato do arquivo de imagem
-        name = "./Dados/Resultados/Resultados_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+        name = "./Dados/Resultados_modelagem_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
         ImageSize = 480,                         # Resolução da imagem
         col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
         legend = TRUE,
@@ -319,7 +319,7 @@ curvas_melhor_modelosP <- biomod2::response.plot2(
         do.bivariate = FALSE,
         fixed.var.metric = "mean",
         save.file = "pdf",                       # Formato do arquivo de imagem
-        name = "./Dados/Resultados/Resultados_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+        name = "./Dados/Resultados_modelagem_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
         ImageSize = 480,                         # Resolução da imagem
         col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
         legend = TRUE,
@@ -361,7 +361,7 @@ raster_medio_presenteP <- calc(rasters_presenteP, fun=mean)
 # Salvar o modelo médio
 raster::writeRaster(
     raster_medio_presenteP,
-    filename="./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_modelo_medio_presente.asc", 
+    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_modelo_medio_presente.asc", 
     format="ascii")
 
 
@@ -371,11 +371,11 @@ raster::writeRaster(
 # Construir um mapa binário (presença / ausência) com base em um valor de limiar
 # (threshold) e no mapa médio
 
-limiares_presenteP <- as.data.frame(AUC_resultados[which(
-    AUC_resultados[,1] > 0.75), ][4])
+limiares_presenteP <- as.data.frame(AUC_resultadosP[which(
+    AUC_resultadosP[,1] > 0.75), ][4])
 
 # Cálculo do threshold médio
-limiar_presente_medio <- mean(limiares$Threshold)
+limiar_presente_medio <- mean(limiares_presenteP$Threshold)
 
 # Verificação
 limiar_presente_medio
@@ -388,7 +388,7 @@ mapa_binario_presenteP <- biomod2::BinaryTransformation(raster_medio_presenteP,
 
 # Salvar o mapa binário criado
 raster::writeRaster(mapa_binario_presenteP, 
-            filename="./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_mapa_binario_presente.asc", 
+            filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_binario_presente.asc", 
             format="ascii", overwrite=TRUE)
 
 
@@ -401,16 +401,16 @@ raster_final_presenteP
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_presenteP, 
-                    filename="./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_mapa_final.asc", 
+                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_final_presente.asc", 
                     format="ascii")
 
 
 ### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
 
 # Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
-celulaP = 5
+celulaP <- 0.5
 
-# Estimativa da área adequada (qualquer grau de adequabilidade)
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
 area_adequada_presenteP <- as.data.frame(tapply(area(mapa_binario_presenteP), 
                                                 mapa_binario_presenteP[], sum)*
                                              celulaP)
@@ -423,7 +423,7 @@ area_adequada_presenteP
 
 # Salvar os resultados
 write.csv(area_adequada_presenteP, 
-          "./Dados/Resultados_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
 
 
 
@@ -447,7 +447,7 @@ df_reclass_presente <- c(0, limiar_presente_medio, 0,
 df_reclass_presente
 
 # 2) Converter o data frame a uma matriz
-matriz_reclass_presente = matrix(df_reclass_presente,
+matriz_reclass_presente <- matrix(df_reclass_presente,
                    ncol = 3,
                    byrow = TRUE)
 # Verificação
@@ -455,17 +455,17 @@ matriz_reclass_presente
 
 
 # 3) Criação do raster reclassificado:
-raster_classificado_presente = reclassify(raster_final_presenteP,
+raster_classificado_presente <- reclassify(raster_final_presenteP,
                                           matriz_reclass_presente)
 
 # 4) Estimativa da área adequada por classes:
-area_adequada_classes_presente = as.data.frame(tapply(area(
+area_adequada_classes_presente <- as.data.frame(tapply(area(
     raster_classificado_presente), raster_classificado_presente[], sum)*celulaP)
 
-rownames(area_adequada_classes_presente)  =c("Não-adequada", "Média", "Alta", 
+rownames(area_adequada_classes_presente)  <- c("Não-adequada", "Média", "Alta", 
                                              "Muito Alta")
 
-colnames(area_adequada_classes_presente) = c("Área (Km²)")
+colnames(area_adequada_classes_presente) <- c("Área (Km²)")
 
 # Verificação
 area_adequada_classes_presente
@@ -473,12 +473,12 @@ area_adequada_classes_presente
 
 # Salvar os resultados
 write.csv(area_adequada_classes_presente, 
-          "./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_area_adequada_presente_classes.csv")
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_area_adequada_presente_classes.csv")
 
 
 # Salvar o raster reclassificado
 writeRaster(raster_classificado_presente, filename=
-                "./Dados/Resultados_E_subsecundum/Projecao_presente/subsecundum_mapa_final_presente_reclassificado.asc", 
+                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_final_presente_reclassificado.asc", 
             format="ascii")
 
 
@@ -519,9 +519,306 @@ projec_RCP45P
 plot(projec_RCP45P)
 
 
+# Transformar as projeções para o tipo raster
+rasters_RCP45P <- biomod2::get_predictions(projec_RCP45P)
+
+plot(rasters_RCP45P[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_RCP45P <- calc(rasters_RCP45P, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_RCP45P,
+    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_modelo_medio_RCP45.asc", 
+    format="ascii")
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_RCP45P <- as.data.frame(AUC_resultadosP[which(
+    AUC_resultadosP[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_RCP45_medio <- mean(limiares_RCP45P$Threshold)
+
+# Verificação
+limiar_RCP45_medio
+
+
+# Criar o mapa binário
+mapa_binario_RCP45P <- biomod2::BinaryTransformation(raster_medio_RCP45P,
+                                                        limiar_RCP45_medio)
+
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_RCP45P, 
+                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_binario_RCP45.asc", 
+                    format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_RCP45P <- raster_medio_RCP45P * mapa_binario_RCP45P
+
+# Verificação
+raster_final_RCP45P
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_RCP45P, 
+                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45.asc", 
+                    format="ascii")
+
+
+### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
+
+# Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
+celulaP = 0.5
+
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
+area_adequada_RCP45P <- as.data.frame(tapply(area(mapa_binario_RCP45P), 
+                                                mapa_binario_RCP45P[], sum)*
+                                             celulaP)
+
+rownames(area_adequada_RCP45P) <- c("Não-adequada", "Adequada")
+colnames(area_adequada_RCP45P) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_RCP45P
+
+# Salvar os resultados
+write.csv(area_adequada_RCP45P, 
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/area_adequada_subsecundum_RCP45")
 
 
 
+# Estimativa da área adequada por classes de adequabilidade
+
+# Valores de 0 à 1000
+raster_final_RCP45P 
+
+# Propôr uma divisão de classes
+# 0 ao limiar médio = Classe 0 = Inadequada
+# limiar médio ao 750 = Classe 1 = Média
+# 750 ao 900 = Classe 2 = Alta
+# 900 ao 1000 = Classe 3 = Muito alta
+
+# 1) Criar data frame com a reclassificação a partir da divisão 
+df_reclass_RCP45 <- c(0, limiar_RCP45_medio, 0,
+                         limiar_RCP45_medio, 750, 1,
+                         750, 900, 2,
+                         900, 1000, 3)
+# Verificação
+df_reclass_RCP45
+
+# 2) Converter o data frame a uma matriz
+matriz_reclass_RCP45 <- matrix(df_reclass_RCP45,
+                                 ncol = 3,
+                                 byrow = TRUE)
+# Verificação
+matriz_reclass_RCP45
+
+
+# 3) Criação do raster reclassificado:
+raster_classificado_RCP45 <- reclassify(raster_final_RCP45P, 
+                                        matriz_reclass_RCP45)
+
+# 4) Estimativa da área adequada por classes:
+area_adequada_classes_RCP45 <- as.data.frame(tapply(area(
+    raster_classificado_RCP45), raster_classificado_RCP45[], sum)*celulaP)
+
+rownames(area_adequada_classes_RCP45) <- c("Não-adequada", "Média", "Alta", 
+                                             "Muito Alta")
+
+colnames(area_adequada_classes_RCP45) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_classes_RCP45
+
+
+# Salvar os resultados
+write.csv(area_adequada_classes_RCP45, 
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_area_adequada_RCP45_classes.csv")
+
+
+# Salvar o raster reclassificado
+writeRaster(raster_classificado_RCP45, filename=
+                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45_reclassificado.asc", 
+            format="ascii")
+
+
+################################################################################
+
+#--------- 5. PROJEÇÃO DOS MODELOS GERADOS PARA O
+#               CENÁRIO FUTURO DE 2070 RCP 8.5  --------#
+
+# Projeção do modelo criado para o cenário futuro de 2070, RCP 8.5, com 
+# resolução de 0.5 arcsegundos
+
+# Carregamento das camadas de RCP 8.5 selecionadas para a planta
+camadas_85P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP85/',
+                          pattern = '.asc', full.names = TRUE)
+
+camadas45P <- raster::stack(camadas85P)
+
+# Adicionar a projeção geográfica
+raster::crs(camadas85P) <- proj_WGS
+
+# Verificação dos dados
+camadas85P 
+
+camadas_RCP85 <- camadas_85P
+
+# Projeção 
+projec_RCP85P <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
+                                            new.env = camadas_RCP85,
+                                            proj.name = 'Futuro_RCP_85',
+                                            selected.models = melhores_modelosP, 
+                                            compress = FALSE,
+                                            build.clamping.mask = FALSE,
+                                            output.format = '.img',
+                                            do.stack = TRUE)
+
+# Verificação dos modelos
+projec_RCP85P
+
+plot(projec_RCP85P)
+
+
+# Transformar as projeções para o tipo raster
+rasters_RCP85P <- biomod2::get_predictions(projec_RCP85P)
+
+plot(rasters_RCP85P[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_RCP85P <- calc(rasters_RCP85P, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_RCP85P,
+    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_modelo_medio_RCP85.asc", 
+    format="ascii")
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_RCP85P <- as.data.frame(AUC_resultadosP[which(
+    AUC_resultadosP[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_RCP85_medio <- mean(limiares_RCP85P$Threshold)
+
+# Verificação
+limiar_RCP85_medio
+
+
+# Criar o mapa binário
+mapa_binario_RCP85P <- biomod2::BinaryTransformation(raster_medio_RCP85P,
+                                                     limiar_RCP85_medio)
+
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_RCP85P, 
+                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_mapa_binario_RCP85.asc", 
+                    format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_RCP85P <- raster_medio_RCP85P * mapa_binario_RCP85P
+
+# Verificação
+raster_final_RCP85P
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_RCP85P, 
+                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_mapa_final_RCP85.asc", 
+                    format="ascii")
+
+
+### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
+
+# Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
+celulaP = 0.5
+
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
+area_adequada_RCP85P <- as.data.frame(tapply(area(mapa_binario_RCP85P), 
+                                             mapa_binario_RCP85P[], sum)*
+                                          celulaP)
+
+rownames(area_adequada_RCP85P) <- c("Não-adequada", "Adequada")
+colnames(area_adequada_RCP85P) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_RCP85P
+
+# Salvar os resultados
+write.csv(area_adequada_RCP85P, 
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/area_adequada_subsecundum_RCP85")
+
+
+
+# Estimativa da área adequada por classes de adequabilidade
+
+# Valores de 0 à 1000
+raster_final_RCP85P 
+
+# Propôr uma divisão de classes
+# 0 ao limiar médio = Classe 0 = Inadequada
+# limiar médio ao 750 = Classe 1 = Média
+# 750 ao 900 = Classe 2 = Alta
+# 900 ao 1000 = Classe 3 = Muito alta
+
+# 1) Criar data frame com a reclassificação a partir da divisão 
+df_reclass_RCP85 <- c(0, limiar_RCP85_medio, 0,
+                      limiar_RCP85_medio, 750, 1,
+                      750, 900, 2,
+                      900, 1000, 3)
+# Verificação
+df_reclass_RCP85
+
+# 2) Converter o data frame a uma matriz
+matriz_reclass_RCP85 <- matrix(df_reclass_RCP85,
+                               ncol = 3,
+                               byrow = TRUE)
+# Verificação
+matriz_reclass_RCP85
+
+
+# 3) Criação do raster reclassificado:
+raster_classificado_RCP85 <- reclassify(raster_final_RCP85P, 
+                                        matriz_reclass_RCP85)
+
+# 4) Estimativa da área adequada por classes:
+area_adequada_classes_RCP85 <- as.data.frame(tapply(area(
+    raster_classificado_RCP85), raster_classificado_RCP85[], sum)*celulaP)
+
+rownames(area_adequada_classes_RCP85) <- c("Não-adequada", "Média", "Alta", 
+                                           "Muito Alta")
+
+colnames(area_adequada_classes_RCP85) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_classes_RCP85
+
+
+# Salvar os resultados
+write.csv(area_adequada_classes_RCP45, 
+          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_area_adequada_RCP85_classes.csv")
+
+
+# Salvar o raster reclassificado
+writeRaster(raster_classificado_RCP85, filename=
+                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP85_reclassificado.asc", 
+            format="ascii")
 
 
 ################################ FIM ###########################################
