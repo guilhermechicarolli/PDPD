@@ -77,7 +77,7 @@ explP <- camadasP
 
 xyP <- ocorrP@coords
 
-respP = rep(1, length(ocorrP))
+respP <- rep(1, length(ocorrP))
 
 
 ### DEFINIÇÃO DOS PONTOS DE BACKGROUND
@@ -92,7 +92,7 @@ pontos_backgP <- biomod2::BIOMOD_FormatingData (resp.var = respP,
                                        PA.nb.rep = 1,	
                                        PA.nb.absences = 10000,	
                                        PA.strategy = 'disk',
-                                       PA.dist.min = 20000,	
+                                       PA.dist.min = 20000,	 # Distância mínima para criar as PA
                                        PA.dist.max = 500000,	
                                        na.rm = TRUE)
 
@@ -140,7 +140,7 @@ modelo_maxentP <- biomod2::BIOMOD_Modeling(pontos_backgP,
                                  # quantidade de permutações para estimar a 
                                  # importÂncia das variaveis
                                  VarImport = 10, 
-                                 models.eval.meth = c("TSS", "ROC"),
+                                 models.eval.meth = c("TSS", "ROC"),  # Testes estatísticos
                                  SaveObj = TRUE,
                                  rescal.all.models = TRUE,
                                  do.full.models = FALSE,
@@ -165,20 +165,20 @@ modelos_validacaoP["TSS","Specificity",,,]
 modelos_validacaoP["TSS","Cutoff",,,]
 
 # Armazenamento dos resultados em uma tabela
-TSS_resultadosP<-as.data.frame(cbind(modelos_validacao["TSS","Testing.data",,,],
-                                      modelos_validacao["TSS","Sensitivity",,,],
-                                      modelos_validacao["TSS","Specificity",,,], 
-                                      modelos_validacao["TSS","Cutoff",,,] ))
+TSS_resultadosP<-as.data.frame(cbind(modelos_validacaoP["TSS","Testing.data",,,],
+                                      modelos_validacaoP["TSS","Sensitivity",,,],
+                                      modelos_validacaoP["TSS","Specificity",,,], 
+                                      modelos_validacaoP["TSS","Cutoff",,,] ))
 
 # alterar o nome das colunas
 colnames(TSS_resultadosP) <- c("TSS", "Sensitivity", "Specificity", "Threshold")
 
 # Verificação
-head(TSS_resultados)
+head(TSS_resultadosP)
 
 # Salvar os resultados em um arquivo csv
-write.csv(TSS_resultados, 
-          "./Dados/Resultados_E_subsecundum/subsecundum_TSS_tabela.csv")
+write.csv(TSS_resultadosP, 
+          "./Dados/Resultados_Modelagem_E_subsecundum/subsecundum_TSS_tabela.csv")
 
 
 # Organização dos resultados do ROC/AUC
@@ -188,10 +188,10 @@ modelos_validacaoP["ROC","Specificity",,,]
 modelos_validacaoP["ROC","Cutoff",,,]
 
 # Armazenamento dos resultados em uma tabela
-AUC_resultadosP<-as.data.frame(cbind(modelos_validacao["ROC","Testing.data",,,],
-                                     modelos_validacao["ROC","Sensitivity",,,],
-                                     modelos_validacao["ROC","Specificity",,,], 
-                                     modelos_validacao["ROC","Cutoff",,,] ))
+AUC_resultadosP<-as.data.frame(cbind(modelos_validacaoP["ROC","Testing.data",,,],
+                                     modelos_validacaoP["ROC","Sensitivity",,,],
+                                     modelos_validacaoP["ROC","Specificity",,,], 
+                                     modelos_validacaoP["ROC","Cutoff",,,] ))
 
 # alterar o nome das colunas
 colnames(AUC_resultadosP) <- c("AUC", "Sensitivity", "Specificity", "Threshold")
@@ -232,14 +232,15 @@ melhor_modeloP <- modelo_maxentP@models.computed[5]
 ### CÁLCULO DA IMPORTÂNCIA DAS VARIÁVEIS
 
 # Considerando todos os modelos
-importancia_varsP <- t(as.data.frame(get_variables_importance(modelo_maxentP)))  ##### TESTAR ESSA PARTE
+importancia_varsP <- t(as.data.frame(biomod2::get_variables_importance(
+    modelo_maxentP)))                                                           ##### TESTAR ESSA PARTE
 
 # Verificação
 importancia_varsP
 
 # Salvar os resultados
 write.csv(importancia_varsP, 
-          './Dados/Resultados_modelagem_E_subsecundum/subsecundum_mportancia_variaveis.csv')
+          './Dados/Resultados_modelagem_E_subsecundum/subsecundum_importancia_variaveis.csv')
 
 
 # Considerar apenas os melhores modelos
@@ -526,7 +527,7 @@ plot(rasters_RCP45P[[3]])
 
 
 # Fazer um modelo médio de todas as projeções criadas
-raster_medio_RCP45P <- calc(rasters_RCP45P, fun=mean)
+raster_medio_RCP45P <- raster::calc(rasters_RCP45P, fun=mean)
 
 # Salvar o modelo médio
 raster::writeRaster(
@@ -624,7 +625,7 @@ matriz_reclass_RCP45
 
 
 # 3) Criação do raster reclassificado:
-raster_classificado_RCP45 <- reclassify(raster_final_RCP45P, 
+raster_classificado_RCP45 <- raster::reclassify(raster_final_RCP45P, 
                                         matriz_reclass_RCP45)
 
 # 4) Estimativa da área adequada por classes:
@@ -646,7 +647,7 @@ write.csv(area_adequada_classes_RCP45,
 
 
 # Salvar o raster reclassificado
-writeRaster(raster_classificado_RCP45, filename=
+raster::writeRaster(raster_classificado_RCP45, filename=
                 "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45_reclassificado.asc", 
             format="ascii")
 
@@ -696,7 +697,7 @@ plot(rasters_RCP85P[[3]])
 
 
 # Fazer um modelo médio de todas as projeções criadas
-raster_medio_RCP85P <- calc(rasters_RCP85P, fun=mean)
+raster_medio_RCP85P <- raster::calc(rasters_RCP85P, fun=mean)
 
 # Salvar o modelo médio
 raster::writeRaster(
@@ -794,7 +795,7 @@ matriz_reclass_RCP85
 
 
 # 3) Criação do raster reclassificado:
-raster_classificado_RCP85 <- reclassify(raster_final_RCP85P, 
+raster_classificado_RCP85 <- raster::reclassify(raster_final_RCP85P, 
                                         matriz_reclass_RCP85)
 
 # 4) Estimativa da área adequada por classes:
@@ -816,9 +817,11 @@ write.csv(area_adequada_classes_RCP45,
 
 
 # Salvar o raster reclassificado
-writeRaster(raster_classificado_RCP85, filename=
+raster::writeRaster(raster_classificado_RCP85, filename=
                 "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP85_reclassificado.asc", 
             format="ascii")
+
+
 
 
 ################################ FIM ###########################################
