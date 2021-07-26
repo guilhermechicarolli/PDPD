@@ -72,7 +72,7 @@ summary(valores_planta)
 variaveis_PCA_planta <- stats::prcomp(valores_planta, center=TRUE, scale=TRUE)
 
 # Verificação
-summary(variaveis_PCA_planta) 
+summary(variaveis_PCA_planta)  # 3 componentes explicam 93.57% da variância total dos dados
 
 
 # Seleção do número de PCs a partir do Broken Stick Model:
@@ -177,7 +177,7 @@ summary(valores_morcego)
 variaveis_PCA_morc <- stats::prcomp(valores_morcego, center=TRUE, scale=TRUE)
 
 # Verificação
-summary(variaveis_PCA_morc) 
+summary(variaveis_PCA_morc) # 3 componentes explicam 97.7% da variância total dos dados
 
 
 # Seleção do número de PCs a partir do Broken Stick Model:
