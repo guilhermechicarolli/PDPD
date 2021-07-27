@@ -664,7 +664,7 @@ raster::writeRaster(raster_classificado_RCP45, filename=
 camadas_85P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP85/',
                           pattern = '.asc', full.names = TRUE)
 
-camadas45P <- raster::stack(camadas85P)
+camadas85P <- raster::stack(camadas85P)
 
 # Adicionar a projeção geográfica
 raster::crs(camadas85P) <- proj_WGS
@@ -812,7 +812,7 @@ area_adequada_classes_RCP85
 
 
 # Salvar os resultados
-write.csv(area_adequada_classes_RCP45, 
+write.csv(area_adequada_classes_RCP85, 
           "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_area_adequada_RCP85_classes.csv")
 
 

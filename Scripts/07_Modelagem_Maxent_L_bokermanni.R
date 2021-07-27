@@ -84,7 +84,7 @@ respM <- rep(1, length(ocorrM))
 # Definir os pontos de background.pseudoausência, concentrando os pontos entre 
 # 20 e 500 km de distância das ocorrências. 10000 pontos de background.
 
-pontos_backgM <- biomod2::BIOMOD_FormatingData (resp.var = respM, 
+pontos_backgM <- biomod2::BIOMOD_FormatingData(resp.var = respM, 
                                                 expl.var = explM, 
                                                 resp.xy = xyM, 
                                                 resp.name = nomeM, 
@@ -143,7 +143,7 @@ modelo_maxentM <- biomod2::BIOMOD_Modeling(pontos_backgM,
                                            SaveObj = TRUE,
                                            rescal.all.models = TRUE,
                                            do.full.models = FALSE,
-                                           modeling.id = paste(nomeP))
+                                           modeling.id = paste(nomeM))
 
 
 ################################################################################
@@ -176,7 +176,7 @@ colnames(TSS_resultadosM) <- c("TSS", "Sensitivity", "Specificity", "Threshold")
 head(TSS_resultadosM)
 
 # Salvar os resultados em um arquivo csv
-write.csv(TSS_resultados, 
+write.csv(TSS_resultadosM, 
           "./Dados/Resultados_Modelagem_L_bokermanni/bokermanni_TSS_tabela.csv")
 
 
@@ -325,4 +325,500 @@ curvas_melhor_modelosM <- biomod2::response.plot2(
     legend = TRUE,
     data_species = get_formal_data(modelo_maxentM, 'resp.var'))
 
+################################################################################
 
+#--------- 3. PROJEÇÃO DOS MODELOS GERADOS 
+#                  PARA O PRESENTE  --------#
+
+
+# Carregamento das camadas do presente selecionadas para o morcego
+camadas_projM <- explM
+
+# Projeção
+projec_presenteM <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentM,
+                                               new.env = camadas_projM,
+                                               proj.name = 'Presente',
+                                               selected.models = melhores_modelosM, 
+                                               compress = FALSE,
+                                               build.clamping.mask = FALSE,
+                                               output.format = '.img',
+                                               do.stack = TRUE)
+
+# Verificação dos modelos
+projec_presenteM
+
+plot(projec_presenteM)
+
+# Transformar as projeções para o tipo raster
+rasters_presenteM <- biomod2::get_predictions(projec_presenteM)
+
+plot(rasters_presenteM[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_presenteM <- calc(rasters_presenteM, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_presenteM,
+    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/bokermanni_modelo_medio_presente.asc", 
+    format="ascii")
+
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_presenteM <- as.data.frame(AUC_resultadosM[which(
+    AUC_resultadosM[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_presente_medioM <- mean(limiares_presenteM$Threshold)
+
+# Verificação
+limiar_presente_medioM
+
+
+# Criar o mapa binário
+mapa_binario_presenteM <- biomod2::BinaryTransformation(raster_medio_presenteM,
+                                                        limiar_presente_medioM)
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_presenteM, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/bokermanni_mapa_binario_presente.asc", 
+                    format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_presenteM <- raster_medio_presenteM * mapa_binario_presenteM
+
+# Verificação
+raster_final_presenteM
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_presenteM, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/bokermanni_mapa_final_presente.asc", 
+                    format="ascii")
+
+
+### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
+
+# Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
+celulaM <- 0.5
+
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
+area_adequada_presenteM <- as.data.frame(tapply(area(mapa_binario_presenteM), 
+                                                mapa_binario_presenteM[], sum)*
+                                             celulaM)
+
+rownames(area_adequada_presenteM) <- c("Não-adequada", "Adequada")
+colnames(area_adequada_presenteM) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_presenteM
+
+# Salvar os resultados
+write.csv(area_adequada_presenteM, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/area_adequada_bokermanni_presente")
+
+
+# Estimativa da área adequada por classes de adequabilidade
+
+# Valores de 0 à 1000
+raster_final_presenteM
+
+# Propôr uma divisão de classes
+# 0 ao limiar médio = Classe 0 = Inadequada
+# limiar médio ao 750 = Classe 1 = Média
+# 750 ao 900 = Classe 2 = Alta
+# 900 ao 1000 = Classe 3 = Muito alta
+
+# 1) Criar data frame com a reclassificação a partir da divisão 
+df_reclass_presenteM <- c(0, limiar_presente_medioM, 0,
+                         limiar_presente_medioM, 750, 1,
+                         750, 900, 2,
+                         900, 1000, 3)
+# Verificação
+df_reclass_presenteM
+
+# 2) Converter o data frame a uma matriz
+matriz_reclass_presenteM <- matrix(df_reclass_presenteM,
+                                  ncol = 3,
+                                  byrow = TRUE)
+# Verificação
+matriz_reclass_presenteM
+
+
+# 3) Criação do raster reclassificado:
+raster_classificado_presenteM <- reclassify(raster_final_presenteM,
+                                           matriz_reclass_presenteM)
+
+# 4) Estimativa da área adequada por classes:
+area_adequada_classes_presenteM <- as.data.frame(tapply(area(
+    raster_classificado_presenteM), raster_classificado_presenteM[], sum)*celulaM)
+
+rownames(area_adequada_classes_presenteM)  <- c("Não-adequada", "Média", "Alta", 
+                                               "Muito Alta")
+
+colnames(area_adequada_classes_presenteM) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_classes_presenteM
+
+
+# Salvar os resultados
+write.csv(area_adequada_classes_presenteM, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/bokermanni_area_adequada_presente_classes.csv")
+
+
+# Salvar o raster reclassificado
+writeRaster(raster_classificado_presenteM, filename=
+                "./Dados/Resultados_modelagem_L_bokermanni/Projecao_presente/bokermanni_mapa_final_presente_reclassificado.asc", 
+            format="ascii")
+
+
+################################################################################
+
+#--------- 4. PROJEÇÃO DOS MODELOS GERADOS PARA O
+#               CENÁRIO FUTURO DE 2070 RCP 4.5  --------#
+
+# Projeção do modelo criado para o cenário futuro de 2070, RCP 4.5, com 
+# resolução de 0.5 arcsegundos
+
+# Carregamento das camadas de RCP 4.5 selecionadas para o morcego
+camadas_45M <- list.files(path='./Dados/Camadas_selecionadas_PCA/L_bokermanni/RCP45/',
+                          pattern = '.asc', full.names = TRUE)
+
+camadas45M <- raster::stack(camadas45M)
+
+# Adicionar a projeção geográfica
+raster::crs(camadas45M) <- proj_WGS
+
+# Verificação dos dados
+camadas45M 
+
+camadas_RCP45M <- camadas_45M
+
+# Projeção 
+projec_RCP45M <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentM,
+                                            new.env = camadas_RCP45M,
+                                            proj.name = 'Futuro_RCP_45',
+                                            selected.models = melhores_modelosM, 
+                                            compress = FALSE,
+                                            build.clamping.mask = FALSE,
+                                            output.format = '.img',
+                                            do.stack = TRUE)
+# Verificação dos modelos
+projec_RCP45M
+
+plot(projec_RCP45M)
+
+
+# Transformar as projeções para o tipo raster
+rasters_RCP45M <- biomod2::get_predictions(projec_RCP45M)
+
+plot(rasters_RCP45M[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_RCP45M <- raster::calc(rasters_RCP45M, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_RCP45M,
+    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_modelo_medio_RCP45.asc", 
+    format="ascii")
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_RCP45M <- as.data.frame(AUC_resultadosM[which(
+    AUC_resultadosM[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_RCP45_medioM <- mean(limiares_RCP45M$Threshold)
+
+# Verificação
+limiar_RCP45_medioM
+
+
+# Criar o mapa binário
+mapa_binario_RCP45M <- biomod2::BinaryTransformation(raster_medio_RCP45M,
+                                                     limiar_RCP45_medioM)
+
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_RCP45M, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_mapa_binario_RCP45.asc", 
+                    format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_RCP45M <- raster_medio_RCP45M * mapa_binario_RCP45M
+
+# Verificação
+raster_final_RCP45M
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_RCP45M, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_mapa_final_RCP45.asc", 
+                    format="ascii")
+
+
+### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
+
+# Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
+celulaM = 0.5
+
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
+area_adequada_RCP45M <- as.data.frame(tapply(area(mapa_binario_RCP45M), 
+                                             mapa_binario_RCP45M[], sum)*
+                                          celulaM)
+
+rownames(area_adequada_RCP45M) <- c("Não-adequada", "Adequada")
+colnames(area_adequada_RCP45M) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_RCP45M
+
+# Salvar os resultados
+write.csv(area_adequada_RCP45M, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/area_adequada_bokermanni_RCP45")
+
+
+
+# Estimativa da área adequada por classes de adequabilidade
+
+# Valores de 0 à 1000
+raster_final_RCP45M
+
+# Propôr uma divisão de classes
+# 0 ao limiar médio = Classe 0 = Inadequada
+# limiar médio ao 750 = Classe 1 = Média
+# 750 ao 900 = Classe 2 = Alta
+# 900 ao 1000 = Classe 3 = Muito alta
+
+# 1) Criar data frame com a reclassificação a partir da divisão 
+df_reclass_RCP45M <- c(0, limiar_RCP45_medioM, 0,
+                      limiar_RCP45_medioM, 750, 1,
+                      750, 900, 2,
+                      900, 1000, 3)
+# Verificação
+df_reclass_RCP45M
+
+# 2) Converter o data frame a uma matriz
+matriz_reclass_RCP45M <- matrix(df_reclass_RCP45M,
+                               ncol = 3,
+                               byrow = TRUE)
+# Verificação
+matriz_reclass_RCP45M
+
+
+# 3) Criação do raster reclassificado:
+raster_classificado_RCP45M <- raster::reclassify(raster_final_RCP45M, 
+                                                matriz_reclass_RCP45M)
+
+# 4) Estimativa da área adequada por classes:
+area_adequada_classes_RCP45M <- as.data.frame(tapply(area(
+    raster_classificado_RCP45M), raster_classificado_RCP45M[], sum)*celulaM)
+
+rownames(area_adequada_classes_RCP45M) <- c("Não-adequada", "Média", "Alta", 
+                                           "Muito Alta")
+
+colnames(area_adequada_classes_RCP45M) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_classes_RCP45M
+
+
+# Salvar os resultados
+write.csv(area_adequada_classes_RCP45M, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_area_adequada_RCP45_classes.csv")
+
+
+# Salvar o raster reclassificado
+raster::writeRaster(raster_classificado_RCP45M, filename=
+                        "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_mapa_final_RCP45_reclassificado.asc", 
+                    format="ascii")
+
+
+################################################################################
+
+
+#--------- 5. PROJEÇÃO DOS MODELOS GERADOS PARA O
+#               CENÁRIO FUTURO DE 2070 RCP 8.5  --------#
+
+# Projeção do modelo criado para o cenário futuro de 2070, RCP 8.5, com 
+# resolução de 0.5 arcsegundos
+
+# Carregamento das camadas de RCP 8.5 selecionadas para a planta
+camadas_85M<- list.files(path='./Dados/Camadas_selecionadas_PCA/L_bokermanni/RCP85/',
+                          pattern = '.asc', full.names = TRUE)
+
+camadas85M <- raster::stack(camadas85M)
+
+# Adicionar a projeção geográfica
+raster::crs(camadas85M) <- proj_WGS
+
+# Verificação dos dados
+camadas85M
+
+camadas_RCP85M <- camadas_85M
+
+# Projeção 
+projec_RCP85M <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
+                                            new.env = camadas_RCP85M,
+                                            proj.name = 'Futuro_RCP_85_bokermanni',
+                                            selected.models = melhores_modelosM, 
+                                            compress = FALSE,
+                                            build.clamping.mask = FALSE,
+                                            output.format = '.img',
+                                            do.stack = TRUE)
+
+# Verificação dos modelos
+projec_RCP85M
+
+plot(projec_RCP85M)
+
+
+# Transformar as projeções para o tipo raster
+rasters_RCP85M <- biomod2::get_predictions(projec_RCP85M)
+
+plot(rasters_RCP85M[[3]])
+
+
+# Fazer um modelo médio de todas as projeções criadas
+raster_medio_RCP85M <- raster::calc(rasters_RCP85M, fun=mean)
+
+# Salvar o modelo médio
+raster::writeRaster(
+    raster_medio_RCP85M,
+    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP85/bokermanni_modelo_medio_RCP85.asc", 
+    format="ascii")
+
+
+### CONSTRUÇÃO DO MAPA FINAL A PARTIR DO THRESHOLD
+
+# Construir um mapa binário (presença / ausência) com base em um valor de limiar
+# (threshold) e no mapa médio
+
+limiares_RCP85M <- as.data.frame(AUC_resultadosM[which(
+    AUC_resultadosM[,1] > 0.75), ][4])
+
+# Cálculo do threshold médio
+limiar_RCP85_medioM <- mean(limiares_RCP85M$Threshold)
+
+# Verificação
+limiar_RCP85_medioM
+
+
+# Criar o mapa binário
+mapa_binario_RCP85M <- biomod2::BinaryTransformation(raster_medio_RCP85M,
+                                                     limiar_RCP85_medioM)
+
+
+# Salvar o mapa binário criado
+raster::writeRaster(mapa_binario_RCP85M, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP85/bokermanni_mapa_binario_RCP85.asc", 
+                    format="ascii", overwrite=TRUE)
+
+
+# Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
+# melhores modelos
+raster_final_RCP85M <- raster_medio_RCP85M * mapa_binario_RCP85M
+
+# Verificação
+raster_final_RCP85M
+
+# Salvar o mapa final
+raster::writeRaster(raster_final_RCP85M, 
+                    filename="./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP85/bokermanni_mapa_final_RCP85.asc", 
+                    format="ascii")
+
+
+### RECLASSIFICAÇÃO DO MAPA FINAL E ESTIMATIVA DA ÁREA ADEQUADA
+
+# Definir a área em quilômetros quadrados dos pixels (0.5 km^2)
+celulaM = 0.5
+
+# Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
+area_adequada_RCP85M <- as.data.frame(tapply(area(mapa_binario_RCP85M), 
+                                             mapa_binario_RCP85M[], sum)*
+                                          celulaM)
+
+rownames(area_adequada_RCP85M) <- c("Não-adequada", "Adequada")
+colnames(area_adequada_RCP85M) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_RCP85M
+
+# Salvar os resultados
+write.csv(area_adequada_RCP85M, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP85/area_adequada_bokermanni_RCP85")
+
+
+
+# Estimativa da área adequada por classes de adequabilidade
+
+# Valores de 0 à 1000
+raster_final_RCP85M
+
+# Propôr uma divisão de classes
+# 0 ao limiar médio = Classe 0 = Inadequada
+# limiar médio ao 750 = Classe 1 = Média
+# 750 ao 900 = Classe 2 = Alta
+# 900 ao 1000 = Classe 3 = Muito alta
+
+# 1) Criar data frame com a reclassificação a partir da divisão 
+df_reclass_RCP85M <- c(0, limiar_RCP85_medioM, 0,
+                      limiar_RCP85_medioM, 750, 1,
+                      750, 900, 2,
+                      900, 1000, 3)
+# Verificação
+df_reclass_RCP85M
+
+# 2) Converter o data frame a uma matriz
+matriz_reclass_RCP85M <- matrix(df_reclass_RCP85M,
+                               ncol = 3,
+                               byrow = TRUE)
+# Verificação
+matriz_reclass_RCP85M
+
+
+# 3) Criação do raster reclassificado:
+raster_classificado_RCP85M <- raster::reclassify(raster_final_RCP85M, 
+                                                matriz_reclass_RCP85M)
+
+# 4) Estimativa da área adequada por classes:
+area_adequada_classes_RCP85M <- as.data.frame(tapply(area(
+    raster_classificado_RCP85M), raster_classificado_RCP85M[], sum)*celulaM)
+
+rownames(area_adequada_classes_RCP85M) <- c("Não-adequada", "Média", "Alta", 
+                                           "Muito Alta")
+
+colnames(area_adequada_classes_RCP85M) <- c("Área (Km²)")
+
+# Verificação
+area_adequada_classes_RCP85M
+
+
+# Salvar os resultados
+write.csv(area_adequada_classes_RCP85, 
+          "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP85/bokermanni_area_adequada_RCP85_classes.csv")
+
+
+# Salvar o raster reclassificado
+raster::writeRaster(raster_classificado_RCP85M, filename=
+                        "./Dados/Resultados_modelagem_L_bokermanni/Projecao_RCP45/bokermanni_mapa_final_RCP85_reclassificado.asc", 
+                    format="ascii")
+
+
+
+################################ FIM ###########################################
