@@ -1,0 +1,43 @@
+DESCRIÇÃO DOS DADOS UTILIZADOS NAS PRÁTICAS
+
+G. Florez Montero & O. Marchetti, 2021
+
+
+1. 
+
+Nome do arquivo: terapia.csv
+Separador: ponto e virgula ";"
+
+
+Descrição da data: Dados de uma amostra ficticia de 120 sujeitos saudáveis porém não praticantes de esportes.
+                   O tratamento consistiu em um treinamento de Tennis de Mesa duránte 30 días.
+                   Os sujeitos do grupo controle não participaram do treinamento.
+                   A variável medida foi o Desempenho Motoro (medido em unidades arbitrárias de 0 - 50).
+                   Alguns sujeitos não completaram o tratamento (foram identificados como "Nao" nos dados do pós-teste)
+                   
+
+Variávels:
+
+sujeito: código de identificação do participante
+grupo: varíavel categórica com 2 níveis "Controle" e "Tratamento"
+pre_test: desempenho motoro antes do tratamento
+pos_test: desempenho motoro depois do tratamento
+
+
+
+2.
+
+Nome do arquivo: a.lituratus.csv
+Separador: virgula ","
+Decimal: ponto "."
+
+Descrição da data: Dados ficticios de uma amostra de 196 morcegos da espécie Artibeus lituratus, coletados ao longo de um ano
+          	   em um hábitat urbano e um florestal. A cada animal se tomaron medidas do comprimento do antebraço e masa corporal.
+
+Variáveis
+
+Habitat: Variável categórica. Tipo de hábitat onde o animal foi coletado. Na floresta ou dentro da cidade. Níveis: Forest, Urban.
+
+Forearm: Variável contínua. Comprimento do antebraço (mm) medido com um Paquímetro de campo. Valores: 42.9 - 72.9
+
+Body_mass: Variável contínua. Masa corporal (g) medida com uma Balança de campo. Valores: 78 - 172

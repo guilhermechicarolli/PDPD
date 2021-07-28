@@ -214,7 +214,7 @@ write.csv(AUC_resultadosP,
 AUC_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
 TSS_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
 
-posicao_modelosP <- which(AUC_resultados[,1] > 0.75)
+posicao_modelosP <- which(AUC_resultadosP[,1] > 0.75)
 
 # Seleção do nome dos melhores modelos e do melhor modelo:
 
@@ -227,6 +227,7 @@ melhores_modelosP <- modelo_maxentP@models.computed[posicao_modelosP]
 # Nome do melhor modelo
 melhor_modeloP <- modelo_maxentP@models.computed[5]
 
+melhor_modeloP  # "subsecundum_PA1_RUN5_MAXENT.Phillips"
 
 
 ### CÁLCULO DA IMPORTÂNCIA DAS VARIÁVEIS
@@ -248,8 +249,7 @@ melhores_impP <- importancia_varsP[posicao_modelosP, ]
 
 # Cálculo da média da importância 
 media_impP <- c(mean(melhores_impP[,1]), mean(melhores_impP[,2]), 
-               mean(melhores_impP[,3]), mean(melhores_impP[,4]), 
-               mean(melhores_impP[,5]))                                         # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
+               mean(melhores_impP[,3]))                                        # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
 
 # Adicionar uma última linha com as médias de importância
 melhores_mediasP <- rbind(melhores_impP, media_impP)
@@ -353,7 +353,8 @@ plot(projec_presenteP)
 # Transformar as projeções para o tipo raster
 rasters_presenteP <- biomod2::get_predictions(projec_presenteP)
 
-plot(rasters_presenteP[[3]])
+# Verificação de uma única projeção
+plot(rasters_presenteP[[2]])
 
 
 # Fazer um modelo médio de todas as projeções criadas
@@ -420,8 +421,8 @@ rownames(area_adequada_presenteP) <- c("Não-adequada", "Adequada")
 colnames(area_adequada_presenteP) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_presenteP
-
+area_adequada_presenteP  # Adequada = 59801.84 Km²
+                         # Não adequada = 4188219.32 Km²
 # Salvar os resultados
 write.csv(area_adequada_presenteP, 
           "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
@@ -469,8 +470,10 @@ rownames(area_adequada_classes_presente)  <- c("Não-adequada", "Média", "Alta"
 colnames(area_adequada_classes_presente) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_classes_presente
-
+area_adequada_classes_presente   # Não adequada = 4188219.315 Km²
+                                 # Média = 44413.713 Km²
+                                 # Alta = 6868.233 Km²
+                                 # Muito Alta = 8519.895 Km²
 
 # Salvar os resultados
 write.csv(area_adequada_classes_presente, 
@@ -495,7 +498,7 @@ writeRaster(raster_classificado_presente, filename=
 camadas_45P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP45/',
                        pattern = '.asc', full.names = TRUE)
 
-camadas45P <- raster::stack(camadas45P)
+camadas45P <- raster::stack(camadas_45P)
 
 # Adicionar a projeção geográfica
 raster::crs(camadas45P) <- proj_WGS
