@@ -210,6 +210,9 @@ write.csv(AUC_resultadosP,
 # Escolha de modelos com TSS > 0.4 e AUC > 0.7
 # Sensitividade e especificidade mais próximas de 100 são melhores
 
+# Consensus Forecasting of SpeciesDistributions: The Effects of Niche 
+# ModelPerformance and Niche Properties (Lei Zhang et al. 2015)
+
 # Testa e seleciona os modelos:
 AUC_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
 TSS_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
