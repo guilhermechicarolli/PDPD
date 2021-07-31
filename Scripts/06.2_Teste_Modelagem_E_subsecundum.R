@@ -1,5 +1,7 @@
 ############## SCRIPTS DO PROJETO DE PDPD ##############
 
+#    SCRIPTS TESTE!
+
 # 1. Rodagem dos modelos de distribuição para a espécie 
 #    de planta Encholirium subsecundum
 # 2. Validação e escolha do melhor modelo, além de 
@@ -43,7 +45,7 @@ options(java.parameters = "-Xmx6g")
 
 ### CARREGAMENTO DOS DADOS
 
-camadasP <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum',
+camadasP <- list.files(path='./Dados/Camadas_presente',
                        pattern = '.asc', full.names = TRUE)
 
 camadasP <- raster::stack(camadasP)
@@ -86,15 +88,15 @@ respP <- rep(1, length(ocorrP))
 # 20 e 500 km de distância das ocorrências. 10000 pontos de background.
 
 pontos_backgP <- biomod2::BIOMOD_FormatingData (resp.var = respP, 
-                                       expl.var = explP, 
-                                       resp.xy = xyP, 
-                                       resp.name = nomeP, 
-                                       PA.nb.rep = 1,	
-                                       PA.nb.absences = 10000,	
-                                       PA.strategy = 'disk',
-                                       PA.dist.min = 20000,	 # Distância mínima para criar as PA
-                                       PA.dist.max = 500000,	
-                                       na.rm = TRUE)
+                                                expl.var = explP, 
+                                                resp.xy = xyP, 
+                                                resp.name = nomeP, 
+                                                PA.nb.rep = 1,	
+                                                PA.nb.absences = 10000,	
+                                                PA.strategy = 'disk',
+                                                PA.dist.min = 20000,	 # Distância mínima para criar as PA
+                                                PA.dist.max = 500000,	
+                                                na.rm = TRUE)
 
 # Verificação dos valores das camadas ambientais nos pontos de background
 head(pontos_backgP@data.env.var)
@@ -131,20 +133,20 @@ opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(
 ### RODAGEM DO MODELO NO MAXENT
 
 modelo_maxentP <- biomod2::BIOMOD_Modeling(pontos_backgP,
-                                 models=c("MAXENT.Phillips"), 
-                                 models.options = opcoes_maxentP, 
-                                 NbRunEval = 10,	 # quantidade de replicações
-                                 # % de dados de presença para treino
-                                 DataSplit = 70,	
-                                 Prevalence = 0.5,
-                                 # quantidade de permutações para estimar a 
-                                 # importÂncia das variaveis
-                                 VarImport = 10, 
-                                 models.eval.meth = c("TSS", "ROC"),  # Testes estatísticos
-                                 SaveObj = TRUE,
-                                 rescal.all.models = TRUE,
-                                 do.full.models = FALSE,
-                                 modeling.id = paste(nomeP))
+                                           models=c("MAXENT.Phillips"), 
+                                           models.options = opcoes_maxentP, 
+                                           NbRunEval = 10,	 # quantidade de replicações
+                                           # % de dados de presença para treino
+                                           DataSplit = 70,	
+                                           Prevalence = 0.5,
+                                           # quantidade de permutações para estimar a 
+                                           # importÂncia das variaveis
+                                           VarImport = 10, 
+                                           models.eval.meth = c("TSS", "ROC"),  # Testes estatísticos
+                                           SaveObj = TRUE,
+                                           rescal.all.models = TRUE,
+                                           do.full.models = FALSE,
+                                           modeling.id = paste(nomeP))
 
 
 ################################################################################
@@ -166,9 +168,9 @@ modelos_validacaoP["TSS","Cutoff",,,]
 
 # Armazenamento dos resultados em uma tabela
 TSS_resultadosP<-as.data.frame(cbind(modelos_validacaoP["TSS","Testing.data",,,],
-                                      modelos_validacaoP["TSS","Sensitivity",,,],
-                                      modelos_validacaoP["TSS","Specificity",,,], 
-                                      modelos_validacaoP["TSS","Cutoff",,,] ))
+                                     modelos_validacaoP["TSS","Sensitivity",,,],
+                                     modelos_validacaoP["TSS","Specificity",,,], 
+                                     modelos_validacaoP["TSS","Cutoff",,,] ))
 
 # alterar o nome das colunas
 colnames(TSS_resultadosP) <- c("TSS", "Sensitivity", "Specificity", "Threshold")
@@ -178,7 +180,7 @@ head(TSS_resultadosP)
 
 # Salvar os resultados em um arquivo csv
 write.csv(TSS_resultadosP, 
-          "./Dados/Resultados_Modelagem_E_subsecundum/subsecundum_TSS_tabela.csv")
+          "./Dados/Resultados_teste_subsecundum/subsecundum_TSS_tabela.csv")
 
 
 # Organização dos resultados do ROC/AUC
@@ -201,7 +203,7 @@ head(AUC_resultadosP)
 
 # Salvar os resultados em um arquivo csv
 write.csv(AUC_resultadosP, 
-          "./Dados/Resultados_modelagem_E_subsecundum/subsecundum_AUC_tabela.csv")
+          "./Dados/Resultados_teste_subsecundum/subsecundum_AUC_tabela.csv")
 
 
 ### ESCOLHA DO MELHOR MODELO A PARTIR DAS MÉTRICAS CALCULADAS (será usado para
@@ -225,7 +227,7 @@ modelo_maxentP@models.computed
 melhores_modelosP <- modelo_maxentP@models.computed[posicao_modelosP]
 
 # Nome do melhor modelo
-melhor_modeloP <- modelo_maxentP@models.computed[5]
+melhor_modeloP <- modelo_maxentP@models.computed[5]                             ##### TESTE
 
 melhor_modeloP  # "subsecundum_PA1_RUN5_MAXENT.Phillips"
 
@@ -241,15 +243,19 @@ importancia_varsP
 
 # Salvar os resultados
 write.csv(importancia_varsP, 
-          './Dados/Resultados_modelagem_E_subsecundum/subsecundum_importancia_variaveis.csv')
+          './Dados/Resultados_teste_subsecundum/subsecundum_importancia_variaveis.csv')
 
 
 # Considerar apenas os melhores modelos
 melhores_impP <- importancia_varsP[posicao_modelosP, ]
 
 # Cálculo da média da importância 
-media_impP <- c(mean(melhores_impP[,1]), mean(melhores_impP[,2]), 
-               mean(melhores_impP[,3]))                                        # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
+
+media_impP <- c()
+for (i in 1:19){
+    media_impP <- append(media_impP, mean(melhores_impP[,1]))
+}
+                                        
 
 # Adicionar uma última linha com as médias de importância
 melhores_mediasP <- rbind(melhores_impP, media_impP)
@@ -259,14 +265,14 @@ tail(melhores_mediasP)
 
 # Salvar os resultados
 write.csv(melhores_mediasP, 
-          "./Dados/Resultados_modelagem_E_subsecundum/subsecundum_importancia_vars_melhores_modelos.csv")
+          "./Dados/Resultados_teste_subsecundum/subsecundum_importancia_vars_melhores_modelos.csv")
 
 
 ### GRÁFICOS DA IMPORTÂNCIA DAS VARIÁVEIS
 
 # Gráfico da importância das variáveis para todos os modelos
 ggplot2::ggplot(gather(as.data.frame(importancia_varsP)),
-       aes(x = reorder(key, value, fun = median,), y = value)) + 
+                aes(x = reorder(key, value, fun = median,), y = value)) + 
     
     geom_boxplot() + 
     
@@ -278,7 +284,7 @@ ggplot2::ggplot(gather(as.data.frame(importancia_varsP)),
 
 # Gráfico da importância das variáveis dos melhores modelos
 ggplot2::ggplot(gather(as.data.frame(melhores_impP))
-       ,aes(x = reorder(key, value, fun = median,), y = value)) + 
+                ,aes(x = reorder(key, value, fun = median,), y = value)) + 
     
     geom_boxplot() + 
     
@@ -300,31 +306,31 @@ modelosP
 
 # Construir as curvas de resposta para os melhores modelos
 curvas_melhores_modelosP <- biomod2::response.plot2(
-        models = modelosP[posicao_modelosP], # Escolher os modelos 
-        Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
-        show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
-        do.bivariate = FALSE,
-        fixed.var.metric = "mean",
-        save.file = "pdf",                       # Formato do arquivo de imagem
-        name = "./Dados/Resultados_modelagem_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
-        ImageSize = 480,                         # Resolução da imagem
-        col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
-        legend = TRUE,
-        data_species = get_formal_data(modelo_maxentP, 'resp.var'))
+    models = modelosP[posicao_modelosP], # Escolher os modelos 
+    Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
+    show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
+    do.bivariate = FALSE,
+    fixed.var.metric = "mean",
+    save.file = "pdf",                       # Formato do arquivo de imagem
+    name = "./Dados/Resultados_teste_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+    ImageSize = 480,                         # Resolução da imagem
+    col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
+    legend = TRUE,
+    data_species = get_formal_data(modelo_maxentP, 'resp.var'))
 
 # Curvas de resposta para o melhor modelo
 curvas_melhor_modelosP <- biomod2::response.plot2(
-        models = modelosP[5],                                                   ##### ESCOLHER QUAL FOI O MELHOR MODELO
-        Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
-        show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
-        do.bivariate = FALSE,
-        fixed.var.metric = "mean",
-        save.file = "pdf",                       # Formato do arquivo de imagem
-        name = "./Dados/Resultados_modelagem_E_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
-        ImageSize = 480,                         # Resolução da imagem
-        col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
-        legend = TRUE,
-        data_species = get_formal_data(modelo_maxentP, 'resp.var'))
+    models = modelosP[5],                                                       ##### ESCOLHER QUAL FOI O MELHOR MODELO
+    Data = get_formal_data(modelo_maxentP, 'expl.var') , #RasterStack com as variáveis
+    show.variables = get_formal_data(modelo_maxentP, 'expl.var.names'),
+    do.bivariate = FALSE,
+    fixed.var.metric = "mean",
+    save.file = "pdf",                       # Formato do arquivo de imagem
+    name = "./Dados/Resultados_teste_subsecundum/Curva_resposta_subsecundum_melhores_modelos", # Nome do modelo
+    ImageSize = 480,                         # Resolução da imagem
+    col = c("blue", "red", "black", "gray"), # Cores para as curvas de acordo com o número de modelos
+    legend = TRUE,
+    data_species = get_formal_data(modelo_maxentP, 'resp.var'))
 
 
 ################################################################################
@@ -337,13 +343,13 @@ camadas_projP <- explP
 
 # Projeção
 projec_presenteP <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
-                                 new.env = camadas_projP,
-                                 proj.name = 'Presente',
-                                 selected.models = melhores_modelosP, 
-                                 compress = FALSE,
-                                 build.clamping.mask = FALSE,
-                                 output.format = '.img',
-                                 do.stack = TRUE)
+                                               new.env = camadas_projP,
+                                               proj.name = 'Presente',
+                                               selected.models = melhores_modelosP, 
+                                               compress = FALSE,
+                                               build.clamping.mask = FALSE,
+                                               output.format = '.img',
+                                               do.stack = TRUE)
 
 # Verificação dos modelos
 projec_presenteP
@@ -363,7 +369,7 @@ raster_medio_presenteP <- calc(rasters_presenteP, fun=mean)
 # Salvar o modelo médio
 raster::writeRaster(
     raster_medio_presenteP,
-    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_modelo_medio_presente.asc", 
+    filename="./Dados/Resultados_teste_subsecundum/Projecao_presente/subsecundum_modelo_medio_presente.asc", 
     format="ascii")
 
 
@@ -385,13 +391,13 @@ limiar_presente_medio
 
 # Criar o mapa binário
 mapa_binario_presenteP <- biomod2::BinaryTransformation(raster_medio_presenteP,
-                                              limiar_presente_medio)
+                                                        limiar_presente_medio)
 
 
 # Salvar o mapa binário criado
 raster::writeRaster(mapa_binario_presenteP, 
-            filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_binario_presente.asc", 
-            format="ascii", overwrite=TRUE)
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_presente/subsecundum_mapa_binario_presente.asc", 
+                    format="ascii", overwrite=TRUE)
 
 
 # Para criar o mapa final basta multiplicar o mapa binário pelo mapa médio dos
@@ -403,7 +409,7 @@ raster_final_presenteP
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_presenteP, 
-                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_final_presente.asc", 
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_presente/subsecundum_mapa_final_presente.asc", 
                     format="ascii")
 
 
@@ -421,11 +427,10 @@ rownames(area_adequada_presenteP) <- c("Não-adequada", "Adequada")
 colnames(area_adequada_presenteP) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_presenteP  # Adequada = 59801.84 Km²
-                         # Não adequada = 4188219.32 Km²
-# Salvar os resultados
+area_adequada_presenteP  
+
 write.csv(area_adequada_presenteP, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
+          "./Dados/Resultados_teste_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
 
 
 
@@ -442,47 +447,45 @@ raster_final_presenteP
 
 # 1) Criar data frame com a reclassificação a partir da divisão 
 df_reclass_presente <- c(0, limiar_presente_medio, 0,
-               limiar_presente_medio, 750, 1,
-               750, 900, 2,
-               900, 1000, 3)
+                         limiar_presente_medio, 750, 1,
+                         750, 900, 2,
+                         900, 1000, 3)
 # Verificação
 df_reclass_presente
 
 # 2) Converter o data frame a uma matriz
 matriz_reclass_presente <- matrix(df_reclass_presente,
-                   ncol = 3,
-                   byrow = TRUE)
+                                  ncol = 3,
+                                  byrow = TRUE)
 # Verificação
 matriz_reclass_presente
 
 
 # 3) Criação do raster reclassificado:
 raster_classificado_presente <- reclassify(raster_final_presenteP,
-                                          matriz_reclass_presente)
+                                           matriz_reclass_presente)
 
 # 4) Estimativa da área adequada por classes:
 area_adequada_classes_presente <- as.data.frame(tapply(area(
     raster_classificado_presente), raster_classificado_presente[], sum)*celulaP)
 
 rownames(area_adequada_classes_presente)  <- c("Não-adequada", "Média", "Alta", 
-                                             "Muito Alta")
+                                               "Muito Alta")
 
 colnames(area_adequada_classes_presente) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_classes_presente   # Não adequada = 4188219.315 Km²
-                                 # Média = 44413.713 Km²
-                                 # Alta = 6868.233 Km²
-                                 # Muito Alta = 8519.895 Km²
+area_adequada_classes_presente   
+
 
 # Salvar os resultados
 write.csv(area_adequada_classes_presente, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_area_adequada_presente_classes.csv")
+          "./Dados/Resultados_teste_subsecundum/Projecao_presente/subsecundum_area_adequada_presente_classes.csv")
 
 
 # Salvar o raster reclassificado
 writeRaster(raster_classificado_presente, filename=
-                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/subsecundum_mapa_final_presente_reclassificado.asc", 
+                "./Dados/Resultados_teste_subsecundum/Projecao_presente/subsecundum_mapa_final_presente_reclassificado.asc", 
             format="ascii")
 
 
@@ -496,7 +499,7 @@ writeRaster(raster_classificado_presente, filename=
 
 # Carregamento das camadas de RCP 4.5 selecionadas para a planta
 camadas_45P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP45/',
-                       pattern = '.asc', full.names = TRUE)
+                          pattern = '.asc', full.names = TRUE)
 
 camadas45P <- raster::stack(camadas_45P)
 
@@ -509,13 +512,13 @@ camadas45P
 
 # Projeção 
 projec_RCP45P <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
-                                               new.env = camadas45P,
-                                               proj.name = 'Futuro_RCP_45',
-                                               selected.models = melhores_modelosP, 
-                                               compress = FALSE,
-                                               build.clamping.mask = FALSE,
-                                               output.format = '.img',
-                                               do.stack = TRUE)
+                                            new.env = camadas45P,
+                                            proj.name = 'Futuro_RCP_45',
+                                            selected.models = melhores_modelosP, 
+                                            compress = FALSE,
+                                            build.clamping.mask = FALSE,
+                                            output.format = '.img',
+                                            do.stack = TRUE)
 # Verificação dos modelos
 projec_RCP45P
 
@@ -534,7 +537,7 @@ raster_medio_RCP45P <- raster::calc(rasters_RCP45P, fun=mean)
 # Salvar o modelo médio
 raster::writeRaster(
     raster_medio_RCP45P,
-    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_modelo_medio_RCP45.asc", 
+    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_modelo_medio_RCP45.asc", 
     format="ascii")
 
 
@@ -555,12 +558,12 @@ limiar_RCP45_medio
 
 # Criar o mapa binário
 mapa_binario_RCP45P <- biomod2::BinaryTransformation(raster_medio_RCP45P,
-                                                        limiar_RCP45_medio)
+                                                     limiar_RCP45_medio)
 
 
 # Salvar o mapa binário criado
 raster::writeRaster(mapa_binario_RCP45P, 
-                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_binario_RCP45.asc", 
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_mapa_binario_RCP45.asc", 
                     format="ascii", overwrite=TRUE)
 
 
@@ -573,7 +576,7 @@ raster_final_RCP45P
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_RCP45P, 
-                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45.asc", 
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45.asc", 
                     format="ascii")
 
 
@@ -584,8 +587,8 @@ celulaP = 0.5
 
 # Estimativa da área adequada ***(com qualquer grau de adequabilidade)***
 area_adequada_RCP45P <- as.data.frame(tapply(area(mapa_binario_RCP45P), 
-                                                mapa_binario_RCP45P[], sum)*
-                                             celulaP)
+                                             mapa_binario_RCP45P[], sum)*
+                                          celulaP)
 
 rownames(area_adequada_RCP45P) <- c("Não-adequada", "Adequada")
 colnames(area_adequada_RCP45P) <- c("Área (Km²)")
@@ -595,7 +598,7 @@ area_adequada_RCP45P
 
 # Salvar os resultados
 write.csv(area_adequada_RCP45P, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/area_adequada_subsecundum_RCP45")
+          "./Dados/Resultados_teste_subsecundum/Projecao_RCP45/area_adequada_subsecundum_RCP45")
 
 
 
@@ -612,30 +615,30 @@ raster_final_RCP45P
 
 # 1) Criar data frame com a reclassificação a partir da divisão 
 df_reclass_RCP45 <- c(0, limiar_RCP45_medio, 0,
-                         limiar_RCP45_medio, 750, 1,
-                         750, 900, 2,
-                         900, 1000, 3)
+                      limiar_RCP45_medio, 750, 1,
+                      750, 900, 2,
+                      900, 1000, 3)
 # Verificação
 df_reclass_RCP45
 
 # 2) Converter o data frame a uma matriz
 matriz_reclass_RCP45 <- matrix(df_reclass_RCP45,
-                                 ncol = 3,
-                                 byrow = TRUE)
+                               ncol = 3,
+                               byrow = TRUE)
 # Verificação
 matriz_reclass_RCP45
 
 
 # 3) Criação do raster reclassificado:
 raster_classificado_RCP45 <- raster::reclassify(raster_final_RCP45P, 
-                                        matriz_reclass_RCP45)
+                                                matriz_reclass_RCP45)
 
 # 4) Estimativa da área adequada por classes:
 area_adequada_classes_RCP45 <- as.data.frame(tapply(area(
     raster_classificado_RCP45), raster_classificado_RCP45[], sum)*celulaP)
 
 rownames(area_adequada_classes_RCP45) <- c("Não-adequada", "Média", "Alta", 
-                                             "Muito Alta")
+                                           "Muito Alta")
 
 colnames(area_adequada_classes_RCP45) <- c("Área (Km²)")
 
@@ -645,13 +648,13 @@ area_adequada_classes_RCP45
 
 # Salvar os resultados
 write.csv(area_adequada_classes_RCP45, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_area_adequada_RCP45_classes.csv")
+          "./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_area_adequada_RCP45_classes.csv")
 
 
 # Salvar o raster reclassificado
 raster::writeRaster(raster_classificado_RCP45, filename=
-                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45_reclassificado.asc", 
-            format="ascii")
+                        "./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP45_reclassificado.asc", 
+                    format="ascii")
 
 
 ################################################################################
@@ -704,7 +707,7 @@ raster_medio_RCP85P <- raster::calc(rasters_RCP85P, fun=mean)
 # Salvar o modelo médio
 raster::writeRaster(
     raster_medio_RCP85P,
-    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_modelo_medio_RCP85.asc", 
+    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP85/subsecundum_modelo_medio_RCP85.asc", 
     format="ascii")
 
 
@@ -730,7 +733,7 @@ mapa_binario_RCP85P <- biomod2::BinaryTransformation(raster_medio_RCP85P,
 
 # Salvar o mapa binário criado
 raster::writeRaster(mapa_binario_RCP85P, 
-                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_mapa_binario_RCP85.asc", 
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP85/subsecundum_mapa_binario_RCP85.asc", 
                     format="ascii", overwrite=TRUE)
 
 
@@ -743,7 +746,7 @@ raster_final_RCP85P
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_RCP85P, 
-                    filename="./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_mapa_final_RCP85.asc", 
+                    filename="./Dados/Resultados_teste_subsecundum/Projecao_RCP85/subsecundum_mapa_final_RCP85.asc", 
                     format="ascii")
 
 
@@ -765,7 +768,7 @@ area_adequada_RCP85P
 
 # Salvar os resultados
 write.csv(area_adequada_RCP85P, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/area_adequada_subsecundum_RCP85")
+          "./Dados/Resultados_teste_subsecundum/Projecao_RCP85/area_adequada_subsecundum_RCP85")
 
 
 
@@ -798,7 +801,7 @@ matriz_reclass_RCP85
 
 # 3) Criação do raster reclassificado:
 raster_classificado_RCP85 <- raster::reclassify(raster_final_RCP85P, 
-                                        matriz_reclass_RCP85)
+                                                matriz_reclass_RCP85)
 
 # 4) Estimativa da área adequada por classes:
 area_adequada_classes_RCP85 <- as.data.frame(tapply(area(
@@ -815,13 +818,13 @@ area_adequada_classes_RCP85
 
 # Salvar os resultados
 write.csv(area_adequada_classes_RCP85, 
-          "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP85/subsecundum_area_adequada_RCP85_classes.csv")
+          "./Dados/Resultados_teste_subsecundum/Projecao_RCP85/subsecundum_area_adequada_RCP85_classes.csv")
 
 
 # Salvar o raster reclassificado
 raster::writeRaster(raster_classificado_RCP85, filename=
-                "./Dados/Resultados_modelagem_E_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP85_reclassificado.asc", 
-            format="ascii")
+                        "./Dados/Resultados_teste_subsecundum/Projecao_RCP45/subsecundum_mapa_final_RCP85_reclassificado.asc", 
+                    format="ascii")
 
 
 
