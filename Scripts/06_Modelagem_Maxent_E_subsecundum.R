@@ -71,7 +71,7 @@ ocorrP
 
 
 # Formatação dos dados para usar no biomod2
-nomeP <- "subsecundum"
+nomeP <- "modelo_subsecundum"
 
 explP <- camadasP
 
@@ -209,6 +209,9 @@ write.csv(AUC_resultadosP,
 
 # Escolha de modelos com TSS > 0.4 e AUC > 0.7
 # Sensitividade e especificidade mais próximas de 100 são melhores
+
+# Consensus Forecasting of SpeciesDistributions: The Effects of Niche 
+# ModelPerformance and Niche Properties (Lei Zhang et al. 2015)
 
 # Testa e seleciona os modelos:
 AUC_resultadosP[which(AUC_resultadosP[,1] > 0.75), ]
@@ -421,8 +424,8 @@ rownames(area_adequada_presenteP) <- c("Não-adequada", "Adequada")
 colnames(area_adequada_presenteP) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_presenteP  # Adequada = 59801.84 Km²
-                         # Não adequada = 4188219.32 Km²
+area_adequada_presenteP  # Adequada = 86829.85 Km²
+                         # Não adequada = 4161191.30 Km²
 # Salvar os resultados
 write.csv(area_adequada_presenteP, 
           "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
@@ -470,10 +473,10 @@ rownames(area_adequada_classes_presente)  <- c("Não-adequada", "Média", "Alta"
 colnames(area_adequada_classes_presente) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_classes_presente   # Não adequada = 4188219.315 Km²
-                                 # Média = 44413.713 Km²
-                                 # Alta = 6868.233 Km²
-                                 # Muito Alta = 8519.895 Km²
+area_adequada_classes_presente   # Não adequada = 4161191.301 Km²
+                                 # Média = 71795.532 Km²
+                                 # Alta =  7215.328 Km²
+                                 # Muito Alta = 7818.995 Km²
 
 # Salvar os resultados
 write.csv(area_adequada_classes_presente, 
@@ -495,10 +498,10 @@ writeRaster(raster_classificado_presente, filename=
 # resolução de 0.5 arcsegundos
 
 # Carregamento das camadas de RCP 4.5 selecionadas para a planta
-camadas_45P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP45/',
+camadas45P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP45/',
                        pattern = '.asc', full.names = TRUE)
 
-camadas45P <- raster::stack(camadas_45P)
+camadas45P <- raster::stack(camadas45P)
 
 # Adicionar a projeção geográfica
 raster::crs(camadas45P) <- proj_WGS
@@ -511,11 +514,12 @@ camadas45P
 projec_RCP45P <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
                                                new.env = camadas45P,
                                                proj.name = 'Futuro_RCP_45',
-                                               selected.models = melhores_modelosP, 
+                                               selected.models = 'all', 
                                                compress = FALSE,
                                                build.clamping.mask = FALSE,
                                                output.format = '.img',
                                                do.stack = TRUE)
+
 # Verificação dos modelos
 projec_RCP45P
 
@@ -663,7 +667,7 @@ raster::writeRaster(raster_classificado_RCP45, filename=
 # resolução de 0.5 arcsegundos
 
 # Carregamento das camadas de RCP 8.5 selecionadas para a planta
-camadas_85P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP85/',
+camadas85P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP85/',
                           pattern = '.asc', full.names = TRUE)
 
 camadas85P <- raster::stack(camadas85P)
@@ -674,11 +678,10 @@ raster::crs(camadas85P) <- proj_WGS
 # Verificação dos dados
 camadas85P 
 
-camadas_RCP85 <- camadas_85P
 
 # Projeção 
 projec_RCP85P <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentP,
-                                            new.env = camadas_RCP85,
+                                            new.env = camadas85P,
                                             proj.name = 'Futuro_RCP_85',
                                             selected.models = melhores_modelosP, 
                                             compress = FALSE,

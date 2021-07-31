@@ -72,7 +72,7 @@ browseURL(
 
 # Download, também tilizando browseURL(), das camadas projetadas para o futuro
 # (ano de 2070), sendo duas projeções: RCP 4.5 e 8.5 para o ano de 2070.
-# Primeiro o download da projeção de RCP 4.5, modelos ACCESS1-0. Ao completar o
+# Primeiro o download da projeção de RCP 4.5, modelos ACCESS1-0, bi. Ao completar o
 # download, é necessário descompactar o arquivo .zip na pasta 
 # "/Dados/Camadas_brutas/FuturoRPC45/"
 
@@ -80,7 +80,7 @@ browseURL(
     "https://biogeo.ucdavis.edu/data/climate/cmip5/30s/ac45bi70.zip")
 
 
-# Download da projeção de RCP 8.5, modelo ACCESS1-0. Ao completar o download, 
+# Download da projeção de RCP 8.5, modelo ACCESS1-0, bi. Ao completar o download, 
 # descompacte o arquivo .zip na pasta "/Dados/Camadas_brutas/Futuro_RCP85/" 
 
 browseURL(
