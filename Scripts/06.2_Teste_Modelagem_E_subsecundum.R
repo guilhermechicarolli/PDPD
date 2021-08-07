@@ -106,9 +106,10 @@ head(pontos_backgP@data.env.var)
 
 # Alteração dos parâmetros (feature clas e RM) com base nos parâmetros 
 # analisados e obtidos no script 05 a partir da analise usando ENMevaluate
-# Features: LQ, RM = 0.5
-
-opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(
+# Features: LQ, RM = 0.5                                                        ### TESTE H=TRUE, BETAM = 2.0
+                                                                                ### Predicting species distributions from small numbers of 
+opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(                              ### occurrence records: A test case using cryptic geckos in Madagascar
+    
     MAXENT.Phillips = list(
         path_to_maxent.jar = "~/R/win-library/4.0/dismo/java",
         memory_allocated = NULL, 
@@ -227,7 +228,7 @@ modelo_maxentP@models.computed
 melhores_modelosP <- modelo_maxentP@models.computed[posicao_modelosP]
 
 # Nome do melhor modelo
-melhor_modeloP <- modelo_maxentP@models.computed[5]                             ##### TESTE
+melhor_modeloP <- modelo_maxentP@models.computed[3]                             ##### TESTE
 
 melhor_modeloP  # "subsecundum_PA1_RUN5_MAXENT.Phillips"
 

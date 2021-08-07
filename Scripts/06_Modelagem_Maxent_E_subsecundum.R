@@ -43,7 +43,7 @@ options(java.parameters = "-Xmx6g")
 
 ### CARREGAMENTO DOS DADOS
 
-camadasP <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum',
+camadasP <- list.files(path='./Dados/Camadas_selecionadas_modelagem_cheia_res_2.5/E_subsecundum/',
                        pattern = '.asc', full.names = TRUE)
 
 camadasP <- raster::stack(camadasP)
@@ -71,7 +71,7 @@ ocorrP
 
 
 # Formatação dos dados para usar no biomod2
-nomeP <- "modelo_subsecundum"
+nomeP <- "modelo_subsecundum_teste"
 
 explP <- camadasP
 
@@ -252,15 +252,16 @@ melhores_impP <- importancia_varsP[posicao_modelosP, ]
 
 # Cálculo da média da importância 
 media_impP <- c(mean(melhores_impP[,1]), mean(melhores_impP[,2]), 
-               mean(melhores_impP[,3]))                                        # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
-
+               mean(melhores_impP[,3]),mean(melhores_impP[,4]))
+               
+               
 # Adicionar uma última linha com as médias de importância
 melhores_mediasP <- rbind(melhores_impP, media_impP)
 
 # Verificação
 tail(melhores_mediasP)
 
-# Salvar os resultados
+# Salvar os resul
 write.csv(melhores_mediasP, 
           "./Dados/Resultados_modelagem_E_subsecundum/subsecundum_importancia_vars_melhores_modelos.csv")
 
@@ -275,9 +276,8 @@ ggplot2::ggplot(gather(as.data.frame(importancia_varsP)),
     
     scale_x_discrete(name="Variáveis")+
     
-    scale_y_continuous(name="Importância (%)")+
-    
-    theme_bw(base_size = 14)
+    scale_y_continuous(name="Importância (%)")
+
 
 # Gráfico da importância das variáveis dos melhores modelos
 ggplot2::ggplot(gather(as.data.frame(melhores_impP))
@@ -424,8 +424,8 @@ rownames(area_adequada_presenteP) <- c("Não-adequada", "Adequada")
 colnames(area_adequada_presenteP) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_presenteP  # Adequada = 86829.85 Km²
-                         # Não adequada = 4161191.30 Km²
+area_adequada_presenteP  # Adequada = 54377.18 Km²
+                         # Não adequada = 4193371.26 Km²
 # Salvar os resultados
 write.csv(area_adequada_presenteP, 
           "./Dados/Resultados_modelagem_E_subsecundum/Projecao_presente/area_adequada_subsecundum_presente")
@@ -473,10 +473,10 @@ rownames(area_adequada_classes_presente)  <- c("Não-adequada", "Média", "Alta"
 colnames(area_adequada_classes_presente) <- c("Área (Km²)")
 
 # Verificação
-area_adequada_classes_presente   # Não adequada = 4161191.301 Km²
-                                 # Média = 71795.532 Km²
-                                 # Alta =  7215.328 Km²
-                                 # Muito Alta = 7818.995 Km²
+area_adequada_classes_presente   # Não adequada = 4193371.261 Km²
+                                 # Média = 45996.131 Km²
+                                 # Alta =  3060.822 Km²
+                                 # Muito Alta = 5320.228 Km²
 
 # Salvar os resultados
 write.csv(area_adequada_classes_presente, 
@@ -498,7 +498,7 @@ writeRaster(raster_classificado_presente, filename=
 # resolução de 0.5 arcsegundos
 
 # Carregamento das camadas de RCP 4.5 selecionadas para a planta
-camadas45P <- list.files(path='./Dados/Camadas_selecionadas_PCA/E_subsecundum/RCP45/',
+camadas45P <- list.files(path='./Dados/Camadas_selecionadas_modelagem_cheia_res_2.5/E_subsecundum/RCP45/',
                        pattern = '.asc', full.names = TRUE)
 
 camadas45P <- raster::stack(camadas45P)
