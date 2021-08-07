@@ -4,8 +4,6 @@ if (!require(raster)) install.packages('raster')
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(rnaturalearth)) install.packages('rnaturalearth')
 
-
-
 data(acaule)
 
 summary(acaule)
