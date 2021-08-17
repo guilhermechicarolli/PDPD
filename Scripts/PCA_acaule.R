@@ -85,6 +85,17 @@ pcaP
 
 
 pcaP$loadings
+sdmdata<- pcaP$scores
+
+write.csv(as.data.frame(pcaP$scores), './Dados/TESTE_MODELAGEM/pca_scores_acaule.csv',
+          row.names = FALSE)
+
+
+samp <- sample(nrow(sdmdata), round(0.75 * nrow(sdmdata)))
+
+
+sdmdata[,'biome'] = as.factor(sdmdata[,'biome'])
+
 
 
 ###   TESTE 2
