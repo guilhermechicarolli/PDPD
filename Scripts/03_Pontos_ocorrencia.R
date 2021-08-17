@@ -72,7 +72,6 @@ sp::coordinates(pontos_planta) <- ~Longitude+Latitude
 # Adicionar a projeção
 raster::crs(pontos_planta) <- proj_WGS
 
-
 # Adicionar um buffer de 5 km à cada ponto de ocorrência
 buffer <- dismo::circles(pontos_planta, d = 5000, lonlat=TRUE, dissolve=TRUE)
 

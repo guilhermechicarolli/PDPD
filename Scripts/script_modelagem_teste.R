@@ -4,6 +4,8 @@ if (!require(raster)) install.packages('raster')
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(rnaturalearth)) install.packages('rnaturalearth')
 
+
+
 data(acaule)
 
 summary(acaule)
@@ -57,15 +59,27 @@ lonlat <- lonlat %>% rename(y=lat) %>%
     rename(x=lon)
 
 
+lonlat2 <- select(df, lon, lat)
 
-smp_size <- floor(0.75 * nrow(lonlat))
+
+# Converção dos pontos geográficos para SpatialPoints
+sp::coordinates(lonlat2) <- ~lon~lat
+
+# Adicionar a projeção
+raster::crs(lonlat2) <- proj_WGS
+
+
+smp_size <- floor(0.75 * nrow(lonlat2))
 
 ## set the seed to make your partition reproducible
 set.seed(123)
-train_ind <- sample(seq_len(nrow(lonlat)), size = smp_size)
+train_ind <- sample(seq_len(nrow(lonlat2)), size = smp_size)
 
-train <- lonlat[train_ind, ]
-test <- lonlat[-train_ind, ]
+
+
+train <- lonlat2[train_ind, ]
+test <- lonlat2[-train_ind, ]
+
 
 write.csv(test,'./Dados/TESTE_MODELAGEM/occ_teste_acaule.csv', row.names = FALSE)
 write.csv(train,'./Dados/TESTE_MODELAGEM/occ_treino_acaule.csv', row.names=FALSE)
@@ -140,7 +154,7 @@ raster::writeRaster(camadas_final, paste0("Dados/Camadas_res_2.5_cortadas/Presen
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1'
 camada_rep <- raster::raster(
-    './Dados/Camadas_brutas_res_2.5/RCP45_res_2.5/ac45bi701.tif')
+    './Dados/Camadas_brutas_res_2.5_2050/RCP45_res_2.5/ac45bi501.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep) <- proj_WGS
@@ -150,7 +164,7 @@ plot(camada_rep)
 
 
 # Carregamento de todas as variáveis ambientais raster 
-camadas <- list.files(path='./Dados/Camadas_brutas_res_2.5/RCP45_res_2.5/', pattern='.tif', 
+camadas <- list.files(path='./Dados/Camadas_brutas_res_2.5_2050/RCP45_res_2.5', pattern='.tif', 
                       full.names = TRUE)
 
 camadas <- raster::stack(camadas)
@@ -161,6 +175,7 @@ crs(camadas) <- proj_WGS
 # Verificar dados
 camadas
 
+plot(camadas)
 
 # Reduzir o tamanho da camada representante para um retângulo, que será depois
 # cortado a partir da máscara
@@ -186,7 +201,7 @@ plot(camadas_final)
 
 
 # Salvar as camadas na pasta "Camadas_presente" no formato ".asc"
-raster::writeRaster(camadas_final, paste0("Dados/Camadas_res_2.5_cortadas/RCP45_teste_acaule/", 
+raster::writeRaster(camadas_final, paste0("Dados/Camadas_res_2.5_2050_cortadas/RCP45_teste_acaule/", 
                                           paste0(names(camadas_final),".asc")), 
                     driver='ascii', bylayer=TRUE)
 

@@ -17,6 +17,7 @@ if (!require(usdm)) install.packages('usdm')
 if (!require(raster)) install.packages('raster')
 if (!require(corrplot)) install.packages('corrplot')
 if (!require(sp)) install.packages('sp')
+if (!require(psych)) install.packages('psych')
 
 
 # Permite que dados espaciais sejam associados com o sistema de coordenadas,
@@ -94,7 +95,7 @@ colinVars@corMatrix         # Ainda existem graus de correlação consideráveis
 
 
 ### x <- usdm::exclude(valores_planta, v)
-### psych::pca(valores_planta, nfactors = 3)$loadings
+### psych::pca(valores_planta, nfactors = 5)$loadings
 
 ################################################################################
 
