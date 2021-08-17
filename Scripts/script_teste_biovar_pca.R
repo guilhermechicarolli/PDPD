@@ -1,7 +1,13 @@
 library(dismo)
+if (!require(RStoolbox)) install.packages('RStoolbox')
 
 
-sdmdata <- read.csv('./Dados/TESTE_MODELAGEM/pca_scores_acaule.csv')
+proj_WGS <- sp::CRS(
+    "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+
+
+presvals <- read.csv('./Dados/TESTE_MODELAGEM/pca_scores_acaule.csv')
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
@@ -14,5 +20,5 @@ raster::crs(predictors) <- proj_WGS
 predictors
 
 
-backgr <- randomPoints(predictors, 10000)
-absvals <- extract(predictors, backgr)
+
+pca_raster <- rasterPCA(predictors, nSamples=NULL, nComp = 3, spca = TRUE)
