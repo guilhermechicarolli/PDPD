@@ -18,7 +18,6 @@ if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(psych)) install.packages('psych')
 
 
-
 # Permite que dados espaciais sejam associados com o sistema de coordenadas,
 # criando uma projeção que pode ser utilizada nos rasters
 proj_WGS <- sp::CRS(
@@ -27,7 +26,7 @@ proj_WGS <- sp::CRS(
 ################################################################################
 
 #--------- 1. SELEÇÃO DE VARIÁVEIS USANDO PCA PARA A
-#                ESPÉCIE DE PLANTA MIMOSA LEWISII  ---------#
+#                ESPÉCIE DE PLANTA Solanum acaule  ---------#
 
 ### CARREGAMENTO DOS DADOS
 
