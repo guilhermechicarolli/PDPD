@@ -36,9 +36,8 @@ ocorrP <- read.csv("./Dados/Ocorrencias/E_subsecundum_corrigido.csv")
 # Verificação 
 ocorrP
 
-# Carregar as variáveis ambientais selecionadas para E. subsecundum no script 04
-# É preciso criar uma pasta chamda Camadas_selecionadas_PCA dentro da pasta
-camadasP <- list.files(path="./Dados/Camadas_selecionadas_PCA/E_subsecundum", 
+# Carregar as variáveis ambientais PCA
+camadasP <- list.files(path="./Dados/Camadas_PCA_res_2.5_brasil/Presente/", 
                       pattern =".asc", full.names=TRUE)
 camadasP <- raster::stack(camadasP)
 
@@ -109,7 +108,7 @@ melhores_modelosP
 
 # Salvar o arquivo csv
 write.csv(melhores_modelosP,
-          file="./Dados/Parametros_maxent/melhores_parametros_E_subsecundum.csv", 
+          file="./Dados/Parametros_maxent/melhores_parametros_E_subsecundum_camadas_PCA.csv", 
           row.names = F)
 
 
@@ -129,7 +128,7 @@ ocorrM
 
 # Carregar as variáveis ambientais selecionadas para L. bokermanni no script 04
 
-camadasM <- list.files(path="./Dados/Camadas_selecionadas_PCA/L_bokermanni", 
+camadasM <- list.files(path="./Dados/Camadas_PCA_res_2.5_brasil/Presente/", 
                       pattern =".asc", full.names=TRUE)
 camadasM <- raster::stack(camadasM)
 
@@ -200,7 +199,7 @@ melhores_modelosM
 
 # Salvar o arquivo csv
 write.csv(melhores_modelosM,
-          file="./Dados/Parametros_maxent/melhores_parametros_L_bokermanni.csv", 
+          file="./Dados/Parametros_maxent/melhores_parametros_L_bokermanni_camada_PCA.csv", 
           row.names = F)
 
 
