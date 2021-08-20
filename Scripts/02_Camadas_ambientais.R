@@ -106,7 +106,7 @@ plot(mascara)
 # Carregamento de uma camada representante, escolhida a camada 'bio1', que 
 # representa a média anual de temperatura, com resolução de 30 arcsegundos
 camada_rep <- raster::raster(
-    'Dados/Camadas_brutas/Presente/wc2.1_30s_bio_1.tif')
+    'Dados/Camadas_brutas_res_2.5_2050/Presente_res_2.5/wc2.1_2.5m_bio_1.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep) <- proj_WGS
@@ -116,8 +116,9 @@ plot(camada_rep)
 
 
 # Carregamento de todas as variáveis ambientais raster 
-camadas <- list.files(path='Dados/Camadas_brutas/Presente/', pattern='.tif', 
-                      full.names = TRUE)
+camadas <- list.files(
+    path='Dados/Camadas_brutas_res_2.5_2050/Presente_res_2.5/', pattern='.tif', 
+    full.names = TRUE)
 
 camadas <- raster::stack(camadas)
 
@@ -152,7 +153,8 @@ plot(camadas_final)
 
 
 # Salvar as camadas na pasta "Camadas_presente" no formato ".asc"
-raster::writeRaster(camadas_final, paste0("Dados/Camadas_presente/", 
+raster::writeRaster(camadas_final, paste0(
+    "Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/", 
                                     paste0(names(camadas_final),".asc")), 
             driver='ascii', bylayer=TRUE)
 
@@ -174,7 +176,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1'
 camada_rep45 <- raster::raster(
-    'Dados/Camadas_brutas/Futuro_RCP45/ac45bi701.tif')
+    'Dados/Camadas_brutas_res_2.5_2050/RCP45_res_2.5/ac45bi501.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep45) <- proj_WGS
@@ -184,7 +186,7 @@ plot(camada_rep45)
 
 
 # Carregamento de todas as variáveis ambientais raster 
-camadas45 <- list.files(path='Dados/Camadas_brutas/Futuro_RCP45/',
+camadas45 <- list.files(path='Dados/Camadas_brutas_res_2.5_2050/RCP45_res_2.5/',
                         pattern='.tif', full.names = TRUE)
 
 camadas45 <- raster::stack(camadas45)
@@ -219,7 +221,8 @@ plot(camadas_final45)
 
 
 # Salvar as camadas na pasta "Camadas_Futuro_RCP45" no formato ".asc"
-raster::writeRaster(camadas_final45, paste0("Dados/Camadas_Futuro_RCP45/", 
+raster::writeRaster(camadas_final45, paste0(
+    "Dados/Camadas_res_2.5_2050_cortadas/RCP45_brasil/", 
                                           paste0(names(camadas_final45),".asc")), 
                     driver='ascii', bylayer=TRUE)
 
@@ -243,7 +246,7 @@ plot(mascara)
 
 # Carregamento de uma camada representante, escolhida a camada 'bio1'
 camada_rep85 <- raster::raster(
-    'Dados/Camadas_brutas/Futuro_RCP85/ac85bi701.tif')
+    './Dados/Camadas_brutas_res_2.5_2050/RCP85_res_2.5/ac85bi501.tif')
 
 # Adicionar a projeção
 raster::crs(camada_rep85) <- proj_WGS
@@ -253,7 +256,7 @@ plot(camada_rep85)
 
 
 # Carregamento de todas as variáveis ambientais raster 
-camadas85 <- list.files(path='Dados/Camadas_brutas/Futuro_RCP85/',
+camadas85 <- list.files(path='Dados/Camadas_brutas_res_2.5_2050/RCP85_res_2.5/',
                         pattern='.tif', full.names = TRUE)
 
 camadas85 <- raster::stack(camadas85)
@@ -288,7 +291,8 @@ plot(camadas_final85)
 
 
 # Salvar as camadas na pasta "Camadas_Futuro_RCP85" no formato ".asc"
-raster::writeRaster(camadas_final85, paste0("Dados/Camadas_Futuro_RCP85/",
+raster::writeRaster(camadas_final85, paste0(
+    "Dados/Camadas_res_2.5_2050_cortadas/RCP85_brasil/",
                                             paste0(names(camadas_final85),".asc")), 
                     driver='ascii', bylayer=TRUE)
 

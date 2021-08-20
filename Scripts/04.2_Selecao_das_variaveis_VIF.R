@@ -36,7 +36,7 @@ proj_WGS <- sp::CRS(
 pontos_planta <- read.csv('./Dados/Ocorrencias/E_subsecundum_corrigido.csv')
 
 # Converção dos pontos geográficos para SpatialPoints
-sp::coordinates(pontos_planta) <- ~Longitude+Latitude
+sp::coordinates(pontos_planta) <- ~x+y
 
 # Adicionar a projeção
 raster::crs(pontos_planta) <- proj_WGS
@@ -46,8 +46,9 @@ pontos_planta
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_presente/', pattern='.asc', 
-                      full.names=TRUE) 
+camadas <- list.files(
+    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/', 
+    pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
 
@@ -108,7 +109,7 @@ colinVars@corMatrix         # Ainda existem graus de correlação consideráveis
 pontos_morcego <- read.csv('./Dados/Ocorrencias/L_bokermanni_corrigido.csv')
 
 # Converção dos pontos geográficos para SpatialPoints
-sp::coordinates(pontos_morcego) <- ~Longitude+Latitude
+sp::coordinates(pontos_morcego) <- ~x+y
 
 # Adicionar a projeção
 raster::crs(pontos_morcego) <- proj_WGS
@@ -117,9 +118,9 @@ raster::crs(pontos_morcego) <- proj_WGS
 pontos_morcego
 
 
-# Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_presente/', pattern='.asc', 
-                      full.names=TRUE) 
+camadas <- list.files(
+    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/', 
+    pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
 

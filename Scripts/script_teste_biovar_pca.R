@@ -2,8 +2,10 @@
 
 # 1. Transformação do conjunto de 19 camadas ambientais (bio variáveis) 
 #    em 3 conjuntos de camadas através do PCA (Principal Component Analysis),
-#    tanto das camadas presente como futuras
-
+#    das camadas do presente (resolução de 2.5 arc min)
+# 2, 3. Transformação das biovariáveis em 3 conjuntos de camadas através do
+#    PCA (Principal Component Analysis), das camadas do futuro (resolução
+#    de 2.5 arc min, ano de 2050, RCP45 e RCP85)
 
 ################################################################################
 
@@ -27,7 +29,7 @@ proj_WGS <- sp::CRS(
 ### CARREGAMENTO DAS CAMADAS DO PRESENTE (RESOLUÇÃO DE 2.5 ARC SEC)
 
 camadas_presente <- list.files(
-    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_teste_acaule/', 
+    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/', 
     pattern='.asc', full.names=TRUE) 
 
 camadas_presente <- raster::stack(camadas_presente)
@@ -65,7 +67,7 @@ writeRaster(camadas_pca, filename=names(camadas_pca), bylayer=TRUE,
 ### CARREGAMENTO DAS CAMADAS DO FUTURO RCP 45 (RESOLUÇÃO DE 2.5 ARC SEC)
 
 camadas_rcp45 <- list.files(
-    path='./Dados/Camadas_res_2.5_2050_cortadas/RCP45_teste_acaule/', 
+    path='./Dados/Camadas_res_2.5_2050_cortadas/RCP45_brasil/', 
     pattern='.asc', full.names=TRUE) 
 
 camadas_rcp45 <- raster::stack(camadas_rcp45)
@@ -93,6 +95,45 @@ plot(camadas_pca_rcp45)
 
 # Salvar os arquivos raster
 writeRaster(camadas_pca_rcp45, filename=names(camadas_pca_rcp45), bylayer=TRUE,
+            format="ascii")
+
+
+################################################################################
+
+#--------- 3. TRANSFORMAÇÃO DAS BIOVARIÁVEIS DO FUTURO
+#                  RCP 85 DE 2050 EM CAMADAS PCA  ---------#
+
+### CARREGAMENTO DAS CAMADAS DO FUTURO RCP 85 (RESOLUÇÃO DE 2.5 ARC SEC)
+
+camadas_rcp85 <- list.files(
+    path='./Dados/Camadas_res_2.5_2050_cortadas/RCP85_brasil/', 
+    pattern='.asc', full.names=TRUE) 
+
+camadas_rcp85 <- raster::stack(camadas_rcp85)
+raster::crs(camadas_rcp85) <- proj_WGS
+
+# Verificação
+camadas_rcp85
+plot(camadas_rcp85)
+
+
+# Transformação das camadas camadas usando PCA
+pca_raster_rcp85 <- RStoolbox::rasterPCA(camadas_rcp85, nSamples=NULL, nComp = 19, 
+                                         spca = TRUE)
+
+# Verificação
+summary(pca_raster_rcp85$model)
+pca_raster_rcp85$model$loadings
+
+# Stack e atribuição da projeção geográfica
+camadas_pca_rcp85 <- stack(pca_raster_rcp85$map)
+raster::crs(camadas_pca_rcp85) <- proj_WGS
+
+# Verificação
+plot(camadas_pca_rcp85)
+
+# Salvar os arquivos raster
+writeRaster(camadas_pca_rcp85, filename=names(camadas_pca_rcp85), bylayer=TRUE,
             format="ascii")
 
 
