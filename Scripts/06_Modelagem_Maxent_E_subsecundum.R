@@ -43,7 +43,7 @@ options(java.parameters = "-Xmx6g")
 
 ### CARREGAMENTO DOS DADOS
 
-camadasP <- list.files(path='./Dados/Camadas_selecionadas_modelagem_cheia_res_2.5/E_subsecundum/',
+camadasP <- list.files(path='./Dados/Camadas_PCA_res_2.5_brasil/Presente/',
                        pattern = '.asc', full.names = TRUE)
 
 camadasP <- raster::stack(camadasP)
@@ -92,7 +92,7 @@ pontos_backgP <- biomod2::BIOMOD_FormatingData (resp.var = respP,
                                        PA.nb.rep = 1,	
                                        PA.nb.absences = 10000,	
                                        PA.strategy = 'disk',
-                                       PA.dist.min = 20000,	 # Distância mínima para criar as PA
+                                       PA.dist.min = 5000,	 # Distância mínima para criar as PA
                                        PA.dist.max = 500000,	
                                        na.rm = TRUE)
 
@@ -108,12 +108,12 @@ head(pontos_backgP@data.env.var)
 
 opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(
     MAXENT.Phillips = list(
-        path_to_maxent.jar = "~/R/win-library/4.0/dismo/java",
+        path_to_maxent.jar = "~/R/R-4.1.0/library/dismo/java",   # Mude para o diretório do Maxent
         memory_allocated = NULL, 
         maximumiterations = 5000,    # quantidade de interações
         # Features:
         linear = TRUE, 
-        quadratic = TRUE, 
+        quadratic = FALSE, 
         product = FALSE,            
         threshold = FALSE,          
         hinge = FALSE,              
@@ -124,7 +124,7 @@ opcoes_maxentP <- biomod2::BIOMOD_ModelingOptions(
         beta_categorical = -1,
         beta_lqp = -1,
         beta_hinge = -1,
-        betamultiplier = 0.5,        # valor de beta/regularização
+        betamultiplier = 1.5,        # valor de beta/regularização
         defaultprevalence =.5))
 
 
@@ -228,7 +228,7 @@ modelo_maxentP@models.computed
 melhores_modelosP <- modelo_maxentP@models.computed[posicao_modelosP]
 
 # Nome do melhor modelo
-melhor_modeloP <- modelo_maxentP@models.computed[5]
+melhor_modeloP <- modelo_maxentP@models.computed[8]
 
 melhor_modeloP  # "subsecundum_PA1_RUN5_MAXENT.Phillips"
 
@@ -403,6 +403,7 @@ raster_final_presenteP <- raster_medio_presenteP * mapa_binario_presenteP
 
 # Verificação
 raster_final_presenteP
+plot(raster_final_presenteP)
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_presenteP, 
@@ -498,7 +499,7 @@ writeRaster(raster_classificado_presente, filename=
 # resolução de 0.5 arcsegundos
 
 # Carregamento das camadas de RCP 4.5 selecionadas para a planta
-camadas45P <- list.files(path='./Dados/Camadas_selecionadas_modelagem_cheia_res_2.5/E_subsecundum/RCP45/',
+camadas45P <- list.files(path='./Dados/Camadas_PCA_res_2.5_brasil/RCP45/',
                        pattern = '.asc', full.names = TRUE)
 
 camadas45P <- raster::stack(camadas45P)
@@ -561,6 +562,7 @@ limiar_RCP45_medio
 mapa_binario_RCP45P <- biomod2::BinaryTransformation(raster_medio_RCP45P,
                                                         limiar_RCP45_medio)
 
+plot(mapa_binario_RCP45P)
 
 # Salvar o mapa binário criado
 raster::writeRaster(mapa_binario_RCP45P, 

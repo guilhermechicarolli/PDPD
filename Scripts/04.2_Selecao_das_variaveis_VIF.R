@@ -46,9 +46,8 @@ pontos_planta
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(
-    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/', 
-    pattern='.asc', full.names=TRUE) 
+camadas <- list.files(path='./Dados/Camadas_res_2.5_cortadas/Presente/', 
+                      pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
 
@@ -78,13 +77,37 @@ corrplanta <- corrplot::corrplot(cor(valores_planta))
 colinVars <- usdm::vifstep(valores_planta)
 
 # Verificação
-colinVars                # "14 variables from the 19 input variables 
-                         #  have collinearity problem"
+colinVars                
 
+# "13 variables from the 19 input variables have collinearity problem" (biovars)
+#---------- VIFs of the remained variables -------- 
+#                  Variables       VIF
+#1 Presentewc2.1_2.5m_bio_10  2.852144
+#2 Presentewc2.1_2.5m_bio_14  6.405928
+#3 Presentewc2.1_2.5m_bio_15  9.101937
+#4 Presentewc2.1_2.5m_bio_18  6.039373
+#5  Presentewc2.1_2.5m_bio_3  4.576259
+#6  Presentewc2.1_2.5m_bio_4  4.025089
+                    
+
+# 8 variables from the 19 input variables have collinearity problem (PCA_vars)
+#---------- VIFs of the remained variables -------- 
+#   Variables       VIF
+#1       PC10  2.910183
+#2       PC12  5.660988
+#3       PC13  5.365289
+#4       PC14  3.873365
+#5       PC15  9.686241
+#6       PC16  3.878551
+#7       PC18  3.244937
+#8       PC19  1.463193
+#9        PC5  9.469703
+#10       PC6  6.636382
+#11       PC9  9.973294
 
 # Salvar os resultados das variáveis selecionadas
 write.csv(colinVars@results, 
-          "./Dados/Resultados_VIF/E_subsecundum/VIF_Variaveis_Presente.csv", 
+          "./Dados/Resultados_VIF/E_subsecundum/VIF_PCA_variáveis.csv", 
           quote = F)
 
 
@@ -118,9 +141,9 @@ raster::crs(pontos_morcego) <- proj_WGS
 pontos_morcego
 
 
-camadas <- list.files(
-    path='./Dados/Camadas_res_2.5_2050_cortadas/Presente_brasil/', 
-    pattern='.asc', full.names=TRUE) 
+# Carregamento das camadas ambientais raster cortadas no script 02 
+camadas <- list.files(path='./Dados/Camadas_res_2.5_cortadas/Presente/', 
+                      pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
 
@@ -151,9 +174,21 @@ corrmorcego <- corrplot::corrplot(cor(valores_morcego))
 colinVarsM <- usdm::vifstep(valores_morcego)
 
 # Verificação
-colinVarsM                # "16 variables from the 19 input variables 
-                          #  have collinearity problem"
+colinVarsM       
 
+# "17 variables from the 19 input variables have collinearity problem"
+#---------- VIFs of the remained variables -------- 
+#    Variables                    VIF
+#1 Presentewc2.1_2.5m_bio_7  1.002012
+#2 Presentewc2.1_2.5m_bio_8  1.002012
+
+
+# 16 variables from the 19 input variables have collinearity problem (PCA_vars)
+#---------- VIFs of the remained variables -------- 
+#  Variables       VIF
+#1       PC4  1.504459
+#2       PC5  1.167715
+#3       PC9  1.362523
 
 # Salvar os resultados das variáveis selecionadas
 write.csv(colinVarsM@results, 
