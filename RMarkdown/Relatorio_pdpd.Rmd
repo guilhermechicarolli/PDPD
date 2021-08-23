@@ -40,12 +40,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Resumo
 
-As mudanças climáticas em ocorrência no planeta são foco crescente de estudos na área ecológica.
-A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações no clima podem causar nas comunidades de espécies, comprometendo o funcionamento de ecossistemas e interações ecológicas entre indivíduos.
-Dessa forma, como resposta às mudanças climáticas, as espécies tendem a adaptar sua distribuição a lugares mais adequados.
-Porém, se a adequação não for acompanhada também pela adaptação das outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado *mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
-O presente projeto busca compreender como as mudanças climáticas podem impactar a distribuição geográfica da espécie de quiróptero *Lonchophylla bokermanni* e da bromélia *Encholirium subsecundum*, duas espécies que possuem relações ecológicas muito próximas, sendo *L. bokermanni* o único polinizador conhecido de *E. subsecundum*.
-Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2070, de RCP 4.5 e 8.5.
+A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações no clima podem causar nas comunidades, comprometendo o funcionamento de ecossistemas e interações ecológicas entre indivíduos.
+Dessa forma, como resposta às mudanças climáticas, as espécies que a adaptarem sua distribuição a lugares mais adequados serão selecionadas evolutivamente, caso contrário serão extintas.
+Se a adequação não for acompanhada também pela adaptação das outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado *mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
+O presente projeto buscou compreender como as mudanças climáticas podem impactar a distribuição geográfica da espécie de quiróptero *Lonchophylla bokermanni* e da bromélia *Encholirium subsecundum*, duas espécies que possuem relações ecológicas próximas, sendo *L. bokermanni* o único polinizador conhecido de *E. subsecundum*.
+Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2050, de RCP 4.5 e 8.5.
 
 > **Palavras chave:** Mudanças climáticas, modelagem, distribuição e sobreposição de espécies.
 
@@ -56,38 +55,18 @@ Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados mod
 \tableofcontents
 
 \clearpage
-
-# Introdução
-
-\clearpage
-
-```{r plot_bokermanni, echo=FALSE, fig.align='center', fig.cap='Gráfico das localidades de L. bokermanni (à esquerda) e E. subsecundum (à direita)', fig.show="hold", out.width="49%"}
-
-
-knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"))
-
+```{r child='../RMarkdown/introducao.Rmd'}
 ```
 
 \clearpage
 
-# Materiais e métodos
+```{r child='../RMarkdown/metodos.Rmd'}
+```
 
-## Espécies
+\clearpage
+```{r child='../RMarkdown/apendice.Rmd'}
+```
 
-## Ocorrências
-
-## Modelo de Distribuição
-
-## Dados ambientais
- 
-|     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. As 19 variáveis bioclimáticas [Tabela 3](#apêndice) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@worldclim].
-
-
-Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação do Painel Intergovernamental sobre Mudanças Climáticas (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim]. São camadas de 19 biovariáveis [Tabela 3](#apêndice) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação ACCESS1, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
-
-
-Diversos autores apontaram problemas de multicolinearidade de variáveis climáticas em
-modelagens de distribuição [@braunisch2013; @cardenas2014], afetando diretamente os resultados e performance dos modelos. A fim de avaliar a gravidade da colinearidade entre os pontos de ocorrências das duas espécies e o conjunto de biovariáveis do clima atual, medimos o Fator de Inflação da Variância (VIF). Para os dados de ocorrência da planta *E. subsecundum*, o teste resultou em 13 (de 19) variáveis bioclimáticas com problemas de colinearidade [Tabela 4](#apêndice). Enquanto que para o morcego *L. bokermanni*, 17 variáveis apresentaram alto grau de colinearidade [Tabela 5](#apêndice).
 
 
 \clearpage
@@ -97,130 +76,7 @@ modelagens de distribuição [@braunisch2013; @cardenas2014], afetando diretamen
 \bibliography{bibliography.bib}  
 \clearpage
 ```
-\clearpage
 
-# Apêndice
-
-
-**Tabela 1:** Pontos de ocorrências de *Encholirium subsecundum* (Barker Mez)
-
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Estado         | Município                | Longitude  | Latitude   | Referência                                                    |
-+================+==========================+============+============+===============================================================+
-| Minas Gerais   | Belo Horizonte           | -43.93780  | -19.92080  | Fundação Zoo-Botânica de Belo Horizonte                       |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santana do Riacho        | -43.71440  | -19.16890  | Fundação Zoo-Botânica de Belo Horizonte                       |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Conceição do Mato Dentro | -43.42500  | -19.03720  | Fundação Zoo-Botânica de Belo Horizonte                       |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Serro                    | -43.37940  | -18.60470  | Coleção da Escola Superior de Agronomia Luiz de Queiroz - USP |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Serro                    | -43.44500  | -18.47250  | Herbário do Museu Nacional                                    |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Jequitaí                 | -44.44560  | -17.23560  | Coleção da Universidade Federal de Viçosa                     |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Buenópolis               | -44.18000  | -17.87330  | Coleção da Universidade Federal de Viçosa                     |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Buenópolis               | -44.23389  | -17.92389  | Coleção da Universidade Federal do Maranhão                   |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Buenópolis               | -44.24944  | -17.90917  | Coleção da Universidade Federal do Maranhão                   |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santana do Riacho        | -43.71440  | -19.16890  | Coleção da Universidade Federal de Viçosa                     |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Mariana                  | -43.41610  | -20.37780  | Coleção da Universidade Federal de Viçosa                     |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Datas                    | -43.65580  | -18.44560  | Herbário do Museu Botânico Municipal                          |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Joaquim Felício          | -44.17220  | -17.75750  | Coleção da Universidade Estadual de Feira de Santana          |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Joaquim Felício          | -44.29190  | -17.69890  | The New York Botanical Garden                                 |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Joaquim Felício          | -44.17220  | -17.75750  | Herbário da Universidade Estadual de Feira de Santana         |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santana do Riacho        | -43.71440  | -19.16890  | Instituto de Botânica                                         |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Penha da França          | -43.83333  | -18.83333  | Coleção da Universidade de Brasília                           |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Montes Claros            | -43.86170  | -16.73500  | Coleção da UNICAMP                                            |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santo Antônio do Itambé  | -43.33944  | -18.45694  | Herbário da UFMG                                              |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Pedro Leopoldo           | -44.04310  | -19.61810  | Herbário da UFMG                                              |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Itacambira               | -43.30890  | -17.06470  | Herbário da UFMG                                              |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Dom Joaquim              | -43.23333  | -18.86667  | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Mato Verde               | -42.77889  | -15.38667  | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santana de Pirapama      | -43.75556  | -19.00611  | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Diamantina               | -43.55278  | -18.35500  | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Diamantina               | -43.62806  | -18.19194  | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Presidente Kubitschek    | -43.55722  | -18.65389  | @mariana2014                                                  |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Santana do Riacho        | -43.51667  | 19.25000   | Herbário da UFMG                                              |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Bahia          | Itatim                   | -39.69810  | -12.71190  | Instituto de Botânica                                         |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Jaboticatubas            | -43.74500  | -19.51360  | The New York Botanical Garden                                 |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-| Minas Gerais   | Jaboticatubas            | -43.58333  | -19.16667  | Herbário do Museu Nacional                                    |
-+----------------+--------------------------+------------+------------+---------------------------------------------------------------+
-
-\clearpage
-
-**Tabela 2:** Pontos de ocorrências de *Lonchophylla bokermanni* (Sazima, Vizotto & Taddei)
-
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Estado       | Município             | Longitude  | Latitude   | Referência                                           |
-+==============+=======================+============+============+======================================================+
-| Minas gerais | Jaboticatubas         | -43.74472  | -19.51361  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Jaboticatubas         | -43.74540  | -19.52210  | Coleção de Quirópteros da UNESP                      |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Jaboticatubas         | -43.60000  | -19.270000 | @nascimento2013                                      |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Serra do Cipó         | -43.60000  | -19.26667  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Itambé do Mato Dentro | -43.349444 | -19.410278 | @nascimento2013                                      |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Diamantina            | -43.516667 | -18.383333 | @dias2013                                            |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Diamantina            | -43.383333 | -18.383333 | @almeida2016                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Bahia        | Caetité               | -42.500000 | -14.266667 | @claudio2018                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Bahia        | Ourolândia            | -41.083333 | -11.083333 | @claudio2018                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-
-\clearpage
-
-**Tabela 3:** Descrição das variáveis bioclimáticas derivadas de valores de temperatura e pluviosidade [@worldclim]
-
-| Variáveis bioclimáticas |                           Descrição                            |
-|:-----------------------:|:--------------------------------------------------------------:|
-|          Bio 1          |                    Temperatura média anual                     |
-|          Bio 2          | Intervalo médio diurno (Média mensal (máx. temp. - mín temp.)) |
-|          Bio 3          |                         Isotermalidade                         |
-|          Bio 4          |       Sazonalidade de Temperatura (desvio padrão \*100)        |
-|          Bio 5          |             Temperatura máxima do mês mais quente              |
-|          Bio 6          |              Temperatura mínima do mês mais frio               |
-|          Bio 7          |                 Intervalo da temperatura anual                 |
-|          Bio 8          |               Média do quarto de ano mais úmido                |
-|          Bio 9          |                Média do quarto de ano mais seco                |
-|         Bio 10          |               Média do quarto de ano mais quente               |
-|         Bio 11          |                Média do quarto de ano mais frio                |
-|         Bio 12          |                       Precipitação anual                       |
-|         Bio 13          |                 Precipitação do mês mais frio                  |
-|         Bio 14          |                 Precipitação do mês mais seco                  |
-|         Bio 15          |     Sazonalidade de precipitação (Coeficiente de variação)     |
-|         Bio 16          |            Precipitação do quadrimestre mais úmido             |
-|         Bio 17          |             Precipitação do quadrimestre mais seco             |
-|         Bio 18          |            Precipitação do quadrimestre mais quente            |
-|         Bio 19          |             Precipitação do quadrimestre mais frio             |
 
 \clearpage
 
