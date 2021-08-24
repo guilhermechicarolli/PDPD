@@ -33,9 +33,11 @@ Em razão da degradação de seus habitats, a classificação de *L. bokermanni*
 
 ![*Lonchophylla bokermanni* Sazima *et al.*, 1978. Imagem retirada da fonte: @claudio2018](bokermanni.png){width="40%"}
 
-*Encholiirum subsecundum* é uma espécie (Baker) Mez é uma espécie de bromélia do gênero 
-*Encholirium* (família Bromeliaceae) que ocorre em formações rochosas, podendo atingir até 2 metros de altura e com um padrão floral quiropterófilo [@matos2004; @dias2013]. A espécie é endêmica do Brasil, com ocorrências nos biomas da Caatinga, Mata Atlântica e, principalmente, no Cerrado [@matos2004; @forzza2004; @sazima1989], nos estados de Minas Gerais e Bahia [Tabela 1](#apêndice). Até o momento, *L. bokermanni* é o único polinizador conhecido de *E. subsecundum* [@sazima1989], embora existam outras espécies de morcegos nectarívoros na área de ocorrência da bromélia.
+*Encholiirum subsecundum* (Baker) Mez é uma espécie de bromélia do gênero 
+*Encholirium* (família Bromeliaceae) que ocorre em formações rochosas, podendo atingir até 2 metros de altura e com um padrão floral quiropterófilo [@matos2004; @dias2013]. A espécie é endêmica do Brasil, com ocorrências nos biomas da Caatinga, Mata Atlântica e, principalmente, no Cerrado [@matos2004; @forzza2005; @sazima1989], nos estados de Minas Gerais e Bahia [Tabela 1](#apêndice). Embora existam outras espécies de morcegos nectarívoros na área de ocorrência de *E. subsecundum*, *L. bokermanni* é o único polinizador conhecido da bromélia [@sazima1989].
 
+
+*E. subsecundum* não se encontra no Livro Vermelho da Flora do Brasil [@martinelli2013] ou na Lista Vermelha da IUCN [@iucn]
 
 
 
