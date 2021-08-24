@@ -46,7 +46,7 @@ pontos_planta
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_res_2.5_cortadas/Presente/', 
+camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/Presente/', 
                       pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
@@ -142,7 +142,7 @@ pontos_morcego
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_res_2.5_cortadas/Presente/', 
+camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/Presente/', 
                       pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
