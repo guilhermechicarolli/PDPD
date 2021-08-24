@@ -46,7 +46,7 @@ pontos_planta
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/Presente/', 
+camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/presente/', 
                       pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
@@ -104,6 +104,20 @@ colinVars
 #9        PC5  9.469703
 #10       PC6  6.636382
 #11       PC9  9.973294
+
+
+# 3 variables from the 6 input variables have collinearity problem  (Camadas 
+# pelo modelo cheio da E. subsecundum)
+
+# After excluding the collinear variables, the linear correlation coefficients ranges between: 
+# min correlation ( wc2.1_2.5m_bio_19 ~ wc2.1_2.5m_bio_18 ):  0.1485531 
+# max correlation ( wc2.1_2.5m_bio_5 ~ wc2.1_2.5m_bio_18 ):  -0.5091605 
+
+# ---------- VIFs of the remained variables -------- 
+#           Variables       VIF
+# 1 wc2.1_2.5m_bio_18  1.350521
+# 2 wc2.1_2.5m_bio_19  1.072262
+# 3  wc2.1_2.5m_bio_5  1.415580
 
 # Salvar os resultados das variáveis selecionadas
 write.csv(colinVars@results, 
