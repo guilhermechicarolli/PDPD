@@ -297,5 +297,75 @@ raster::writeRaster(camadas_final85, paste0(
                     driver='ascii', bylayer=TRUE)
 
 
+################################################################################
+
+#--------- 6. TRATAMENTO DAS CAMADAS AMBIENTAIS DO FUTURO: RCP 2.6
+#                    (variáveis bioclimáticas)  ---------#
+
+
+# Carregamento da máscara criada anteriormente
+mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
+
+# Adicionar a projeção
+raster::crs(mascara) <- proj_WGS
+
+# Verificar dados
+mascara
+plot(mascara)
+
+# Carregamento de uma camada representante, escolhida a camada 'bio1'
+camada_rep26 <- raster::raster(
+    './Dados/Camadas_brutas_res_2.5_2050/RCP2.6_res_2.5/bc26bi501.tif')
+
+# Adicionar a projeção
+raster::crs(camada_rep26) <- proj_WGS
+
+# Verificação
+plot(camada_rep26)
+
+
+# Carregamento de todas as variáveis ambientais raster 
+camadas26 <- list.files(path='Dados/Camadas_brutas_res_2.5_2050/RCP2.6_res_2.5/',
+                        pattern='.tif', full.names = TRUE)
+
+camadas26 <- raster::stack(camadas26)
+
+# Adicionar a projeção às camadas
+crs(camadas26) <- proj_WGS
+
+# Verificar dados
+camadas26
+
+
+# Reduzir o tamanho da camada representante para um retângulo
+corte_cam26 <- raster::crop(camadas26, extent(mascara))
+
+# Verificação
+plot(corte_cam26)
+
+
+# Reduzir o tamanho de todas as camadas ambientais do presente
+cortes_final26 <- raster::resample(camadas26, corte_cam26, method="bilinear", 
+                                   snap='out', bylayer=TRUE, progress='text')
+
+# Verificação
+cortes_final26
+plot(cortes_final26)
+
+# Cortar as camadas ambientais e cortar a partir da máscara criada
+camadas_final26 <- raster::mask(cortes_final26, mascara, bylayer=TRUE)
+
+# Verificação
+plot(camadas_final26)
+
+
+# Salvar as camadas na pasta "Camadas_Futuro_RCP85" no formato ".asc"
+raster::writeRaster(camadas_final26, paste0(
+    "Dados/Camadas_res_2.5_2050_cortadas/RCP26_brasil/",
+    paste0(names(camadas_final26),".asc")), 
+    driver='ascii', bylayer=TRUE)
+
+
+
 
 ################################ FIM ###########################################
