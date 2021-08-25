@@ -42,7 +42,7 @@ options(java.parameters = "-Xmx6g")
 
 ### CARREGAMENTO DOS DADOS
 
-camadasM <- list.files(path='./Dados/Camadas_selecionadas_PCA/L_bokermanni',
+camadasM <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/Selec_bokermanni/',
                        pattern = '.asc', full.names = TRUE)
 
 camadasM <- raster::stack(camadasM)
@@ -107,7 +107,7 @@ head(pontos_backgM@data.env.var)
 
 opcoes_maxentM <- biomod2::BIOMOD_ModelingOptions(
     MAXENT.Phillips = list(
-        path_to_maxent.jar = "~/R/win-library/4.0/dismo/java",
+        path_to_maxent.jar = "~/R/R-4.1.0/library/dismo/java",
         memory_allocated = NULL, 
         maximumiterations = 5000,    # quantidade de interações
         # Features:
@@ -137,7 +137,7 @@ modelo_maxentM <- biomod2::BIOMOD_Modeling(pontos_backgM,
                                            DataSplit = 70,	
                                            Prevalence = 0.5,
                                            # quantidade de permutações para estimar a 
-                                           # importÂncia das variaveis
+                                           # importância das variaveis
                                            VarImport = 10, 
                                            models.eval.meth = c("TSS", "ROC"),  # Testes estatísticos
                                            SaveObj = TRUE,
@@ -247,8 +247,7 @@ melhores_impM <- importancia_varsM[posicao_modelosM, ]
 
 # Cálculo da média da importância 
 media_impM <- c(mean(melhores_impM[,1]), mean(melhores_impM[,2]), 
-                mean(melhores_impM[,3]), mean(melhores_impM[,4]), 
-                mean(melhores_impM[,5]))                                         # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
+                mean(melhores_impM[,3]))                                         # NUM DE VARIAVEIS VERIFICAR APOS A RODAGEM DOS MODELOS
 
 # Adicionar uma última linha com as médias de importância
 melhores_mediasM <- rbind(melhores_impM, media_impM)
@@ -349,6 +348,7 @@ projec_presenteM
 
 plot(projec_presenteM)
 
+
 # Transformar as projeções para o tipo raster
 rasters_presenteM <- biomod2::get_predictions(projec_presenteM)
 
@@ -397,6 +397,8 @@ raster_final_presenteM <- raster_medio_presenteM * mapa_binario_presenteM
 
 # Verificação
 raster_final_presenteM
+
+plot(raster_final_presenteM)
 
 # Salvar o mapa final
 raster::writeRaster(raster_final_presenteM, 
@@ -489,10 +491,10 @@ writeRaster(raster_classificado_presenteM, filename=
 # resolução de 0.5 arcsegundos
 
 # Carregamento das camadas de RCP 4.5 selecionadas para o morcego
-camadas_45M <- list.files(path='./Dados/Camadas_selecionadas_PCA/L_bokermanni/RCP45/',
+camadas_45M <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/selec_bokermanni_RCP45/',
                           pattern = '.asc', full.names = TRUE)
 
-camadas45M <- raster::stack(camadas45M)
+camadas45M <- raster::stack(camadas_45M)
 
 # Adicionar a projeção geográfica
 raster::crs(camadas45M) <- proj_WGS
@@ -504,13 +506,14 @@ camadas_RCP45M <- camadas_45M
 
 # Projeção 
 projec_RCP45M <- biomod2::BIOMOD_Projection(modeling.output = modelo_maxentM,
-                                            new.env = camadas_RCP45M,
+                                            new.env = camadas45M,
                                             proj.name = 'Futuro_RCP_45',
                                             selected.models = melhores_modelosM, 
                                             compress = FALSE,
-                                            build.clamping.mask = FALSE,
+                                            build.clamping.mask = TRUE,
                                             output.format = '.img',
-                                            do.stack = TRUE)
+                                            do.stack = TRUE,
+                                            )
 # Verificação dos modelos
 projec_RCP45M
 

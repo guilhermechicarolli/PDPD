@@ -156,7 +156,7 @@ pontos_morcego
 
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/Presente/', 
+camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/selec_bokermanni/', 
                       pattern='.asc', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
