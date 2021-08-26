@@ -125,10 +125,10 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 |          Bio 5          |             Temperatura máxima do mês mais quente              |
 |          Bio 6          |              Temperatura mínima do mês mais frio               |
 |          Bio 7          |                 Intervalo da temperatura anual                 |
-|          Bio 8          |               Média do quarto de ano mais úmido                |
-|          Bio 9          |                Média do quarto de ano mais seco                |
-|         Bio 10          |               Média do quarto de ano mais quente               |
-|         Bio 11          |                Média do quarto de ano mais frio                |
+|          Bio 8          |               Média da temperatura do quarto de ano mais úmido                |
+|          Bio 9          |                Média da temperatura do quarto de ano mais seco                |
+|         Bio 10          |               Média da temperatura do quarto de ano mais quente               |
+|         Bio 11          |                Média da temperatura do quarto de ano mais frio                |
 |         Bio 12          |                       Precipitação anual                       |
 |         Bio 13          |                 Precipitação do mês mais frio                  |
 |         Bio 14          |                 Precipitação do mês mais seco                  |

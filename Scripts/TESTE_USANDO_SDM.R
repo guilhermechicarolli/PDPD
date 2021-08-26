@@ -147,3 +147,6 @@ plot(pa1)
 pa2 <- raster(en2)
 pa2[] <- ifelse(en2[] >= 0.015, 1,0)
 plot(pa2)
+
+
+

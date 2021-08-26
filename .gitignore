@@ -6,3 +6,5 @@
 *.tif
 *.zip
 *.rds
+*.bil
+*.hdr
