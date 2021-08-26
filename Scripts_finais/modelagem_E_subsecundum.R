@@ -15,13 +15,15 @@
 ##### Carregamento das bibliotecas necessárias
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(sdm)) install.packages('sdm')
-
-installAll() # Rodar na primeira vez
-
 if (!require(dismo)) install.packages('dismo')
 if (!require(dplyr)) install.packages('dplyr')
 if (!require(mapview)) install.packages('mapview')
 if (!require(raster)) install.packages('raster')
+if (!require(rgdal)) install.packages('rgdal')
+if (!require(usdm)) install.packages('usdm')
+
+# Rodar na primeira vez para instalar as dependêcias que o 'sdm' precisa.
+installAll() 
 
 ################################################################################
 
@@ -31,30 +33,37 @@ if (!require(raster)) install.packages('raster')
 #------
 
 # Carregar dados E. subsecundum
-
 spg <- read.csv('./Dados/Ocorrencias/E_subsecundum_corrigido.csv')
 
+# Adicionamos uma coluna com a espécie (necesária como argumento na modelagem)
 spg$species <- 1
-spg
 
-coordinates(spg) <-c('x','y')
+# Exploramos o data frame
+head(spg)
+
+# Transformar as coordenadas em um objeto "Spatial"
+sp::coordinates(spg) <-c('x','y')
 spg
 
 #------
+
+# Criar um objeto com o contorno (poligono) do Brasil
 mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
 
 # baixar camadas presente
-
-bio <- raster::getData('worldclim', var='bio',res=2.5)
+bio <- raster::getData('worldclim', var='bio',res=2.5) # pode demorar
 
 # cortar as camadas com o shape do brasil
 corte <- bio
 
 cam_rep <- bio[[1]]
+
 # Reduzir o tamanho da camada representante para um retângulo
+
 cam_rep <- raster::crop(cam_rep, extent(mascara))
 
 # Reduzir o tamanho de todas as camadas ambientais do presente
+
 bioCams <- raster::resample(corte, cam_rep, method="bilinear", 
                                    snap='out', bylayer=TRUE, progress='text')
 
@@ -65,49 +74,58 @@ bioCams <- raster::mask(bioCams, mascara, bylayer=TRUE)
 plot(bioCams)
 
 #------
-# MODELAGEM CHEIA
+# MODELO CHEIO
 
 # adicionar bg para fazer um MODELO CHEIO
-dC <- sdmData(species~., spg, predictors = bioCams, bg=list(method='gRandom', n=10000))
+dC <- sdm::sdmData(species~., spg, predictors = bioCams, 
+                   bg=list(method='gRandom', n=10000))
 dC
 
 getmethodNames()
 
 # ajustar os modelos
-mC <- sdm(species~., dC, methods='maxent', replication=c('sub', 'boot'),
-         test.p=30, n=10, parallelSettings=list(ncore=5, method='parallel'))
+mC <- sdm::sdm(species~., dC, methods = 'maxent', replication=c('sub', 'boot'),
+               test.p=30, n=10, parallelSettings=list(ncore=5, method='parallel'))
 
+# NOTA: Para o MaxEnt funcionar o Java do PC deve estar atualizado
 
 mC
+
+# Plot das contribuições das variáveis
 plot(mC@models$species$maxent$`1`@object)
 
-# PLOT DAS CONTRIBUIÇÕES
-plot(getVarImp(mC)) 
+# plot da importância das variáveis
+plot(getVarImp(mC), 'AUC') # Biovars: 6, 17, 19, 14
+bioc
 
-
-gui(mC)
+# Para abrir uma interface de exploração do modelo
+sdm::gui(mC)
 
 #------
 
-# TESTE VIF COM AS VARIÁVEIS COM MAIOR CONTRIBUIÇÃO
-if (!require(usdm)) install.packages('usdm')
+# TESTE VIF COM AS VARIÁVEIS COM MAIOR Importância
 
 bioCams
-bioc <- raster::subset(bioCams, c(6, 17, 19, 2))  # Biovars: 6, 17, 19, 2
-bioc
-plot(bioc)
+# bioc <- raster::subset(bioCams, c(6, 17, 19, 14)) 
 
+# O fator de inflação da variância das camadas selecionadas
+# vif(bioc)
+
+# Tiramos a camada 14 (alto vif e importância menor do que a correlata 17)
+bioc <- raster::subset(bioCams, c(6, 17, 19))
 vif(bioc)
 
-ex <- raster::extract(bioc,spg)
-head(ex)
+# Essa parte é desnecessária pois já fizemos de forma manual
 
-v <- vifstep(ex)
-v
+# ex <- raster::extract(bioc,spg)
+# head(ex)
+
+# v <- vifstep(ex)
+# cor(ex)
 
 # Deixar apenas as vars sem problema de colinearidade
-bioc <- exclude(bioc, v)
-bioc
+# bioc <- exclude(bioc, v)
+# bioc
 
 #-------
 # MODELAGEM COM AS CAMADAS SELECIONADAS

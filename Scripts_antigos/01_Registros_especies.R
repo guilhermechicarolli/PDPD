@@ -24,7 +24,7 @@ if (!require(tidyverse)) install.packages('tidyverse')
 registros <- read.csv(
     "./Dados/DataSets_temporarios/speciesLink_E_subsecundum.csv",
                       encoding = "UTF-8") %>%
-    as_tibble(registros)
+    as_tibble()
 
 
 # Verificando os dados
@@ -49,7 +49,7 @@ write_csv(registros, paste(path,'registros_E_subsecundum.csv'))
 
 registros2 <- read.csv("Dados/DataSets_temporarios/GBIF_E_subsecundum.txt",
                        sep='\t', encoding = "UTF-8") %>%
-    as_tibble(registros2)
+    as_tibble()
 
 
 # Verificando os dados
@@ -79,7 +79,7 @@ write_csv(registros2, paste(path,'registros2_E_subsecundum.csv'))
 
 registros3 <- read.csv("Dados/DataSets_temporarios/SiBBr_E_subsecundum.csv", 
                        encoding = "UTF-8") %>%
-    as_tibble(registros3)
+    as_tibble()
 
 
 # Verificando os dados
@@ -118,7 +118,7 @@ write_csv(registros3, paste(path,'registros3_E_subsecundum.csv'))
 # Exportando o arquivo CSV criado:
 registrosM <- read.csv("Dados/registros_L_bokermanni.csv", 
                       encoding = "UTF-8") %>%
-    as_tibble(registrosM)
+    as_tibble()
 
 
 # Verificando os dados
