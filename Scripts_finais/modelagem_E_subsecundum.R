@@ -126,7 +126,7 @@ bio85 <- raster::mask(bio85, mascara, bylayer=TRUE)
 # Verificacao
 plot(bio85)
 
-################################################################################
+ADA################################################################################
 #--------- 2. RODAGEM DO MODELO PREVIO E 
 #               SELECAO DAS VARIAVEIS   ---------#
 
@@ -139,10 +139,10 @@ dC
 
 # Ajustar e criar os modelos
 mC <- sdm::sdm(species~., dC, methods = 'maxent', replication=c('sub', 'boot'),
-               test.p=30, n=10, parallelSettings=list(ncore=5, method='parallel'))
+               test.p=30, n=15, parallelSettings=list(ncore=5, method='parallel'))
 
 # NOTAS: 1) Para o MaxEnt funcionar o Java do computador deve estar atualizado. 
-# 2) O parametro ncore é a quantidade de cores de processamento utilizados para
+# 2) O parametro ncore e a quantidade de cores de processamento utilizados para
 # a modelagem, altere conforme a capacidade do computador
 
 mC
@@ -162,7 +162,7 @@ sdm::gui(mC)
 bioc <- raster::subset(bioCams, c(6, 17, 19))
 vif(bioc)
 
-# Essa parte é desnecessaria pois ja fizemos de forma manual
+# Essa parte ? desnecessaria pois ja fizemos de forma manual
 # ex <- raster::extract(bioc,spg)
 # head(ex)
 
@@ -186,7 +186,7 @@ d
 m <- sdm::sdm(species~., d, methods='maxent', replication=c('sub', 'boot'),
               test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
 
-# NOTAS: Como mencionado no item 2, o parametro ncore é a quantidade de cores de
+# NOTAS: Como mencionado no item 2, o parametro ncore ? a quantidade de cores de
 # processamento utilizados para a modelagem, altere conforme a configuracao do 
 # computador
 
@@ -264,7 +264,7 @@ en85 <- sdm::ensemble(m, bioS85, filename='./Resultados_subsecundum/futuro_RC85.
 plot(en85)
 
 ################################################################################
-#--------- 7. CONSTRUCAO DE mapaP45 BINARIOS E
+#--------- 7. CONSTRUCAO DE MAPAS BINARIOS E
 #             DE DENSIDADE DE PROBABILIDADE  ---------#
 
 # Paleta de cores
@@ -357,7 +357,6 @@ cel_tam<-cel_tam[!is.na(cel_tam)]
 ### AREA PRESENTE  (KM^2)
 mapa <- pa1$layer@data@values==1
 tamanho <- sum(mapa[!is.na(mapa)])
-
 area <- tamanho*median(cel_tam)
 area
 
@@ -365,7 +364,6 @@ area
 ###  AREA FUTURA (RCP45)  (KM^2)
 mapaF45 <- pa2$layer@data@values==1
 tamanhoF45 <- sum(mapaF45[!is.na(mapaF45)])
-
 areaF45 <- tamanhoF45*median(cel_tam)
 areaF45
 
@@ -373,7 +371,6 @@ areaF45
 ###  AREA FUTURA (RCP85)  (KM^2)
 mapaF85 <- pa3$layer@data@values==1
 tamanhoF85 <- sum(mapaF85[!is.na(mapaF85)])
-
 areaF85 <- tamanhoF85*median(cel_tam)
 areaF85
 
@@ -387,6 +384,10 @@ tamanhoP45 <- sum(mapaP45[!is.na(mapaP45)])
 areaP45 <- tamanhoP45*median(cel_tam)
 areaP45        # Area perdida
 
+# Porcentagem de perda
+(areaP45/area)*100
+
+
 mapaG45 <- chp45$layer@data@values >0
 tamanhoG45 <- sum(mapaG45[!is.na(mapaG45)])
 areaG45 <- tamanhoG45*median(cel_tam)
@@ -394,8 +395,6 @@ areaG45        # Area ganha
 
 # Porcentagem de ganho
 (areaG45/area)*100
-# Porcentagem de perda
-(areaP45/area)*100
 
 #----------
 ###  AREA ALTERADA ENTRE O PRESENTE E O FUTURO RCP85 (KM^2)
@@ -407,6 +406,9 @@ tamanhoP85 <- sum(mapaP85[!is.na(mapaP85)])
 areaP85 <- tamanhoP85*median(cel_tam)
 areaP85        # Area perdida
 
+# Porcentagem de perda
+(areaP85/area)*100
+
 
 mapaG85 <- chp85$layer@data@values >0
 tamanhoG85 <- sum(mapaG85[!is.na(mapaG85)])
@@ -415,7 +417,5 @@ areaG85        # Area ganha
 
 # Porcentagem de ganho
 (areaG85/area)*100
-# Porcentagem de perda
-(areaP85/area)*100
 
 ################################ FIM ###########################################

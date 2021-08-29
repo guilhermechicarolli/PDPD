@@ -64,14 +64,14 @@ cam_rep <- bio[[1]]
 cam_rep <- raster::crop(cam_rep, extent(mascara))
 
 # Reduzir o tamanho de todas as camadas ambientais do presente
-biocMams <- raster::resample(corte, cam_rep, method="bilinear", 
+biocams <- raster::resample(corte, cam_rep, method="bilinear", 
                             snap='out', bylayer=TRUE, progress='text')
 
 # Cortar as camadas ambientais e cortar a partir da mascara criada
-biocMams <- raster::mask(biocMams, mascara, bylayer=TRUE)
+biocams <- raster::mask(bioCams, mascara, bylayer=TRUE)
 
 # Verificacao
-plot(biocMams)
+plot(biocams)
 
 #----------
 ### CARREGAR CAMADAS DO FUTURO RCP45, ANO 2050
@@ -136,13 +136,13 @@ plot(bio85)
 # MODELO CHEIO
 
 # Adicionar os dados previo para fazer um modelo com todas as variaveis
-dCM <- sdm::sdmData(species~., spgM, predictors = biocMams, 
+dCM <- sdm::sdmData(species~., spgM, predictors = bioCams, 
                    bg=list(method='gRandom', n=10000))
 dCM
 
 # Ajustar e criar os modelos
 mCM <- sdm::sdm(species~., dCM, methods = 'maxent', replication=c('sub', 'boot'),
-               test.p=30, n=10, parallelSettings=list(ncore=5, method='parallel'))
+               test.p=30, n=15, parallelSettings=list(ncore=5, method='parallel'))
 
 # NOTAS: 1) Para o MaxEnt funcionar o Java do computador deve estar atualizado. 
 # 2) O parametro ncore e a quantidade de cores de processamento utilizados para
@@ -151,7 +151,7 @@ mCM <- sdm::sdm(species~., dCM, methods = 'maxent', replication=c('sub', 'boot')
 mCM
 
 # Plot da importancia das variaveis
-plot(getVarImp(mCM), 'AUC') # Biovars: 6, 17, 19, 14
+plot(getVarImp(mCM), 'AUC') # Biovars: 17, 9, 15, 19
 getVarImp(mCM)
 
 # Para abrir uma interface de exploracao do modelo
@@ -161,8 +161,9 @@ sdm::gui(mCM)
 # TESTE VIF COM AS VARIAVEIS COM MAIOR IMPORTANCIA
 
 
-# Tiramos a camada 14 (alto vif e importância menor do que a correlata 17)
-biocM <- raster::subset(biocMams, c(6, 17, 19))
+# Tiramos a camada 19 (problema de colinearidade e importância menor do que a 
+# correlata bio15)
+biocM <- raster::subset(bioCams, c(9, 17, 15))
 vif(biocM)
 
 # Essa parte e desnecessaria pois ja fizemos de forma manual
@@ -170,6 +171,7 @@ vif(biocM)
 # head(ex)
 
 # v <- usdm::vifstep(ex)
+# v
 # cor(ex)
 
 # Deixar apenas as vars sem problema de colinearidade
@@ -186,7 +188,7 @@ dM <- sdm::sdmData(species~., spgM, predictors = biocM, bg=list(method='gRandom'
 dM
 
 # Ajustar os modelos, 50 replicacoes, 25 por Subsampling e 25 por Bootstrap
-mM <- sdm::sdm(species~., d, methods='maxent', replication=c('sub', 'boot'),
+mM <- sdm::sdm(species~., dM, methods='maxent', replication=c('sub', 'boot'),
               test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
 
 # NOTAS: Como mencionado no item 2, o parametro ncore e a quantidade de cores de
@@ -226,8 +228,8 @@ plot(enM)
 ################################################################################
 #--------- 5. PROJECAO DO MODELO PARA O FUTURO (RCP45)   ---------#
 
-# Selecionar apenas as biovariaveis 6, 17, 19
-bioS45M <- raster::subset(bio45, c(6, 17, 19))
+# Selecionar apenas as biovariaveis 9, 17, 15
+bioS45M <- raster::subset(bio45, c(9, 17, 15))
 plot(bioS45M)
 
 # Predicao utilizando o modelo criado na secao 3 para as camadas de RCP45
@@ -249,8 +251,8 @@ plot(en45M)
 ################################################################################
 #--------- 6. PROJECAO DO MODELO PARA O FUTURO (RCP85)   ---------#
 
-# Selecionar apenas as biovariaveis 6, 17, 19
-bioS85M <- raster::subset(bio85, c(6, 17, 19))
+# Selecionar apenas as biovariaveis 9, 17, 15
+bioS85M <- raster::subset(bio85, c(9, 17, 15))
 plot(bioS85M)
 
 # Predicao utilizando o modelo criado na secao 3 para as camadas de RCP85
@@ -260,7 +262,7 @@ p3M
 
 # Obter um modelo consenso dentre os 50 criados para o futuro RCP85 por meio da 
 # mediana ponderada
-en85M <- sdm::ensemble(m, bioS85M, filename='./Resultados_bokermanni/futuro_RC85.img',
+en85M <- sdm::ensemble(mM, bioS85M, filename='./Resultados_bokermanni/futuro_RC85.img',
                       setting =list(method='weighted', stat='tss', opt=2), 
                       overwrite=TRUE)
 
@@ -313,7 +315,7 @@ head(xyM)
 
 # Extrair do raster da predicao do presente os valores das biovariaveis nos 
 # pontos de ocorrencias das especies
-pM<-raster::extract(en,xyM)
+pM<-raster::extract(enM,xyM)
 
 # Avaliacao do modelo
 evM <- evaluates(dfM$species,pM)
@@ -387,6 +389,10 @@ tamanhoP45M <- sum(mapaP45M[!is.na(mapaP45M)])
 areaP45M <- tamanhoP45M*median(cel_tam)
 areaP45M        # Area perdida
 
+# Porcentagem de perda
+(areaP45M/area)*100
+
+
 mapaG45M <- chp45M$layer@data@values >0
 tamanhoG45M <- sum(mapaG45M[!is.na(mapaG45M)])
 areaG45M <- tamanhoG45M*median(cel_tam)
@@ -394,8 +400,7 @@ areaG45M        # Area ganha
 
 # Porcentagem de ganho
 (areaG45M/area)*100
-# Porcentagem de perda
-(areaP45M/area)*100
+
 
 #----------
 ###  AREA ALTERADA ENTRE O PRESENTE E O FUTURO RCP85 (KM^2)
@@ -407,15 +412,17 @@ tamanhoP85M <- sum(mapaP85M[!is.na(mapaP85M)])
 areaP85M <- tamanhoP85M*median(cel_tam)
 areaP85M        # Area perdida
 
+# Porcentagem de perda
+(areaP85M/area)*100
 
-mapaG8M5 <- chp85M$layer@data@values >0
+
+mapaG85M <- chp85M$layer@data@values >0
 tamanhoG85M <- sum(mapaG85M[!is.na(mapaG85M)])
 areaG85M <- tamanhoG85M*median(cel_tam)
 areaG85M        # Area ganha
 
 # Porcentagem de ganho
 (areaG85M/area)*100
-# Porcentagem de perda
-(areaP85M/area)*100
+
 
 ################################ FIM ###########################################
