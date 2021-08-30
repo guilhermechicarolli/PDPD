@@ -34,7 +34,7 @@ Sob <- pa1*2+ pa1M
 plot(Sob, col=c('#669966','#BF87B3','#7F5AA2','blue'))  
 
 
-Sp <- pa - paM # area negativa ou positiva = area de mismatch
+Sp <- pa1 - pa1M # area negativa ou positiva = area de mismatch
 
 # Com relacao a distribuicao da planta
 pS <- Sp$layer@data@values == 1
@@ -103,6 +103,7 @@ area_Sob45
 porcentagem_Sob45 <- (area_Sob45/area_Sob)*100
 porcentagem_Sob45
 
+# Porcentagem de area de sobreposicao perdida
 100 - porcentagem_Sob45
 
 
@@ -148,6 +149,7 @@ area_Sob85
 # Porcentagem de area de sobreposicao perdida (RCP85)
 porcentagem_Sob85 <- (area_Sob85/area_Sob)*100
 
+# Porcentagem de area de sobreposicao perdida
 100 - porcentagem_Sob85
 
 

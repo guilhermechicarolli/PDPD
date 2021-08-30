@@ -1,0 +1,1 @@
+Arquivos utilizados para criar a máscara com o shape file do Brasil "mascara_brasil.shp".

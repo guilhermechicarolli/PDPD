@@ -126,7 +126,7 @@ bio85 <- raster::mask(bio85, mascara, bylayer=TRUE)
 # Verificacao
 plot(bio85)
 
-ADA################################################################################
+################################################################################
 #--------- 2. RODAGEM DO MODELO PREVIO E 
 #               SELECAO DAS VARIAVEIS   ---------#
 
@@ -423,17 +423,17 @@ areaG85        # Area ganha
 # Salvar os mapas dos modelos como .png
 
 # Mapa presente
-png('./Graficos/E_subsecundum_presente.png', height=nrow(en), width=ncol(en)) 
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_presente.png', height=nrow(en), width=ncol(en)) 
 plot(en, maxpixels=ncell(en))
 dev.off()
 
 # Mapa RCP45
-png('./Graficos/E_subsecundum_RCP45.png', height=nrow(en45), width=ncol(en45)) 
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_RCP45.png', height=nrow(en45), width=ncol(en45)) 
 plot(en45, maxpixels=ncell(en45))
 dev.off()
 
 # Mapa RCP85
-png('./Graficos/E_subsecundum_RCP85.png', height=nrow(en85), width=ncol(en85)) 
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_RCP85.png', height=nrow(en85), width=ncol(en85)) 
 plot(en85, maxpixels=ncell(en85))
 dev.off()
 
@@ -458,23 +458,23 @@ dev.off()
 
 
 # Mapa de alteracao RCP45
-png('./Graficos/E_subsecundum_ch45.png', height=nrow(ch45), width=ncol(ch45)) 
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_ch45.png', height=nrow(ch45), width=ncol(ch45)) 
 plot(ch45, maxpixels=ncell(ch45))
 dev.off()
 
 # Mapa de alteracao rcp85
-png('./Graficos/E_subsecundum_ch85.png', height=nrow(ch85), width=ncol(ch85)) 
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_ch85.png', height=nrow(ch85), width=ncol(ch85)) 
 plot(ch85, maxpixels=ncell(ch85))
 dev.off()
 
 # Mapa de alteracao RCP45 binario
-png('./Graficos/E_subsecundum_ch45_binario.png', height=nrow(chp45), width=ncol(chp45)) 
-plot(chp45, col=c('red','gray','blue'))
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_ch45_binario.png', height=nrow(chp45), width=ncol(chp45)) 
+plot(chp45, col=c('red','gray','blue'), maxpixels=ncell(chp45))
 dev.off()
 
 # Mapa de alteracao RCP85 binario
-png('./Graficos/E_subsecundum_ch85_binario.png', height=nrow(chp85), width=ncol(chp85)) 
-plot(chp85, col=c('red','gray','blue'))
+png('./Graficos/E_subsecundum_modelos/E_subsecundum_ch85_binario.png', height=nrow(chp85), width=ncol(chp85)) 
+plot(chp85, col=c('red','gray','blue'), maxpixels=ncell(chp85))
 dev.off()
 
 
