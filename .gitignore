@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+*.rds
+Camadas_presente
+Camadas_RCP45
+Camadas_RCP85
