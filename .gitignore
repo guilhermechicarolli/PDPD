@@ -2,10 +2,3 @@
 .Rhistory
 .RData
 .Ruserdata
-*.asc
-*.tif
-*.zip
-*.rds
-*.bil
-*.hdr
-*.img

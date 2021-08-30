@@ -1,2 +1,0 @@
-AS CAMADAS SÃO FUTURAS! RCP 45, embora no nome esteja "presente".
-Isso acontece pois a modelagem necessita que as camadas tenham nomes iguais
