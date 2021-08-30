@@ -1,2 +1,0 @@
-Camadas obtidas a partir do teste PCA no script:
-"script_teste_biovar_PCA_e_VIF.R"
