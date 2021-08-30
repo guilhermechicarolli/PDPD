@@ -57,7 +57,20 @@ knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"
 
 ```
 
-## 2.3 Modelo de Distribuição 
+## 2.3 Modelo de Distribuição Potencial
+
+|     Para o processo de modelagem foi utilizado o pacote SDM (*Species Distribution Modelling*) [@sdm], (versão 1.0-89), da linguagem de programação R [@r], versão 4.1.1, por apresentar uma série de funções importantes que automatizam o processo de modelagem, além de conter diversos algoritmos de modelagem.
+
+Nós usamos o algoritimo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software*, de uso livre, para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
+
+Maxent recebe como *input* as ocorrências georreferenciadas da espécie e o conjunto de dados camadas ambientais (variáveis preditoras) determinados pelo usuário e dividido em *grid cells* ao longo de uma região escolhida [@merow2013]. Diante disso, o algoritmo amostra uma quantidade de localizações de *background* das camadas ambientais, que são confrontadas com as localizações geográficas da espécie, gerando como *output* um modelo que traduz a probabilidade de distribuição da espécie para cada *grid cell*, dada a aptidão às condições ambientais preditas para a espécie. Maxent procura, assim, a distribuição mais espalhada (de entropia máxima) para a espécie na região de estudo.
+
+O algoritmo foi escolhido devido a sua performance superior a outros quando utilizado quantidades pequenas de dados de ocorrência das espécies [@hijmans2008; @hernandez2006], crucial para nós devido a quantidade pequena de dados para a espécie de morcego *L. bokermanni*. Além disso, Maxent requer apenas ocorrências de presença das espécies, excluindo a necessidade de registros de ausência e facilitando o trabalho com espécies que possuem baixa quantidade de registros ou não possuam registros de ausência.
+
+
+A fim de avaliar a performance dos modelos criados pelo Maxent, foram empregados o AUC (*Area Under the Curve*) parcial da curva ROC (*Receiver Operating Characteristic Curve*),  
+
+
 
 ## 2.4 Dados ambientais
 
@@ -65,7 +78,7 @@ knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"
   As 19 variáveis bioclimáticas ([Tabela 3](#apêndice)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@worldclim].
 
 Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação do Painel Intergovernamental sobre Mudanças Climáticas (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim].
-São camadas de 19 biovariáveis ([Tabela 3](#apêndice)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação ACCESS1, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
+São camadas de 19 biovariáveis ([Tabela 3](#apêndice)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação CNRM-CM5, do laboratório francês *Centre National de Recherches Meteorologiques*, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
 
 Diversos autores apontaram problemas de multicolinearidade de variáveis climáticas em modelagens de distribuição [@braunisch2013; @cardenas2014], afetando diretamente os resultados e performance dos modelos.
 A fim de avaliar a gravidade da colinearidade entre os pontos de ocorrências das duas espécies e o conjunto de biovariáveis do clima atual, medimos o Fator de Inflação da Variância (VIF) das camadas ambientais.

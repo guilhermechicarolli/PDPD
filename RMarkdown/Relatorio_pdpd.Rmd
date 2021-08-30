@@ -7,14 +7,14 @@ author:
 - Simone Rodrigues de Freitas
 date: "22 de Março de 2021"
 output:
-  word_document:
-    toc: yes
+  pdf_document:
+    latex_engine: xelatex
   html_document:
     df_print: paged
     toc: yes
     theme: united
-  pdf_document:
-    latex_engine: xelatex
+  word_document:
+    toc: yes
 toc-title: Sumário
 editor_options:
   markdown:
