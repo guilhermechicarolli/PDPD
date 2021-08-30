@@ -113,4 +113,13 @@ porcentagem_mS85 # porcentagem de mismatch com relecao a area de distribuicao da
 area_Sob85 <- areaF85M - areamS85
 area_Sob85
 
+################################################################################
+
+# Salvar os rasters dos mapas
+
+writeRaster(Sp, './Mapas_raster/sobreposicao_presente.asc')
+writeRaster(Sp2, './Mapas_raster/sobreposicao_RCP45.asc')
+writeRaster(Sp3, './Mapas_raster/sobreposicao_RCP85.asc')
+
+
 ################################ FIM ###########################################
