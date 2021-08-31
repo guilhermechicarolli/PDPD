@@ -79,7 +79,7 @@ tamanhopS45 <- sum(pS45[!is.na(pS45)])
 areapS45 <- tamanhopS45*median(cel_tam)
 areapS45  # area da distribuicao da planta sem contato com a ditribuicao do morcego
 
-porcentagem_pS45 <- (areapS45 / area)*100
+porcentagem_pS45 <- (areapS45 / areaF45)*100
 porcentagem_pS45    # porcentagem de sobreposicao futura RCP45 que se manteve em relacao 
                     # a distribuicao presente
 
@@ -90,7 +90,7 @@ tamanhomS45 <- sum(mS45[!is.na(mS45)])
 areamS45 <- tamanhomS45*median(cel_tam)
 areamS45  # area da distribuicao do morcego sem contato com a ditribuicao da planta
 
-porcentagem_mS45 <- (areamS45 / areaM)*100
+porcentagem_mS45 <- (areamS45 / areaF45M)*100
 porcentagem_mS45    # porcentagem de sobreposicao futura RCP45 que se manteve em relacao 
                     # a distribuicao presente
 
