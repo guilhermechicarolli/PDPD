@@ -9,13 +9,14 @@
 ################################################################################
 
 ##### Carregamento das bibliotecas necessarias
-if (!require(sdm)) install.packages('sdm')
-if (!require(dismo)) install.packages('dismo')
 if (!require(raster)) install.packages('raster')
 if (!require(rgeos)) install.packages('rgeos')
 if (!require(rgdal)) install.packages('rgdal')
 if (!require(ggplot2)) install.packages('ggplot2')
 if (!require(tidyverse)) install.packages('tidyverse')
+if (!require(sf)) install.packages('sf')
+if (!require(ggnewscale)) install.packages('ggnewscale')
+if (!require(patchwork)) install.packages('patchwork')
 
 ################################################################################
 
@@ -53,28 +54,31 @@ raster::shapefile(enPol5, './Rasters_mapas/E_subsecundum/alteracao_RCP85_binario
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
+# Extrair os dados dos biomas
+biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
+# Extrair dados da mata atlântica e Caatinga
+MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
+CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
+CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-#### TESTE MAPA MODELO PRESENTE PLANTA
+MA_CA_CE <- rbind(MA, CA, CE)
+
+
+#### Mapa Binário do presente 
 
 t1 <- fortify(enPol)
 t1$id <- as.factor(t1$id)
 t1$hole <- as.factor(t1$hole)
 head(t1)
 
-t2 <- t1[which(t1$hole == TRUE),]
-t2
+t1$id[t1$hole == TRUE] <- 1
 
-for(i in t1$hole) if(i == TRUE) t1$id <- '1'
-t1$id <- as.factor(t1$id)
-
-
-ggplot(data = world) +
-    geom_sf(colour = "white", fill = "#d3d3d3") +
+presenteP<- ggplot(data = world) +
+    geom_sf(colour = "white", fill = "gray") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_bw() + 
+    theme_gray() + 
     
-    geom_polygon(data = t2, aes( x = long, y = lat, group = group, fill=id),  
-                 color="black")+
+    geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -100,6 +104,20 @@ ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines"))
+          plot.margin = unit(rep(0.5,4), "lines")) +
+
+    new_scale_fill() +
     
-    
+    # Adicionar os poligonos
+    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
+                 color='red', size = 0.5, linetype=2)
+
+presenteP
+
+
+# Exportar o mapa como uma imagem PNG
+png("./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.png", res = 300,
+    width = 2000, height = 2200, unit = "px")
+presenteP
+dev.off()
+
