@@ -58,13 +58,22 @@ world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
 t1 <- fortify(enPol)
 t1$id <- as.factor(t1$id)
+t1$hole <- as.factor(t1$hole)
+head(t1)
+
+t2 <- t1[which(t1$hole == TRUE),]
+t2
+
+for(i in t1$hole) if(i == TRUE) t1$id <- '1'
+t1$id <- as.factor(t1$id)
+
 
 ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
     theme_bw() + 
     
-    geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id),  
+    geom_polygon(data = t2, aes( x = long, y = lat, group = group, fill=id),  
                  color="black")+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
