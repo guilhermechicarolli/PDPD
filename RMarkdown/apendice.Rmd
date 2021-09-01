@@ -145,18 +145,19 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 | Variável  |  VIF  |
 |-----------|-------|
-| Bio 10 | 2.852144 |
-| Bio 14 | 6.405928 |
-| Bio 15 | 9.101937 |
-| Bio 18 | 6.039373 |
-| Bio 3 | 4.576259  |
-| Bio 4 | 4.025089  |
+| Bio 3 | 4.266921 |
+| Bio 4 | 6.135108 |
+| Bio 7 | 7.469114 |
+| Bio 9 | 2.401162 |
+| Bio 13 | 6.836922  |
+| Bio 14 | 6.308869  |
+| Bio 19 | 4.786559  |
 
 **Tabela 5:** Valores VIF das variáveis sem problema de colinearidade (VIF < 10) da espécie *L. bokermanni*
 
 | Variável  |  VIF  |
 |-----------|-------|
-| Bio 7 | 1.002012 |
-| Bio 8 | 1.002012 |
+| Bio 15 | 1.200694 |
+| Bio 18 | 1.200694 |
 
 

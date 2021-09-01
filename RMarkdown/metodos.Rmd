@@ -57,7 +57,28 @@ knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"
 
 ```
 
-## 2.3 Modelo de Distribuição Potencial
+
+## 2.3 Dados ambientais
+
+|     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. 
+  As 19 variáveis bioclimáticas ([Tabela 3](#apêndice)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@worldclim].
+
+Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação do Painel Intergovernamental sobre Mudanças Climáticas (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim].
+São camadas de 19 biovariáveis ([Tabela 3](#apêndice)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação CNRM-CM5, do laboratório francês *Centre National de Recherches Meteorologiques*, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
+
+Diversos autores apontaram problemas de multicolinearidade de variáveis climáticas em modelagens de distribuição [@braunisch2013; @cardenas2014], afetando diretamente os resultados e performance dos modelos.
+A fim de avaliar a gravidade da colinearidade entre os pontos de ocorrências das duas espécies e o conjunto de biovariáveis do clima atual, medimos o Fator de Inflação da Variância (VIF) das camadas ambientais.
+Para os dados de ocorrência da planta *E. subsecundum*, o teste resultou em 12 (de 19) variáveis bioclimáticas com problemas de colinearidade ([Tabela 4](#apêndice)).
+Enquanto que para o morcego *L. bokermanni*, 17 variáveis apresentaram alto grau de colinearidade ([Tabela 5](#apêndice)).
+Valores de VIF maiores que o limiar 10 já indicam problema de colinearidade.
+
+```{r VIF_subs, echo=FALSE, fig.align='center', fig.cap='Matriz de correlação entre as variáveis bioclimáticas para a espécie E. subsecundum (à esquerda) e L. bokermanni (à direita)', fig.show="hold", out.width="49%"}
+
+knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_biovars.png","../Dados/Resultados_VIF/L_bokermanni/Corr_plot_19_biovars.png"))
+
+```
+
+## 2.4 Modelo de Distribuição Potencial
 
 |     Para o processo de modelagem foi utilizado o pacote SDM (*Species Distribution Modelling*) [@sdm], (versão 1.0-89), da linguagem de programação R [@r], versão 4.1.1, por apresentar uma série de funções importantes que automatizam o processo de modelagem, além de conter diversos algoritmos de modelagem.
 
@@ -72,22 +93,9 @@ A fim de avaliar a performance dos modelos criados pelo Maxent, foram empregados
 
 
 
-## 2.4 Dados ambientais
 
-|     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. 
-  As 19 variáveis bioclimáticas ([Tabela 3](#apêndice)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@worldclim].
 
-Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação do Painel Intergovernamental sobre Mudanças Climáticas (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim].
-São camadas de 19 biovariáveis ([Tabela 3](#apêndice)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação CNRM-CM5, do laboratório francês *Centre National de Recherches Meteorologiques*, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
+## 2.5 Estimativa do *mismatch* espacial e impactos das mudanças climáticas nas distribuições
 
-Diversos autores apontaram problemas de multicolinearidade de variáveis climáticas em modelagens de distribuição [@braunisch2013; @cardenas2014], afetando diretamente os resultados e performance dos modelos.
-A fim de avaliar a gravidade da colinearidade entre os pontos de ocorrências das duas espécies e o conjunto de biovariáveis do clima atual, medimos o Fator de Inflação da Variância (VIF) das camadas ambientais.
-Para os dados de ocorrência da planta *E. subsecundum*, o teste resultou em 13 (de 19) variáveis bioclimáticas com problemas de colinearidade ([Tabela 4](#apêndice)).
-Enquanto que para o morcego *L. bokermanni*, 17 variáveis apresentaram alto grau de colinearidade ([Tabela 5](#apêndice)).
-Valores de VIF maiores que o limiar 10 já indicam problema de colinearidade.
+VER ARTIGO GOROSTIAGUE 2018 PARA FAZER ESSA PARTE E ESCREVER OS RESULTADOS E TABELAS!!!!
 
-```{r VIF_subs, echo=FALSE, fig.align='center', fig.cap='Matriz de correlação entre as variáveis bioclimáticas para a espécie E. subsecundum (à esquerda) e L. bokermanni (à direita)', fig.show="hold", out.width="49%"}
-
-knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_biovars.png","../Dados/Resultados_VIF/L_bokermanni/Corr_plot_19_biovars.png"))
-
-```

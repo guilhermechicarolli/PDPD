@@ -44,10 +44,11 @@ raster::crs(pontos_planta) <- proj_WGS
 # Verificação dos dados
 pontos_planta
 
+camadas<-bioCams
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
-camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/presente/', 
-                      pattern='.asc', full.names=TRUE) 
+camadas <- list.files(path='./Camadas_presente/wc2-5/', 
+                      pattern='.bil', full.names=TRUE) 
 
 camadas <- raster::stack(camadas)
 
@@ -154,6 +155,7 @@ raster::crs(pontos_morcego) <- proj_WGS
 # Verificação dos dados
 pontos_morcego
 
+camadas<-bioCams
 
 # Carregamento das camadas ambientais raster cortadas no script 02 
 camadas <- list.files(path='./Dados/Camadas_biovars_res_2.5_brasil/selec_bokermanni/', 

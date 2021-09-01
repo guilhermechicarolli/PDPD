@@ -60,6 +60,10 @@ Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados mod
 ```
 
 \clearpage
+```{r child='../RMarkdown/fundamentacao.Rmd'}
+```
+
+\clearpage
 
 ```{r child='../RMarkdown/metodos.Rmd'}
 ```
