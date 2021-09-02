@@ -36,6 +36,8 @@ Em razão da degradação de seus habitats, a classificação de *L. bokermanni*
 *Encholiirum subsecundum* (Baker) Mez é uma espécie de bromélia do gênero 
 *Encholirium* (família Bromeliaceae) que ocorre em formações rochosas, podendo atingir até 2 metros de altura e com um padrão floral quiropterófilo [@matos2004; @dias2013]. A espécie é endêmica do Brasil, com ocorrências nos biomas da Caatinga, Mata Atlântica e, principalmente, no Cerrado [@matos2004; @forzza2005; @sazima1989], nos estados de Minas Gerais e Bahia ([Tabela 1](#apêndice)). Embora existam outras espécies de morcegos nectarívoros na área de ocorrência de *E. subsecundum*, *L. bokermanni* é o único polinizador conhecido da bromélia [@sazima1989]. *E. subsecundum* não se encontra no Livro Vermelho da Flora do Brasil [@martinelli2013] ou na Lista Vermelha da IUCN [@iucn].
 
+![*Encholirium subsecundum* (Baker) Mez. Imagem de: N. Taylor & D. Zappi](encholirium.jpg){width="40%"}
+
 
 ## 2.2 Ocorrências
 
@@ -82,7 +84,7 @@ knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_bi
 
 |     Para o processo de modelagem foi utilizado o pacote SDM (*Species Distribution Modelling*) [@sdm], (versão 1.0-89), da linguagem de programação R [@r], versão 4.1.1, por apresentar uma série de funções importantes que automatizam o processo de modelagem, além de conter diversos algoritmos de modelagem.
 
-Nós usamos o algoritimo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software*, de uso livre, para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
+Nós usamos o algoritimo correlativo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software*, de uso livre, para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
 
 Maxent recebe como *input* as ocorrências georreferenciadas da espécie e o conjunto de dados camadas ambientais (variáveis preditoras) determinados pelo usuário e dividido em *grid cells* ao longo de uma região escolhida [@merow2013]. Diante disso, o algoritmo amostra uma quantidade de localizações de *background* das camadas ambientais, que são confrontadas com as localizações geográficas da espécie, gerando como *output* um modelo que traduz a probabilidade de distribuição da espécie para cada *grid cell*, dada a aptidão às condições ambientais preditas para a espécie. Maxent procura, assim, a distribuição mais espalhada (de entropia máxima) para a espécie na região de estudo.
 
