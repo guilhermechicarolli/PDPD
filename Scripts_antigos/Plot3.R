@@ -3,10 +3,6 @@
 # 1. IMPORT DOS DADOS NECESSÁRIOS
 # 2. CONSTRUÇÃO DO GRÁFICO
 
-###############################################################################
-# Deletar objetos passados
-rm(list= ls())
-
 
 ###############################################################################
 # Carregamento dos pacotes necessários
@@ -29,22 +25,22 @@ if (!require(ggnewscale)) install.packages('ggnewscale')
 
 
 # Importar os dados geográficos
-sites_P <- read.csv("Dados/registros_E_subsecundum.txt", encoding = "UTF-8", 
-                    sep=",")
-sites_M <- read.csv("Dados/registros_L_bokermanni.txt", encoding = "UTF-8",
-                    sep=",")
-interacao <- data.frame("Latitude" = -19.093374, "Longitude" = -43.470373)
+sites_P <- read.csv("Dados/Ocorrencias/E_subsecundum_corrigido.csv", 
+                    encoding = "UTF-8")
+sites_M <- read.csv("Dados/Ocorrencias/L_bokermanni_corrigido.csv", 
+                    encoding = "UTF-8")
+interacao <- data.frame("y" = -19.093374, "x" = -43.470373)
 
 # Separar só as colunas de latitude e longitude
-sites_P <- sites_P %>% dplyr::select(Latitude, Longitude)
-sites_M <- sites_M %>% dplyr::select(Latitude, Longitude)
+sites_P <- sites_P %>% dplyr::select(y, x)
+sites_M <- sites_M %>% dplyr::select(y, x)
 
 # Todos os sitios juntos
 sites <- rbind(sites_M, sites_P, interacao)
 
 # adicionar a etiqueta e um vetor de cores
 sites <- sites %>%
-  dplyr::mutate("Grupo" = c(rep("Morcego", 24), rep("Planta", 82), "Interacao"))
+  dplyr::mutate("Grupo" = c(rep("Morcego", 8), rep("Planta", 37), "Interacao"))
 
 
 # Extrair os dados dos biomas
@@ -70,9 +66,9 @@ MA_CA_CE <- rbind(MA, CA, CE) # Juntei os dois data frames
 ################################################################################
 
 # Construir o mapa base
-g2 <- ggplot(data = world) +
-  geom_sf(colour = "white", fill = "#d3d3d3") +
-  coord_sf(xlim = c(-55, -30), ylim = c(-30,0), expand = FALSE) +
+g3<-ggplot2::ggplot(data = world) +
+  geom_sf(colour = "white", fill = "gray") +
+  coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326)) +
   theme_bw() + 
   
   # Adicionar a barra de escala
@@ -101,9 +97,9 @@ g2 <- ggplot(data = world) +
   new_scale_fill() +
   
   # Plotar os pontos geográficos 
-  geom_point(data = sites, aes(x = Longitude, y = Latitude,
+  geom_point(data = sites, aes(x = x, y = y,
                                shape = Grupo, fill = Grupo),
-             alpha = 0.6, size = 2, colour = "black") +
+             alpha = 0.45, size = 2, colour = "black") +
   
   scale_fill_manual(name = "Registros", values = c("darkred", "black", "violet"),
                      breaks = c("Morcego", "Planta", "Interacao"),
@@ -127,12 +123,12 @@ g2 <- ggplot(data = world) +
         legend.key = element_rect(fill = "NA"),
         legend.text.align = 0,
         plot.margin = unit(rep(0.5,4), "lines"))
-g2
+g3
 
 # Exportar o mapa como uma imagem PNG
-png("./Gráficos/Figure_3.png", res = 300,
+png("./Graficos/Figure_3.png", res = 300,
     width = 2000, height = 2200, unit = "px")
-
+g3
 dev.off()
 
 
