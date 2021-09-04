@@ -161,3 +161,11 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 | Bio 18 | 1.200694 |
 
 
+![Importância relativa das variáveis para o modelo cheio da espécie *Echolirium subsecundum*](importancia_vars_planta.png){width="80%"}
+
+![Importância relativa das variáveis para o modelo cheio da espécie *Lonchophylla bokermanni*](importancia_vars_morcego.png){width="80%"}
+
+
+
+
+

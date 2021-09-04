@@ -21,7 +21,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 # 2. Materiais e métodos
 
-## 2.1 Espécies estudadas
+## 2.1 Espécies 
 
 |     Modelamos a distribuição de 2 espécies: a de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e de bromélia *Encholirium subsecundum* (Baker) Mez.
 
@@ -84,20 +84,35 @@ knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_bi
 
 |     Para o processo de modelagem foi utilizado o pacote SDM (*Species Distribution Modelling*) [@sdm], (versão 1.0-89), da linguagem de programação R [@r], versão 4.1.1, por apresentar uma série de funções importantes que automatizam o processo de modelagem, além de conter diversos algoritmos de modelagem.
 
+
 Nós usamos o algoritimo correlativo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software*, de uso livre, para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
 
+
 Maxent recebe como *input* as ocorrências georreferenciadas da espécie e o conjunto de dados camadas ambientais (variáveis preditoras) determinados pelo usuário e dividido em *grid cells* ao longo de uma região escolhida [@merow2013]. Diante disso, o algoritmo amostra uma quantidade de localizações de *background* das camadas ambientais, que são confrontadas com as localizações geográficas da espécie, gerando como *output* um modelo que traduz a probabilidade de distribuição da espécie para cada *grid cell*, dada a aptidão às condições ambientais preditas para a espécie. Maxent procura, assim, a distribuição mais espalhada (de entropia máxima) para a espécie na região de estudo.
+
 
 O algoritmo foi escolhido devido a sua performance superior a outros quando utilizado quantidades pequenas de dados de ocorrência das espécies [@hijmans2008; @hernandez2006], crucial para nós devido a quantidade pequena de dados para a espécie de morcego *L. bokermanni*. Além disso, Maxent requer apenas ocorrências de presença das espécies, excluindo a necessidade de registros de ausência e facilitando o trabalho com espécies que possuem baixa quantidade de registros ou não possuam registros de ausência.
 
 
-A fim de avaliar a performance dos modelos criados pelo Maxent, foram empregados o AUC (*Area Under the Curve*) parcial da curva ROC (*Receiver Operating Characteristic Curve*),  
+Como parâmetros de modelagem para o Maxent, utilizamos regularização igual a 1 e prevalência de 50%, ambos valores padrão. O parâmetro de extrapolação e *clamping* foram permitidos para gerar predições além da distribuição presente das espécies. Para cada espécie foram geradas 50 replicações, metade usando o método de validação por *bootstrap* e a outra metade por *cross validation*. 70% dos registros de ocorrência foram separados e utilizados para treino e 30%  para o teste dos modelos. 10 mil pontos de *background* foram gerados aleatoriamente ao longo de cada camada ambiental, os quais foram usados para a modelagem como amostras das variáveis ambientais. Foram utilizados parâmetros padrão para a modelagem devido à falta de informação sobre o habitat e capacidade de dispersão das espécies modeladas.
+
+
+Fizemos uma modelagem prévia, para cada espécie, com os parâmetros mencionados e todas as variáveis ambientais. A partir de então, as três camadas ambientais com maior importância para os modelos ([ver gráficos 6 e 7](#apêndice)) de acordo com o AUC foram selecionadas e separadas para a utilização em uma nova modelagem final, com apenas as variáveis ambientais selecionadas do modelo prévio e os parâmetros apresentados no parágrafo anterior.
+
+
+A fim de avaliar a performance dos modelos criados pelo Maxent, foi empregado o AUC (*Area Under the Curve*) parcial da curva ROC (*Receiver Operating Characteristic Curve*) [@maxent], obtido ao plotar valores de sensitividade no eixo y e 1-especificidade no eixo x e com valores variando de 0 (modelo com 100% de taxa de erro) a 1 (modelo totalmente em acordo com a distribuição observada). O AUC é uma medida estatística independente da escolha do limiar (*threshold*) e tornou-se muito popular para esimar a performance de modelos de distribuição. O valor de limiar para os modelos de cada espécie foi obtido a partir da maximização da especificidade mais a sensitividade [@liu2013], o qual é independente da quantidade de pseudo-ausências, o que pode ser vantajoso ao se utilizar pequenas quantidade de dados. Com o limiar é possível converter os mapas de adequabilidade das espécies para mapas binários (presença-ausência).
+
+
+O modelo de cada espécie foi então projetado para os cenários futuros, de RCP 4.5 e 8.5, e para o presente gerando 6 mapas de distribuição potencial, 3 da planta e 3 do morcego.  
 
 
 
 
 
-## 2.5 Estimativa do *mismatch* espacial e impactos das mudanças climáticas nas distribuições
+## 2.5 Estimativa da sobreposição e *mismatch* espacial 
 
-VER ARTIGO GOROSTIAGUE 2018 PARA FAZER ESSA PARTE E ESCREVER OS RESULTADOS E TABELAS!!!!
+Seguindo o método apresentado por @gorostiague2018, para o cálculo dos potenciais impactos das mudanças climáticas na distribuição espacial das espécies utilizamos uma variável da alteração na distribuição nos cenários futuros em relação à distribuição potencial no presente. Também estimamos a distribuição compartilhada (sobreposta) entre a planta e o morcego e então calculamos a diferença entre essa área nos cenários futuros com respeito ao presente. A distribuição compartilhada representa a área de encontro entre o morcego polinizador e a planta (*spatially matched range*), assumindo que o morcego é efetivo e sua presença já garante a polinização da planta. 
+
+A taxa de correspondência espacial (*spatial match*) foi calculada como a diferença entre a distribuição potencial de cada espécie e a distribuição compartilhada. A taxa de *mismatch* é a taxa de correspondência espacial subtraída de 100. Valores de *mismatch* abaixo de 20% foram considerados como baixo, isto é, menos de 20% da distribuição de uma espécie não está sobreposta com a distribuição da outra [@gorostiague2018].
+
 

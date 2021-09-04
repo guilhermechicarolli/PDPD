@@ -142,7 +142,7 @@ dCM
 
 # Ajustar e criar os modelos
 mCM <- sdm::sdm(species~., dCM, methods = 'maxent', replication=c('sub', 'boot'),
-               test.p=30, n=15, parallelSettings=list(ncore=5, method='parallel'))
+               test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
 
 # NOTAS: 1) Para o MaxEnt funcionar o Java do computador deve estar atualizado. 
 # 2) O parametro ncore e a quantidade de cores de processamento utilizados para
@@ -151,7 +151,8 @@ mCM <- sdm::sdm(species~., dCM, methods = 'maxent', replication=c('sub', 'boot')
 mCM
 
 # Plot da importancia das variaveis
-plot(getVarImp(mCM), 'AUC') # Biovars: 17, 9, 15, 19
+plot(getVarImp(mCM), 'AUC', main="Importância relativa das biovariáveis", 
+     ylab='Variáveis', xlab="Importância relativa da variável") # Biovars: 17, 9, 15, 19
 getVarImp(mCM)
 
 # Para abrir uma interface de exploracao do modelo
