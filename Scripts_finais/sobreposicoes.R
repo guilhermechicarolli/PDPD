@@ -43,7 +43,8 @@ areapS <- tamanhopS*median(cel_tam)
 areapS  # area da distribuicao da planta sem contato com a ditribuicao do morcego
 
 porcentagem_pS <- (areapS / area)*100
-porcentagem_pS    # porcentagem de mismatch com relecao a area de distribuicao da planta
+porcentagem_pS    # porcentagem de mismatch presente em relação à distribuição presente
+100 - porcentagem_pS  # porcentagem de sobreposição em relação à distribuição da planta
 
 
 # Com relacao a distribuicao do morcego
@@ -53,7 +54,7 @@ areamS <- tamanhomS*median(cel_tam)
 areamS  # area da distribuicao do morcego sem contato com a ditribuicao do morcego
 
 porcentagem_mS <- (areamS / areaM)*100
-porcentagem_mS    # porcentagem de mismatch com relecao a area de distribuicao do morcego
+porcentagem_mS    # porcentagem de mismatch com relecao a area de distribuicao presente do morcego
 
 
 # area de sobreposicao presente
@@ -80,9 +81,8 @@ areapS45 <- tamanhopS45*median(cel_tam)
 areapS45  # area da distribuicao da planta sem contato com a ditribuicao do morcego
 
 porcentagem_pS45 <- (areapS45 / areaF45)*100
-porcentagem_pS45    # porcentagem de sobreposicao futura RCP45 que se manteve em relacao 
-                    # a distribuicao presente
-
+porcentagem_pS45    # porcentagem de mismatch futuro RCP45 em relação à distribuição futura
+100 - porcentagem_pS45
 
 # Com relacao a distribuicao do morcego
 mS45 <- Sp2$layer@data@values == -1
@@ -91,15 +91,14 @@ areamS45 <- tamanhomS45*median(cel_tam)
 areamS45  # area da distribuicao do morcego sem contato com a ditribuicao da planta
 
 porcentagem_mS45 <- (areamS45 / areaF45M)*100
-porcentagem_mS45    # porcentagem de sobreposicao futura RCP45 que se manteve em relacao 
-                    # a distribuicao presente
+porcentagem_mS45    # porcentagem de mismatch futuro RCP45 em relação à distribuição futura
 
 
 # area de sobreposicao RCP45
 area_Sob45 <- areaF45M - areamS45
 area_Sob45
 
-# Porcentagem de area de sobreposicao perdida (RCP45)
+# Porcentagem de area de sobreposicao (RCP45)
 porcentagem_Sob45 <- (area_Sob45/area_Sob)*100
 porcentagem_Sob45
 
@@ -124,22 +123,22 @@ plot(Sp3)
 pS85 <- Sp3$layer@data@values == 1
 tamanhopS85 <- sum(pS85[!is.na(pS85)])
 areapS85 <- tamanhopS85*median(cel_tam)
-areapS85  # area da distribuicao da planta sem contato com a ditribuicao do morcego
+areapS85  # area da distribuicao RCP85 da planta sem contato com a ditribuicao do morcego
 
-################## REVERRRRR
 
 porcentagem_pS85 <- (areapS85 / areaF85)*100
-porcentagem_pS85    # porcentagem de mismatch com relecao a area de distribuicao da planta
+porcentagem_pS85    # porcentagem de mismatch com relecao a area de distribuicao RCP85 da planta
+100 - porcentagem_pS85
 
 
 # Com relacao a distribuicao do morcego
 mS85 <- Sp3$layer@data@values == -1
 tamanhomS85 <- sum(mS85[!is.na(mS85)])
 areamS85 <- tamanhomS85*median(cel_tam)
-areamS85  # area da distribuicao do morcego sem contato com a ditribuicao da planta
+areamS85  # area da distribuicao RCP 85 do morcego sem contato com a ditribuicao da planta
 
 porcentagem_mS85 <- (areamS85 / areaF85M)*100
-porcentagem_mS85 # porcentagem de mismatch com relecao a area de distribuicao do morcego
+porcentagem_mS85 # porcentagem de mismatch com relecao a area de distribuicao RCP85 do morcego
 
 
 # area de sobreposicao RCP85

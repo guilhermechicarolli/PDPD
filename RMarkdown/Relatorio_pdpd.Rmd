@@ -70,6 +70,12 @@ Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados mod
 
 \clearpage
 
+```{r child='../RMarkdown/resultados.Rmd'}
+```
+
+
+\clearpage
+
 ```{r child='../RMarkdown/apendice.Rmd'}
 ```
 
