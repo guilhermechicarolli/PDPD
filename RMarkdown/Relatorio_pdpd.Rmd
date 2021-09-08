@@ -73,6 +73,11 @@ Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados mod
 ```{r child='../RMarkdown/resultados.Rmd'}
 ```
 
+\clearpage
+
+```{r child='../RMarkdown/conclusao.Rmd'}
+```
+
 
 \clearpage
 
