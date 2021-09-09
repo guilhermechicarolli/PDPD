@@ -496,27 +496,27 @@ dev.off()
 
 # Transformar os rasters dos modelos em poligonos
 # Mapa binario do presente
-enPolM <- raster::rasterToPolygons(pa1M, dissolve = TRUE)
+enPolM <- raster::rasterToPolygons(pa1M, dissolve = TRUE, fun=function(x){x!=0})
 plot(enPolM)
 raster::shapefile(enPolM, './Rasters_mapas/L_bokermanni/presente_binario.shp')
 
 # Mapa binario do futuro RCP45
-enPolM2 <- raster::rasterToPolygons(pa2M, dissolve = TRUE)
+enPolM2 <- raster::rasterToPolygons(pa2M, dissolve = TRUE, fun=function(x){x!=0})
 plot(enPolM2)
 raster::shapefile(enPolM2, './Rasters_mapas/L_bokermanni/RCP45_binario.shp')
 
 # Mapa binario do futuro RCP85
-enPolM3 <- raster::rasterToPolygons(pa3M, dissolve = TRUE)
+enPolM3 <- raster::rasterToPolygons(pa3M, dissolve = TRUE, fun=function(x){x!=0})
 plot(enPolM3)
 raster::shapefile(enPolM3, './Rasters_mapas/L_bokermanni/RCP85_binario.shp')
 
 # Mapa binario de alteracao de adequabilidade do futuro RCP45
-enPolM4 <- raster::rasterToPolygons(chp45M, dissolve = TRUE)
+enPolM4 <- raster::rasterToPolygons(chp45M, dissolve = TRUE, fun=function(x){x!=0})
 plot(enPolM4)
 raster::shapefile(enPolM4, './Rasters_mapas/L_bokermanni/alteracao_RCP45_binario.shp')
 
 # Mapa binario de alteracao de adequabilidade do futuro RCP85
-enPolM5 <- raster::rasterToPolygons(chp85M, dissolve = TRUE)
+enPolM5 <- raster::rasterToPolygons(chp85M, dissolve = TRUE, fun=function(x){x!=0})
 plot(enPolM5)
 raster::shapefile(enPolM5, './Rasters_mapas/L_bokermanni/alteracao_RCP85_binario.shp')
 
