@@ -132,6 +132,7 @@ presenteP
 
 ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg",
        plot = presenteP,
+       device = 'png',
        width = 1200, 
        height = 1300, 
        unit = "px",
