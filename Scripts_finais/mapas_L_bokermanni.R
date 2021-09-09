@@ -486,7 +486,10 @@ t5M <- ggplot2::fortify(enPolM5)
 
 t5M <- t5M[which(t5M$id!=2),]
 unique(t5M$id)
+unique(t5M$hole)
 t5M$id[t5M$hole == TRUE] <- 4
+t5M <- t5M[which(t5M$hole==FALSE),]
+
 
 ggplot2::ggplot(data = world) +
     geom_sf(colour = "white", fill = "gray") +

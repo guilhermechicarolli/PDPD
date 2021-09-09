@@ -160,7 +160,6 @@ dev.off()
 #### MAPA BINÁRIO RCP 45
 
 t2 <- fortify(enPol2)
-t2$id <- as.factor(t2$id)
 ggplot(data = world) +
     geom_sf(colour = "white", fill = "gray") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
@@ -172,7 +171,7 @@ ggplot(data = world) +
 t2$hole <- as.factor(t2$hole)
 head(t2)
 
-t2$id[t2$hole == TRUE] <- 1
+t2$id[t2$hole == TRUE] <- 4
 
 # Com biomas
 futuro45B<- ggplot(data = world) +
@@ -196,7 +195,7 @@ futuro45B<- ggplot(data = world) +
     
     # Adicionar as legendas
     scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
+                      values = c("#6BBC19", "lightskyblue",),
                       labels = c("Não adequado", "Adequado")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
