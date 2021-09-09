@@ -9,7 +9,6 @@
 if (!require(raster)) install.packages('raster')
 if (!require(rgeos)) install.packages('rgeos')
 if (!require(rgdal)) install.packages('rgdal')
-if (!require(ggplot2)) install.packages('ggplot2')
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(sf)) install.packages('sf')
 if (!require(ggnewscale)) install.packages('ggnewscale')
@@ -18,6 +17,9 @@ if (!require(patchwork)) install.packages('patchwork')
 ################################################################################
 
 #--------- 1. MAPAS E. SUBSECUNDUM ---------#
+
+#GUI ESTE CODIGO DEVERIA ESTAR NA PARTE DAS ANÁLISES DOS DADOS,
+# PARA QUANDO VOCÊ FOR FAZER OS MAPAS É SÓ CHAMAR OS SHP
 
 
 # Transformar os rasters dos modelos em poligonos
@@ -48,6 +50,10 @@ raster::shapefile(enPol5, './Rasters_mapas/E_subsecundum/alteracao_RCP85_binario
 
 ################################################################################
 
+# Carregar os shapefiles das distribuições
+
+enPol <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/presente_binario.shp')
+
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
@@ -64,27 +70,24 @@ MA_CA_CE <- rbind(MA, CA, CE)
 #### MAPA BINÁRIO PRESENTE
 
 t1 <- ggplot2::fortify(enPol)
-t1$id <- as.factor(t1$id)
-t1$hole <- as.factor(t1$hole)
-head(t1)
-
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
-    
-    geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id))
-
 t1$id[t1$hole == TRUE] <- 1
 
+t1 <- t1[t1$id == 1,]
+unique(t1$id)
+t1$id <- '4' # mudei a identidade para 4 (assim evito a sobreposição com a outra camada)
 
-# Com biomas
-presenteP<- ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+
+# MAPA
+
+presenteP <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id))+
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, 
+                                      group = group, fill = id), alpha = 0.6) +
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -99,9 +102,11 @@ presenteP<- ggplot2::ggplot(data = world) +
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
-                      labels = c("Não adequado", "Adequado")) +
+    scale_fill_manual(name = "Biomas",
+                      values = c("#6BBC19", "goldenrod2", 
+                                 "lightskyblue"),
+                      breaks = c("3", "1", "2"),
+                      labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -115,17 +120,23 @@ presenteP<- ggplot2::ggplot(data = world) +
     new_scale_fill() +
     
     # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='red', size = 0.5, linetype=2)
+    geom_polygon(data = t1, aes(x = long, y = lat, group = group, fill = id)) +
+    scale_fill_manual(name = " ", values = "#820101", 
+                      labels = "Distribuição de\nE. subsecundum")
 
 presenteP
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-presenteP
-dev.off()
+
+ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg",
+       plot = presenteP,
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
 
 
 # Sem os biomas
