@@ -44,7 +44,8 @@ t1$id[t1$hole == TRUE] <- 1
 t1 <- t1[t1$id == 1,]
 unique(t1$id)
 t1$id <- '4' # mudei a identidade para 4 (assim evito a sobreposição com a outra camada)
-
+unique(t1$hole)
+t1 <- t1[which(t1$hole==FALSE),]
 
 # MAPA
 
