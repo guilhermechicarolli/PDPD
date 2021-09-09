@@ -13,6 +13,7 @@ if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(sf)) install.packages('sf')
 if (!require(ggnewscale)) install.packages('ggnewscale')
 if (!require(patchwork)) install.packages('patchwork')
+if (!require(ggpolypath)) install.packages('ggpolypath')
 
 ################################################################################
 
@@ -34,19 +35,23 @@ MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-MA_CA_CE <- rbind(MA, CA, CE)
-
-
 #### MAPA BINÁRIO PRESENTE
 
 t1 <- ggplot2::fortify(enPol)
-summary(t1)
 
-t1$id[t1$hole == TRUE] <- 1
 unique(t1$id)
+unique(MA$id)
+unique(CA$id)
+unique(CE$id)
+
+# Juntar todas as camadas shapefile, inclusive as da distribuição
+
+MA_CA_CE <- rbind(MA, CA, CE) %>%
+    dplyr::mutate(id = factor(id, levels = c("1", "2", "3")))
+
 
 # MAPA
-
+                
 presenteP <- ggplot2::ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
@@ -54,8 +59,9 @@ presenteP <- ggplot2::ggplot(data = world) +
     theme_bw() + 
     
     # Adicionei todos os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, 
-                                      group = group, fill = id), alpha = 0.6) +
+    geom_polygon(data = MA_CA_CE, alpha = 0.4, aes(x = long, y = lat, 
+                                                  group = group, fill = id)) +
+    
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -66,15 +72,19 @@ presenteP <- ggplot2::ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name = "Biomas",
-                      values = c("#6BBC19", "goldenrod2", 
-                                 "lightskyblue"),
-                      breaks = c("3", "1", "2"),
-                      labels = c("Mata Atlântica", "Caatinga", "Cerrado")) +
+    scale_fill_manual(name = " ",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
+    
+    # Adicionar a distribuição
+    
+    ggpolypath::geom_polypath(data = t1, aes(x = long, y = lat, group = group),
+                              fill = '#9F0000') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -83,15 +93,8 @@ presenteP <- ggplot2::ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
+          plot.margin = unit(rep(0.5,4), "lines"))
     
-    new_scale_fill() +
-    
-    # Adicionar os poligonos
-    geom_polygon(data = t1, aes(x = long, y = lat, group = group, fill = id)) +
-    scale_fill_manual(name = " ", values = c(adjustcolor("grey", alpha.f = 0), 
-                                             "#820101"), 
-                      labels = c(" ", "Distribuição de\nE. subsecundum"))
 
 presenteP
 
@@ -113,7 +116,7 @@ ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg",
 presenteP2<- ggplot(data = world) +
     geom_sf(colour = "white", fill = "gray") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    theme_bw() + 
     
     geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id), 
                  color='black')+
