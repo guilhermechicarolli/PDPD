@@ -28,6 +28,7 @@ world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
 # Extrair os dados dos biomas
 biomas <- rgdal::readOGR("Dados/Biomas_250mil/lm_bioma_250.shp")
+
 # Extrair dados da mata atlântica e Caatinga
 MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
@@ -39,13 +40,10 @@ MA_CA_CE <- rbind(MA, CA, CE)
 #### MAPA BINÁRIO PRESENTE
 
 t1 <- ggplot2::fortify(enPol)
-t1$id[t1$hole == TRUE] <- 1
+summary(t1)
 
-t1 <- t1[t1$id == 1,]
+t1$id[t1$hole == TRUE] <- 1
 unique(t1$id)
-t1$id <- '4' # mudei a identidade para 4 (assim evito a sobreposição com a outra camada)
-unique(t1$hole)
-t1 <- t1[which(t1$hole==FALSE),]
 
 # MAPA
 
@@ -91,8 +89,9 @@ presenteP <- ggplot2::ggplot(data = world) +
     
     # Adicionar os poligonos
     geom_polygon(data = t1, aes(x = long, y = lat, group = group, fill = id)) +
-    scale_fill_manual(name = " ", values = "#820101", 
-                      labels = "Distribuição de\nE. subsecundum")
+    scale_fill_manual(name = " ", values = c(adjustcolor("grey", alpha.f = 0), 
+                                             "#820101"), 
+                      labels = c(" ", "Distribuição de\nE. subsecundum"))
 
 presenteP
 
