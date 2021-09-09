@@ -18,37 +18,6 @@ if (!require(patchwork)) install.packages('patchwork')
 
 #--------- 1. MAPAS E. SUBSECUNDUM ---------#
 
-#GUI ESTE CODIGO DEVERIA ESTAR NA PARTE DAS ANÁLISES DOS DADOS,
-# PARA QUANDO VOCÊ FOR FAZER OS MAPAS É SÓ CHAMAR OS SHP
-
-
-# Transformar os rasters dos modelos em poligonos
-# Mapa binario do presente
-enPol <- raster::rasterToPolygons(pa1, dissolve = TRUE)
-plot(enPol)
-raster::shapefile(enPol, './Rasters_mapas/E_subsecundum/presente_binario.shp')
-
-# Mapa binario do futuro RCP45
-enPol2 <- raster::rasterToPolygons(pa2, dissolve = TRUE)
-plot(enPol2)
-raster::shapefile(enPol2, './Rasters_mapas/E_subsecundum/RCP45_binario.shp')
-
-# Mapa binario do futuro RCP85
-enPol3 <- raster::rasterToPolygons(pa3, dissolve = TRUE)
-plot(enPol3)
-raster::shapefile(enPol3, './Rasters_mapas/E_subsecundum/RCP85_binario.shp')
-
-# Mapa binario de alteracao de adequabilidade do futuro RCP45
-enPol4 <- raster::rasterToPolygons(chp45, dissolve = TRUE)
-plot(enPol4)
-raster::shapefile(enPol4, './Rasters_mapas/E_subsecundum/alteracao_RCP45_binario.shp')
-
-# Mapa binario de alteracao de adequabilidade do futuro RCP85
-enPol5 <- raster::rasterToPolygons(chp85, dissolve = TRUE)
-plot(enPol5)
-raster::shapefile(enPol5, './Rasters_mapas/E_subsecundum/alteracao_RCP85_binario.shp')
-
-################################################################################
 
 # Carregar os shapefiles das distribuições
 

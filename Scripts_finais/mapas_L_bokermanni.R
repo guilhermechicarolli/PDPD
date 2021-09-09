@@ -19,35 +19,6 @@ if (!require(patchwork)) install.packages('patchwork')
 
 #--------- 1. MAPAS L. BOKERMANNI ---------#
 
-
-# Transformar os rasters dos modelos em poligonos
-# Mapa binario do presente
-enPolM <- raster::rasterToPolygons(pa1M, dissolve = TRUE)
-plot(enPolM)
-raster::shapefile(enPolM, './Rasters_mapas/L_bokermanni/presente_binario.shp')
-
-# Mapa binario do futuro RCP45
-enPolM2 <- raster::rasterToPolygons(pa2M, dissolve = TRUE)
-plot(enPolM2)
-raster::shapefile(enPolM2, './Rasters_mapas/L_bokermanni/RCP45_binario.shp')
-
-# Mapa binario do futuro RCP85
-enPolM3 <- raster::rasterToPolygons(pa3M, dissolve = TRUE)
-plot(enPolM3)
-raster::shapefile(enPolM3, './Rasters_mapas/L_bokermanni/RCP85_binario.shp')
-
-# Mapa binario de alteracao de adequabilidade do futuro RCP45
-enPolM4 <- raster::rasterToPolygons(chp45M, dissolve = TRUE)
-plot(enPolM4)
-raster::shapefile(enPolM4, './Rasters_mapas/L_bokermanni/alteracao_RCP45_binario.shp')
-
-# Mapa binario de alteracao de adequabilidade do futuro RCP85
-enPolM5 <- raster::rasterToPolygons(chp85M, dissolve = TRUE)
-plot(enPolM5)
-raster::shapefile(enPolM5, './Rasters_mapas/L_bokermanni/alteracao_RCP85_binario.shp')
-
-################################################################################
-
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
