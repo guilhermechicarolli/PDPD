@@ -180,4 +180,25 @@ png('./Graficos/sobreposicoes/RCP85.png', height=nrow(Sob3),
 plot(Sob3, maxpixels=ncell(Sob3), col=c('#669966','#BF87B3','#7F5AA2','blue'))
 dev.off()
 
+################################################################################
+
+# Salvar shapefile sobreposicao presente
+SobPol <- raster::rasterToPolygons(Sob, dissolve = TRUE, fun=function(x){x!=0})
+plot(SobPol)
+raster::shapefile(SobPol, './Rasters_mapas/sobreposicao/sobreposicao_presente.shp')
+
+
+# Salvar shapefile sobreposicao RCP45
+SobPol2 <- raster::rasterToPolygons(Sob2, dissolve = TRUE, fun=function(x){x!=0})
+plot(SobPol2)
+raster::shapefile(SobPol2, './Rasters_mapas/sobreposicao/sobreposicao_RCP45.shp')
+
+
+# Salvar shapefile sobreposicao RCP85
+SobPol3 <- raster::rasterToPolygons(Sob3, dissolve = TRUE, fun=function(x){x!=0})
+plot(SobPol3)
+raster::shapefile(SobPol3, './Rasters_mapas/sobreposicao/sobreposicao_RCP85.shp')
+
+
+
 ################################ FIM ###########################################

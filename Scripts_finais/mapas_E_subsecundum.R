@@ -293,9 +293,9 @@ alterac45 <- ggplot2::ggplot(data = world) +
                       values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
                       labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
+    new_scale_fill() +
     ggpolypath::geom_polypath(data = t2, aes(x = long, y = lat, group = group),
-                              fill = 'gray') +
-    
+                              fill = 'grey56') +
     # Adicionar a distribuição
     new_scale_fill() +
     
@@ -337,7 +337,7 @@ ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/alteracao_RCP45.jpeg",
 
 # Carregar os shapefiles das distribuições
 
-enPol5 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP45_binario.shp')
+enPol5 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP85_binario.shp')
 
 
 t5 <- fortify(enPol5)
@@ -374,8 +374,9 @@ alterac85 <- ggplot2::ggplot(data = world) +
                       values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
                       labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
+    new_scale_fill() +
     ggpolypath::geom_polypath(data = t3, aes(x = long, y = lat, group = group),
-                              fill = 'gray') +
+                              fill = 'grey56') +
     
     # Adicionar a distribuição
     new_scale_fill() +

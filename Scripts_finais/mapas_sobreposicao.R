@@ -20,21 +20,6 @@ if (!require(patchwork)) install.packages('patchwork')
 #--------- 1. MAPAS DE SOBREPOSICAO ---------#
 
 
-# Transformar os rasters dos modelos em poligonos
-# Mapa binario do presente
-SobPol <- raster::rasterToPolygons(Sob, dissolve = TRUE)
-plot(SobPol)
-
-# Mapa binario do futuro RCP45
-SobPol2 <- raster::rasterToPolygons(Sob2, dissolve = TRUE)
-plot(SobPol2)
-
-# Mapa binario do futuro RCP85
-SobPol3 <- raster::rasterToPolygons(Sob3, dissolve = TRUE)
-plot(SobPol3)
-
-
-################################################################################
 
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
@@ -52,28 +37,25 @@ MA_CA_CE <- rbind(MA, CA, CE)
 
 #### MAPA BINÁRIO PRESENTE DE SOBREPOSICAO
 
+# Carregar os shapefiles das distribuições
+SobPol <- rgdal::readOGR('./Rasters_mapas/sobreposicao/sobreposicao_presente.shp')
+
+
 tS1 <- ggplot2::fortify(SobPol)
-unique(tS1$id)
-head(tS1)
-tS1 <- tS1[which(tS1$id!=1),]
 
 
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+# MAPA
+
+sob_presente <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = tS1, aes( x = long, y = lat, group = group, fill=id))
-
-
-
-# Com biomas
-mapa_sobreposicaoB<- ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = tS1, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -84,63 +66,22 @@ mapa_sobreposicaoB<- ggplot2::ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
+    scale_fill_manual(name = "",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
+    # Adicionar a distribuição
     new_scale_fill() +
     
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='darkred', size = 0.5, linetype=2)
-
-mapa_sobreposicaoB
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/presente_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicaoB
-dev.off()
-
-
-# Sem os biomas
-mapa_sobreposicao<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    ggpolypath::geom_polypath(data = tS1, aes(x = long, y = lat, group = group,
+                                              fill = id),show.legend = FALSE) +
     
-    geom_polygon(data = tS1, aes( x = long, y = lat, group = group, fill=id))+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
+    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF')) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -149,44 +90,48 @@ mapa_sobreposicao<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
-mapa_sobreposicao
+sob_presente
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/presente.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicao
-dev.off()
+
+ggsave(file = "./Graficos/sobreposicoes_mapas_feitos/presente.jpeg",
+       plot = sob_presente,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
+
+
 
 
 #### MAPA BINÁRIO RCP 45 DE SOBREPOSICAO
 
+# Carregar os shapefiles das distribuições
+SobPol2 <- rgdal::readOGR('./Rasters_mapas/sobreposicao/sobreposicao_RCP45.shp')
+
+
 tS2 <- ggplot2::fortify(SobPol2)
-unique(tS2$id)
-head(tS2)
-tS2 <- tS2[which(tS2$id!=1),]
 
 
+# MAPA
 
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+sob_RCP45 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = tS1, aes( x = long, y = lat, group = group, fill=id))
-
-
-
-# Com biomas
-mapa_sobreposicaoB2<- ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = tS2, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -197,63 +142,23 @@ mapa_sobreposicaoB2<- ggplot2::ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
+    scale_fill_manual(name = "",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
+    # Adicionar a distribuição
     new_scale_fill() +
     
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='darkred', size = 0.5, linetype=2)
-
-mapa_sobreposicaoB2
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/RCP45_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicaoB2
-dev.off()
-
-
-# Sem os biomas
-mapa_sobreposicao2<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    ggpolypath::geom_polypath(data = tS2, aes(x = long, y = lat, group = group,
+                                              fill = id),show.legend = FALSE) +
     
-    geom_polygon(data = tS2, aes( x = long, y = lat, group = group, fill=id))+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
+    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF'))+
+                      
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -262,44 +167,46 @@ mapa_sobreposicao2<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
-mapa_sobreposicao2
+sob_RCP45
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/RCP45.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicao2
-dev.off()
+
+ggsave(file = "./Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg",
+       plot = sob_RCP45,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
 
 
 #### MAPA BINÁRIO RCP 85 DE SOBREPOSICAO
 
+# Carregar os shapefiles das distribuições
+SobPol3 <- rgdal::readOGR('./Rasters_mapas/sobreposicao/sobreposicao_RCP85.shp')
+
+
 tS3 <- ggplot2::fortify(SobPol3)
-unique(tS3$id)
-head(tS3)
-tS3 <- tS3[which(tS3$id!=1),]
 
 
+# MAPA
 
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+sob_RCP85 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = tS3, aes( x = long, y = lat, group = group, fill=id))
-
-
-
-# Com biomas
-mapa_sobreposicaoB3<- ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = tS3, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -310,63 +217,23 @@ mapa_sobreposicaoB3<- ggplot2::ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
+    scale_fill_manual(name = "",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
+    # Adicionar a distribuição
     new_scale_fill() +
     
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='darkred', size = 0.5, linetype=2)
-
-mapa_sobreposicaoB3
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/RCP85_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicaoB3
-dev.off()
-
-
-# Sem os biomas
-mapa_sobreposicao3<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    ggpolypath::geom_polypath(data = tS3, aes(x = long, y = lat, group = group,
+                                              fill = id),show.legend = FALSE) +
     
-    geom_polygon(data = tS3, aes( x = long, y = lat, group = group, fill=id))+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
+    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF'))+
     
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Sobreposição",
-                      values = c('coral1','darkolivegreen', '#0072B5FF'),
-                      labels = c("Apenas morcego", "Apenas planta", 'Sobreposição')) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -375,15 +242,22 @@ mapa_sobreposicao3<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
-mapa_sobreposicao3
+sob_RCP85
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/sobreposicoes_mapas_feitos/RCP85.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-mapa_sobreposicao3
-dev.off()
 
+ggsave(file = "./Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg",
+       plot = sob_RCP85,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
+
+################################ FIM ###########################################

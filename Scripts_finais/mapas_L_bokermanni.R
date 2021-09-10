@@ -263,7 +263,7 @@ unique(t4M)
 
 # MAPA
 
-alterac45 <- ggplot2::ggplot(data = world) +
+alterac45M <- ggplot2::ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
              crs = st_crs(4326)) +
@@ -292,8 +292,10 @@ alterac45 <- ggplot2::ggplot(data = world) +
                       values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
                       labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    ggpolypath::geom_polypath(data = t2, aes(x = long, y = lat, group = group),
-                              fill = 'gray') +
+    new_scale_fill() +
+    
+    ggpolypath::geom_polypath(data = t2M, aes(x = long, y = lat, group = group),
+                              fill = 'gray56') +
     
     # Adicionar a distribuição
     new_scale_fill() +
@@ -343,7 +345,7 @@ unique(t5M)
 
 # MAPA
 
-alterac85 <- ggplot2::ggplot(data = world) +
+alterac85M <- ggplot2::ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
              crs = st_crs(4326)) +
@@ -372,8 +374,9 @@ alterac85 <- ggplot2::ggplot(data = world) +
                       values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
                       labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
+    new_scale_fill() +
     ggpolypath::geom_polypath(data = t3M, aes(x = long, y = lat, group = group),
-                              fill = 'gray') +
+                              fill = 'gray56') +
     
     # Adicionar a distribuição
     new_scale_fill() +
