@@ -260,7 +260,7 @@ enPol4 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP45_binario.
 
 
 t4 <- fortify(enPol4)
-unique(t4)
+unique(t4$id)
 
 # MAPA
 
@@ -295,14 +295,16 @@ alterac45 <- ggplot2::ggplot(data = world) +
     
     new_scale_fill() +
     ggpolypath::geom_polypath(data = t2, aes(x = long, y = lat, group = group),
-                              fill = 'grey56') +
+                              fill = '#9F0000') +
     # Adicionar a distribuição
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = t4, aes(x = long, y = lat, group = group,
-                              fill = id),show.legend = FALSE) +
+                              fill = id)) +
     
-    scale_fill_manual(values = c("#9F0000", "blue")) +
+    scale_fill_manual(name = " ",
+                      values = c("#FFE32D", "#1320BF"),
+                      labels = c("Perda de área", "Ganho de área")) +
     
 
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
