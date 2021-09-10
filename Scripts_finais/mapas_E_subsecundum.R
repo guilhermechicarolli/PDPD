@@ -310,7 +310,7 @@ alterac45 <- ggplot2::ggplot(data = world) +
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.83,0.22),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
@@ -343,7 +343,7 @@ enPol5 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP85_binario.
 
 
 t5 <- fortify(enPol5)
-unique(t5)
+unique(t5$id)
 
 # MAPA
 
@@ -378,21 +378,22 @@ alterac85 <- ggplot2::ggplot(data = world) +
     
     new_scale_fill() +
     ggpolypath::geom_polypath(data = t3, aes(x = long, y = lat, group = group),
-                              fill = 'grey56') +
-    
+                              fill = '#9F0000') +
     # Adicionar a distribuição
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = t5, aes(x = long, y = lat, group = group,
-                                              fill = id),show.legend = FALSE) +
+                                             fill = id)) +
     
-    scale_fill_manual(values = c("#9F0000", "blue")) +
+    scale_fill_manual(name = " ",
+                      values = c("#FFE32D", "#1320BF"),
+                      labels = c("Perda de área", "Ganho de área")) +
     
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.83,0.22),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),

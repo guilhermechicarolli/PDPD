@@ -79,14 +79,16 @@ sob_presente <- ggplot2::ggplot(data = world) +
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = tS1, aes(x = long, y = lat, group = group,
-                                              fill = id),show.legend = FALSE) +
+                                              fill = id)) +
     
-    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF')) +
+    scale_fill_manual(name = "",
+                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.86,0.24),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
@@ -155,15 +157,16 @@ sob_RCP45 <- ggplot2::ggplot(data = world) +
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = tS2, aes(x = long, y = lat, group = group,
-                                              fill = id),show.legend = FALSE) +
+                                              fill = id)) +
     
-    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF'))+
-                      
+    scale_fill_manual(name = "",
+                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.86,0.24),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
@@ -230,15 +233,16 @@ sob_RCP85 <- ggplot2::ggplot(data = world) +
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = tS3, aes(x = long, y = lat, group = group,
-                                              fill = id),show.legend = FALSE) +
+                                              fill = id)) +
     
-    scale_fill_manual(values = c('coral1','darkolivegreen', '#0072B5FF'))+
-    
+    scale_fill_manual(name = "",
+                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
+    theme(legend.position = c(0.86,0.24),
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
