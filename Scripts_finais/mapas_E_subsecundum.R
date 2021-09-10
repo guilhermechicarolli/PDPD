@@ -20,10 +20,6 @@ if (!require(ggpolypath)) install.packages('ggpolypath')
 #--------- 1. MAPAS E. SUBSECUNDUM ---------#
 
 
-# Carregar os shapefiles das distribuições
-
-enPol <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/presente_binario.shp')
-
 # Carregar o mapa através do pacote Mapdata
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
@@ -35,23 +31,26 @@ MA <- ggplot2::fortify(biomas[biomas$Bioma=="Mata AtlÃ¢ntica",])
 CA <- ggplot2::fortify(biomas[biomas$Bioma=="Caatinga",])
 CE <- ggplot2::fortify(biomas[biomas$Bioma=="Cerrado",])
 
-#### MAPA BINÁRIO PRESENTE
-
-t1 <- ggplot2::fortify(enPol)
-
-unique(t1$id)
-unique(MA$id)
-unique(CA$id)
-unique(CE$id)
-
 # Juntar todas as camadas shapefile, inclusive as da distribuição
 
 MA_CA_CE <- rbind(MA, CA, CE) %>%
     dplyr::mutate(id = factor(id, levels = c("1", "2", "3")))
+unique(MA$id)
+unique(CA$id)
+unique(CE$id)
 
+
+#### MAPA BINÁRIO PRESENTE
+
+# Carregar os shapefiles das distribuições
+
+enPol <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/presente_binario.shp')
+
+t1 <- ggplot2::fortify(enPol)
+unique(t1$id)
 
 # MAPA
-                
+
 presenteP <- ggplot2::ggplot(data = world) +
     geom_sf(colour = "white", fill = "#d3d3d3") +
     coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
@@ -59,7 +58,7 @@ presenteP <- ggplot2::ggplot(data = world) +
     theme_bw() + 
     
     # Adicionei todos os poligonos
-    geom_polygon(data = MA_CA_CE, alpha = 0.4, aes(x = long, y = lat, 
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
                                                   group = group, fill = id)) +
     
     # Adicionar a barra de escala
@@ -112,76 +111,27 @@ ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg",
 
 
 
-# Sem os biomas
-presenteP2<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_bw() + 
-    
-    geom_polygon(data = t1, aes( x = long, y = lat, group = group, fill=id), 
-                 color='black')+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
-                      labels = c("Não adequado", "Adequado")) +
-    
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
-
-
-presenteP2
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/presente.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-presenteP2
-dev.off()
-
-
-
 #### MAPA BINÁRIO RCP 45
 
+# Carregar os shapefiles das distribuições
+
+enPol2 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/RCP45_binario.shp')
+
+
 t2 <- fortify(enPol2)
-ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+
+# MAPA
+
+futuro45 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = t2, aes( x = long, y = lat, group = group, fill=id))
-
-
-t2$hole <- as.factor(t2$hole)
-head(t2)
-
-t2$id[t2$hole == TRUE] <- 4
-
-# Com biomas
-futuro45B<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = t2, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -192,13 +142,19 @@ futuro45B<- ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue",),
-                      labels = c("Não adequado", "Adequado")) +
+    scale_fill_manual(name = " ",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
+    
+    # Adicionar a distribuição
+    
+    ggpolypath::geom_polypath(data = t2, aes(x = long, y = lat, group = group),
+                              fill = '#9F0000') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -207,93 +163,44 @@ futuro45B<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
-    new_scale_fill() +
-    
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='red', size = 0.5, linetype=2)
-
-futuro45B
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/RCP45_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-futuro45B
-dev.off()
-
-
-# Sem os biomas
-futuro45<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
-    
-    geom_polygon(data = t2, aes( x = long, y = lat, group = group, fill=id), 
-                 color='black')+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
-                      labels = c("Não adequado", "Adequado")) +
-    
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
 futuro45
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/RCP45.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-futuro45
-dev.off()
+
+ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/RCP45.jpeg",
+       plot = futuro45,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
 
 
 #### MAPA BINÁRIO RCP 85
 
-t3 <- ggplot2::fortify(enPol3)
-t3$id <- as.factor(t3$id)
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+# Carregar os shapefiles das distribuições
+
+enPol3 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/RCP85_binario.shp')
+
+
+t3 <- fortify(enPol3)
+
+# MAPA
+
+futuro85 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = t3, aes( x = long, y = lat, group = group, fill=id))
-
-
-t3$hole <- as.factor(t3$hole)
-head(t3)
-
-t2$id[t2$hole == TRUE] <- 1
-
-futuro85B<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = t3, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -304,13 +211,19 @@ futuro85B<- ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
-                      labels = c("Não adequado", "Adequado")) +
+    scale_fill_manual(name = " ",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
+    
+    # Adicionar a distribuição
+    
+    ggpolypath::geom_polypath(data = t3, aes(x = long, y = lat, group = group),
+                              fill = '#9F0000') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -319,92 +232,48 @@ futuro85B<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
-    new_scale_fill() +
-    
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='red', size = 0.5, linetype=2)
-
-futuro85B
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/RCP85_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-futuro85B
-dev.off()
-
-### Sem os biomas
-
-futuro85<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
-    
-    geom_polygon(data = t3, aes( x = long, y = lat, group = group, fill=id), 
-                 color='black')+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
-    
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Adequabilidade",
-                      values = c("#6BBC19", "lightskyblue"),
-                      labels = c("Não adequado", "Adequado")) +
-    
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
-    
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
 futuro85
 
 
+
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/RCP85.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-futuro85
-dev.off()
+
+ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/RCP85.jpeg",
+       plot = futuro85,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
+
 
 
 #### MAPA BINÁRIO DE ALTERACOES RCP 45
 
-t4 <- ggplot2::fortify(enPol4)
+# Carregar os shapefiles das distribuições
 
-t4 <- t4[which(t4$id!=2),]
-unique(t4$id)
-t4$id[t4$hole == TRUE] <- 4
+enPol4 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP45_binario.shp')
 
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+
+t4 <- fortify(enPol4)
+unique(t4)
+
+# MAPA
+
+alterac45 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = t4, aes( x = long, y = lat, group = group, fill=id))
-
-
-alterac45B <- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = t5teste, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -415,65 +284,27 @@ alterac45B <- ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Alteração",
-                      values = c("red", 'blue', 'gray'),
-                      labels = c("Área perdida", "Área ganha", '')) +
+    scale_fill_manual(name = "",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
+    ggpolypath::geom_polypath(data = t2, aes(x = long, y = lat, group = group),
+                              fill = 'gray') +
     
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
+    # Adicionar a distribuição
     new_scale_fill() +
     
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='brown', size = 0.5, linetype=2)
-
-alterac45B
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/Alteracao_RCP45_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-alterac45B
-dev.off()
-
-
-### Sem os biomas
-
-alterac45<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    ggpolypath::geom_polypath(data = t4, aes(x = long, y = lat, group = group,
+                              fill = id),show.legend = FALSE) +
     
-    geom_polygon(data = t4, aes( x = long, y = lat, group = group, fill=id))+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
+    scale_fill_manual(values = c("#9F0000", "blue")) +
     
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Alteração",
-                      values = c("red", 'blue', 'gray'),
-                      labels = c("Área perdida", "Área ganha", '')) +
-    
+
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
     # Ajustar a legenda 
@@ -481,42 +312,49 @@ alterac45<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
 alterac45
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/Alteracao_RCP45.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-alterac45
-dev.off()
+
+ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/alteracao_RCP45.jpeg",
+       plot = alterac45,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
+
+
+
 
 
 #### MAPA BINÁRIO DE ALTERACOES RCP 85
 
-t5 <- ggplot2::fortify(enPol5)
+# Carregar os shapefiles das distribuições
 
-t5 <- t5[which(t5$id!=2),]
-unique(t5$id)
-t5$id[t5$hole == TRUE] <- 4
+enPol5 <- rgdal::readOGR('./Rasters_mapas/E_subsecundum/alteracao_RCP45_binario.shp')
 
-ggplot2::ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+
+t5 <- fortify(enPol5)
+unique(t5)
+
+# MAPA
+
+alterac85 <- ggplot2::ggplot(data = world) +
+    geom_sf(colour = "white", fill = "#d3d3d3") +
+    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, 
+             crs = st_crs(4326)) +
+    theme_bw() + 
     
-    geom_polygon(data = t5, aes( x = long, y = lat, group = group, fill=id))
-
-
-
-alterac85B <- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    # Adicionei todos os poligonos
+    geom_polygon(data = MA_CA_CE, alpha = 0.6, aes(x = long, y = lat, 
+                                                   group = group, fill = id)) +
     
-    geom_polygon(data = t5, aes( x = long, y = lat, group = group, fill=id))+
     # Adicionar a barra de escala
     ggspatial::annotation_scale(location = "br", width_hint = 0.2,
                                 bar_cols = c("grey30", "white")) +
@@ -527,63 +365,26 @@ alterac85B <- ggplot(data = world) +
                                       width = unit(1.5, "cm"),
                                       style = ggspatial::north_arrow_fancy_orienteering(
                                           fill = c("white","grey30"))) +
+    
     #Configurar a descrição dos eixos X e Y
     labs(x = "Longitude", y = "Latitude") +
     
     # Adicionar as legendas
-    scale_fill_manual(name="Alteração",
-                      values = c("red",'gray'),
-                      labels = c("Área perdida",'')) +
+    scale_fill_manual(name = "",
+                      values = c('goldenrod2', 'lightskyblue', '#6BBC19'),
+                      labels = c("Caatinga", "Cerrado", "Mata Atlântica")) +
     
-    guides(color = guide_legend(override.aes = list(fill = "white"))) +
+    ggpolypath::geom_polypath(data = t3, aes(x = long, y = lat, group = group),
+                              fill = 'gray') +
     
-    # Ajustar a legenda 
-    theme(legend.position = c(0.86,0.2),
-          panel.grid = element_blank(),
-          legend.background = element_rect(fill = "NA"),
-          legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) +
-    
+    # Adicionar a distribuição
     new_scale_fill() +
     
-    # Adicionar os poligonos
-    geom_polygon(data = MA_CA_CE, aes(x = long, y = lat, group=group), fill=NA, 
-                 color='brown', size = 0.5, linetype=2)
-
-alterac85B
-
-
-# Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/Alteracao_RCP85_e_biomas.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-alterac85B
-dev.off()
-
-### Sem os biomas
-
-alterac85<- ggplot(data = world) +
-    geom_sf(colour = "white", fill = "gray") +
-    coord_sf(xlim = c(-56, -31), ylim = c(-30,0), expand = FALSE, crs=st_crs(4326))+
-    theme_gray() + 
+    ggpolypath::geom_polypath(data = t5, aes(x = long, y = lat, group = group,
+                                              fill = id),show.legend = FALSE) +
     
-    geom_polygon(data = t5, aes( x = long, y = lat, group = group, fill=id))+
-    # Adicionar a barra de escala
-    ggspatial::annotation_scale(location = "br", width_hint = 0.2,
-                                bar_cols = c("grey30", "white")) +
+    scale_fill_manual(values = c("#9F0000", "blue")) +
     
-    # Adicionar a flecha de orientação para o Norte
-    ggspatial::annotation_north_arrow(location = "tr", which_north = "true",
-                                      height = unit(1.5, "cm"), 
-                                      width = unit(1.5, "cm"),
-                                      style = ggspatial::north_arrow_fancy_orienteering(
-                                          fill = c("white","grey30"))) +
-    #Configurar a descrição dos eixos X e Y
-    labs(x = "Longitude", y = "Latitude") +
-    
-    # Adicionar as legendas
-    scale_fill_manual(name="Alteração",
-                      values = c("red",'gray'),
-                      labels = c("Área perdida",'')) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -592,17 +393,22 @@ alterac85<- ggplot(data = world) +
           panel.grid = element_blank(),
           legend.background = element_rect(fill = "NA"),
           legend.key = element_rect(fill = "NA"),
-          plot.margin = unit(rep(0.5,4), "lines")) 
+          plot.margin = unit(rep(0.5,4), "lines"))
 
 
 alterac85
+
 
 
 # Exportar o mapa como uma imagem PNG
-png("./Graficos/E_subsecundum_mapas_feitos/Alteracao_RCP85.png", res = 300,
-    width = 2000, height = 2200, unit = "px")
-alterac85
-dev.off()
+
+ggsave(file = "./Graficos/E_subsecundum_mapas_feitos/alteracao_RCP85.jpeg",
+       plot = alterac85,
+       device = 'png',
+       width = 1200, 
+       height = 1300, 
+       unit = "px",
+       dpi = 200)
 
 
 ################################ FIM ###########################################
