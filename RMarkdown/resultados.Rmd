@@ -21,7 +21,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 # Resultados
 
-|     O algoritmo Maxent demonstrou boa performance preditiva, obtendo altos valores médios de AUC ([gráficos 8 e 9](#apêndice)). A proporção de área potencial ganha e perdida sob os diferentes cenários climáticos com relação ao presente variou entre ambas as espécies ([tabela 6](#apêndice)), todas apresentaram contração na área ambiental adequada nos cenários futuros de mudanças climáticas. 
+|     O algoritmo Maxent demonstrou boa performance preditiva, obtendo altos valores médios de AUC ([gráficos 8 e 9](#apêndice)). A proporção de área potencial ganha e perdida sob os diferentes cenários climáticos com relação ao presente variou entre ambas as espécies (\label{tabela6}), todas apresentaram contração na área ambiental adequada nos cenários futuros de mudanças climáticas. 
 
 
 Os modelos previram redução de 36.98% de áreas adequadas (com respeito à área presente) para *Lonchophylla bokermanni* no cenário de RCP 4.5 para o ano de 2050 e diminuição de 58.06% de área para o panorama de RCP 8.5, para 2050 ([tabela 7](#apêndice)). A mesma tendência foi observada para *Encholirium subsecundum*, a qual previmos encolhimento de 72.70% de área apropriada (relativa à área do presente) para o futuro de RCP 4.5 (2050), enquanto que no cenário de RCP 8.5 a redução na área é de 81.11% (com respeito ao presente).

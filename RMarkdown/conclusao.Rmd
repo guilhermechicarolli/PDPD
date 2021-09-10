@@ -34,6 +34,11 @@ A área de sobreposição espacial potencial entre ambas as espécies também ap
 Em contrapartida, *E. subsecundum* apresentou aumento na taxa de sobreposição em relação a sua distribuição nos cenários futuros, chegando a uma alta porcentagem de 84.9% de sobreposição sob RCP 4.5, o que implica que apenas 15% de sua distribuição potencial nesse cenário está em desencontro geográfico com o morcego. No RCP 8.5, o desencontro espacial cresce para 23.3% da área potencial da planta. Os resultados apontam portanto a possibilidade de não ocorrer o *mismatch* espacial com respeito à distribuição da planta, a qual pode chegar a aumentar a sobreposição com o morcego. 
 
 
+```{r mapas_sob, echo=FALSE, fig.align='center', fig.cap='Mapas de sobreposição entre as distribuições da planta e do morcego no presente (à esquerda), no RCP 4.5 (ao centro) e RCP 8.5 (à esquerda)', fig.show="hold", out.width="50%"}
+
+knitr::include_graphics(c("./Graficos/sobreposicoes_mapas_feitos/presente.jpeg","./Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg", "./Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg"))
+
+```
 
 
 

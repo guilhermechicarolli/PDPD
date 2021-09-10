@@ -103,9 +103,7 @@ Fizemos uma modelagem prévia para cada espécie com os parâmetros mencionados 
 A fim de avaliar a performance dos modelos criados pelo Maxent, foi empregado o AUC (*Area Under the Curve*) parcial da curva ROC (*Receiver Operating Characteristic Curve*) [@maxent], obtido ao plotar valores de sensitividade no eixo y e 1-especificidade no eixo x e com valores variando de 0 (modelo com 100% de taxa de erro) a 1 (modelo totalmente em acordo com a distribuição observada). O AUC é uma medida estatística independente da escolha do limiar (*threshold*) e tornou-se muito popular para esimar a performance de modelos de distribuição. O valor de limiar para os modelos de cada espécie foi obtido a partir da maximização da especificidade mais a sensitividade [@liu2013], o qual é independente da quantidade de pseudo-ausências, o que pode ser vantajoso ao se utilizar pequenas quantidade de dados. Com o limiar é possível converter os mapas de adequabilidade das espécies para mapas binários (presença-ausência).
 
 
-O modelo de cada espécie foi então projetado para os cenários futuros, de RCP 4.5 e 8.5, e para o presente gerando 6 mapas de distribuição potencial, 3 da planta e 3 do morcego.  
-
-
+O modelo de cada espécie foi então projetado para os cenários futuros, de RCP 4.5 e 8.5, e para o presente gerando como saída 6 mapas de distribuição potencial, 3 da planta e 3 do morcego. Foram então elaborados 5 mapas finais para cada espécie: 3 que mostram as distribuições nos cenários e 2 com as alterações nas distribuições com respeito ao presente. Criamos também 3 mapas com as sobreposições entre as distribuições das espécies nos três cenários distrintos.
 
 
 
@@ -135,3 +133,7 @@ O projeto segue as etapas para Modelagem de Distribuição de Espécie propostas
 
 5. Validação da hipoótese científica: foram analisados os conjuntos de dados gerados pelos modelos de distribuição ([ver resultados](#resultados)), gerando os mapas de predição. A partir de então foi possível confrontá-los com as hipóteses propostas inicialmente.
 
+
+## 2.7 Repositório dos códigos e dados
+
+Todos os dados e códigos utilizados no projeto, desde a obtenção e limpeza dos dados de ocorrência à elaboração dos mapas, estão disponíveis na plataforma online de hospedagem de códigos GitHub em [https://github.com/guilhermechicarolli/PDPD](https://github.com/guilhermechicarolli/PDPD), podendo ser baixados e reproduzidos.
