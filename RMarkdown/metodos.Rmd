@@ -116,7 +116,7 @@ A taxa de correspondência espacial (*spatial match*) foi calculada como a difer
 
 ## 2.6 Etapas do projeto
 
-O projeto segue as etapas para Modelagem de Distribuição de Espécie propostas por @pinaya2013, organizada em 5 etapas: 1. Construção da hipótese científica; 2. Pré-análise dos dados; 3. Modelagem; 4. Predição e 5. Validação da hipótese científica.
+|     O projeto segue as etapas para Modelagem de Distribuição de Espécie propostas por @pinaya2013, organizada em 5 etapas: 1. Construção da hipótese científica; 2. Pré-análise dos dados; 3. Modelagem; 4. Predição e 5. Validação da hipótese científica.
 
 
 1. Construção da hipótese científica: foi definida a proposta do projeto, assim como os objetivos e hipóteses científicas a serem testadas. 
@@ -136,4 +136,4 @@ O projeto segue as etapas para Modelagem de Distribuição de Espécie propostas
 
 ## 2.7 Repositório dos códigos e dados
 
-Todos os dados e códigos utilizados no projeto, desde a obtenção e limpeza dos dados de ocorrência à elaboração dos mapas, estão disponíveis na plataforma online de hospedagem de códigos GitHub em [https://github.com/guilhermechicarolli/PDPD](https://github.com/guilhermechicarolli/PDPD), podendo ser baixados e reproduzidos.
+|     Todos os dados e códigos utilizados no projeto, desde a obtenção e limpeza dos dados de ocorrência à elaboração dos mapas, estão disponíveis na plataforma online de hospedagem de códigos GitHub em [https://github.com/guilhermechicarolli/PDPD](https://github.com/guilhermechicarolli/PDPD), podendo ser baixados e reproduzidos.

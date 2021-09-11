@@ -19,97 +19,59 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 # Apêndice
 
-**Tabela 1:** Pontos de ocorrências de *Encholirium subsecundum* (Barker Mez).
+## Tabelas
 
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Estado       | Município                | Longitude | Latitude  | Referência                                                    |
-+==============+==========================+===========+===========+===============================================================+
-| Minas Gerais | Belo Horizonte           | -43.93780 | -19.92080 | Fundação Zoo-Botânica de Belo Horizonte                       |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santana do Riacho        | -43.71440 | -19.16890 | Fundação Zoo-Botânica de Belo Horizonte                       |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Conceição do Mato Dentro | -43.42500 | -19.03720 | Fundação Zoo-Botânica de Belo Horizonte                       |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Serro                    | -43.37940 | -18.60470 | Coleção da Escola Superior de Agronomia Luiz de Queiroz - USP |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Serro                    | -43.44500 | -18.47250 | Herbário do Museu Nacional                                    |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Jequitaí                 | -44.44560 | -17.23560 | Coleção da Universidade Federal de Viçosa                     |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Buenópolis               | -44.18000 | -17.87330 | Coleção da Universidade Federal de Viçosa                     |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Buenópolis               | -44.23389 | -17.92389 | Coleção da Universidade Federal do Maranhão                   |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Buenópolis               | -44.24944 | -17.90917 | Coleção da Universidade Federal do Maranhão                   |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santana do Riacho        | -43.71440 | -19.16890 | Coleção da Universidade Federal de Viçosa                     |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Mariana                  | -43.41610 | -20.37780 | Coleção da Universidade Federal de Viçosa                     |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Datas                    | -43.65580 | -18.44560 | Herbário do Museu Botânico Municipal                          |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Joaquim Felício          | -44.17220 | -17.75750 | Coleção da Universidade Estadual de Feira de Santana          |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Joaquim Felício          | -44.29190 | -17.69890 | The New York Botanical Garden                                 |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Joaquim Felício          | -44.17220 | -17.75750 | Herbário da Universidade Estadual de Feira de Santana         |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santana do Riacho        | -43.71440 | -19.16890 | Instituto de Botânica                                         |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Penha da França          | -43.83333 | -18.83333 | Coleção da Universidade de Brasília                           |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Montes Claros            | -43.86170 | -16.73500 | Coleção da UNICAMP                                            |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santo Antônio do Itambé  | -43.33944 | -18.45694 | Herbário da UFMG                                              |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Pedro Leopoldo           | -44.04310 | -19.61810 | Herbário da UFMG                                              |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Itacambira               | -43.30890 | -17.06470 | Herbário da UFMG                                              |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Dom Joaquim              | -43.23333 | -18.86667 | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Mato Verde               | -42.77889 | -15.38667 | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santana de Pirapama      | -43.75556 | -19.00611 | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Diamantina               | -43.55278 | -18.35500 | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Diamantina               | -43.62806 | -18.19194 | Herbário do Museu do Jardim Botânico do Rio de Janeiro        |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Presidente Kubitschek    | -43.55722 | -18.65389 | @mariana2014                                                  |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Santana do Riacho        | -43.51667 | 19.25000  | Herbário da UFMG                                              |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Bahia        | Itatim                   | -39.69810 | -12.71190 | Instituto de Botânica                                         |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Jaboticatubas            | -43.74500 | -19.51360 | The New York Botanical Garden                                 |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
-| Minas Gerais | Jaboticatubas            | -43.58333 | -19.16667 | Herbário do Museu Nacional                                    |
-+--------------+--------------------------+-----------+-----------+---------------------------------------------------------------+
+|  **Tabela 1:** Pontos de ocorrências de *Encholirium subsecundum* (Barker Mez).
+
+|Estado       |  Município| Longitude | Latitude  | Referência |
+--------------|-----------|-----------|-----------|-----------|
+| Minas Gerais|Belo Horizonte| -43.93780 | -19.92080 | Fundação Zoo-Botânica de Belo Horizonte|
+| Minas Gerais | Santana do Riacho | -43.71440 | -19.16890 | Fundação Zoo-Botânica de Belo Horizonte|
+| Minas Gerais | Conceição do Mato Dentro | -43.42500 | -19.03720 | Fundação Zoo-Botânica de Belo Horizonte|
+| Minas Gerais | Serro| -43.37940 | -18.60470 | Coleção da Escola Superior de Agronomia Luiz de Queiroz - USP |
+| Minas Gerais | Serro| -43.44500 | -18.47250 | Herbário do Museu Nacional|
+| Minas Gerais | Jequitaí| -44.44560 | -17.23560 | Coleção da Universidade Federal de Viçosa|
+| Minas Gerais | Buenópolis| -44.18000 | -17.87330 | Coleção da Universidade Federal de Viçosa|
+| Minas Gerais | Buenópolis| -44.23389 | -17.92389 | Coleção da Universidade Federal do Maranhão|
+| Minas Gerais | Buenópolis| -44.24944 | -17.90917 | Coleção da Universidade Federal do Maranhão|
+| Minas Gerais | Santana do Riacho| -43.71440 | -19.16890 | Coleção da Universidade Federal de Viçosa|
+| Minas Gerais | Mariana| -43.41610 | -20.37780 | Coleção da Universidade Federal de Viçosa|
+| Minas Gerais | Datas| -43.65580 | -18.44560 | Herbário do Museu Botânico Municipal|
+| Minas Gerais | Joaquim Felício| -44.17220 | -17.75750 | Coleção da Universidade Estadual de Feira de Santana|
+| Minas Gerais | Joaquim Felício| -44.29190 | -17.69890 | The New York Botanical Garden|
+| Minas Gerais | Joaquim Felício| -44.17220 | -17.75750 | Herbário da Universidade Estadual de Feira de Santana|
+| Minas Gerais | Santana do Riacho | -43.71440 | -19.16890 | Instituto de Botânica|
+| Minas Gerais | Penha da França | -43.83333 | -18.83333 | Coleção da Universidade de Brasília|
+| Minas Gerais | Montes Claros  | -43.86170 | -16.73500 | Coleção da UNICAMP|
+| Minas Gerais | Santo Antônio do Itambé  | -43.33944 | -18.45694 | Herbário da UFMG|
+| Minas Gerais | Pedro Leopoldo| -44.04310 | -19.61810 | Herbário da UFMG|
+| Minas Gerais | Itacambira| -43.30890 | -17.06470 | Herbário da UFMG|
+| Minas Gerais | Dom Joaquim| -43.23333 | -18.86667 | Herbário do Museu do Jardim Botânico do Rio de Janeiro|
+| Minas Gerais | Mato Verde| -42.77889 | -15.38667 | Herbário do Museu do Jardim Botânico do Rio de Janeiro|
+| Minas Gerais | Santana de Pirapama | -43.75556 | -19.00611 | Herbário do Museu do Jardim Botânico do Rio de Janeiro |
+| Minas Gerais | Diamantina | -43.55278 | -18.35500 | Herbário do Museu do Jardim Botânico do Rio de Janeiro |
+| Minas Gerais | Diamantina | -43.62806 | -18.19194 | Herbário do Museu do Jardim Botânico do Rio de Janeiro |
+| Minas Gerais | Presidente Kubitschek | -43.55722 | -18.65389 | @mariana2014 |
+| Minas Gerais | Santana do Riacho | -43.51667 | 19.25000  | Herbário da UFMG |
+| Bahia | Itatim | -39.69810 | -12.71190 | Instituto de Botânica|
+| Minas Gerais | Jaboticatubas| -43.74500 | -19.51360 | The New York Botanical Garden|
+| Minas Gerais | Jaboticatubas| -43.58333 | -19.16667 | Herbário do Museu Nacional|
 
 \clearpage
 
 **Tabela 2:** Pontos de ocorrências de *Lonchophylla bokermanni* (Sazima, Vizotto & Taddei).
 
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Estado       | Município             | Longitude  | Latitude   | Referência                                           |
-+==============+=======================+============+============+======================================================+
-| Minas gerais | Jaboticatubas         | -43.74472  | -19.51361  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Jaboticatubas         | -43.74540  | -19.52210  | Coleção de Quirópteros da UNESP                      |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Serra do Cipó         | -43.60000  | -19.26667  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Itambé do Mato Dentro | -43.349444 | -19.410278 | @nascimento2013                                      |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Diamantina            | -43.516667 | -18.383333 | @dias2013                                            |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Minas gerais | Diamantina            | -43.383333 | -18.383333 | @almeida2016                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Bahia        | Caetité               | -42.500000 | -14.266667 | @claudio2018                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
-| Bahia        | Ourolândia            | -41.083333 | -11.083333 | @claudio2018                                         |
-+--------------+-----------------------+------------+------------+------------------------------------------------------+
+| Estado       | Município      | Longitude  | Latitude   | Referência|
+|--------------|----------------|------------|------------|-----------|
+| Minas gerais | Jaboticatubas| -43.74472  | -19.51361  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
+| Minas gerais | Jaboticatubas| -43.74540  | -19.52210  | Coleção de Quirópteros da UNESP|
+| Minas gerais | Jaboticatubas| -43.60000  | -19.270000 | @nascimento2013|
+| Minas gerais | Serra do Cipó| -43.60000  | -19.26667  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
+| Minas gerais | Itambé do Mato Dentro | -43.349444 | -19.410278 | @nascimento2013|
+| Minas gerais | Diamantina| -43.516667 | -18.383333 | @dias2013|
+| Minas gerais | Diamantina| -43.383333 | -18.383333 | @almeida2016|
+| Bahia        | Caetité   | -42.500000 | -14.266667 | @claudio2018|
+| Bahia        | Ourolândia| -41.083333 | -11.083333 | @claudio2018|
 
 \clearpage
 
@@ -157,14 +119,6 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 |----------|----------|
 | Bio 15   | 1.200694 |
 | Bio 18   | 1.200694 |
-
-![Importância relativa das variáveis para o modelo cheio da espécie *Echolirium subsecundum*](importancia_vars_planta.png){width="80%"}
-
-![Importância relativa das variáveis para o modelo cheio da espécie *Lonchophylla bokermanni*](importancia_vars_morcego.png){width="80%"}
-
-![Valores médio de AUC para os 25 modelos gerados para a espécie *Encholirium subsecundum* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_subsecundum.png){width="80%"}
-
-![Valores médio de AUC para os 25 modelos gerados para a espécie *Lonchophylla bokermanni* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_bokermanni.png){width="80%"}
 
 **Tabela 6:** Área potencial (em $km^{2}$) das espécies de acordo com o presente e os dois cenários climpaticos futuros. \label{tabela6}
 
@@ -222,7 +176,23 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 +---------------------------+----------------+--------------------------------+--------------------------------------------------------------+
 
 
-![Distribuição potencial de *Encholirium subsecundum (em vermelho) para o presente.](../Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
+
+\clearpage
+## Figuras
+
+```{r vif, echo=FALSE, fig.align='center', fig.cap='Importância relativa das variáveis para o modelo cheio da espécie de planta (acima) e para o morcego (abaixo)', fig.show="hold", out.width="73%"}
+
+knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importancia_vars_morcego.png"))
+
+```
+
+![Valores médio de AUC para os 25 modelos gerados para a espécie *Encholirium subsecundum* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_subsecundum.png){width="80%"}
+
+![Valores médio de AUC para os 25 modelos gerados para a espécie *Lonchophylla bokermanni* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_bokermanni.png){width="80%"}
+
+
+
+![Distribuição potencial de *Encholirium subsecundum* (em vermelho) para o presente.](../Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
 
 
 
@@ -248,7 +218,11 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 ![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
 
-```{r, codigo, echo=TRUE, include = FALSE,results="hide", message = FALSE, warning = FALSE, eval=FALSE, error=FALSE, fig.cap = "Código da modelagem da distribuição potencial da espécie de planta. O código para a  mo delagem da distribuição do morcego é totalmente análogo."}
+\clearpage
+## Código em R
+
+```{r, codigo, echo=TRUE, include = TRUE, message = FALSE, warning = FALSE, eval=FALSE, error=FALSE, fig.cap = "Código da modelagem da distribuição potencial da espécie de planta. O código para a  mo delagem da distribuição do morcego é totalmente análogo."}
+
 
 ############## SCRIPTS DO PROJETO DE PDPD ##############
 
@@ -259,7 +233,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 # 4. Criacao das projecoes no presente
 # 5. Criacao das projecoes no cenario futuro de RCP 4.5
 # 6. Criacao das projecoes no cenario futuro de RCP 8.5
-# 7. Construcao dos mapaP45 simples, binarios e não binarios
+# 7. Construcao dos mapas simples, binarios e não binarios
 # 7. Classificacao das alteracoes de area
 
 ################################################################################
@@ -278,7 +252,6 @@ if (!require(usdm)) install.packages('usdm')
 installAll() 
 
 ################################################################################
-
 #--------- 1. CARREGAMENTO E CORTE DAS CAMADAS
 #           AMBIENTAIS E DADOS DE E. SUBSECUNDUM  ---------#
 
@@ -302,7 +275,7 @@ spg
 mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
 
 # Baixar camadas presente do database online Worldclim
-bio <- raster::getData('worldclim', var='bio',res=2.5, path="./Camadas_presente/") # pode demorar
+bio <- raster::getData('worldclim', var='bio',res=2.5, path="./Camadas_presente/") 
 plot(bio)
 
 # cortar as camadas com o shape do brasil
@@ -410,7 +383,6 @@ sdm::gui(mC)
 #----------
 # TESTE VIF COM AS VARIAVEIS COM MAIOR IMPORTANCIA
 
-
 # Tiramos a camada 14 (alto vif e importância menor do que a correlata 17)
 bioc <- raster::subset(bioCams, c(6, 17, 19))
 vif(bioc)
@@ -439,7 +411,7 @@ d
 m <- sdm::sdm(species~., d, methods='maxent', replication=c('sub', 'boot'),
               test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
 
-# NOTAS: Como mencionado no item 2, o parametro ncore ? a quantidade de cores de
+# NOTAS: Como mencionado no item 2, o parametro ncore é a quantidade de cores de
 # processamento utilizados para a modelagem, altere conforme a configuracao do 
 # computador
 
@@ -451,7 +423,6 @@ sdm::getVarImp((m))
 
 # Para abrir uma interface de exploracao do modelo
 sdm::gui(m)
-
 
 ################################################################################
 #--------- 4. PROJECAO DO MODELO PARA O PRESENTE   ---------#
@@ -553,7 +524,6 @@ ch85 <- en85 - en
 cores2<-grDevices::colorRampPalette(c('red', 'orange', 'yellow', 'gray', 
                                       'green', 'blue'))
 plot(ch85, col=cores2(200))
-
 
 #----------
 ### OBTER MEDIDAS DE THRESHOLD PARA A CONSTRUCAO DOS mapaP45 BINARIOS
@@ -673,7 +643,6 @@ areaG85        # Area ganha
 
 # Porcentagem de ganho
 (areaG85/area)*100
-
 
 ```
 

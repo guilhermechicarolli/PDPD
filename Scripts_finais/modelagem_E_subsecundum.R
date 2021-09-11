@@ -7,7 +7,7 @@
 # 4. Criacao das projecoes no presente
 # 5. Criacao das projecoes no cenario futuro de RCP 4.5
 # 6. Criacao das projecoes no cenario futuro de RCP 8.5
-# 7. Construcao dos mapaP45 simples, binarios e não binarios
+# 7. Construcao dos mapas simples, binarios e não binarios
 # 7. Classificacao das alteracoes de area
 
 ################################################################################

@@ -9,13 +9,17 @@ date: "22 de Março de 2021"
 output:
   pdf_document:
     latex_engine: xelatex
+    includes:
+      in_header: preamble.tex
   html_document:
+    bookdown::pdf_document2:
+      toc:yes
     df_print: paged
     toc: yes
     theme: united
   word_document:
     toc: yes
-toc-title: Sumário
+toc_title: "Sumário"
 editor_options:
   markdown:
     wrap: sentence
