@@ -1,11 +1,16 @@
 ---
-title: '**Impactos das mudanças climáticas: *Mismatches* e alterações na distribuição
+title : FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC
+subtitle: '**Impactos das mudanças climáticas: *Mismatches* e alterações na distribuição
   de plantas e morcegos polinizadores**'
 author:
-- Guilherme de Carvalho Chicarolli
-- Guillermo Florez-Montero
-- Simone Rodrigues de Freitas
-date: "22 de Março de 2021"
+  - "Aluno: Guilherme de Carvalho Chicarolli":
+    institute: [UFABC]
+  - "Orientadores: Guillermo Florez-Montero e Simone Rodrigues de Freitas":
+    institute: [UFABC]
+    correspondence: false
+institute:
+  - UFABC: Universidade Federal do ABC, Av. dos Estados nº 5001, Santo André, São Paulo
+date: "30 de Setembro de 2021"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -47,7 +52,7 @@ knitr::opts_chunk$set(echo = TRUE)
 A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações no clima podem causar nas comunidades, comprometendo o funcionamento de ecossistemas e interações ecológicas entre indivíduos.
 Dessa forma, como resposta às mudanças climáticas, as espécies que a adaptarem sua distribuição a lugares mais adequados serão selecionadas evolutivamente, caso contrário serão extintas.
 Se a adequação não for acompanhada também pela adaptação das outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado *mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
-O presente projeto buscou compreender como as mudanças climáticas podem impactar a distribuição geográfica da espécie de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e da bromélia *Encholirium subsecundum* (Baker) Mez, duas espécies que possuem relações ecológicas próximas, sendo *L. bokermanni* o único polinizador conhecido de *E. subsecundum*.
+O presente projeto tem como objetivo avaliar os impactos das mudanças climáticas na distribuição geográfica da espécie de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e da bromélia *Encholirium subsecundum* (Baker) Mez, duas espécies que possuem relações ecológicas próximas, sendo *L. bokermanni* o único polinizador conhecido de *E. subsecundum*.
 Utilizando-se de Modelos de Distribuição de Espécies (MDEs) foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2050, de RCP 4.5 e 8.5.
 
 > **Palavras chave:** Mudanças climáticas, modelagem, distribuição e sobreposição de espécies.
