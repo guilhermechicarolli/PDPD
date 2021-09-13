@@ -63,7 +63,7 @@ knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"
 ## 2.3 Dados ambientais
 
 |     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. 
-  As 19 variáveis bioclimáticas ([tabela 3](#apêndice)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@worldclim].
+  As 19 variáveis bioclimáticas ([tabela 3](#apêndice)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@IPCC; @worldclim].
 
 Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação do Painel Intergovernamental sobre Mudanças Climáticas (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim].
 São camadas de 19 biovariáveis ([tabela 3](#apêndice)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação CNRM-CM5, do laboratório francês *Centre National de Recherches Meteorologiques*, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 45 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 85 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
