@@ -17,7 +17,7 @@ fontsize: 11pt
 csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 ---
 
-# Conclusão
+# 5. Conclusão
 
 |     Nós desenvolvemos modelos correlativos com base unicamente em variáveis bioclimáticas, afim de uma primeira tentativa de acesso aproximado aos impactos potenciais das mudanças climáticas na distribuição da espécie de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e seu parceiro mutualista, a bromélia *Encholirium subsecundum* (Baker) Mez. 
 
@@ -40,6 +40,12 @@ knitr::include_graphics(c("../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg", "
 
 ```
 
+\clearpage
+```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente', fig.show="hold", out.width="60%"}
+
+knitr::include_graphics("../Graficos/sobreposicoes_mapas_feitos/presente.jpeg")
+
+```
 
 
 

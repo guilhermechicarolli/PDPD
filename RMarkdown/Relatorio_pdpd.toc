@@ -1,0 +1,21 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {subsection}{Resumo}{1}{section*.1}%
+\contentsline {section}{1. Introdução}{3}{section*.3}%
+\contentsline {section}{2. Fundamentação teórica}{5}{section*.4}%
+\contentsline {subsection}{2.1 Mudanças climáticas, alteração na distribuição de espécies e \emph {mismatch} espacial}{5}{section*.5}%
+\contentsline {subsection}{2.2 Modelos de Distribuição de Espécies (MDEs)}{7}{section*.6}%
+\contentsline {section}{3. Materiais e métodos}{9}{section*.7}%
+\contentsline {subsection}{3.1 Espécies}{9}{section*.8}%
+\contentsline {subsection}{3.2 Ocorrências}{10}{section*.9}%
+\contentsline {subsection}{3.3 Dados ambientais}{11}{section*.10}%
+\contentsline {subsection}{3.4 Modelo de Distribuição Potencial}{13}{section*.11}%
+\contentsline {subsection}{3.5 Estimativa da sobreposição e \emph {mismatch} espacial}{14}{section*.12}%
+\contentsline {subsection}{3.6 Etapas do projeto}{15}{section*.13}%
+\contentsline {subsection}{3.7 Repositório dos códigos e dados}{15}{section*.14}%
+\contentsline {section}{4. Resultados}{16}{section*.15}%
+\contentsline {section}{5. Conclusão}{17}{section*.16}%
+\contentsline {section}{Apêndice}{21}{section*.17}%
+\contentsline {subsection}{Tabelas}{21}{section*.18}%
+\contentsline {subsection}{Figuras}{30}{section*.19}%
+\contentsline {subsection}{Código em R}{42}{section*.20}%
+\contentsline {section}{Referências}{54}{section*.21}%

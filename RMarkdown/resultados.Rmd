@@ -19,7 +19,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 \clearpage
 
-# Resultados
+# 4. Resultados
 
 |     O algoritmo Maxent demonstrou boa performance preditiva, obtendo altos valores médios de AUC ([gráficos 8 e 9](#apêndice)). A proporção de área potencial ganha e perdida sob os diferentes cenários climáticos com relação ao presente variou entre ambas as espécies ([tabela 6](#apêndice)), todas apresentaram contração na área ambiental adequada nos cenários futuros de mudanças climáticas. 
 
