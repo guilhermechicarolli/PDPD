@@ -17,7 +17,7 @@ fontsize: 11pt
 csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 ---
 
-# 5. Conclusão
+# 5. Discussão
 
 |     Nós desenvolvemos modelos correlativos com base unicamente em variáveis bioclimáticas, afim de uma primeira tentativa de acesso aproximado aos impactos potenciais das mudanças climáticas na distribuição da espécie de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e seu parceiro mutualista, a bromélia *Encholirium subsecundum* (Baker) Mez. 
 
@@ -34,16 +34,18 @@ A área de sobreposição espacial potencial entre ambas as espécies também ap
 Em contrapartida, *E. subsecundum* apresentou aumento na taxa de sobreposição em relação a sua distribuição nos cenários futuros ([tabelas 8 e 9](#apêndice)), chegando a uma alta porcentagem de 84.9% de sobreposição sob RCP 4.5, o que implica que apenas 15% de sua distribuição potencial nesse cenário está em desencontro geográfico com o morcego. No RCP 8.5, o desencontro espacial cresce para 23.3% da área potencial da planta. Os resultados do projeto apontam portanto a possibilidade de não ocorrer o *mismatch* espacial com respeito à distribuição da planta, a qual pode chegar a aumentar a sobreposição com o morcego, dando suporte a uma das hipóteses iniciais de que o *mismatch* pode ocorrer apenas com relação a distribuição do morcego, e não com a da planta. Uma explicação plausível é a de que o crescimento relativo na compatibilidade espacial seria devido à contração geográfica da espécie de planta, de tal forma que uma distribuição menor da planta seja mais provável de estar sobreposta com a de *L. bokermanni*, especialmente caso a distribuição do morcego sofra menor perda de área no futuro.
 
 
-```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente', fig.show="hold", out.width="60%"}
+```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente.', fig.show="hold", out.width="60%"}
 
 knitr::include_graphics("../Graficos/sobreposicoes_mapas_feitos/presente.jpeg")
 
 ```
 
-Consideramos no projeto que os habitats adequados de acordo com a modelagem para *E. subsecundum* nos quais não há a presença de *L. bokermanni* não representam habitats viáveis para a espécie, de maneira analóga o mesmo foi considerado para *L. bokermanni*, seguindo o método adotado por @gorostiague2018. Desta forma, em habitats sem a presença da espécie parceira há a falta da interação mutualista e em ambientes com ambas as espécies a interação ocorre, considerando que a interação é contínua ao longo do espaço e tempo [@gosrostiague2018; @anderson2017]. 
+Consideramos no projeto que os habitats adequados de acordo com a modelagem para *E. subsecundum* nos quais não há a presença de *L. bokermanni* não representam habitats viáveis para a espécie, de maneira analóga o mesmo foi considerado para *L. bokermanni*, seguindo o método adotado por @gorostiague2018. Desta forma, em habitats sem a presença da espécie parceira há a falta da interação mutualista e em ambientes com ambas as espécies a interação ocorre, considerando que a interação é contínua ao longo do espaço e tempo [@gorostiague2018; @anderson2016]. 
 
 
-Faltam conhecimentos sobre as características da interação mutualista entre *L. bokermanni* e *E. subsecundum*, o que limita a capacidade de avaliação e as suposições feitas com base nos modelos. Considerando a estrutura de aninhada de redes de polinização e a 
+Faltam conhecimentos sobre as características da interação mutualista entre *L. bokermanni* e *E. subsecundum*, o que limita a capacidade de avaliação e as suposições feitas com base nos modelos. Considerando a estrutura aninhada de redes de polinização [@jordi2003] e a tendência a generalização entre as interações planta-polinizador [@waser1996] é razoável pensar se na falta da interação com o morcego por conta de *mismatch* espacial, *E. subsecundum* possui ou possuirá espécies que também a polinizem de maneira efetiva. A mesma questão é válida para *L. bokermanni*, caso diante de uma lacuna entre a interação mutualista com a bromélia, haveriam espécies de plantas compensatórias da qual pudesse se alimentar. 
+
+
 
 
 \clearpage
@@ -54,11 +56,6 @@ knitr::include_graphics(c("../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg", "
 ```
 
 
-```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente', fig.show="hold", out.width="60%"}
-
-knitr::include_graphics("../Graficos/sobreposicoes_mapas_feitos/presente.jpeg")
-
-```
 
 
 
