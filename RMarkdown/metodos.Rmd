@@ -23,15 +23,16 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 ## 3.1 Espécies 
 
-|     Modelamos a distribuição de 2 espécies: a de quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, e de bromélia *Encholirium subsecundum* (Baker) Mez.
+|     Modelamos a distribuição de 2 espécies: a do quiróptero *Lonchophylla bokermanni* Sazima e colab., 1978, e da bromélia *Encholirium subsecundum* (Baker) Mez.
 
-*L. bokermanni* Sazima *et al.*, 1978 [@sazima1978; @dias2013] é uma espécie de morcego de porte médio endêmica do Brasil, fazendo parte do gênero *Lonchophylla* (família Phyllostomidae), que abrange espécies nectarívoras, com focinho alongado e língua comprida [@fleming2008].
-Com poucas ocorrências no bioma do Cerrado e da Caatiga, em Minas Gerais e Bahia ([tabela 2](#apêndice)), o quiróptero possui uma distribuição restrita [@claudio2018].
+*L. bokermanni* Sazima e colab., 1978 [@sazima1978; @dias2013] é uma espécie de morcego de porte médio endêmica do Brasil, fazendo parte do gênero *Lonchophylla* (família Phyllostomidae), que abrange espécies nectarívoras, com focinho alongado e língua comprida [@fleming2008]. Com poucas ocorrências no bioma do Cerrado e da Caatiga, em Minas Gerais e Bahia ([tabela 2](#apêndice)), o quiróptero possui uma distribuição restrita [@claudio2018].
 Ainda pouco se conhece sobre a biologia da espécie, porém sabe-se que alimenta-se de pólen, néctar e insetos [@moratelli; @dias2013].
 
-Em razão da degradação de seus habitats, a classificação de *L. bokermanni* quanto ao seu grau de ameaça está como "Em perigo" de acordo com a Listade Espécies Ameaçadas da União Internacional para a Conservação da Natureza (IUCN) [@claudio2018] e como "Quase ameaçada" pelo Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio) [@icmbio2018].
 
-![*Lonchophylla bokermanni* Sazima *et al.*, 1978. Imagem retirada da fonte: @claudio2018](bokermanni.png){width="40%"}
+Em razão da degradação de seus habitats, a classificação de *L. bokermanni* quanto ao seu grau de ameaça está como "Em perigo" de acordo com a Lista de Espécies Ameaçadas da União Internacional para a Conservação da Natureza (IUCN) [@claudio2018] e como "Quase ameaçada" pelo Instituto Chico Mendes de Conservação da Biodiversidade [@icmbio2018].
+
+
+![*Lonchophylla bokermanni* Sazima e colab., 1978. Imagem retirada da fonte: @claudio2018](bokermanni.png){width="40%"}
 
 *Encholiirum subsecundum* (Baker) Mez é uma espécie de bromélia do gênero 
 *Encholirium* (família Bromeliaceae) que ocorre em formações rochosas, podendo atingir até 2 metros de altura e com um padrão floral quiropterófilo [@matos2004; @dias2013]. A espécie é endêmica do Brasil, com ocorrências nos biomas da Caatinga, Mata Atlântica e, principalmente, no Cerrado [@matos2004; @forzza2005; @sazima1989], nos estados de Minas Gerais e Bahia ([tabela 1](#apêndice)). Embora existam outras espécies de morcegos nectarívoros na área de ocorrência de *E. subsecundum*, *L. bokermanni* é o único polinizador conhecido da bromélia [@sazima1989]. *E. subsecundum* não se encontra no Livro Vermelho da Flora do Brasil [@martinelli2013] ou na Lista Vermelha da IUCN [@iucn].
@@ -43,7 +44,7 @@ Em razão da degradação de seus habitats, a classificação de *L. bokermanni*
 
 |     Para o processo de Modelagem de Distribuição são necessários registros georreferenciados das espécies. Assim, foram coletados os registros de ocorrências de *Encholirium subsecundum* e *Lonchophylla bokermanni* em 3 bancos de registros onlines: Specielink, GBIF e SiBBr, que reunem registros de coleções de espécies. Também foram utilizados registros de artigos que fizeram coletas de espécies. 
 
-Foram reunidos 24 registros ao todo da espécie *L. bokermanni*, com o único parâmetro prévio de possuírem coordenadas georreferenciadas. Em seguida, os registros com coordenadas geográficas duplicadas foram retirados da base de dados, sobrando apenas uma ocorrências entre as duplicadas. Então, um *buffer* com raio de 5 km foi criado ao redor de cada registro e foram selecionados apenas uma ocorrência dentro de cada *buffer*, a fim de diminuir o viés amostral na seleção de ocorrências pelo modelo [@hijmans2001]. Por fim, sobraram 8 registros, os quais foram utilizados para as modelagens ([tabela 2](#apêndice)).
+Foram reunidos 24 registros ao todo da espécie *L. bokermanni*, com o único parâmetro prévio de possuírem coordenadas georreferenciadas. Em seguida, os registros com coordenadas geográficas duplicadas foram retirados da base de dados, sobrando apenas uma ocorrência entre as duplicadas. Então, um *buffer* com raio de 5 km foi criado ao redor de cada registro e foram selecionados apenas uma ocorrência dentro de cada *buffer*, a fim de diminuir o viés amostral na seleção de ocorrências pelo modelo [@hijmans2001]. Por fim, sobraram 8 registros, os quais foram utilizados para as modelagens ([tabela 2](#apêndice)).
 
 
 O mesmo método de limpeza e tratamento dos registros de ocorrência foram utilizados com os dados da *E. subsecundum*, inicialmente com 82 registros e após a retirada de registros duplicados e seleção de um registro por *buffer*, restaram 37 ocorrências de localidade da espécie ([tabela 1](#apêndice)) que foram utilizados nas modelagens.
