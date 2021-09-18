@@ -1,5 +1,5 @@
 ---
-title : FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC
+title : FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC - PROJETO DE PDPD DO EDITAL 04/2020
 subtitle: '**Impactos das mudanças climáticas: *Mismatches* e alterações na distribuição de plantas e morcegos polinizadores**'
 author:
   - Aluno Guilherme de Carvalho Chicarolli:
@@ -11,7 +11,7 @@ author:
     institute: ufabc
 institute:
   - ufabc: Fundação Universidade Federal do ABC, UFABC
-date: "30 de Setembro de 2021"
+date: "Santo André, São Paulo - 30 de Setembro de 2021"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -58,6 +58,7 @@ text-align: justify}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ## Resumo
 
 
@@ -69,6 +70,8 @@ O presente projeto tem como objetivo avaliar os impactos das mudanças climátic
 > **Palavras chave:** Mudanças climáticas, modelagem, distribuição e sobreposição de espécies.
 
 > **Área do conhecimento:** Ecologia.
+
+> Aluno bolsista do edital nº 04/2020 PDPD.
 
 \clearpage
 
@@ -95,7 +98,7 @@ O presente projeto tem como objetivo avaliar os impactos das mudanças climátic
 
 \clearpage
 
-```{r child='../RMarkdown/conclusao.Rmd'}
+```{r child='../RMarkdown/discussao.Rmd'}
 ```
 
 
