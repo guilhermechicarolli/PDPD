@@ -45,7 +45,7 @@ fontsize: 12pt
 csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 ---
-
+\setlength{\parindent}{0em}
 
 
 ```{=html}
@@ -57,17 +57,15 @@ text-align: justify}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+>      
 
-
-## Resumo
-
+**Resumo**
 
 A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações no clima podem causar nas comunidades, comprometendo o funcionamento de ecossistemas e interações ecológicas entre indivíduos.
 Como resposta às mudanças climáticas, as espécies que a adaptarem sua distribuição a lugares mais adequados serão selecionadas evolutivamente, caso contrário serão extintas.
 Se a adequação não for acompanhada também pela adaptação das outras espécies com os quais há relações ecológicas importantes, pode ocorrer o chamado *mismatch* espacial entre elas, que é dada pela não sobreposição geográfica das espécies.
-O presente projeto tem como objetivo avaliar os impactos das mudanças climáticas na distribuição geográfica da espécie de bromélia *Encholirium subsecundum* (Baker) Mez e seu único polinizador conhecido, o quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, compreendendo também a possível ocorrência do *mismatch* espacial entre ambas. Utilizando-se do algoritmo de modelagem Maxent foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2050, de RCP 4.5 e 8.5.
+O presente projeto tem como objetivo avaliar os impactos das mudanças climáticas na distribuição geográfica da espécie de bromélia *Encholirium subsecundum* (Baker) Mez e seu único polinizador conhecido, o quiróptero *Lonchophylla bokermanni* Sazima *et al.*, 1978, compreendendo também a possível ocorrência do *mismatch* espacial entre ambas. Utilizando-se do algoritmo de modelagem Maxent foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2050, de RCP 4.5 e 8.5. Para ambas as espécies, os modelos previram diminuição na distribuição potencial futura, com as maiores perdas de área no cenário de RCP 8.5. A área de sobreposição entre as duas espécies também diminuiu no futuro, verificando *mismatch* espacial por parte da distribuição do morcego e aumento na sobreposição com relação à distribuição da planta. 
 
-\clearpage
 > **Palavras chave:** Mudanças climáticas, modelagem, distribuição e sobreposição de espécies.
 
 > **Área do conhecimento:** Ecologia.
@@ -102,6 +100,10 @@ O presente projeto tem como objetivo avaliar os impactos das mudanças climátic
 ```{r child='../RMarkdown/discussao.Rmd'}
 ```
 
+\clearpage
+
+```{r child='../RMarkdown/conclusao.Rmd'}
+```
 
 \clearpage
 
@@ -117,4 +119,4 @@ O presente projeto tem como objetivo avaliar os impactos das mudanças climátic
 ```
 \clearpage
 
-# Referências
+<font size="4"> **Referências** </font> 

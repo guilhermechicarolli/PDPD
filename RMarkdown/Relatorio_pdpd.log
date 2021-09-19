@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.31)  19 SEP 2021 12:54
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  19 SEP 2021 19:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -962,9 +962,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 148.
 [1
 
-] [2
-
-] (./Relatorio_pdpd.toc)
+] [2] (./Relatorio_pdpd.toc)
 \tf@toc=\write5
 \openout5 = `Relatorio_pdpd.toc'.
 
@@ -1016,25 +1014,20 @@ File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>
 
-LaTeX Warning: Float too large for page by 13.47885pt on input line 960.
+LaTeX Warning: Float too large for page by 13.47885pt on input line 1009.
 
-[21]
-No file Relatorio_pdpd.bbl.
-[22
-
-
-
+[21] [22
 
 
 ] [23
 
 ] [24] [25] [26]
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1078--1080
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1121--1123
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
 
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1083--1085
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1126--1128
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
@@ -1085,120 +1078,127 @@ type bmp)
 
 ] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1371.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1414.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1371.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1414.
 
 
 [44
 
 ]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [45]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [46]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [47]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [48]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [49]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [50]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [51]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [52]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [53]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 [54]
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1805
+Underfull \vbox (badness 10000) detected at line 1849
  []
 
-[55] [56] [57] [58] [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2007--2012
+[55] [56]
+No file Relatorio_pdpd.bbl.
+[57
+
+
+
+
+] [58] [59]
+Underfull \hbox (badness 10000) in paragraph at lines 2061--2066
 [][][][][][][] [][] [][] [][] [][][][][][][] [][] [][] [][] [][][][] [][] [][][
 ][][][][][][] [][] [][][][][][][][][][] [][] [] [][] [][] [][] [][][][][][][] [
 ][] [][][][][][][][] [][] [] [][] [][][][][][] [][] [][][][][] [][]
  []
 
-[60] [61] [62] (./Relatorio_pdpd.aux)
+[60] [61] [62] [63] (./Relatorio_pdpd.aux)
 Package rerunfilecheck Info: File `Relatorio_pdpd.out' has not changed.
-(rerunfilecheck)             Checksum: 8669C7C2AE641CAE9086433DC24B08C1;3497.
+(rerunfilecheck)             Checksum: 0D63C206260EB402DB0040CF32B91C35;3434.
  ) 
 Here is how much of TeX's memory you used:
- 18268 strings out of 478532
- 333188 string characters out of 5861310
- 860710 words of memory out of 5000000
- 38235 multiletter control sequences out of 15000+600000
+ 18271 strings out of 478492
+ 333444 string characters out of 5860186
+ 860842 words of memory out of 5000000
+ 38274 multiletter control sequences out of 15000+600000
  409891 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 87i,10n,120p,565b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,10n,120p,565b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Relatorio_pdpd.pdf (62 pages).
+Output written on Relatorio_pdpd.pdf (63 pages).

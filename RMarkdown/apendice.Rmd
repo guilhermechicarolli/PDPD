@@ -17,7 +17,7 @@ fontsize: 11pt
 csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 ---
 
-# Anexo
+# Anexos
 
 ## Tabelas
 
@@ -237,7 +237,7 @@ knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importanc
 # 7. Construcao dos mapas simples, binarios e não binarios
 # 7. Classificacao das alteracoes de area
 
-#############################################################################
+###########################################################################
 
 ##### Carregamento das bibliotecas necessarias
 if (!require(tidyverse)) install.packages('tidyverse')
@@ -252,7 +252,7 @@ if (!require(usdm)) install.packages('usdm')
 # Rodar na primeira vez para instalar as dependencias que o 'sdm' precisa
 installAll() 
 
-#############################################################################
+###########################################################################
 #--------- 1. CARREGAMENTO E CORTE DAS CAMADAS
 #           AMBIENTAIS E DADOS DE E. SUBSECUNDUM  ---------#
 
@@ -339,8 +339,8 @@ plot(biof85)
 # As camadas futuras devem ter o mesmo nome que as do presente
 names(biof85) <- names(bio)
 
-# Carregar as camadas e uma camada representante (bio 1) para 
-# corte das camadas
+# Carregar as camadas e uma camada representante (bio 1) para corte 
+# das camadas
 cortef85 <- biof85
 cam_repf85 <- biof85[[1]]
 
@@ -351,13 +351,14 @@ cam_repf85 <- raster::crop(cam_repf85, extent(mascara))
 bio85 <- raster::resample(cortef85, cam_repf85, method="bilinear", 
                           snap='out', bylayer=TRUE, progress='text')
 
-# Cortar as camadas ambientais e cortar a partir da mascara criada do Brasil
+# Cortar as camadas ambientais e cortar a partir da mascara 
+# criada do Brasil
 bio85 <- raster::mask(bio85, mascara, bylayer=TRUE)
 
 # Verificacao
 plot(bio85)
 
-##############################################################################
+###########################################################################
 #--------- 2. RODAGEM DO MODELO PREVIO E 
 #               SELECAO DAS VARIAVEIS   ---------#
 
@@ -408,7 +409,7 @@ vif(bioc)
 # bioc <- usdm::exclude(bioc, v)
 # bioc
 
-##############################################################################
+###########################################################################
 #--------- 3. MODELAGEM COM AS CAMADAS SELECIONADAS  
 #                    NA SECAO ANTERIOR   ---------#
 
@@ -423,9 +424,9 @@ m <- sdm::sdm(species~., d, methods='maxent',
               test.p=30, n=25, 
               parallelSettings=list(ncore=5, method='parallel'))
 
-# NOTAS: Como mencionado na secao 2, o parametro ncore refere-se a quantidade
-# de cores de processamento utilizados para a modelagem, altere conforme a 
-# capacidade do computador
+# NOTAS: Como mencionado na secao 2, o parametro ncore refere-se a 
+# quantidade de cores de processamento utilizados para a modelagem, altere 
+# conforme a capacidade do computador
 
 # Verificacao
 m
@@ -437,7 +438,7 @@ sdm::getVarImp((m))
 # Para abrir uma interface de exploracao do modelo
 sdm::gui(m)
 
-#############################################################################
+###########################################################################
 #--------- 4. PROJECAO DO MODELO PARA O PRESENTE   ---------#
 
 # Projecao dos 50 modelos criados na secao anterior para o presente
@@ -457,7 +458,7 @@ en
 plot(p1)
 plot(en)
 
-#############################################################################
+###########################################################################
 #--------- 5. PROJECAO DO MODELO PARA O FUTURO (RCP45)   ---------#
 
 # Selecionar apenas as biovariaveis 6, 17, 19
@@ -469,8 +470,8 @@ p2 <- predict(m, bioS45, filename='./Resultados_subsecundum/modelos_RCP45.img',
               overwrite=TRUE)
 p2
 
-# Obter um modelo consenso dentre os 50 criados para o futuro RCP45 por meio 
-# da mediana ponderada
+# Obter um modelo consenso dentre os 50 criados para o futuro RCP45 por  
+# meio da mediana ponderada
 en45 <- sdm::ensemble(m, bioS45, 
                       filename='./Resultados_subsecundum/futuro_RCP45.img',
                       setting =list(method='weighted', stat='tss', opt=2), 
@@ -481,7 +482,7 @@ en45
 plot(p2)
 plot(en45)
 
-#############################################################################
+###########################################################################
 #--------- 6. PROJECAO DO MODELO PARA O FUTURO (RCP85)   ---------#
 
 # Selecionar apenas as biovariaveis 6, 17, 19
@@ -493,8 +494,8 @@ p3 <- predict(m, bioS85, filename='./Resultados_subsecundum/modelos_RC85.img',
               overwrite=TRUE)
 p3
 
-# Obter um modelo consenso dentre os 50 criados para o futuro RCP85 por meio 
-# da mediana ponderada
+# Obter um modelo consenso dentre os 50 criados para o futuro RCP85 por  
+# meio da mediana ponderada
 en85 <- sdm::ensemble(m, bioS85, 
                       filename='./Resultados_subsecundum/futuro_RC85.img',
                       setting =list(method='weighted', stat='tss', opt=2), 
@@ -503,7 +504,7 @@ en85 <- sdm::ensemble(m, bioS85,
 # Verificacao
 plot(en85)
 
-#############################################################################
+###########################################################################
 #--------- 7. CONSTRUCAO DE MAPAS BINARIOS E
 #             DE DENSIDADE DE PROBABILIDADE  ---------#
 
@@ -587,7 +588,7 @@ plot(chp45, col=c('red','gray','blue'))
 chp85 <- pa3 - pa1 
 plot(chp85, col=c('red','gray', 'blue'))
 
-#############################################################################
+###########################################################################
 #--------- 7. CLASSIFICACAO DAS ALTERACOES DE AREA   ---------#
 
 # Obter os tamanhos das celulas
