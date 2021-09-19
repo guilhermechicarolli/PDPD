@@ -17,7 +17,7 @@ fontsize: 11pt
 csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 ---
 
-# Apêndice
+# Anexo
 
 ## Tabelas
 
@@ -321,7 +321,8 @@ cam_repf <- raster::crop(cam_repf, extent(mascara))
 bio45 <- raster::resample(cortef, cam_repf, method="bilinear", 
                           snap='out', bylayer=TRUE, progress='text')
 
-# Cortar as camadas ambientais e cortar a partir da mascara criada do Brasil
+# Cortar as camadas ambientais e cortar a partir da mascara 
+# criada do Brasil
 bio45 <- raster::mask(bio45, mascara, bylayer=TRUE)
 
 # Verificacao
@@ -338,7 +339,8 @@ plot(biof85)
 # As camadas futuras devem ter o mesmo nome que as do presente
 names(biof85) <- names(bio)
 
-# Carregar as camadas e uma camada representante (bio 1) para corte das camadas
+# Carregar as camadas e uma camada representante (bio 1) para 
+# corte das camadas
 cortef85 <- biof85
 cam_repf85 <- biof85[[1]]
 
