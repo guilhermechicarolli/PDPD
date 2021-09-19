@@ -120,7 +120,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 | Bio 15   | 1.200694 |
 | Bio 18   | 1.200694 |
 
-**Tabela 6:** Área potencial (em $km^{2}$) das espécies de acordo com o presente e os dois cenários climpaticos futuros. \label{tabela6}
+**Tabela 6:** Área potencial (em $km^{2}$) das espécies de acordo com o presente e os dois cenários climpaticos futuros. 
 
 | Espécie                   | Cenário climático | Área potencial |
 |---------------------------|-------------------|----------------|
@@ -180,15 +180,15 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 \clearpage
 ## Figuras
 
-```{r vif, echo=FALSE, fig.align='center', fig.cap='Importância relativa das variáveis para o modelo cheio da espécie de planta (acima) e para o morcego (abaixo)', fig.show="hold", out.width="73%"}
+```{r vif, echo=FALSE, fig.align='center', fig.cap='Importância relativa das variáveis para o modelo cheio da espécie de planta (acima) e para o morcego (abaixo).', fig.show="hold", out.width="73%"}
 
 knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importancia_vars_morcego.png"))
 
 ```
 
-![Valores médio de AUC para os 25 modelos gerados para a espécie *Encholirium subsecundum* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_subsecundum.png){width="80%"}
+![Valores médios de AUC para os 25 modelos gerados da espécie *Encholirium subsecundum* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita).](AUC_subsecundum.png){width="80%"}
 
-![Valores médio de AUC para os 25 modelos gerados para a espécie *Lonchophylla bokermanni* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita)](AUC_bokermanni.png){width="80%"}
+![Valores médios de AUC para os 25 modelos gerados da espécie *Lonchophylla bokermanni* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita).](AUC_bokermanni.png){width="80%"}
 
 
 
@@ -215,13 +215,14 @@ knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importanc
 
 ![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 4.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP45.jpeg){width="100%"}
 
-
 ![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
 
 \clearpage
 ## Código em R
 
-```{r, codigo, echo=TRUE, include = TRUE, message = FALSE, warning = FALSE, eval=FALSE, error=FALSE, fig.cap = "Código da modelagem da distribuição potencial da espécie de planta. O código para a  mo delagem da distribuição do morcego é totalmente análogo."}
+*Script* de código para a modelagem da distribuição potencial de *E. subsecundum*, disponível no repositório Git Hub do projeto em [https://github.com/guilhermechicarolli/PDPD/tree/main/Scripts_finais](https://github.com/guilhermechicarolli/PDPD/tree/main/Scripts_finais). O código para a modelagem da distribuição do morcego é totalmente análogo.
+
+```{r, codigo, echo=TRUE, include = TRUE, message = FALSE, warning = FALSE, eval=FALSE, error=FALSE}
 
 
 ############## SCRIPTS DO PROJETO DE PDPD ##############
@@ -236,7 +237,7 @@ knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importanc
 # 7. Construcao dos mapas simples, binarios e não binarios
 # 7. Classificacao das alteracoes de area
 
-################################################################################
+#############################################################################
 
 ##### Carregamento das bibliotecas necessarias
 if (!require(tidyverse)) install.packages('tidyverse')
@@ -248,17 +249,18 @@ if (!require(raster)) install.packages('raster')
 if (!require(rgdal)) install.packages('rgdal')
 if (!require(usdm)) install.packages('usdm')
 
-# Rodar na primeira vez para instalar as dependencias que o 'sdm' precisa.
+# Rodar na primeira vez para instalar as dependencias que o 'sdm' precisa
 installAll() 
 
-################################################################################
+#############################################################################
 #--------- 1. CARREGAMENTO E CORTE DAS CAMADAS
 #           AMBIENTAIS E DADOS DE E. SUBSECUNDUM  ---------#
 
 ### CARREGAR DADOS DE E. SUBSECUNUDUM
 spg <- read.csv('./Dados/Ocorrencias/E_subsecundum_corrigido.csv')
 
-# Adicionamos uma coluna com a especie (necesaria como argumento na modelagem)
+# Adicionamos uma coluna com a especie (necesaria como 
+# argumento na modelagem)
 spg$species <- 1
 
 # Exploramos o data frame
@@ -275,10 +277,11 @@ spg
 mascara <- raster::shapefile('Dados/Mascaras/mascara_brasil.shp')
 
 # Baixar camadas presente do database online Worldclim
-bio <- raster::getData('worldclim', var='bio',res=2.5, path="./Camadas_presente/") 
+bio <- raster::getData('worldclim', var='bio',res=2.5, 
+                       path="./Camadas_presente/") 
 plot(bio)
 
-# cortar as camadas com o shape do brasil
+# Cortar as camadas com o shape do brasil
 corte <- bio
 cam_rep <- bio[[1]]
 
@@ -306,7 +309,8 @@ plot(biof45)
 # As camadas futuras devem ter o mesmo nome que as do presente
 names(biof45) <- names(bio)
 
-# Carregar as camadas e uma camada representante (bio 1) para corte das camadas
+# Carregar as camadas e uma camada representante (bio 1) para corte 
+# das camadas
 cortef <- biof45
 cam_repf <- biof45[[1]]
 
@@ -351,30 +355,34 @@ bio85 <- raster::mask(bio85, mascara, bylayer=TRUE)
 # Verificacao
 plot(bio85)
 
-################################################################################
+##############################################################################
 #--------- 2. RODAGEM DO MODELO PREVIO E 
 #               SELECAO DAS VARIAVEIS   ---------#
 
 # MODELO CHEIO
 
-# Adicionar os dados previo para fazer um modelo com todas as variaveis
+# Adicionar os dados para fazer um modelo previo com todas as variaveis
 dC <- sdm::sdmData(species~., spg, predictors = bioCams, 
                    bg=list(method='gRandom', n=10000))
 dC
 
 # Ajustar e criar os modelos
-mC <- sdm::sdm(species~., dC, methods = 'maxent', replication=c('sub', 'boot'),
-               test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
+mC <- sdm::sdm(species~., dC, methods = 'maxent', 
+               replication=c('sub', 'boot'),
+               test.p=30, n=25, 
+               parallelSettings=list(ncore=5, method='parallel'))
 
-# NOTAS: 1) Para o MaxEnt funcionar o Java do computador deve estar atualizado. 
-# 2) O parametro ncore e a quantidade de cores de processamento utilizados para
-# a modelagem, altere conforme a capacidade do computador
+# NOTAS: 1) Para o MaxEnt funcionar o Java do computador deve estar 
+# atualizado. 2) O parametro ncore refere-se a quantidade de cores de 
+# processamento utilizados para a modelagem, altere conforme a capacidade
+# do computador
 
 mC
 
 # Plot da importancia das variaveis
 plot(getVarImp(mC), 'AUC', main="Importância relativa das biovariáveis", 
-     ylab='Variáveis', xlab="Importância relativa da variável") # Biovars: 6, 17, 19, 14
+     ylab='Variáveis', xlab="Importância relativa da variável")#Bio 6,17,19,14
+
 getVarImp(mC)
 
 # Para abrir uma interface de exploracao do modelo
@@ -387,7 +395,7 @@ sdm::gui(mC)
 bioc <- raster::subset(bioCams, c(6, 17, 19))
 vif(bioc)
 
-# Essa parte ? desnecessaria pois ja fizemos de forma manual
+# Essa parte e desnecessaria pois ja fizemos de forma manual
 # ex <- raster::extract(bioc,spg)
 # head(ex)
 
@@ -398,23 +406,26 @@ vif(bioc)
 # bioc <- usdm::exclude(bioc, v)
 # bioc
 
-################################################################################
+##############################################################################
 #--------- 3. MODELAGEM COM AS CAMADAS SELECIONADAS  
 #                    NA SECAO ANTERIOR   ---------#
 
 # Adicionar os dados previos: ocorrencias, camadas e pontos de background
-d <- sdm::sdmData(species~., spg, predictors = bioc, bg=list(method='gRandom', 
-                                                             n=10000))
+d <- sdm::sdmData(species~., spg, predictors = bioc,
+                  bg=list(method='gRandom', n=10000))
 d
 
 # Ajustar os modelos, 50 replicacoes, 25 por Subsampling e 25 por Bootstrap
-m <- sdm::sdm(species~., d, methods='maxent', replication=c('sub', 'boot'),
-              test.p=30, n=25, parallelSettings=list(ncore=5, method='parallel'))
+m <- sdm::sdm(species~., d, methods='maxent', 
+              replication=c('sub', 'boot'),
+              test.p=30, n=25, 
+              parallelSettings=list(ncore=5, method='parallel'))
 
-# NOTAS: Como mencionado no item 2, o parametro ncore é a quantidade de cores de
-# processamento utilizados para a modelagem, altere conforme a configuracao do 
-# computador
+# NOTAS: Como mencionado na secao 2, o parametro ncore refere-se a quantidade
+# de cores de processamento utilizados para a modelagem, altere conforme a 
+# capacidade do computador
 
+# Verificacao
 m
 
 # Plot das contribuicoes das variaveis
@@ -424,10 +435,10 @@ sdm::getVarImp((m))
 # Para abrir uma interface de exploracao do modelo
 sdm::gui(m)
 
-################################################################################
+#############################################################################
 #--------- 4. PROJECAO DO MODELO PARA O PRESENTE   ---------#
 
-# Projecao dos 50 modelos criados na seção anterior para o presente
+# Projecao dos 50 modelos criados na secao anterior para o presente
 p1 <- predict(m, bioc, filename='./Resultados_subsecundum/presente.img',
               overwrite=TRUE)
 p1
@@ -444,7 +455,7 @@ en
 plot(p1)
 plot(en)
 
-################################################################################
+#############################################################################
 #--------- 5. PROJECAO DO MODELO PARA O FUTURO (RCP45)   ---------#
 
 # Selecionar apenas as biovariaveis 6, 17, 19
@@ -456,9 +467,10 @@ p2 <- predict(m, bioS45, filename='./Resultados_subsecundum/modelos_RCP45.img',
               overwrite=TRUE)
 p2
 
-# Obter um modelo consenso dentre os 50 criados para o futuro RCP45 por meio da 
-# mediana ponderada
-en45 <- sdm::ensemble(m, bioS45, filename='./Resultados_subsecundum/futuro_RCP45.img',
+# Obter um modelo consenso dentre os 50 criados para o futuro RCP45 por meio 
+# da mediana ponderada
+en45 <- sdm::ensemble(m, bioS45, 
+                      filename='./Resultados_subsecundum/futuro_RCP45.img',
                       setting =list(method='weighted', stat='tss', opt=2), 
                       overwrite=TRUE)
 en45
@@ -467,7 +479,7 @@ en45
 plot(p2)
 plot(en45)
 
-################################################################################
+#############################################################################
 #--------- 6. PROJECAO DO MODELO PARA O FUTURO (RCP85)   ---------#
 
 # Selecionar apenas as biovariaveis 6, 17, 19
@@ -479,16 +491,17 @@ p3 <- predict(m, bioS85, filename='./Resultados_subsecundum/modelos_RC85.img',
               overwrite=TRUE)
 p3
 
-# Obter um modelo consenso dentre os 50 criados para o futuro RCP85 por meio da 
-# mediana ponderada
-en85 <- sdm::ensemble(m, bioS85, filename='./Resultados_subsecundum/futuro_RC85.img',
+# Obter um modelo consenso dentre os 50 criados para o futuro RCP85 por meio 
+# da mediana ponderada
+en85 <- sdm::ensemble(m, bioS85, 
+                      filename='./Resultados_subsecundum/futuro_RC85.img',
                       setting =list(method='weighted', stat='tss', opt=2), 
                       overwrite=TRUE)
 
 # Verificacao
 plot(en85)
 
-################################################################################
+#############################################################################
 #--------- 7. CONSTRUCAO DE MAPAS BINARIOS E
 #             DE DENSIDADE DE PROBABILIDADE  ---------#
 
@@ -505,8 +518,8 @@ plot(en85, col=cores(200))
 mapview::mapview(stack(en,en45,en85)) 
 
 #----------
-### Mapa de alteracao de adequabilidade (NAO BINARIO) entre o presente e o futuro 
-# de RCP 45
+### Mapa de alteracao de adequabilidade (NAO BINARIO) entre o presente e o
+# futuro de RCP 45
 ch45 <- en45 - en
 
 cores2<-grDevices::colorRampPalette(c('red', 'orange', 'yellow', 'gray', 
@@ -517,8 +530,8 @@ plot(ch45, col=cores2(200))
 # Areas cinzas permanceram inalteradas no futuro
 
 #----------
-### Mapa de alteracao de adequabilidade (NAO BINARIO) entre o presente e o futuro 
-# de RCP 85
+### Mapa de alteracao de adequabilidade (NAO BINARIO) entre o presente e o 
+# futuro de RCP 85
 ch85 <- en85 - en
 
 cores2<-grDevices::colorRampPalette(c('red', 'orange', 'yellow', 'gray', 
@@ -543,7 +556,7 @@ ev@statistics
 # Medidadas de threshold
 ev@threshold_based
 
-th <- ev@threshold_based$threshold[2] #Threshold pelo metodo SSS: max(espec+sens)
+th <- ev@threshold_based$threshold[2] #limiar pelo metodo de max(espec+sens)
 
 # Verificar valor de threshold
 th
@@ -572,7 +585,7 @@ plot(chp45, col=c('red','gray','blue'))
 chp85 <- pa3 - pa1 
 plot(chp85, col=c('red','gray', 'blue'))
 
-################################################################################
+#############################################################################
 #--------- 7. CLASSIFICACAO DAS ALTERACOES DE AREA   ---------#
 
 # Obter os tamanhos das celulas
