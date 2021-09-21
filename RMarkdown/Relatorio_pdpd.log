@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  19 SEP 2021 19:05
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  20 SEP 2021 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1000,13 +1000,13 @@ e (type bmp)
 [13] [14] [15] [16] [17
 
 
-] [18
+] [18] [19
 
 ]
 File: ../Graficos/sobreposicoes_mapas_feitos/presente.jpeg Graphic file (type b
 mp)
 <../Graficos/sobreposicoes_mapas_feitos/presente.jpeg>
-[19] [20]
+[20] [21]
 File: ../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg>
@@ -1014,30 +1014,32 @@ File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>
 
-LaTeX Warning: Float too large for page by 13.47885pt on input line 1009.
+LaTeX Warning: Float too large for page by 13.47885pt on input line 1046.
 
-[21] [22
+[22] [23
 
 
-] [23
+] [24
 
-] [24] [25] [26]
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1121--1123
+] [25] [26] [27]
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1175--1177
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
 
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1126--1128
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1180--1182
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
-[27
-
-] [28
+[28
 
 ] [29
 
-] [30] [31]
+] [30
+
+] [31
+
+]
 File: ../Rmarkdown/importancia_vars_planta.png Graphic file (type bmp)
 <../Rmarkdown/importancia_vars_planta.png>
 File: importancia_vars_morcego.png Graphic file (type bmp)
@@ -1078,100 +1080,100 @@ type bmp)
 
 ] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1414.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1433.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1414.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1433.
 
 
 [44
 
 ]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [45]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [46]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [47]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [48]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [49]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [50]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [51]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [52]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [53]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [54]
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1849
+Underfull \vbox (badness 10000) detected at line 1868
  []
 
 [55] [56]
@@ -1182,7 +1184,7 @@ No file Relatorio_pdpd.bbl.
 
 
 ] [58] [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2061--2066
+Underfull \hbox (badness 10000) in paragraph at lines 2080--2085
 [][][][][][][] [][] [][] [][] [][][][][][][] [][] [][] [][] [][][][] [][] [][][
 ][][][][][][] [][] [][][][][][][][][][] [][] [] [][] [][] [][] [][][][][][][] [
 ][] [][][][][][][][] [][] [] [][] [][][][][][] [][] [][][][][] [][]

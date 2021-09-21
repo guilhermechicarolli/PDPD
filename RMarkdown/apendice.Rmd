@@ -21,7 +21,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 ## Tabelas
 
-|  **Tabela 1:** Pontos de ocorrências de *Encholirium subsecundum* (Barker Mez).
+|  Tabela 3: Pontos de ocorrências de *Encholirium subsecundum* (Barker Mez).
 
 |Estado       |  Município| Longitude | Latitude  | Referência |
 --------------|-----------|-----------|-----------|-----------|
@@ -59,7 +59,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 \clearpage
 
-**Tabela 2:** Pontos de ocorrências de *Lonchophylla bokermanni* (Sazima, Vizotto & Taddei).
+Tabela 4: Pontos de ocorrências de *Lonchophylla bokermanni* (Sazima, Vizotto & Taddei).
 
 | Estado       | Município      | Longitude  | Latitude   | Referência|
 |--------------|----------------|------------|------------|-----------|
@@ -75,7 +75,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 \clearpage
 
-**Tabela 3:** Descrição das variáveis bioclimáticas derivadas de valores de temperatura e pluviosidade [@worldclim].
+Tabela 5: Descrição das variáveis bioclimáticas derivadas de valores de temperatura e pluviosidade [@worldclim].
 
 | Variáveis bioclimáticas |                           Descrição                            |
 |:-----------------------:|:--------------------------------------------------------------:|
@@ -101,7 +101,7 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 \clearpage
 
-**Tabela 4:** Valores VIF das variáveis sem problema de colinearidade (VIF \< 10) da espécie *E. subsecundum*.
+Tabela 6: Valores VIF das variáveis sem problema de colinearidade (VIF \< 10) da espécie *E. subsecundum*.
 
 | Variável | VIF      |
 |----------|----------|
@@ -113,25 +113,17 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 | Bio 14   | 6.308869 |
 | Bio 19   | 4.786559 |
 
-**Tabela 5:** Valores VIF das variáveis sem problema de colinearidade (VIF \< 10) da espécie *L. bokermanni*.
+Tabela 7: Valores VIF das variáveis sem problema de colinearidade (VIF \< 10) da espécie *L. bokermanni*.
 
 | Variável | VIF      |
 |----------|----------|
 | Bio 15   | 1.200694 |
 | Bio 18   | 1.200694 |
 
-**Tabela 6:** Área potencial (em $km^{2}$) das espécies de acordo com o presente e os dois cenários climpaticos futuros. 
 
-| Espécie                   | Cenário climático | Área potencial |
-|---------------------------|-------------------|----------------|
-| *Lonchophylla bokermanni* | Presente          | 499674.7       |
-|                           | RCP 4.5 (2050)    | 309803.4       |
-|                           | RCP 8.5 (2050)    | 201510.3       |
-| *Encholirium subsecundum* | Presente          | 513506.5       |
-|                           | RCP 4.5 (2050)    | 140215.9       |
-|                           | RCP 8.5 (2050)    | 97012.5        |
 
-**Tabela 7:** Contração, expansão ou não alteração relativa (em porcentagem) para a espécie de planta e morcego sob os dois cenários climáticos futuro, com relação à distribuição presente.
+\clearpage
+Tabela 8: Contração, expansão ou não alteração relativa (em porcentagem) para a espécie de planta e morcego sob os dois cenários climáticos futuro, com relação à distribuição presente.
 
 +---------------------------+----------------+-----------+-----------+-------------------+
 | Espécie                   | Cenário        | Ganho (%) | Perda (%) | Sem alteração (%) |
@@ -145,19 +137,8 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 |                           | RCP 8.5 (2050) | 0.00      |  81.11    | 18.89             |
 +---------------------------+----------------+-----------+-----------+-------------------+
 
-**Tabela 8:** Distribuição com sobreposição (planta+morcego) nos 3 cenário climáticos e alteração com respeito à sobreposição do presente.
 
-+-------------------+--------------------------------+-------------------------------------------------------------------+------------------------------------------------------------------+
-| Cenário climático | Área de sobreposição ($km{2}$) | Sobreposição com relação à distribuição do morcego no cenário (%) | Sobreposição com relação à distribuição da planta no cenário (%) |
-+===================+================================+===================================================================+==================================================================+
-| Presente          | 369410.9                       | 73.93                                                             | 71.94                                                            |
-+-------------------+--------------------------------+-------------------------------------------------------------------+------------------------------------------------------------------+
-| RCP 4.5 (2050)    | 119088.6                       | 38.44                                                             | 84.93                                                            |
-+-------------------+--------------------------------+-------------------------------------------------------------------+------------------------------------------------------------------+
-| RCP 8.5 (2050)    | 74409.3                        | 36.92                                                             | 76.70                                                            |
-+-------------------+--------------------------------+-------------------------------------------------------------------+------------------------------------------------------------------+
-
-**Tabela 9:** Distribuição sem sobreposição (desencontro geográfico) entre planta e morcego nos três cenários climáticos.
+Tabela 9: Distribuição sem sobreposição (desencontro geográfico) entre planta e morcego nos três cenários climáticos.
 
 +---------------------------+----------------+--------------------------------+--------------------------------------------------------------+
 | Espécie                   | Cenário        | Área de desencontro geográfico | Porcentagem com relação à distribuição da espécie no cenário |
