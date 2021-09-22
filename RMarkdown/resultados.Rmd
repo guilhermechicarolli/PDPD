@@ -21,9 +21,9 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 
 # 4. Resultados
 
-|     O algoritmo Maxent demonstrou boa performance preditiva, obtendo altos valores médios de AUC ([gráfico 8](#anexo)). A proporção de área potencial ganha e perdida sob os diferentes cenários climáticos com relação ao presente variou entre ambas as espécies ([tabela 1](#resultados) e [figuras de 11 a 13 e 16 a 18](#figuras)), todas apresentaram contração na área ambiental adequada nos cenários futuros de mudanças climáticas. 
+|      O algoritmo Maxent demonstrou boa performance preditiva, obtendo altos valores médios de AUC ([gráficos 8 e 9](#figuras)). A proporção de área potencial ganha e perdida sob os diferentes cenários climáticos com relação ao presente variou entre ambas as espécies ([figuras de 10 a 12 e 15 a 17](#figuras)), todas apresentaram contração na área ambiental adequada nos cenários futuros de mudanças climáticas. 
 
-|   Os modelos previram redução de 36.98% de áreas adequadas (com respeito à área presente) para *Lonchophylla bokermanni* no cenário de RCP 4.5 para o ano de 2050 e diminuição de 58.06% de área para o panorama de RCP 8.5, para 2050 ([tabela 7](#anexo)). A mesma tendência foi observada para *Encholirium subsecundum*, a qual previmos encolhimento de 72.70% de área apropriada (relativa à área do presente) para o futuro de RCP 4.5 (2050), enquanto que no cenário de RCP 8.5 a redução na área é de 81.11%.\newline 
+Os modelos previram redução de 36.98% de áreas adequadas (com respeito à área presente) para *Lonchophylla bokermanni* no cenário de RCP 4.5 para o ano de 2050 e diminuição de 58.06% de área para o panorama de RCP 8.5, para 2050 ([tabela 8](#anexos)). A mesma tendência foi observada para *Encholirium subsecundum*, a qual previmos encolhimento de 72.70% de área apropriada (relativa à área do presente) para o futuro de RCP 4.5 (2050), enquanto que no cenário de RCP 8.5 a redução na área é de 81.11%.\newline 
 
 
 Tabela 1: Área potencial (em $km^{2}$) das espécies de acordo com o presente e os dois cenários climpaticos futuros. 
@@ -38,10 +38,10 @@ Tabela 1: Área potencial (em $km^{2}$) das espécies de acordo com o presente e
 |                           | RCP 8.5 (2050)    | 97012.5        |
 
 
-|   Previmos uma diminuição na área de sobreposição potencial entre a distribuição de ambas as espécies (planta+morcego), a qual diminui 67.76% no cenário de RCP 4.5 e 79.86% no RCP 8.5, em relação à sobreposição no presente ([tabela 2](#resultados)). A taxa de *mismatch* espacial (desencontro geográfico) entre a planta e o morcego aumentou com relação à distribuição de *Lonchophylla bokermanni*, que apresentou 26.07% de sua distribuição potencial presente sem sobreposição com a da planta. No cenário de RCP 4.5, 61.56% da área do morcego não apresentou sobreposição e no RCP 8.5, 63.07% de sua área. 
+Previmos uma diminuição na área de sobreposição potencial entre a distribuição de ambas as espécies (planta+morcego), a qual diminui 67.76% no cenário de RCP 4.5 e 79.86% no RCP 8.5, em relação à sobreposição no presente ([tabela 2](#resultados)). A taxa de *mismatch* espacial (desencontro geográfico) entre a planta e o morcego aumentou com relação à distribuição de *Lonchophylla bokermanni*, que apresentou 26.07% de sua distribuição potencial presente sem sobreposição com a da planta. No cenário de RCP 4.5, 61.56% da área do morcego não apresentou sobreposição e no RCP 8.5, 63.07% de sua área. 
 
 
-|   Em contrapartida, observamos diminuição na taxa de *mismatch* para *Encholirium subsecundum*, previmos que 28.06% de sua área presente não tenha sobreposição com a distribuição do morcego. No futuro RCP 4.5, apenas 15.07% da área não apresentou sobreposição e no RCP 8.5, 23.30% da área ([tabela 9](#anexo)). 
+Em contrapartida, observamos diminuição na taxa de *mismatch* para *Encholirium subsecundum*, previmos que 28.06% de sua área presente não tenha sobreposição com a distribuição do morcego. No futuro RCP 4.5, apenas 15.07% da área não apresentou sobreposição e no RCP 8.5, 23.30% da área ([tabela 9](#anexos)). 
 
 >       
 
