@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.21)  23 SEP 2021 12:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.17)  23 SEP 2021 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -488,41 +488,43 @@ File: ../Graficos/sobreposicoes_mapas_feitos/presente.jpeg Graphic file (type j
 pg)
 <use ../Graficos/sobreposicoes_mapas_feitos/presente.jpeg>
 Package pdftex.def Info: ../Graficos/sobreposicoes_mapas_feitos/presente.jpeg  
-used on input line 190.
+used on input line 221.
 (pdftex.def)             Requested size: 281.8695pt x 305.35864pt.
-[3 <../Graficos/sobreposicoes_mapas_feitos/presente.jpeg>]
-<../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg, id=40, 433.62pt x 469.755pt
+<../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg, id=34, 433.62pt x 469.755pt
 >
 File: ../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg Graphic file (type jpg)
 
 <use ../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg>
 Package pdftex.def Info: ../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg  use
-d on input line 200.
-(pdftex.def)             Requested size: 286.56723pt x 310.44783pt.
-<../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg, id=41, 433.62pt x 469.755pt
+d on input line 221.
+(pdftex.def)             Requested size: 281.8695pt x 305.35864pt.
+
+LaTeX Warning: Float too large for page by 1.22478pt on input line 226.
+
+[3] [4 <../Graficos/sobreposicoes_mapas_feitos/presente.jpeg> <../Graficos/sobr
+eposicoes_mapas_feitos/RCP45.jpeg>]
+<../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg, id=46, 433.62pt x 469.755pt
 >
 File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type jpg)
 
 <use ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>
 Package pdftex.def Info: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg  use
-d on input line 200.
-(pdftex.def)             Requested size: 286.56723pt x 310.44783pt.
+d on input line 231.
+(pdftex.def)             Requested size: 328.84004pt x 356.24338pt.
+[5
 
-LaTeX Warning: Float too large for page by 11.40315pt on input line 205.
-
-[4 <../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg> <../Graficos/sobreposico
-es_mapas_feitos/RCP85.jpeg>] (./discussao.aux)
+ <../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>] (./discussao.aux)
 Package rerunfilecheck Info: File `discussao.out' has not changed.
 (rerunfilecheck)             Checksum: 9237D6FB026DA347A96C2527C10BAF46;110.
  ) 
 Here is how much of TeX's memory you used:
- 9964 strings out of 480559
- 147690 string characters out of 5901780
- 452945 words of memory out of 5000000
+ 9967 strings out of 480559
+ 147833 string characters out of 5901528
+ 452958 words of memory out of 5000000
  27442 multiletter control sequences out of 15000+600000
  419975 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,6n,66p,259b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,6n,66p,267b,332s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{apuxeandice} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -535,10 +537,10 @@ placed by a fixed one
 lmbx12.pfb><c:/Users/guich/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/publi
 c/lm/lmr10.pfb><c:/Users/guich/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/p
 ublic/lm/lmri10.pfb>
-Output written on discussao.pdf (4 pages, 203301 bytes).
+Output written on discussao.pdf (5 pages, 205805 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 78 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 500000)
  24 words of extra memory for PDF output out of 10000 (max. 10000000)
 
