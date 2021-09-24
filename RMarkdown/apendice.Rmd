@@ -64,7 +64,6 @@ Tabela 4: Pontos de ocorrências de *Lonchophylla bokermanni* (Sazima, Vizotto &
 | Estado       | Município      | Longitude  | Latitude   | Referência|
 |--------------|----------------|------------|------------|-----------|
 | Minas gerais | Jaboticatubas| -43.74472  | -19.51361  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
-| Minas gerais | Jaboticatubas| -43.74540  | -19.52210  | Coleção de Quirópteros da UNESP|
 | Minas gerais | Jaboticatubas| -43.60000  | -19.270000 | @nascimento2013|
 | Minas gerais | Serra do Cipó| -43.60000  | -19.26667  | Coleção de Mamíferos do Museu de Zoologia da UNICAMP |
 | Minas gerais | Itambé do Mato Dentro | -43.349444 | -19.410278 | @nascimento2013|
@@ -169,6 +168,7 @@ knitr::include_graphics(c("../Rmarkdown/importancia_vars_planta.png", "importanc
 
 ```
 
+\clearpage
 
 ```{r VIF_subs, echo=FALSE, fig.align='center', fig.cap='Matriz de correlação entre as variáveis bioclimáticas para a espécie E. subsecundum (à esquerda) e L. bokermanni (à direita)', fig.show="hold", out.width="49%"}
 
@@ -176,7 +176,6 @@ knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_bi
 
 ```
 
-\clearpage
 
 ![Valores médios de AUC para os 25 modelos gerados da espécie *Encholirium subsecundum* com replicação por *subsampling* (à esquerda) e 25 por *bootstrap* (à direita).](AUC_subsecundum.png){width="80%"}
 

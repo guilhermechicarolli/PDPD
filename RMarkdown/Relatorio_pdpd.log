@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  23 SEP 2021 21:07
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  24 SEP 2021 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -979,7 +979,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 748--756
 
 ] [18] [19
 
-] [20]
+] [20] [21]
 File: ../Graficos/sobreposicoes_mapas_feitos/presente.jpeg Graphic file (type b
 mp)
 <../Graficos/sobreposicoes_mapas_feitos/presente.jpeg>
@@ -987,9 +987,9 @@ File: ../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg>
 
-LaTeX Warning: Float too large for page by 3.30045pt on input line 999.
+LaTeX Warning: Float too large for page by 3.30045pt on input line 1011.
 
-[21] [22] [23]
+[22] [23]
 File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>
@@ -1000,12 +1000,12 @@ File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type bmp)
 ] [26
 
 ] [27] [28] [29]
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1145--1147
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1154--1156
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
 
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1150--1152
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1159--1161
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
@@ -1022,15 +1022,15 @@ File: ../Rmarkdown/importancia_vars_planta.png Graphic file (type bmp)
 <../Rmarkdown/importancia_vars_planta.png>
 File: importancia_vars_morcego.png Graphic file (type bmp)
 <importancia_vars_morcego.png>
+[34
+
+]
 File: ../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_biovars.png Graphic fi
 le (type bmp)
 <../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_biovars.png>
 File: ../Dados/Resultados_VIF/L_bokermanni/Corr_plot_19_biovars.png Graphic fil
 e (type bmp)
 <../Dados/Resultados_VIF/L_bokermanni/Corr_plot_19_biovars.png>
-[34
-
-] [35]
 File: AUC_subsecundum.png Graphic file (type bmp)
 <AUC_subsecundum.png>
 File: AUC_bokermanni.png Graphic file (type bmp)
@@ -1063,23 +1063,23 @@ type bmp)
 File: ../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg Graphic file (
 type bmp)
 <../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg>
-[36
+[35
 
-] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46]
 No file Relatorio_pdpd.bbl.
-[48
+[47
 
 
 
 
-] [49] [50]
-Underfull \hbox (badness 10000) in paragraph at lines 1616--1621
+] [48] [49]
+Underfull \hbox (badness 10000) in paragraph at lines 1625--1630
 [][][][][][][] [][] [][] [][] [][][][][][][] [][] [][] [][] [][][][] [][] [][][
 ][][][][][][] [][] [][][][][][][][][][] [][] [] [][] [][] [][] [][][][][][][] [
 ][] [][][][][][][][] [][] [] [][] [][][][][][] [][] [][][][][] [][]
  []
 
-[51] [52] [53] [54] (./Relatorio_pdpd.aux)
+[50] [51] [52] [53] (./Relatorio_pdpd.aux)
 Package rerunfilecheck Info: File `Relatorio_pdpd.out' has not changed.
 (rerunfilecheck)             Checksum: 01138A378B4BEE0C58ABBBBA1AEDD1FA;3313.
  ) 
@@ -1092,4 +1092,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  87i,10n,120p,565b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Relatorio_pdpd.pdf (54 pages).
+Output written on Relatorio_pdpd.pdf (53 pages).

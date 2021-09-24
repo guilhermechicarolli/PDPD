@@ -38,7 +38,7 @@ Tabela 1: Área potencial (em $km^{2}$) das espécies de acordo com o presente e
 |                           | RCP 8.5 (2050)    | 97012.5        |
 
 
-Previmos uma diminuição na área de sobreposição potencial entre a distribuição de ambas as espécies (planta+morcego), a qual diminui 67.76% no cenário de RCP 4.5 e 79.86% no RCP 8.5, em relação à sobreposição no presente ([tabela 2](#resultados)). O *mismatch* espacial (desencontro geográfico) entre a planta e o morcego aumentou com relação à distribuição de *Lonchophylla bokermanni*, que apresentou 26.07% de sua distribuição potencial presente sem sobreposição com a da planta. No cenário de RCP 4.5, 61.56% da área do morcego não apresentou sobreposição e no RCP 8.5, 63.07% de sua área.
+Previmos uma diminuição na área de sobreposição potencial entre a distribuição de ambas as espécies (planta+morcego), a qual diminui 67.76% no cenário de RCP 4.5 e 79.86% no RCP 8.5, em relação à sobreposição no presente ([tabela 2](#resultados)). O *mismatch* espacial (desacoplamento geográfico) entre a planta e o morcego aumentou com relação à distribuição de *Lonchophylla bokermanni*, que apresentou 26.07% de sua distribuição potencial presente sem sobreposição com a da planta. No cenário de RCP 4.5, 61.56% da área do morcego não apresentou sobreposição e no RCP 8.5, 63.07% de sua área.
 
 Em contrapartida, observamos diminuição no *mismatch* para *Encholirium subsecundum*, previmos que 28.06% de sua área presente não tenha sobreposição com a distribuição do morcego. No futuro RCP 4.5, apenas 15.07% da área não apresentou sobreposição e no RCP 8.5, 23.30% da área ([tabela 9](#anexos)). 
 
