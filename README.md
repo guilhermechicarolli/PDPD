@@ -27,7 +27,7 @@ Para reproduzir os códigos, siga as intruções comentadas em cada *script*.
 
 1. Dados: Dados brutos utilizados nas análises e modelagem;
 
-2. Gráficos: Gráficos obtidos no projeto, aqueles terminados em "_mapas\_feitos" foram são os gráficos finais construídos e utilizados no relatório;
+2. Gráficos: Gráficos obtidos no projeto, aqueles terminados em "_mapas\_feitos" são os gráficos finais construídos e utilizados no relatório;
 
 3. RMarkdown: Arquivos base para o [relatório final](https://github.com/guilhermechicarolli/PDPD/blob/main/RMarkdown/Relatorio_pdpd.pdf) escrito na linguagem Rmarkdown;
 
