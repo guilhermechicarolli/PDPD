@@ -1,7 +1,7 @@
 # Repositório dos dados do projeto de PDPD: "Impacto das mudanças climáticas no *mismatch* espacial em uma interação de polinização morcego-planta endêmica"
 
 #### FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC
-#### Aluno: Guilherme de Carvalho Chicarolli [guilherme.chicarolli\@aluno.ufabc.edu.br](mailto:guilherme.chicarolli@aluno.ufabc.edu.br){.email}
+#### Aluno: Guilherme de Carvalho Chicarolli [guilherme.chicarolli\@aluno.ufabc.edu.br](mailto:guilherme.chicarolli@aluno.ufabc.edu.br)
 #### Orientadora: Simone Rodrigues de Freitas (UFABC)
 #### Coorientador: Guillermo Florez-Montero (UFABC)
 
