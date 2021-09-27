@@ -26,8 +26,8 @@ csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
 |     Modelamos a distribuição de 2 espécies: a do morcego nectarívoro *Lonchophylla bokermanni* Sazima e colab., 1978, e da bromélia *Encholirium subsecundum* (Baker) Mez.
 
 
-*L. bokermanni* é uma espécie de morcego de porte médio endêmica do Brasil, fazendo parte do gênero *Lonchophylla* (família Phyllostomidae), que abrange espécies nectarívoras, com focinho alongado e língua comprida [@fleming2008]. Com poucas ocorrências no bioma do Cerrado e da Caatiga, em Minas Gerais e Bahia, o quiróptero possui uma distribuição restrita [@claudio2018].
-Ainda pouco se conhece sobre a biologia da espécie, porém sabe-se que alimenta-se de pólen, néctar e insetos [@moratelli; @dias2013].
+*L. bokermanni* é uma espécie de morcego de porte médio endêmica do Brasil, fazendo parte do gênero *Lonchophylla* (família Phyllostomidae), que abrange espécies nectarívoras, com focinho alongado e língua comprida [@fleming2008]. Com poucas ocorrências no bioma do Cerrado e da Caatinga, em Minas Gerais e Bahia, o quiróptero possui uma distribuição restrita [@claudio2018].
+Ainda pouco se conhece sobre a biologia da espécie, porém sabe-se que alimentasse de pólen, néctar e insetos [@moratelli; @dias2013].
 
 
 Em razão da degradação de seus habitats, *L. bokermanni* está classificado como "Em perigo" de acordo com a Lista de Espécies Ameaçadas da União Internacional para a Conservação da Natureza (IUCN) [@claudio2018] e como "Quase ameaçada" pelo Instituto Chico Mendes de Conservação da Biodiversidade [@icmbio2018].
@@ -43,7 +43,7 @@ Em razão da degradação de seus habitats, *L. bokermanni* está classificado c
 
 ## 3.2 Ocorrências
 
-|      Para o processo de Modelagem de Distribuição são necessários registros georreferenciados das espécies. Assim, foram coletados os registros de ocorrências de *Encholirium subsecundum* e *Lonchophylla bokermanni* em 3 bancos de registros onlines: Specielink, GBIF e SiBBr, que reunem registros de coleções de espécies. Também foram utilizados registros de artigos que fizeram coletas de espécies. 
+|      Para o processo de Modelagem de Distribuição são necessários registros georreferenciados das espécies. Assim, foram coletados os registros de ocorrências de *Encholirium subsecundum* e *Lonchophylla bokermanni* em 3 bancos de registros online: Specielink, GBIF e SiBBr, que reúnem registros de coleções de espécies. Também foram utilizados registros de artigos que fizeram coletas de espécies. 
 
 
 Foram reunidos 24 registros ao todo da espécie *L. bokermanni*, com o único filtro prévio de possuírem coordenadas georreferenciadas. Em seguida, os registros com coordenadas geográficas duplicadas foram retirados da base de dados, sobrando apenas uma ocorrência entre as duplicadas. Então, foi criado um *buffer* com raio de 5 km ao redor de cada registro e selecionamos apenas uma ocorrência dentro de cada *buffer*, a fim de diminuir o viés amostral na seleção de ocorrências pelo modelo [@hijmans2001]. Por fim, sobraram 8 registros, os quais foram utilizados para as modelagens ([tabela 4](#anexos)).
@@ -65,7 +65,7 @@ knitr::include_graphics(c("../Graficos/Figure_1.png", "../Graficos/Figure_2.png"
 
 ## 3.3 Dados ambientais
 
-|     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. As 19 variáveis bioclimáticas ([tabela 5](#anexos)) derivam de dados de temperatura e precipitação, repesentando tendências anuais, condições extremas e sazionalidade [@IPCC; @worldclim].
+|     Para produzir os modelos de distribuição potencial das espécies utilizamos camadas ambientais obtidas do projeto WorldClim [@worldclim], com resolução espacial de 2.5 arc-minutos (aproximadamente 4.5 km no equador) e representando o clima atual, correspondendo à média das observações de 1970 a 2000. As 19 variáveis bioclimáticas ([tabela 5](#anexos)) derivam de dados de temperatura e precipitação, representando tendências anuais, condições extremas e sazonalidade [@IPCC; @worldclim].
 
 
 Para as predições de distribuições futuras, utilizamos camadas projetadas do clima global para o ano de 2050 (média de 2041 a 2060) de acordo com o Quinto Relatório de Avaliação (AR5) do Painel Intergovernamental sobre Mudanças Climáticas [@IPCC], obtidas também através do projeto WorldClim [@worldclim]. São camadas de 19 biovariáveis ([tabela 5](#anexos)) projetadas para o futuro, com resolução de 2.5 arc-minutos e usando o modelo de circulação CNRM-CM5, do laboratório francês *Centre National de Recherches Meteorologiques*, representando dois cenários distintos de emissão de gases do efeito estufa conforme o *Representative Concentration Pathways* (RCPs), o de RCP 4.5 (cenário no qual as emissões de $CO_2$ começam a diminuir a partir de 2045) e de RCP 8.5 (as emissões de gases continuam a crescer ao longo do século 21) [@Vuuren2011].
@@ -81,7 +81,7 @@ Diversos autores apontaram problemas de multicolinearidade de variáveis climát
 |      Para o processo de modelagem foi utilizado o pacote SDM (*Species Distribution Modelling*) [@sdm], (versão 1.0-89), da linguagem de programação R [@r], versão 4.1.1, por apresentar uma série de funções importantes que automatizam o processo de modelagem, além de conter diversos algoritmos de modelagem disponíveis.
 
 
-Nós usamos o algoritimo correlativo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software* de uso livre para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
+Nós usamos o algoritmo  correlativo de modelagem de distribuição Maxent (*Maximum Entropy*) [@maxent], versão 3.4.4, disponível no pacote SDM. Maxent é um *software* de uso livre para a modelagem da distribuição potencial de espécies a partir da técnica de *machine learning* conhecida como *maximum entropy modeling*. 
 
 
 Maxent recebe como *input* as ocorrências georreferenciadas da espécie e o conjunto de camadas ambientais (variáveis preditoras) determinado pelo usuário e dividido em células ao longo de uma região estabelecida [@merow2013]. Diante disso, o algoritmo amostra uma quantidade de localizações de *background* das camadas ambientais, que são confrontadas com as localizações geográficas da espécie e gerando como *output* um modelo que traduz a probabilidade de distribuição da espécie para cada célula, dada a aptidão às condições ambientais preditas para a espécie. Maxent procura, assim, a distribuição mais espalhada (de entropia máxima) para a espécie na região de estudo.

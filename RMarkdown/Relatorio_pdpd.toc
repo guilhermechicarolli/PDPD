@@ -13,7 +13,7 @@
 \contentsline {subsection}{3.7 Repositório dos códigos e dados}{16}{section*.13}%
 \contentsline {section}{4. Resultados}{17}{section*.14}%
 \contentsline {section}{5. Discussão}{19}{section*.15}%
-\contentsline {section}{6. Conclusão}{25}{section*.16}%
-\contentsline {section}{Anexos}{26}{section*.17}%
-\contentsline {subsection}{Tabelas}{26}{section*.18}%
-\contentsline {subsection}{Figuras}{34}{section*.19}%
+\contentsline {section}{6. Conclusão}{24}{section*.16}%
+\contentsline {section}{Anexos}{25}{section*.17}%
+\contentsline {subsection}{Tabelas}{25}{section*.18}%
+\contentsline {subsection}{Figuras}{33}{section*.19}%
