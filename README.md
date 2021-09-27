@@ -21,6 +21,8 @@
 
 Os dados foram disponibilizados com a finalidade de tornar a análise feita pelo projeto acessível e reprodutível.
 
+Para reproduzir os códigos, siga as intruções comentadas em cada *script*.
+
 ## Organização das pastas 
 
 1. Dados: Dados brutos utilizados nas análises e modelagem;
