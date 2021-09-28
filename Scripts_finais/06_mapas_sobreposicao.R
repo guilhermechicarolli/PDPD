@@ -82,7 +82,7 @@ sob_presente <- ggplot2::ggplot(data = world) +
                                               fill = id)) +
     
     scale_fill_manual(name = "",
-                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      values = c("#A75400", "#4E6641",'#9F0000'),
                       labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
@@ -160,7 +160,7 @@ sob_RCP45 <- ggplot2::ggplot(data = world) +
                                               fill = id)) +
     
     scale_fill_manual(name = "",
-                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      values = c("#A75400", "#4E6641",'#9F0000'),
                       labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
@@ -236,7 +236,7 @@ sob_RCP85 <- ggplot2::ggplot(data = world) +
                                               fill = id)) +
     
     scale_fill_manual(name = "",
-                      values = c("darkorange3", "#4E6641",'#9F0000'),
+                      values = c("#A75400", "#4E6641",'#9F0000'),
                       labels = c("Apenas o morcego", "Apenas a planta", "Sobreposição")) +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.21)  28 SEP 2021 13:26
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.21)  28 SEP 2021 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,38 +1001,38 @@ LaTeX Warning: Float too large for page by 13.47885pt on input line 836.
 ] [25
 
 ] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1263--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1264--1269
 [][][][][][][] [][] [][] [][] [][][][][][][] [][] [][] [][] [][][][] [][] [][][
 ][][][][][][] [][] [][][][][][][][][][] [][] [] [][] [][] [][] [][][][][][][] [
 ][] [][][][][][][][] [][] [] [][] [][][][][][] [][] [][][][][] [][]
  []
 
-[27] [28] [29] [30
+[27] [28] [29] [30] [31
 
-] [31] [32] [33]
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1507--1509
+] [32] [33] [34]
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1510--1512
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
 
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1512--1514
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1515--1517
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
-[34
-
-] [35
+[35
 
 ] [36
 
 ] [37
+
+] [38
 
 ]
 File: ../Rmarkdown/importancia_vars_planta.png Graphic file (type bmp)
 <../Rmarkdown/importancia_vars_planta.png>
 File: importancia_vars_morcego.png Graphic file (type bmp)
 <importancia_vars_morcego.png>
-[38
+[39
 
 ]
 File: ../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_biovars.png Graphic fi
@@ -1073,9 +1073,9 @@ type bmp)
 File: ../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg Graphic file (
 type bmp)
 <../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg>
-[39
+[40
 
-] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] (./Relatorio_pdpd.aux)
+] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] (./Relatorio_pdpd.aux)
 Package rerunfilecheck Info: File `Relatorio_pdpd.out' has not changed.
 (rerunfilecheck)             Checksum: 01138A378B4BEE0C58ABBBBA1AEDD1FA;3313.
  ) 
@@ -1088,4 +1088,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  87i,10n,120p,565b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Relatorio_pdpd.pdf (50 pages).
+Output written on Relatorio_pdpd.pdf (51 pages).

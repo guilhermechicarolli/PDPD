@@ -82,7 +82,7 @@ presentePM <- ggplot2::ggplot(data = world) +
     # Adicionar a distribuição
     
     ggpolypath::geom_polypath(data = t1M, aes(x = long, y = lat, group = group),
-                              fill = '#9F0000') +
+                              fill = '#A75400') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -154,7 +154,7 @@ futuro45M <- ggplot2::ggplot(data = world) +
     # Adicionar a distribuição
     
     ggpolypath::geom_polypath(data = t2M, aes(x = long, y = lat, group = group),
-                              fill = '#9F0000') +
+                              fill = '#A75400') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -223,7 +223,7 @@ futuro85M <- ggplot2::ggplot(data = world) +
     # Adicionar a distribuição
     
     ggpolypath::geom_polypath(data = t3M, aes(x = long, y = lat, group = group),
-                              fill = '#9F0000') +
+                              fill = '#A75400') +
     
     guides(color = guide_legend(override.aes = list(fill = "white"))) +
     
@@ -295,7 +295,7 @@ alterac45M <- ggplot2::ggplot(data = world) +
     new_scale_fill() +
     
     ggpolypath::geom_polypath(data = t2M, aes(x = long, y = lat, group = group),
-                              fill = '#9F0000') +
+                              fill = '#A75400') +
     # Adicionar a distribuição
     new_scale_fill() +
     
@@ -377,7 +377,7 @@ alterac85M <- ggplot2::ggplot(data = world) +
     
     new_scale_fill() +
     ggpolypath::geom_polypath(data = t3M, aes(x = long, y = lat, group = group),
-                              fill = '#9F0000') +
+                              fill = '#A75400') +
     # Adicionar a distribuição
     new_scale_fill() +
     
