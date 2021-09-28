@@ -56,3 +56,18 @@ Tabela 2: Distribuição com sobreposição (planta+morcego) nos 3 cenário clim
 | RCP 8.5 (2050)    | 74409.3                        | 36.92                                                             | 76.70                                                            |
 +-------------------+--------------------------------+-------------------------------------------------------------------+------------------------------------------------------------------+
 
+
+```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente.', fig.show="hold", out.width="70%"}
+
+knitr::include_graphics("../Graficos/sobreposicoes_mapas_feitos/presente.jpeg")
+
+```
+
+
+\clearpage
+```{r mapas_sob, echo=FALSE, fig.align='center', fig.cap='Mapas de sobreposição entre as distribuições da planta e do morcego no  RCP 4.5 (acima) e no RCP 8.5 (abaixo).', fig.show="hold", out.width="61%"}
+
+knitr::include_graphics(c("../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg", "../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg"))
+
+```
+

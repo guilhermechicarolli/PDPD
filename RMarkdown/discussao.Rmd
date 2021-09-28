@@ -28,7 +28,7 @@ Os modelos para ambas as espécies mostraram que sob os dois cenários climátic
 Nos RCPs futuros, as espécies apresentaram perda significativa de distribuição potencial nos biomas do Cerrado e da Caatinga ([figuras 13, 14, 18 e 19](#figuras)). A aptidão à perda de habitat no Cerrado pelas espécies é plausível a medida em que o bioma é bastante ameaçado devido a processos antrópicos de uso exploratório do solo, desmatamento e queimadas, afetando diretamente o clima [@carneiro2016; @inpe]. O panorama negativo é previsto ainda a continuar, com previsões climáticas indicando intensificação dos períodos de seca e alterações no ciclo hidrológico do Cerrado no futuro [@marinez2003; @arantes2016; @pbmc2013]. 
 
 
-A sobreposição geográfica potencial entre ambas as espécies também apresentou propensão a contração nos cenários futuros, perdendo quase 80% da área de sobreposição com respeito ao presente, sob o cenário de RCP 8.5 ([figura 5](#discussão)). Porém, a relação entre a sobreposição e a distribuição potencial é distinta entre ambas as espécies. *L. bokermanni* mostrou diminuição na sobreposição com relação à sua distribuição nos cenários futuros, obtendo apenas 36.9% de sobreposição espacial com a planta no cenário de RCP 8.5 ([tabelas 8 e 9](#anexos)). Nos dois cenários climáticos futuros analisados, os modelos mostraram que mais de 60% da distribuição potencial do morcego não possuía correspondência com a planta, caracterizando o *mismatch* espacial [@schweiger2008; @hegland2008] por parte do morcego. 
+A sobreposição geográfica potencial entre ambas as espécies também apresentou propensão a contração nos cenários futuros, perdendo quase 80% da área de sobreposição com respeito ao presente, sob o cenário de RCP 8.5 ([figura 5](#resultados)). Porém, a relação entre a sobreposição e a distribuição potencial é distinta entre ambas as espécies. *L. bokermanni* mostrou diminuição na sobreposição com relação à sua distribuição nos cenários futuros, obtendo apenas 36.9% de sobreposição espacial com a planta no cenário de RCP 8.5 ([tabelas 8 e 9](#anexos)). Nos dois cenários climáticos futuros analisados, os modelos mostraram que mais de 60% da distribuição potencial do morcego não possuía correspondência com a planta, caracterizando o *mismatch* espacial [@schweiger2008; @hegland2008] por parte do morcego. 
 
 
 Em contrapartida, *E. subsecundum* apresentou aumento na taxa de sobreposição em relação a sua distribuição nos cenários futuros ([tabelas 8 e 9](#apêndice)), chegando a uma porcentagem alta de 84.9% de sobreposição sob RCP 4.5, o que implica que apenas 15.1% de sua distribuição potencial nesse cenário está em desencontro geográfico com o morcego. No RCP 8.5, o desencontro espacial cresce para 23.3% da área potencial da planta. 
@@ -64,19 +64,6 @@ Diversos autores apresentaram a relação positiva entre a quantidade de dados d
 Essa perda de performance dos modelos com poucos dados foi um fator importante e desafiador para o projeto na medida em que a quantidade de ocorrências disponíveis para *Lonchophylla bokermanni* na literatura e bancos de dados online é pequena. Dessa forma, isso foi levado em conta para a tomada de decisão de aspectos fundamentais do processo de modelagem, como a escolha do algoritmo. A utilização do Maxent mostrou-se positiva ao avaliar que os modelos gerados por ele obtiveram bons valores de AUC ([figuras 8 e 9](#figuras)), inclusive para a espécie de morcego.
 
 
-```{r mapa_sob_presente, echo=FALSE, fig.align='center', fig.cap='Mapa de sobreposição entre as distribuições da planta e do morcego no presente.', fig.show="hold", out.width="70%"}
-
-knitr::include_graphics("../Graficos/sobreposicoes_mapas_feitos/presente.jpeg")
-
-```
-
-
-\clearpage
-```{r mapas_sob, echo=FALSE, fig.align='center', fig.cap='Mapas de sobreposição entre as distribuições da planta e do morcego no  RCP 4.5 (acima) e no RCP 8.5 (abaixo).', fig.show="hold", out.width="61%"}
-
-knitr::include_graphics(c("../Graficos/sobreposicoes_mapas_feitos/RCP45.jpeg", "../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg"))
-
-```
 
 
 

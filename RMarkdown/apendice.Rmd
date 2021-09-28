@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document:
-    latex_engine: xelatex
+  pdf_document: 
+    keep_tex: yes
   html_document:
     df_print: paged
     toc: yes

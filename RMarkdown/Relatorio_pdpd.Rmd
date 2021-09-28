@@ -1,5 +1,5 @@
 ---
-title : FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC - PROJETO DE PDPD DO EDITAL 04/2020
+title : FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC - Relatório Final do Projeto de PDPD do edital 04/2020
 subtitle: '**Impacto das mudanças climáticas no *mismatch* espacial em uma interação de polinização morcego-planta endêmica**'
 author:
   - Aluno Guilherme de Carvalho Chicarolli:
@@ -56,6 +56,8 @@ text-align: justify}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+\clearpage
 >      
 
 **Resumo**
@@ -105,16 +107,12 @@ Se a adequação não for acompanhada pelos parceiros com os quais interage, pod
 
 \clearpage
 
+<font size="4"> **Referências** </font> 
+
+::: {#refs}
+:::
+
+\clearpage
+
 ```{r child='../RMarkdown/apendice.Rmd'}
 ```
-
-\clearpage
-
-```{=tex}
-\clearpage
-\bibliography{bibliography.bib}  
-\clearpage
-```
-\clearpage
-
-<font size="4"> **Referências** </font> 
