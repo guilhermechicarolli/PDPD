@@ -111,8 +111,7 @@ Se a adequação não for acompanhada pelos parceiros com os quais interage, pod
 <font size="4"> **Referências** </font> 
 
 <div id="refs"></div>
-printbibliography[heading=none]
-defprintbibliography{}
+
 
 \clearpage
 
