@@ -183,29 +183,29 @@ knitr::include_graphics(c("../Dados/Resultados_VIF/E_subsecundum/Corr_plot_19_bi
 
 
 
-![Distribuição potencial de *Encholirium subsecundum* (em vermelho) para o presente.](../Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
+![Distribuição potencial de *Encholirium subsecundum* (em verde escuro) para o presente.](../Graficos/E_subsecundum_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
 
 
 
-![Distribuição potencial de *Encholirium subsecundum* (em vermelho) para o cenário futuro de RCP 4.5 (2050).](../Graficos/E_subsecundum_mapas_feitos/RCP45.jpeg){width="100%"}
+![Distribuição potencial de *Encholirium subsecundum* (em verde escuro) para o cenário futuro de RCP 4.5 (2050).](../Graficos/E_subsecundum_mapas_feitos/RCP45.jpeg){width="100%"}
 
-![Distribuição potencial de *Encholirium subsecundum* (em vermelho) para o cenário futuro de RCP 8.5 (2050).](../Graficos/E_subsecundum_mapas_feitos/RCP85.jpeg){width="100%"}
+![Distribuição potencial de *Encholirium subsecundum* (em verde escuro) para o cenário futuro de RCP 8.5 (2050).](../Graficos/E_subsecundum_mapas_feitos/RCP85.jpeg){width="100%"}
 
-![Mapa de alteração da distribuição potencial de *Encholirium subsecundum* no cenário RCP 4.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/E_subsecundum_mapas_feitos/alteracao_RCP45.jpeg){width="100%"}
-
-
-![Mapa de alteração da distribuição potencial de *Encholirium subsecundum* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em vermelho e amarelo representam a distribuição sem alteração e perdida. Não houve distribuição ganha da planta no RCP 8.5.](../Graficos/E_subsecundum_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
+![Mapa de alteração da distribuição potencial de *Encholirium subsecundum* no cenário RCP 4.5 (2050) em relação à distribuição do presente. A área em verde escuro, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/E_subsecundum_mapas_feitos/alteracao_RCP45.jpeg){width="100%"}
 
 
-![Distribuição potencial de *Lonchophylla bokermanni* (em vermelho) para o presente.](../Graficos/L_bokermanni_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
-
-![Distribuição potencial de *Lonchophylla bokermanni* (em vermelho) para o cenário futuro de RCP 4.5.](../Graficos/L_bokermanni_mapas_feitos/RCP45.jpeg){width="100%"}
-
-![Distribuição potencial de *Lonchophylla bokermanni* (em vermelho) para o cenário futuro de RCP 8.5.](../Graficos/L_bokermanni_mapas_feitos/RCP85.jpeg){width="100%"}
+![Mapa de alteração da distribuição potencial de *Encholirium subsecundum* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em verde escuro e amarelo representam a distribuição sem alteração e perdida. Não houve distribuição ganha da planta no RCP 8.5.](../Graficos/E_subsecundum_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
 
 
-![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 4.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP45.jpeg){width="100%"}
+![Distribuição potencial de *Lonchophylla bokermanni* (em laranja) para o presente.](../Graficos/L_bokermanni_mapas_feitos/presente_e_biomas.jpeg){width="100%"}
 
-![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em vermelho, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
+![Distribuição potencial de *Lonchophylla bokermanni* (em laranja) para o cenário futuro de RCP 4.5.](../Graficos/L_bokermanni_mapas_feitos/RCP45.jpeg){width="100%"}
+
+![Distribuição potencial de *Lonchophylla bokermanni* (em laranja) para o cenário futuro de RCP 8.5.](../Graficos/L_bokermanni_mapas_feitos/RCP85.jpeg){width="100%"}
+
+
+![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 4.5 (2050) em relação à distribuição do presente. A área em laranja, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP45.jpeg){width="100%"}
+
+![Mapa de alteração da distribuição potencial de *Lonchophylla bokermanni* no cenário RCP 8.5 (2050) em relação à distribuição do presente. A área em laranja, amarelo e azul representam a distribuição sem alteração, perdida e ganha, respectivamente.](../Graficos/L_bokermanni_mapas_feitos/alteracao_RCP85.jpeg){width="100%"}
 
 

@@ -1,0 +1,38 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+    toc: yes
+    theme: united
+editor_options:
+  markdown:
+    wrap: sentence
+intent: yes
+link-citations: yes
+linestretch: 1.25
+indent: yes
+fontsize: 11pt
+csl: associacao-brasileira-de-normas-tecnicas-eceme.csl
+---
+
+
+**Impacto das mudanças climáticas no *mismatch* espacial em uma interação de polinização morcego-planta endêmica**
+
+>      
+
+
+Guilherme C. CHICAROLLI, Simone R. de FREITAS, Guillermo L. F MONTERO^1^
+
+
+1. Centro de Ciências Naturais e Humanas (CCNH), Universidade Federal do ABC, Santo André, SP.
+
+
+Palavras chave: Modelos de Distribuição de Espécies, *Lonchophylla bokermanni*, *Encholirium subsecundum*, mutualismo, acoplamento espacial.
+
+
+A modificação na distribuição geográfica das espécies é um dos inúmeros impactos que as alterações no clima podem causar nas comunidades. Como resposta às mudanças climáticas, as espécies que adaptarem sua distribuição a lugares mais adequados serão selecionadas evolutivamente, caso contrário serão extintas. Se a adequação não for acompanhada pelos parceiros com os quais interage, podem acontecer desacoplamentos (*mismatches*) espaciais entre as duas espécies, impossibilitando a ocorrência da interação. O presente projeto tem como objetivo avaliar os impactos das mudanças climáticas na distribuição geográfica da espécie de bromélia *Encholirium subsecundum* (Baker) Mez e seu único polinizador conhecido, o morcego *Lonchophylla bokermanni* Sazima et al., 1978, no intuito de predizer possíveis *mismatches* espaciais e extinções locais. Utilizando-se do algoritmo de modelagem Maxent foram criados modelos de distribuição potencial das espécies em dois cenários climáticos projetados para 2050, de RCP 4.5 e 8.5. Para ambas as espécies, os modelos previram diminuição na distribuição potencial futura, com as maiores perdas de área no cenário de RCP 8.5. A área de sobreposição entre as duas espécies também diminuiu no futuro, verificando *mismatch* espacial por parte da distribuição do morcego, isto é, a maior parte da distribuição potencial futura de *L. bokermanni* não apresentou compatibilidade espacial com a distribuição de *E. subsecundum*, enquanto que houve aumento na sobreposição com relação à distribuição da planta. A redução significativa na distribuição das duas espécies no futuro pode indicar menor tolerância delas às mudanças climáticas mais intensas e por possuírem distribuição restrita, esperamos menor flexibilidade delas nas respostas às alterações no clima.
+
+
+> Aluno bolsista do edital nº 04/2020 PDPD da UFABC.

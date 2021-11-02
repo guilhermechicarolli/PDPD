@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.21)  29 SEP 2021 12:24
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.17)  1 NOV 2021 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,7 +972,7 @@ File: ../Graficos/Figure_1.png Graphic file (type bmp)
 File: ../Graficos/Figure_2.png Graphic file (type bmp)
 <../Graficos/Figure_2.png>
 [11] [12] [13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 752--760
+Underfull \hbox (badness 10000) in paragraph at lines 755--763
 
  []
 
@@ -991,7 +991,7 @@ File: ../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg Graphic file (type bmp)
 
 <../Graficos/sobreposicoes_mapas_feitos/RCP85.jpeg>
 
-LaTeX Warning: Float too large for page by 13.47885pt on input line 838.
+LaTeX Warning: Float too large for page by 13.47885pt on input line 841.
 
 [19] [20
 
@@ -1001,7 +1001,7 @@ LaTeX Warning: Float too large for page by 13.47885pt on input line 838.
 ] [25
 
 ] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1266--1271
+Underfull \hbox (badness 10000) in paragraph at lines 1269--1274
 [][][][][][][] [][] [][] [][] [][][][][][][] [][] [][] [][] [][][][] [][] [][][
 ][][][][][][] [][] [][][][][][][][][][] [][] [] [][] [][] [][] [][][][][][][] [
 ][] [][][][][][][][] [][] [] [][] [][][][][][] [][] [][][][][] [][]
@@ -1010,12 +1010,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1266--1271
 [27] [28] [29] [30
 
 ] [31] [32] [33]
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1510--1512
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1513--1515
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
 
-Overfull \hbox (10.35843pt too wide) in paragraph at lines 1515--1517
+Overfull \hbox (10.35843pt too wide) in paragraph at lines 1518--1520
 []|[]\TU/lmr/m/n/12 NASCIMENTO 
  []
 
@@ -1080,8 +1080,8 @@ Package rerunfilecheck Info: File `Relatorio_pdpd.out' has not changed.
 (rerunfilecheck)             Checksum: 01138A378B4BEE0C58ABBBBA1AEDD1FA;3313.
  ) 
 Here is how much of TeX's memory you used:
- 17767 strings out of 478492
- 325379 string characters out of 5860435
+ 17771 strings out of 478492
+ 325644 string characters out of 5860186
  817048 words of memory out of 5000000
  37790 multiletter control sequences out of 15000+600000
  409867 words of font info for 79 fonts, out of 8000000 for 9000
