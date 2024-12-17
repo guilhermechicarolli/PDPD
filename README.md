@@ -19,7 +19,7 @@
 
 ## Objetivo 
 
-Os dados foram disponibilizados com a finalidade de tornar a análise feita pelo projeto acessível e reprodutível.
+Os dados foram disponibilizados com a finalidade de tornar a análise acessível e reprodutível.
 
 Para reproduzir os códigos, siga as intruções comentadas em cada *script*.
 
